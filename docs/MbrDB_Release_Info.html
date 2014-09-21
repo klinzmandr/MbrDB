@@ -1,0 +1,197 @@
+<html xmlns:tomboy="http://beatniksoftware.com/tomboy" xmlns:link="http://beatniksoftware.com/tomboy/link" xmlns:size="http://beatniksoftware.com/tomboy/size"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>MbrDB Release Info</title><style type="text/css">
+        
+	body {  }
+	h1 { font-size: xx-large;
+     	     font-weight: bold;
+     	     border-bottom: 1px solid black; }
+	div.note {
+		   position: relative;
+		   display: block;
+		   padding: 5pt;
+		   margin: 5pt; 
+		   white-space: -moz-pre-wrap; /* Mozilla */
+ 	      	   white-space: -pre-wrap;     /* Opera 4 - 6 */
+ 	      	   white-space: -o-pre-wrap;   /* Opera 7 */
+ 	      	   white-space: pre-wrap;      /* CSS3 */
+ 	      	   word-wrap: break-word;      /* IE 5.5+ */ }
+	</style></head><body><div class="note" id="MbrDB Release Info"><a name="mbrdb release info"></a><h1>MbrDB Release Info</h1>
+Version 2.7 (Uploaded 8/29/14)
+<ul><li dir="ltr">updated mbrdonations to add validation of Purpose and Program on submit of form.
+</li><li dir="ltr">added 2 new reports: lybunty.php and sybunty.php
+</li><li dir="ltr">moved infrequently used reports to the admin reports menu 
+</li><li dir="ltr">modified datautils.php and added logging when new page is loaded
+</li><li dir="ltr">changed rptinprogressreminders to reminprogressreminders and added it to the reminders menu.
+</li><li dir="ltr">updated all usage occrances of the textare editor 'nicEditor' to include 'link' and 'unlink'.
+</li><li dir="ltr">corrected problem with handling reminder templates adding 'stripslashes' to all occurrences in all referencing pages.
+</li><li dir="ltr">changed 'from' email address to '<a style="color:#3465A4" href="reminders@pacificwildlifecare.org'">reminders@pacificwildlifecare.org'</a> in all pages where email is created.
+</li><li dir="ltr">modified rptprintlabels to detect and report use of non-chrome browser for label printing and put it back on the main menu.
+</li><li dir="ltr">modified remlabelsandletters to detect and report use of non-chrome browser for printing labels.
+</li><li dir="ltr">centralized definition of site dependent variables into datautils.inc and modified all page instances that referred to them.  Added javascript checker to prevent use of email functionality unless the system 'from; email address is defined.</li></ul>
+
+Version 2.6 (Uploaded 8/1/14)
+<ul><li dir="ltr">added bootstrap3-typeahead to CSZ to MbrInfotabbed and modified cfttable in db to support city, state and zip list maintenance
+</li><li dir="ltr">modified adminmenu and adminlistmaint to maintain new list row in configtable of db.
+</li><li dir="ltr">modified remmultiemailupd to correct problem with sending to only 1 email.
+</li><li dir="ltr">corrected rptmonthlyreport to count both members AND volunteers as new members in counts and sums plus provided for date of year and month of report.
+</li><li dir="ltr">modified mbrcorrespondence to remove 'Source' field from page display/update page since it isn't used for anything anyway.
+</li><li dir="ltr">updated mbrfollowup to fix date insertion when updating members table summary info.
+</li><li dir="ltr">corrected mbrcorrespondence to correctly handle editing of records added then abandoned.
+</li><li dir="ltr">corrected mbrdonations to correctly handle editing of records added then abandoned.
+</li><li dir="ltr">added code to rptcorrfollowup to suppress listing of correspondence links at start of report.
+</li><li dir="ltr">created admsetmemdate to load any null MemDate fields in the member table.  Modified admDBJanitor to add this utility to the selection menu.
+</li><li dir="ltr">corrected problems with rpttransactionsummary </li></ul>
+
+Version 2.5 (Uploaded 7/2/14)
+<ul><li dir="ltr">added last dues paid column to rptsubscribers
+</li><li dir="ltr">add MemberType field to rptfundingpaid and downloaded csv file
+</li><li dir="ltr">added new report rptcorrfollowup to list all MCID's with funding records within a date range with optional corresponding minimums for dues and donation that do not have a correspondence report dated after it.
+</li><li dir="ltr">added total of all subscriptions to rptsubscribers.
+</li><li dir="ltr">added default value of 0-Contact to MemStatus field in mbraddition when adding a new member
+</li><li dir="ltr">modified rptFundingPaid and rptprintlabels to include option to exclude members with email addresses flagged as 'TRUE'
+</li><li dir="ltr">add new report 'rptnewsubscribers' to allow identification of subscribers within a given date range.
+</li><li dir="ltr">modified MbrInfotabbed to add new 'Follow Up' tab for adding a new corrrespondence log item.</li></ul>
+
+Version 2.4 (Uploaded 5/29/2014)
+<ul><li dir="ltr">Added datepicker functionality to all date fields where it makes sense.  Using the bootstrap version of this functionality to maintain compatibility with existing css functions.</li></ul>
+
+Version 2.3 (Uploaded 5/23/2014)
+<ul><li dir="ltr">updated rptMemberFunding to output all email and mail info on report and downloaded csv file.
+</li><li dir="ltr">corrected downloaded headers on rptnewsupporters plus updated info icon.
+</li><li dir="ltr">modified mbrMemberInfotabbed and rptnewsupporters to remove the ability to modify the 'Date Joined' date and added explanatory verbiage explaining the use of the MemDate field for selection in the report respectively.
+</li><li dir="ltr">modified remmultiduesnotices to add reminder type column and make inactive check box active all the time.
+</li><li dir="ltr">Added new col for last dues amount to rptnewsupporters report
+</li><li dir="ltr">fixed rpt2013vs2014 and rptsubscribers to remove reference to 'pwcmbrdb' in <a style="color:#204A87" href="#sql">sql</a> statements to force use of 'current' database.
+</li><li dir="ltr">modified edidbupdate to change header color when text box changed to help make user notice that update button needs to be clicked.
+</li><li dir="ltr">added admmbrcsvextract, admdoncsvextract and admcorrcsvextract pages to admin main menu.</li></ul>
+
+
+Version 2.2 (Uploaded 5/6/2014)
+<ul><li dir="ltr">restored broken MbrInfotabbed links to mbrnotice and mbremailnotice and tested them all.
+</li><li dir="ltr">fixed admmbrsummaryloader to load members summary info for dbjanitor function.
+</li><li dir="ltr">modified rptinprogressreminderlist to include correspondence type in listing.
+</li><li dir="ltr">modified rptprintlabels to report no mail and no address info as different values
+</li><li dir="ltr">modified rptFundingPaid to report no mail and no address info as diff values.
+</li><li dir="ltr">fixed MbrInfotabbed to set up MailOK? flag correctly when address line is/is not entered.
+</li><li dir="ltr">modified rptmemberexceptions to list member, volunteer or donor records with inconsistent mail and email flags when compared to address line and email address fields respectively.
+</li><li dir="ltr">added new folder 'fonts' to structure to support glyphicons.
+</li><li dir="ltr">created rpt2013vs2014 to support identifying matching funds for grant.
+</li><li dir="ltr">added glyphicon for download info for rpt2013vs2014, rptFundingPaid, rptmemberstatus, rptnewsupporters and rpttransactionlog.</li></ul>
+
+Version 2.1 (Uploaded 4/30/14)
+<ul><li dir="ltr">modified remmultiemailupd  to use '<a style="color:#3465A4" href="reminder@pacificwildlifecare.org'">reminder@pacificwildlifecare.org'</a> as the 'from' or sending address to try and get around SPAM blockers.
+</li><li dir="ltr">updated MbrInfotabbed to no allow navigation away from newly added record until NameLabel1stline has been entered to prevent adding new donation/correspondence records without completing the info on the new member.
+</li><li dir="ltr">modified rptFundingPaid to mimic the search of rptprintlabels so that the search results are identical between the reports.  Modified searches in both to optimize.
+</li><li dir="ltr">corrected mbrdonations that was setting Inactive = NO to make it Inactive = FALSE.
+</li><li dir="ltr">added MemStatus and MCtype col's to rptmemberexceptions report.
+</li><li dir="ltr">modified rptnewsupporters to provide for download of csv file to spreadsheet.
+</li><li dir="ltr">modified rpttransactionlog to provide for download of csv file to spreadsheet.
+</li><li dir="ltr">modified rptFundingPaid to provide search criteria output on final report.
+</li><li dir="ltr">modified rptfundingdrilldown show date range before selection drop down.
+</li><li dir="ltr">added first/last page use date/time to rpt report.
+</li><li dir="ltr">cleaned up and clarified functions on the admDBAdmin page.
+</li><li dir="ltr">modified expiration period from 60 to 120 days in rptsubscribers.
+</li><li dir="ltr">modified mbrdonations to allow edit (vs delete) of 'Dues' records.</li></ul>
+
+Version 2.0 (Uploaded 04/05/14)
+Newest version features major rework of the reminders menu functions.  New functions allow 'batch' orientation of sending mail, email and inactivation steps to allow optimizatin of effort and time.  Significant updates to on-line and reference documentation regarding reminders has also been incorporated.  Sending of individual reminders has been moved to the 'Status' tab of the member information page.
+
+Additionally:
+<ul><li dir="ltr">added ability to admDBJanitor to reassign MCIDs on existing funding and correspondence records for a specific MCID to a new/different one
+</li><li dir="ltr">updated mbremailsend with new function that creates url's clickable
+</li><li dir="ltr">updated rememailnoticesend with new function that creates url's clickable
+</li><li dir="ltr">developed a new report 'rptsubscribers' that report all member records defined as subscribers with exceptions noted for delinquent payments and non-subscription members making subscription payments.
+</li><li dir="ltr">modified mbrdonations to list funding activity by date that was entered rather than the sequence number.
+</li><li dir="ltr">modified mbrcorrespondence to list correspondence activity by date entered rather than sequence number.
+</li><li dir="ltr">modified rptfundingsummary to put the report totals at the top for easy access.
+</li><li dir="ltr">fixed rptprintlabels to skip blanks at start of first page.
+</li><li dir="ltr">modoified mbrdonations and mbrcorrespondence to make MCID in header a link to ease navigation back to MbrInfotabbed.
+</li><li dir="ltr">added new report rptcorrdrilldown to allow summarization of correspondence types within a given date range.
+</li><li dir="ltr">added new report rptcorrfollowup to provide listing of non-subscribing members that have paid dues and need follow up TY's.</li></ul>
+
+Version 1.6 (Uploaded 03-20-2014)
+<ul><li dir="ltr">added admlogtailer the DBJanitor menu to be able to monitor current activity.
+</li><li dir="ltr">changed rptnewmembers to new rptnewsupporters with new headings to show listing is for 1, 2 and 3 members status's.
+</li><li dir="ltr">modified rptmonthlyreport to list new members by amount paid for last month.
+</li><li dir="ltr">fixed remnoticeupd and rememailnoticesend to update summary info for MCID in the member table
+</li><li dir="ltr">fixed mbremail to use stripslashes on read of template body.
+</li><li dir="ltr">modified mbraddition to list all available MCID when proposed one is duplicated.
+</li><li dir="ltr">fixed the mbremailsend to take out the translation of \n into &lt;br&gt; to keep formatted messages from getting distorted.
+</li><li dir="ltr">modified MbrInfotabbed to group member information on tab's differently and hopefully more user friendly.
+</li><li dir="ltr">modified DateValidation.js so that 'now' returns the current date AND time to allow searches on date ranges to be up to instant.
+</li><li dir="ltr">updated edilistall removing bullets and replacing with MCID links.
+</li><li dir="ltr">updated admDbJanitor to include the ability to re-assign the MCID's on existing donations and corresponding records to a different one.</li></ul>
+
+
+Version 1.5 (Uploaded  03-08-2014)
+<ul><li dir="ltr">modified mbraddition to initialize 5 new db fields for 'Last...'
+</li><li dir="ltr">modified mbrcorrespondence to update new member record columns
+</li><li dir="ltr">modified mbrdonations to update new member record columns
+</li><li dir="ltr">modified MbrTabbedinfo to display new member record columns in Summary tab
+</li><li dir="ltr">created utiliity tool that reads donations and correspondence logs and updates the member record for individual MCIDs with the last entry of each.</li></ul>
+
+Version 1.4 (Uploaded 03-06-2014)
+<ul><li dir="ltr">updated rptprintlabels with better selection <a style="color:#204A87" href="#sql">sql</a> generation and removed org. line if org value was blank.
+</li><li dir="ltr">updated remprintlabels and removed org line if org value was blank.
+</li><li dir="ltr">added 4 new fields to members table to hold date and amount of last dues of donation payment at the member level.
+<ul><li dir="ltr">lastduesdate
+</li><li dir="ltr">lastduesamount
+</li><li dir="ltr">lastdondate
+</li><li dir="ltr">lastdonamount
+</li></ul></li><li dir="ltr">created new 'monthly' report that will summarize the database for YTD, last month a current month.  Primarily for Board reporting purposes.
+</li><li dir="ltr">added nicedit.js and niceditgifs.gif to the js directory to support page level text edit functions
+</li><li dir="ltr">added text editor facilities to the admtemplateedit, mbremail and rememailnotice pages to allow text to be formatted.
+</li><li dir="ltr">added last funding amount to MbrInfotabbed summary tab.
+</li><li dir="ltr">fixed mbremailsend to enter correct info into correspondence log when used.
+</li><li dir="ltr">modified menu system to have single Admin button on home page and consolidated utilmenu into adminmenu
+</li><li dir="ltr">password protected dbjanitor button in adminmenu
+</li><li dir="ltr">defined main menu to fix it at the top of a window and not scroll off.</li></ul>
+
+Version 1.3 (Uploaded 2014-03-02)
+<ul><li dir="ltr">added member count total to rptmembersummary report
+</li><li dir="ltr">added new report 'rptmemberexceptions' to list records of member status 0-Contacts that have their last payment marked as 'Dues' or 'Donations'.   These should probably be re-classified.
+</li><li dir="ltr">modified mbrprintmcid and mbrprintchron to be printer ready by removing mainmenu and adding a button to RETURN at MbrInfotabbed.
+</li><li dir="ltr">modified displayexpired and add '0-Contacts' to select list showing last dues/donations paid prior to current expiration date of 12 months from the current month. Also modified search criteria for 0-Contacts and 3-Donors to look for and report 'Dues' OR 'Donation' funding payments.
+</li><li dir="ltr">moved mail and email templates into the database with appropriate changes to the scripts that create, edit and use the email and mail templates.
+</li><li dir="ltr">move remdeleterecs into the dbjanitor page.
+</li><li dir="ltr">added output of Notes field from members record to output to rptFundingPaid
+</li><li dir="ltr">added to dbjanitor a system database activity log viewer</li></ul>
+
+Version 1.2 (Uploaded 2014-02-28)
+<ul><li dir="ltr">eliminated utilmenu, modified adminmenu and set mainmenu as fixed at the top to facilitate navigation.  Access to adminmenu now via special button on the home page.
+</li><li dir="ltr">modified all admin pages to use modified menu layouts.
+</li><li dir="ltr">modified rpttransactionlog to list funding records only.
+</li><li dir="ltr">modified mbrprintmcid to print correspondence transactions only if some exist.
+</li><li dir="ltr">modified 'rptbulkmailsend' and 'rememailnotice' to not allow selection of member records with either no email address or E_Mail` flag = FALSE.
+</li><li dir="ltr">new report 'rptnewmembers' added to list new members (1,2,and 3) within a specific date range
+</li><li dir="ltr">added timestamp column to donations table</li></ul>
+
+Version 1.1 (Uploaded 2014-02-26)
+<ul><li dir="ltr">modified page field validation on mbrdonations to force Program field to be blanked when field error message is produced.
+</li><li dir="ltr">modified page field validation on MbrInfotabbed to assume Email OK = YES and Mail OK = YES when something is entered into the email and address line fields respectively.  They are set to NO if their respective fields are blank when the page is loaded.
+</li><li dir="ltr">modified database field to be length of 10, added page field validation to MbrInfotabbed to validate and format 5 or 9 digit zip codes entered.
+</li><li dir="ltr">updated member records with 9 digit zip codes with those from the Access extract.
+</li><li dir="ltr">fixed drop down menu functionality for chrome in rptmaillogviewer
+</li><li dir="ltr">added new tab 'Summary' to MbrInfotabbed page summarizing funding, corresondence and vol. time with a link to allow sending an email to the member.  Added email mbrsendemail and mbrsendemailupd pages to support the functionality.</li></ul>
+
+Version 1.0 (Uploaded 2014-02-23)
+<ul><li dir="ltr">complete and test the current email notifications scripts in mbrdb rememailnotice.php and rememailnoticesent.php
+</li><li dir="ltr">complete and test the current bulk email utility in mbrdb: rptbulkemail.php sendemail.php and sendemailupd.php
+</li><li dir="ltr">complete and test the current volunteer email utility in voldb: sendchooser.php, sendemail.php and sendemailupd.php</li></ul>
+</div>
+<div class="note" id="SQL"><a name="sql"></a><h1>SQL</h1>
+<b>SQL to select LAST dues paid records from donations</b>
+SELECT `donations`.`MCID`, `donations`.`Purpose`, MAX( `donations`.`DonationDate` ), `donations`.`DonationDate`, `members`.`MemStatus` FROM `pwcmbrdb`.`members` AS `members`, `pwcmbrdb`.`donations` AS `donations` WHERE `members`.`MCID` = `donations`.`MCID` AND `donations`.`Purpose` = 'dues' AND `donations`.`DonationDate` &gt; {D '2013-01-01' } GROUP BY `donations`.`MCID`;
+
+
+SELECT `donations`.`MCID`, SUM( `donations`.`TotalAmount` ) AS `Total`, `members`.* FROM { OJ `pwcmbrdb`.`members` AS `members` LEFT OUTER JOIN `pwcmbrdb`.`donations` AS `donations` ON `members`.`MCID` = `donations`.`MCID` } WHERE `donations`.`DonationDate` &gt;= '2012-01-01' AND `donations`.`DonationDate` &lt;= '2012-12-31' GROUP BY `donations`.`MCID` order by `Total` DESC
+
+<b>SQL to determine count, latest date, average and grand total of all funding grouped by MCID within <span style="color:#555753;text-decoration:underline">a</span></b><b> date range:</b>
+<b>NOTE: $lodate and $hidate can be input either as 'YYYYMMDD' or as 'YYYY-MM-DD'</b>
+SELECT `donations`.`MCID`, COUNT( `donations`.`MCID` ) AS `TransCnt`, MAX( `donations`.`DonationDate` ) AS `LastDon`, MAX( `donations`.`TotalAmount` ) AS `LargestDon`, AVG( `donations`.`TotalAmount` ) AS `AvgDon`, SUM( `donations`.`TotalAmount` ) AS `GrandTot`, `members`.`NameLabel1stline` AS `Name`
+FROM `donations`, `members` 
+WHERE `donations`.`MCID` = `members`.`MCID` 
+AND `donations`.`DonationDate` &gt;= {D '$lodate' } 
+AND `donations`.`DonationDate` &lt; {D '$hidate' } 
+GROUP BY `donations`.`MCID` 
+ORDER BY `TransCnt` DESC 
+LIMIT 0 , 10;</div></body></html>
