@@ -9,6 +9,7 @@
 </head>
 <body onload="initSelect()">
 <?php
+// change to track in smartgit
 session_start();
 //unset($_SESSION['TEST_MODE']);
 //if (isset($_REQUEST['testdb'])) $_SESSION['TEST_MODE'] = 'ON'; 
