@@ -4,10 +4,12 @@ date_default_timezone_set('America/Los_Angeles');
 
 // ====== Start Istallation Parameters =========
 // the following are site dependent variables used throughout the system
-$ProdDB = 'pwcmbrdb';
-$TestDB = 'mbrtestdb';
-$DBUserName = 'PWCDbUser';
-$DBPassword = 'hROdKzvYOtHG';
+define("ProdDBName", 'pwcmbrdb');
+define("TestDBName", 'mbrtestdb');
+define("DBUserName", 'PWCDbUser');
+define("DBPassword", 'hROdKzvYOtHG');
+
+// home page URL used in page links
 $HomeURL = 'http://www.pacificwildlifecare.org';
 // this email address is used as a from address in the reminder system
 // defining it as blank will prevent any email messages from being sent
@@ -17,13 +19,13 @@ $EmailTO = 'pacificwildlifecare@gmail.com';
 
 if (!isset($_SESSION['TEST_MODE'])) {
 	// production database
-	$db = $ProdDB;
+	$db = ProdDBName;
 		}
 else {
 	// test database
-	$db = $TestDB;
+	$db = TestDBName;
 	}
-$mysqli = new mysqli("localhost", $DBUserName, $DBPassword, $db);
+$mysqli = new mysqli("localhost", DBUserName, DBPassword, $db);
 
 if ($mysqli->connect_errno) {
 		$errno = $mysqli->connect_errno;
