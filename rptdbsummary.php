@@ -105,21 +105,21 @@ Total number of member records: $numrows<br />
 <div class="row">
 <div class="col-sm-4">Member Status:</div>
 formatMembers1;
-ksort($memstatuscount);
-foreach ($memstatuscount as $k=>$v) {
+if (count($memstatuscont) > 0) ksort($memstatuscount);
+if (count($memstatuscont) > 0) foreach ($memstatuscount as $k=>$v) {
 	echo "<div class=\"col-sm-1\">$k=$v</div>";
 	}
 echo '</div><div class="row"><div class="col-sm-4">Member Status Email OK Count:</div>';
-ksort($memstatusemailcount);
-foreach ($memstatusemailcount as $k=>$v) {
+if (count($memstatusemailcount) > 0) ksort($memstatusemailcount);
+if (count($memstatusemailcount) > 0) foreach ($memstatusemailcount as $k=>$v) {
 	echo "<div class=\"col-sm-1\">$k=$v</div>";
 	}
 
 echo '</div>  <!-- row --></div>  <!-- well -->';
 echo '<div class="row"><div class="col-sm-3"><b>Members Types:</b></div>  <!-- class -->
 </div>  <!-- row --><div class="well"><div class="row">';
-ksort($mctypecount);
-foreach ($mctypecount as $k => $v) {
+if (count($mctypecount) > 0) ksort($mctypecount);
+if (count($mctypecount) > 0) foreach ($mctypecount as $k => $v) {
 	echo "<div class=\"col-sm-2\">$k=$v</div>";
 	}
 echo '</div>  <!-- row --></div>  <!-- well -->';
@@ -228,7 +228,7 @@ print <<<formatSummary1
 <div class="well">
 <div class="row">
 formatSummary1;
-foreach ($purposes as $k=>$v) {
+if (count($purposes) > 0) foreach ($purposes as $k=>$v) {
 	if ($k == "") echo "<div class=\"col-sm-3\">NONE: $v</div>";
 	else echo "<div class=\"col-sm-3\">$k: $v</div>";
 	}
@@ -246,7 +246,7 @@ print <<<formatSummary2
 <div class="well">
 <div class="row">
 formatSummary2;
-foreach ($programs as $k=>$v) {
+if (count($programs) > 0) foreach ($programs as $k=>$v) {
 	if ($k == "") echo "<div class=\"col-sm-3\">NONE: $v</div>";
 	else echo "<div class=\"col-sm-3\">$k: $v</div>";
 	}
@@ -264,7 +264,7 @@ print <<<formatSummary3
 <div class="well">
 <div class="row">
 formatSummary3;
-foreach ($campaigns as $k=>$v) {
+if (count($campaigns) > 0) foreach ($campaigns as $k=>$v) {
 	if ($k == "") echo "<div class=\"col-sm-3\">NONE: $v</div>";
 	else echo "<div class=\"col-sm-3\">$k: $v</div>";
 	}
@@ -293,7 +293,7 @@ Total number of Correspondence records: $rec_count<br />
 <div class="well">
 <div class="row">
 corrReport;
-foreach ($corrtype as $k => $v) {
+if (count($corrtype) > 0) foreach ($corrtype as $k => $v) {
 	if ($k == "") echo "<div class=\"col-sm-3\">NONE: $v</div>";
 	else echo "<div class=\"col-sm-3\">$k: $v</div>";
 	}
