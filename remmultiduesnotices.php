@@ -244,7 +244,7 @@ elseif ($rptmemstatus == 0) $rpttitle = "List of $rowcount Contacts without rece
 echo "<font size=\"+3\">$rpttitle</font><br />";
 echo "Notices sent since " . date('Y-m-d H:i:s',$notedate) .' not listed.<br />';
 echo "<table border=\"0\" class=\"table table-condensed\">
-<tr><th>MCID</th><th>Name</th><th align=\"center\">EMail?</th><th align=\"center\">Mail?</th><th>Purpose</th><th>Last Paid</th><th>Amount</th><th align=\"center\">Inactive?</th><th>Rem Cnt.</th><th>LastReminder</th><th>RemType</th></tr>";
+<tr><th>MCID</th><th>Name</th><th align=\"center\">EMail?</th><th align=\"center\">Mail?</th><th>Last Paid</th><th>Purpose</th><th align=\"center\">Inactive?</th><th>Rem Cnt.</th><th>LastReminder</th><th>RemType</th></tr>";
 
 foreach ($finalarray as $key=>$row) {
 	$mcid=rtrim($row['MCID']); $dondate=$key; 
@@ -272,7 +272,7 @@ foreach ($finalarray as $key=>$row) {
 	$inact = "<input type=\"checkbox\" name=\"inact[]\" value=\"$emcode\">";
 
 print <<<bulletForm
-<tr><td><a href="MbrInfotabbed.php?filter=$mcid">$mcid</a></td><td>$labelname</td><td align="center">$emok</td><td align="center">$mok</td><td>$purpose</td><td>$maxdate</td><td>$amount</td><td align="center">$inact</td><td>$remcnt</td><td>$remdate</td><td>$remtype</td></tr>
+<tr><td><a href="MbrInfotabbed.php?filter=$mcid">$mcid</a></td><td>$labelname</td><td align="center">$emok</td><td align="center">$mok</td><td>$maxdate</td><td>$purpose</td><td align="center">$inact</td><td>$remcnt</td><td>$remdate</td><td>$remtype</td></tr>
 </div>  <!-- container -->
 
 bulletForm;
