@@ -252,7 +252,7 @@ echo "Rows extracted: $nbr_rows, No mail: $nomail, Missing address: $noaddr, Ema
 echo "<a href=\"downloads/FundingPaid.csv\" download=\"FundingPaid.csv\">DOWNLOAD CSV FILE</a>";
 echo "<button type=\"button\" class=\"btn btn-xs btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Fields separated by semicolon(;)\nText fields are quoted.\"><span class=\"glyphicon glyphicon-info-sign\" style=\"color: blue; font-size: 20px\"></span></button>";
 if (count($results) > 0) {
-$csv[] = "MCID;MStat;Total;Name;Phone;EMail?;Email;Mail?;Address;City;St;Zip;Notes\n";
+$csv[] = "MCID;MStat;Total;Fname;Lname;Label1stLine;Salutation;Phone;EMail?;Email;Mail?;Address;City;St;Zip;Notes\n";
 echo "<table class=\"table-condensed\">
 <tr><th>MCID</th><th>MemStatus</th><th>Total</th><th>Name</th><th>Phone</th>
 <th>EMail?<th>Email</th><th>Mail?</th><th>Address</th><th>City/St/Zip</th><th>Notes</th></tr>";
@@ -261,7 +261,7 @@ foreach ($results as $k => $r) {
 	$note = strtr($r[Notes], $translate);
 	if ($r[E_Mail] == 'TRUE') $r[E_Mail] = 'Yes'; else $r[E_Mail] = 'No';
 	if ($r[Mail] == 'TRUE') $r[Mail] = 'Yes'; else $r[Mail] = 'No';
-	$csv[] = "\"$r[MCID]\";$r[MemStatus];$r[Total];\"$r[NameLabel1stline]\";$r[PrimaryPhone];$r[E_Mail];$r[EmailAddress];$r[Mail];\"$r[AddressLine]\";$r[City];$r[State];$r[ZipCode];\"$note\"\n";
+	$csv[] = "\"$r[MCID]\";$r[MemStatus];$r[Total];\"$r[FName]\";\"$r[LName]\";\"$r[NameLabel1stline]\";\"$r[CorrSal]\";$r[PrimaryPhone];$r[E_Mail];$r[EmailAddress];$r[Mail];\"$r[AddressLine]\";$r[City];$r[State];$r[ZipCode];\"$note\"\n";
 	echo "<tr><td>$r[MCID]</td><td align=\"center\">$r[MemStatus]</td><td>$r[Total]</td><td>$r[NameLabel1stline]</td><td>$r[PrimaryPhone]</td><td>$r[E_Mail]</td><td>$r[EmailAddress]</td><td>$r[Mail]</td><td>$r[AddressLine]</td><td>$r[City], $r[State], $r[ZipCode]</td><td>$note</td></tr>";
 	//echo "<pre>"; echo "key: $k "; print_r($r); echo "</pre>";	
 	}
