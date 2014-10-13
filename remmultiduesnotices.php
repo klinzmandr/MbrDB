@@ -66,6 +66,7 @@ GROUP BY `donations`.`MCID`, `donations`.`Purpose`
 
 //echo "rptmemstatus: $rptmemstatus<br />";
 //echo "expdate: $expdate<br />";
+//echo "sql: $sql<br>";
 $results = doSQLsubmitted($sql);
 
 // parse out those rows to just show the latest payment made
