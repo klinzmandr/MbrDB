@@ -165,7 +165,7 @@ if ($action == 'search') {
 			AND $where 
 		GROUP BY `donations`.`MCID` 
 			$having
-		ORDER BY `Total` DESC;";
+		ORDER BY `ZipCode` ASC;";
 		}
 	//echo "SQL: $sql<br>";
 	$res = doSQLsubmitted($sql);
