@@ -155,7 +155,7 @@ if ($action == 'search') {
 			AND `Inactive` = 'FALSE'  
 			AND $where
 		GROUP BY `donations`.`MCID`
-		ORDER BY `Total` DESC;";
+		ORDER BY `ZipCode` ASC;";
 		}
 	else {
 		$sql = "SELECT `donations`.`MCID`, SUM( `donations`.`TotalAmount` ) AS `Total`, `members`.* 
