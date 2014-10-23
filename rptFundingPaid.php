@@ -13,11 +13,11 @@ if ($action == '') {
 <!DOCTYPE html>
 <html>
 <head>
-<title>Print Labels</title>
+<title>Funding Paid Report</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="css/datepicker3.css" rel="stylesheet"></head><body>
-<h3>Funding Report <a href="javascript:self.close();" class="btn btn-primary"><strong>(CLOSE)</strong></a></h3>
+<h3>Funding Paid Report <a href="javascript:self.close();" class="btn btn-primary"><strong>(CLOSE)</strong></a></h3>
 <p>This report lists all records that would be used for by the &apos;Print Labels on Criteria&apos; for printing labels based on the criteria selected.  The output is sorted by Total amount in descending sequence.</p>
 <h4>Select one or more of the following criteria:</h4>
 <script>
