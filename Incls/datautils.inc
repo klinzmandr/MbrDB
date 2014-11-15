@@ -3,11 +3,8 @@
 date_default_timezone_set('America/Los_Angeles');
 
 // ====== Start Istallation Parameters =========
-// the following are site dependent variables used throughout the system
-define("ProdDBName", 'pwcmbrdb');
-define("TestDBName", 'mbrtestdb');
-define("DBUserName", 'PWCDbUser');
-define("DBPassword", 'hROdKzvYOtHG');
+
+include "../DBParamInfo";
 
 // home page URL used in page links
 $HomeURL = 'http://www.pacificwildlifecare.org';
