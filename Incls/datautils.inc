@@ -4,7 +4,7 @@ date_default_timezone_set('America/Los_Angeles');
 
 // ====== Start Istallation Parameters =========
 
-include "../DBParamInfo";
+include "../.DBParamInfo";
 
 // home page URL used in page links
 $HomeURL = 'http://www.pacificwildlifecare.org';
