@@ -62,7 +62,7 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 		$CSVarray[$r[MCID]] = "$$gamt;$r[MemStatus];$r[NameLabel1stline];$r[FName];$r[LName];$r[Organization];$r[AddressLine];$r[City];$r[State];$r[ZipCode];$r[PrimaryPhone];$em";				
 		}
 	$fgrtot = number_format($grtot);
-	echo "Supporters for $pyr NOT Reported for $yr: ".count($YRarray)." for a total of $$fgrtot.&nbsp;&nbsp;";
+	echo "Historical supporters NOT Reporting anything for $yr: ".count($YRarray)." for a total of $$fgrtot.&nbsp;&nbsp;";
 //	echo '<pre> YR '; print_r($YRarray); echo '</pre>';
 //	echo '<pre> ADR '; print_r($ADRarray); echo '</pre>';
 	echo "<a href=\"downloads/sybunty.csv\" download=\"sybunty.csv\">DOWNLOAD CSV FILE</a>";
@@ -84,7 +84,7 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 if ($action == '') {
 print <<<pagePart1
 
-<p>This report lists all member ids that have provided financial support for the previous year but have not provided any financial support for the given year.</p>
+<p>This report lists all members that have provided financial support in previous years but have not provided any financial support for the given year.</p>
 <br>
 Select the Year: <br>
 <form action="rptsybunty.php">
