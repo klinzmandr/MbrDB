@@ -68,9 +68,14 @@ print <<<pagePart2
 <h4 style="color: red; ">Please note that printing labels is best done when using the Chrome web browser.  Other browers may be used but careful testing must be done BEFORE trying to print on label stock.  Make sure that browser margin settings are correctly set in any case.</h4>
 pagePart2;
 
-print <<<pagePart3
+print <<<pagePart3a
 <p>Once the labels and letters have been printed they can (and should be) eliminated form the letters and letters database list so that duplicate mailings will be avoided.</p>
 <p>After printing, you may delete any or all of list items by placing a check in the associated box and clicking the 'Delete Items' button.</p>
+
+pagePart3a;
+	if ($nbrrows > 0) {
+	echo "<a class=\"btn btn-primary\" href=\"remlabelsandletters.php?list=all\">CLICK TO LIST AND DELETE LABELS/LETTERS</a></h4><br /><br />";
+print <<<pagePart3b
 <table class="table">
 <tr>
 <td>
@@ -98,10 +103,8 @@ Number of labels to skip on 1st page (max. 29):
 </td>
 </tr>
 </table>
-pagePart3;
 
-	if ($nbrrows > 0) {
-	echo "<a class=\"btn btn-primary\" href=\"remlabelsandletters.php?list=all\">CLICK TO LIST AND DELETE ITEMS</a></h4><br /><br />";
+pagePart3b;
 	}
 
 print <<<pagePart2
@@ -141,14 +144,14 @@ for(var i=0; i < fld.length; i++) {
 <input type="checkbox" name="chkr" 
 onchange='checkAll(document.chkform.chkr,document.chkform["cba[]"])'><b>&nbsp;&nbsp;Check/Uncheck All</b><br>
 <table class="table">
-<tr><th>Del</th><th>RecNo</th><th>Date</th><th>To</th></tr>
+<tr><th>Del</th><th>RecNo</th><th>Date</th><th>MCID</th><th>To</th></tr>
 formPart1;
 
 while ($r = $res->fetch_assoc()) {
 	$recno = $r[LLID];
 	echo "<tr><td width=\"5%\">
 	<input type=\"checkbox\" name=\"cba[]\" value=\"$recno\"></td>
-	<td width=\"5%\">$recno</td><td width=\"20%\">$r[Date]</td><td>$r[NameLabel1stline]</td></tr>";
+	<td width=\"5%\">$recno</td><td width=\"20%\">$r[Date]</td><td>$r[MCID]</td><td>$r[NameLabel1stline]</td></tr>";
 	//echo "<pre>labelandletter item: "; print_r($r); echo "</pre>";
 	}
 echo "<tr><td><input type=\"submit\" name=\"clicker\" value=\"Delete Checked\"></td><tr>";
