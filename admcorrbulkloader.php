@@ -29,16 +29,19 @@ if ($action == '') {
 // setup of initial input parameters
 print <<<pagePart1
 
-<h3>Spreadsheet Uploader</h3>
+<h3>Correspondence Bulk Update Utility</h3>
 <p>This page is designed to upload a spreadsheet of any format (xls, xlsx, csv or odp) and use it to add individual records to the correspondence table of the database for each MCID found in the spreadsheet.</p>
 <p>The prerequisites of the file to be uploaded are:
 
 <ol>
-<li>The spreadsheet file may only contain one (1) spreadsheet tab.</li>
-<li>The first ROW of the spreadsheet MUST contain the column names.</li>
-<li>There MUST be one (1), AND ONLY ONE, column heading (in the first row) named &apos;<b>MCID</b>&apos; spelled exactly that way - in all CAPS&apos;s.</li>
+<li>Only the FIRST spreadsheet of the file is examined.</li>
+<li>The first row, <b>(ROW &apos;1</b>&apos;) of the FIRST spreadsheet MUST contain the column names.</li>
+<li>There MUST be one (1), column name in ROW &apos;1&apos; named &apos;<b>MCID</b>&apos; spelled exactly that way - in all CAPS&apos;s. </li>
+<li>The contents of this column are assumed to be valid MCID&apos;s of the membership database and a new correspondence record for each will be created.</li>
 </ol></p>
 <p style="color: red; "><b>NOTE: if the correspondence type list does not contain an apporpriate selection, a new one correspondence type should be added using other administrative functions.</b></p>
+
+<p><a href="http://youtu.be/FSp0x00l6ak" target="_blank">Click this link for an instructional video (8:14)</a></p>
 pagePart1;
 echo '
 <script>
@@ -115,22 +118,19 @@ try {
 //	echo "Filepath: $Filepath<br>";
 	$errs = "";
 	$Sheets = $Spreadsheet -> Sheets();
-	if (count($Sheets) != 1) $errs .= 'File contains more that one spreadsheet<br>';
-//	echo "Sheets count: ".count($Sheets)."<br>";
+//	echo '<pre> Sheets: '; print_r($Sheets); echo '</pre>';
+
 	$Index = 0;			// first (only?) sheet tab
 	$Spreadsheet -> ChangeSheet($Sheets[$Index]);
-	// echo '<pre> row array: '; print_r($Spreadsheet); echo '</pre>';
-	// exit;
+//	echo '<pre> row array: '; print_r($Spreadsheet); echo '</pre>';
 	$foundMCID = 0;	$colidx = 0;
 	$curritem = $Spreadsheet -> current();
-//	echo '<pre> current array: '; print_r($curritem); echo '</pre>';
+//	echo "curritem count: " . count($curritem) . '<br>';
+//	echo '<pre> curritem: '; print_r($curritem); echo '</pre>';
+	if (count($curritem) == 0) $errs .= 'Unable to read spreadsheet from XLSX file<br>';
 	foreach ($curritem as $Name) {
-//		echo "name: $Name<br>";
 		if ($Name == 'MCID') {
 			$foundMCID = 1;
-//			echo "MCID found.<br>";
-		}
-		if ($foundMCID) {
 			break;
 		}
 	$colidx++;		
@@ -145,7 +145,7 @@ echo "<h3>Upload successful. File stored as: " . "&apos;" . $_FILES["file"]["nam
 if (!$foundMCID) $errs .= "No column named &apos;MCID&apos; is present.";
 if (strlen($errs) > 0) { 
 	echo "$errs<br>";
-	echo "	<h3>Spreadsheet NOT valid. CANCEL</h3>
+	echo "	<h3>Spreadsheet NOT valid.</h3>
 	<br><br>
 	<a class=\"btn btn-primary btn-danger\" href=\"admcorrbulkloader.php\">CANCEL</a>";
 }
