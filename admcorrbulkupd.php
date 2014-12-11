@@ -61,7 +61,7 @@ foreach ($mcidarray as $mcid => $cnt) {
 	$updarray[CorrespondenceType] = $corrtype;				// corresondence type for new add
 	$updarray[DateSent] = $datesent;
 	$updarray[Notes] = 'Added using bulk updater';
-//	echo '<pre updarray: >'; print_r($updarray); echo '</pre>';
+//	echo '***TEST MODE ON***<pre updarray: >'; print_r($updarray); echo '</pre>';
 	sqlinsert('correspondence', $updarray);
 	$rc++;
 }
