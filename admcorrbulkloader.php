@@ -143,6 +143,9 @@ catch (Exception $E) {
 echo "<h3>Upload successful. File stored as: " . "&apos;" . $_FILES["file"]["name"] . '&apos;</h3>';
 // report errors or continue with what is entered	
 if (!$foundMCID) $errs .= "No column named &apos;MCID&apos; is present.";
+$alpha = array(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z);
+if ($colidx > 26) $errs .= 'Column named &asos;MCID&apos; was found in the firstr 26 columns of the spreadsheet<br>';
+$colalpha = strtoupper($alpha[$colidx]);
 if (strlen($errs) > 0) { 
 	echo "$errs<br>";
 	echo "	<h3>Spreadsheet NOT valid.</h3>
@@ -150,9 +153,9 @@ if (strlen($errs) > 0) {
 	<a class=\"btn btn-primary btn-danger\" href=\"admcorrbulkloader.php\">CANCEL</a>";
 }
 else {
-	echo "<h3>Spreadsheet valid.</h3><br>
-	<h4>Corresondence Type to be applied to all MCID's: $corrtype<br>
-	MCID column heading found in column $colidx<br>
+	echo "<h3>Spreadsheet validated.</h3><br>
+	<h4>MCID column heading found in Column &apos;$colalpha&apos; of 1st spreadsheet in file &apos;" . $_FILES["file"]["name"] . "&apos;.<br>
+	Corresondence Type to be applied to all MCID's: $corrtype<br>
 	Date to be applied to all corrrespondence records: $datesent<br><br>
 	Click CONTINUE to apply updates or CANCEL to change parameters.</h4><br>
 	<a class=\"btn btn-primary btn-success\"  href=\"admcorrbulkupd.php?file=$Filepath&corrtype=$corrtype&DateSent=$datesent&colidx=$colidx\">CONTINUE</a>
