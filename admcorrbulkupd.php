@@ -57,7 +57,7 @@ catch (Exception $E)	{
 $updarray = array(); $rc = 0;
 foreach ($mcidarray as $mcid => $cnt) {
 //	if ($updarray[MCID] == '') 
-	$updarray[MCID] = $mcid;
+	$updarray[MCID] = strtoupper($mcid);
 	$updarray[CorrespondenceType] = $corrtype;				// corresondence type for new add
 	$updarray[DateSent] = $datesent;
 	$updarray[Notes] = 'Added using bulk updater';
