@@ -144,7 +144,7 @@ echo "<h3>Upload successful. File stored as: " . "&apos;" . $_FILES["file"]["nam
 // report errors or continue with what is entered	
 if (!$foundMCID) $errs .= "No column named &apos;MCID&apos; is present.";
 $alpha = array(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z);
-if ($colidx > 26) $errs .= 'Column named &asos;MCID&apos; was found in the firstr 26 columns of the spreadsheet<br>';
+if ($colidx > 26) $errs .= 'Column named &asos;MCID&apos; was not found in the firstr 26 columns of the spreadsheet<br>';
 $colalpha = strtoupper($alpha[$colidx]);
 if (strlen($errs) > 0) { 
 	echo "$errs<br>";
