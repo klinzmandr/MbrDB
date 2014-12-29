@@ -15,6 +15,15 @@
  	      	   white-space: pre-wrap;      /* CSS3 */
  	      	   word-wrap: break-word;      /* IE 5.5+ */ }
 	</style></head><body><div class="note" id="MbrDB Release Info"><a name="mbrdb release info"></a><h1>MbrDB Release Info</h1>
+Version 2.8 (Uploaded 12/29/14)
+<ul><li dir="ltr">modified admmbrsummaryloader to clear all summary info before reloading it from the donations and correspondence tables.
+</li><li dir="ltr">modified datautils.inc to eliminate logging of requests for doSQLsubmitted().
+</li><li dir="ltr">externalize userids and passwords for database to allow upload of system to gitHub without giving away these items.
+</li><li dir="ltr">add payment amount to listing depending on last payment type to remmultiduesnotices.php
+</li><li dir="ltr">added corresondence bulk updater admin utility to read mcid's from any spreadsheet and add new correspondence records for each unique one found.
+</li><li dir="ltr">moved list and delete button to top of page in remlabelsandletters.php
+</li><li dir="ltr">added option to do bulk add of correspondence records to rptprintlabels, and added rptprintlabelscorradder.php and rptprintlabeslcorradderupd.php to support it.</li></ul>
+
 Version 2.7 (Uploaded 8/29/14)
 <ul><li dir="ltr">updated mbrdonations to add validation of Purpose and Program on submit of form.
 </li><li dir="ltr">added 2 new reports: lybunty.php and sybunty.php
