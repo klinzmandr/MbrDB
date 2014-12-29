@@ -231,20 +231,24 @@ labelPart1;
 include 'Incls/label_print_css.inc';		
 // leave empty labels empty
 $sheetcount = 0;
+$cnt = count($results);
 if ($blanks > 0) $blanks -= 1;
 echo "<div class=\"label\">";
-echo "Rows extracted: $nbr_rows<br />No mail/no addr: $nomail/$noaddr<br />Excl Email: $withemail<br>Labels printed: " . count($results) . '<br />';
-echo "<a href=\"javascript:self.close();\" class=\"btn btn-primary\">CLOSE</a></div>";
+echo "Rows extracted: $nbr_rows<br />No mail/no addr: $nomail/$noaddr<br />Excl Email: $withemail<br>Labels printed: " . $cnt . '<br />';
+echo '<a href="javascript:self.close();" class="btn btn-primary">CLOSE</a>/
+<a href="rptprintlabelscorradder.php?count=' . $cnt . '" class="btn btn-primary">CONTINUE</a>
+</div>';
 $sheetcount += 1;
 for ($i=0;$i<$blanks;$i++) {
 	echo "<div class=\"label\"></div>";
 	$sheetcount += 1;
 	}
-
+$corrarray = array(); $corrarray[] = "MCID,Name\n";
 if (count($results) != 0) {
 foreach ($results as $k => $r) {
 	$mcid = $r[MCID]; $zipcode = $r[ZipCode]; $org = $r[Organization];
 	$name = $r[NameLabel1stline]; $addr = $r[AddressLine]; $city = $r[City]; $state = $r[State];
+	$corrarray[] = $r[MCID] . ',' .  $r[NameLabel1stline] . "\n";
 	if ($org == '')
 		echo "<div class=\"label\">$name<br>$addr<br>$city, $state  $zipcode</div>";
 	else 
@@ -257,6 +261,7 @@ foreach ($results as $k => $r) {
 		}
 	}
 }
+file_put_contents('uploads/corraddarray.csv', $corrarray);
 	print <<<labelPart2
 </body>
 </html>
