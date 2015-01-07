@@ -40,7 +40,7 @@ if ($action == 'rpt') {
 	$pyr = $yr - 1;
 //	echo "yr: $yr<br>"; echo "pyr: $pyr<br>";
 	echo '<table class="table table-condensed">
-	<tr><th>MCID</th><th>'.$pyr.'Tot</th><th>LastGift</th><th>MemSt</th><th>Label Name</th><th>First</th><th>Last</th><th>Organization</th><th>Address</th><th>City</th><th>
+	<tr><th>MCID</th><th>CummTot</th><th>LastGift</th><th>MemSt</th><th>Label Name</th><th>First</th><th>Last</th><th>Organization</th><th>Address</th><th>City</th><th>
 St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 	$csv[] =  'MCID;'.$pyr."Tot;LastGift;MemSt;Label Name;First;Last;Organization;Address;City;St;Zip;Phone;Email\n";
 	while ($r = $res->fetch_assoc()) {
@@ -62,7 +62,7 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 		$CSVarray[$r[MCID]] = "$$gamt;$r[MemStatus];$r[NameLabel1stline];$r[FName];$r[LName];$r[Organization];$r[AddressLine];$r[City];$r[State];$r[ZipCode];$r[PrimaryPhone];$em";				
 		}
 	$fgrtot = number_format($grtot);
-	echo "Historical supporters NOT Reporting anything for $yr: ".count($YRarray)." for a total of $$fgrtot.&nbsp;&nbsp;";
+	echo "Historical supporters PRIOR TO but NOT Reporting anything for $yr: ".count($YRarray)." for a total of $$fgrtot.&nbsp;&nbsp;";
 //	echo '<pre> YR '; print_r($YRarray); echo '</pre>';
 //	echo '<pre> ADR '; print_r($ADRarray); echo '</pre>';
 	echo "<a href=\"downloads/sybunty.csv\" download=\"sybunty.csv\">DOWNLOAD CSV FILE</a>";
