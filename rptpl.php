@@ -110,20 +110,22 @@ while ($r = $res->fetch_assoc()) {
 // echo '<pre> User start '; print_r($whotimemin); echo '</pre>';
 // echo '<pre> User end '; print_r($whotimemax); echo '</pre>';	
 echo '<table><tr><td valign="top"><h4>Pages Most Used</h4><ul>';
-arsort($whatarray);
+ksort($whatarray);
 foreach ($whatarray as $k => $v) {
 	echo "$k: $v<br />";
 	}
 echo '</ul>';
 echo '</td><td valign="top"><h4>Page Users</h4><ul>';
-arsort($whoarray);
+ksort($whoarray);
 foreach ($whoarray as $k => $v) {
 	echo "$k: $v<br />&nbsp;&nbsp;(first: $whotimemin[$k], last: $whotimemax[$k])<br />";
 	}
 echo '</ul>';
 echo '</td></tr><tr><td valign="top"><h4>Pages By User</h4><ul>';
+ksort($comboarray);
 if (count($comboarray) > 0) foreach ($comboarray as $k => $v) {
 	echo "$k<br /><ul>";
+	ksort($v);
 	foreach ($v as $kk => $vv) {
 		echo "$kk -> $vv<br />";
 		}
@@ -131,8 +133,10 @@ if (count($comboarray) > 0) foreach ($comboarray as $k => $v) {
 	}
 echo '</ul>';
 echo '</td><td valign="top"><h4>Users By Page:</h4><ul>';
+ksort($userarray);
 if (count($userarray) > 0) foreach ($userarray as $k => $v) {
 	echo "$k->$usercountarray[$k]<br /><ul>";
+	ksort($v);
 	foreach ($v as $kk => $vv) {
 		echo "$kk -> $vv, Last @ " . $combotimearray[$kk][$k] . "<br />";
 		}
