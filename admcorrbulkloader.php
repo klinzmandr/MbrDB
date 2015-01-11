@@ -22,6 +22,7 @@ include 'Incls/datautils.inc';
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
 $corrtype = isset($_REQUEST['corrtype']) ? $_REQUEST['corrtype'] : "";
 $datesent = isset($_REQUEST['DateSent']) ? $_REQUEST['DateSent'] : "";
+$notes = isset($_REQUEST['Notes']) ? $_REQUEST['Notes'] : "";
 $colidx = isset($_REQUEST['colidx']) ? $_REQUEST['colidx'] : "";
 
 echo '<div class="container">';
@@ -70,7 +71,7 @@ echo '
 <form action="admcorrbulkloader.php" method="post" enctype="multipart/form-data"  onsubmit="return chkct()">
 <br>Select spreadsheet file:&nbsp;
 <input size=50 type="file" name="file" id="file" /><br>
-Select the date sent and the correspondence type to be applied to ALL MCID&apos;s.<br>';
+Select the date sent, the correspondence type and any notes to be applied to ALL record&apos;s.<br>';
 echo "Date Sent: <input type=\"text\" name=\"DateSent\" value=\"$datesent\" data-provide=\"datepicker\" id=\"dp1\" data-date-format=\"yyyy-mm-dd\" data-date-autoclose='true'/><br>";
 echo '
 Corr. Type: <select id="CT" name="corrtype" size="1">
@@ -78,7 +79,8 @@ Corr. Type: <select id="CT" name="corrtype" size="1">
 <option value="RenewalReminder">Renewal Reminder</option>';
 loaddbselect('CorrTypes');
 echo '
-</select><br><br>
+</select><br>
+Notes: <input size="50" type="text" name="Notes" value=""><br><br>
 <input type="hidden" name="action" value="addnew">
 <input type="submit" name="submit" value="Submit" />
 </form>
@@ -158,7 +160,7 @@ else {
 	Corresondence Type to be applied to all MCID's: $corrtype<br>
 	Date to be applied to all corrrespondence records: $datesent<br><br>
 	Click CONTINUE to apply updates or CANCEL to change parameters.</h4><br>
-	<a class=\"btn btn-primary btn-success\"  href=\"admcorrbulkupd.php?file=$Filepath&corrtype=$corrtype&DateSent=$datesent&colidx=$colidx\">CONTINUE</a>
+	<a class=\"btn btn-primary btn-success\"  href=\"admcorrbulkupd.php?file=$Filepath&corrtype=$corrtype&DateSent=$datesent&Notes=$notes&colidx=$colidx\">CONTINUE</a>
 	&nbsp;&nbsp;
 	<a class=\"btn btn-primary btn-danger\" href=\"admcorrbulkloader.php\">CANCEL</a>";
 }

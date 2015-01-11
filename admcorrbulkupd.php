@@ -12,15 +12,15 @@
 
 <?php
 session_start();
-//include 'Incls/vardump.inc';
+include 'Incls/vardump.inc';
 include 'Incls/seccheck.inc';
-//include 'Incls/adminmenu.inc';
 include 'Incls/datautils.inc';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
 $Filepath = isset($_REQUEST['file']) ? $_REQUEST['file'] : ""; 
 $corrtype = isset($_REQUEST['corrtype']) ? $_REQUEST['corrtype'] : "";
 $datesent = isset($_REQUEST['DateSent']) ? $_REQUEST['DateSent'] : "";
+$notes = isset($_REQUEST['Notes']) ? $_REQUEST['Notes'] : "";
 $colidx = isset($_REQUEST['colidx']) ? $_REQUEST['colidx'] : "";
 
 // Excel reader from http://code.google.com/p/php-excel-reader/
@@ -60,7 +60,7 @@ foreach ($mcidarray as $mcid => $cnt) {
 	$updarray[MCID] = strtoupper($mcid);
 	$updarray[CorrespondenceType] = $corrtype;				// corresondence type for new add
 	$updarray[DateSent] = $datesent;
-	$updarray[Notes] = 'Added using bulk updater';
+	$updarray[Notes] = stripslashes($notes) . ' - added as bulk update';
 //	echo '***TEST MODE ON***<pre updarray: >'; print_r($updarray); echo '</pre>';
 	sqlinsert('correspondence', $updarray);
 	$rc++;

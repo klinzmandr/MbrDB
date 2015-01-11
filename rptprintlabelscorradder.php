@@ -21,6 +21,7 @@ include 'Incls/datautils.inc';
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
 $corrtype = isset($_REQUEST['corrtype']) ? $_REQUEST['corrtype'] : "";
 $datesent = isset($_REQUEST['DateSent']) ? $_REQUEST['DateSent'] : "";
+$notes =    isset($_REQUEST['Notes']) ? $_REQUEST['Notes'] : "";
 $colidx = isset($_REQUEST['colidx']) ? $_REQUEST['colidx'] : "";
 $mcidcount = isset($_REQUEST['count']) ? $_REQUEST['count'] : "0";
 
@@ -61,7 +62,8 @@ Corr. Type: <select id="CT" name="corrtype" size="1">
 <option value="RenewalReminder">Renewal Reminder</option>';
 loaddbselect('CorrTypes');
 echo '
-</select><br><br>
+</select><br>
+Notes: <input type="text" name="Notes" value="" size="50"><br><br>
 <input type="hidden" name="file" value="uploads/corraddarray.csv">
 <input type="hidden" name="count" value="'. $mcidcount. '">
 <input type="hidden" name="action" value="addnew">
@@ -127,7 +129,7 @@ else {
 	Corresondence Type to be applied to all MCID's: $corrtype<br>
 	Date to be applied to all corrrespondence records: $datesent<br><br>
 	Click CONTINUE to apply correspondence records to all MCID&apos;s or CLOSE ro cancel further actions.</h4><br>
-	<a class=\"btn btn-primary btn-success\"  href=\"rptprintlabelscorradderupd.php?file=$Filepath&corrtype=$corrtype&DateSent=$datesent&colidx=$colidx\">CONTINUE</a>
+	<a class=\"btn btn-primary btn-success\"  href=\"rptprintlabelscorradderupd.php?file=$Filepath&corrtype=$corrtype&DateSent=$datesent&Notes=$notes&colidx=$colidx\">CONTINUE</a>
 	&nbsp;&nbsp;
 	<a href=\"javascript:self.close();\" class=\"btn btn-primary\">CLOSE</a>";
 }
