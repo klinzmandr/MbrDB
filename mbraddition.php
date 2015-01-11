@@ -67,7 +67,7 @@ if ($action == "add") {
 		if ($res !== FALSE) {
 			//$_SESSION['ActiveMCID'] = $fields[MCID];
 			echo "<h2>Add of MCID $mcid has been completed.</h2>";
-			echo "<a href=\"MbrInfotabbed.php?filter=".$fields[MCID]."\"><h3>Click to Complete MCID Info Entry</h3></a>";
+			echo "<a href=\"mbrinfotabbed.php?filter=".$fields[MCID]."\"><h3>Click to Complete MCID Info Entry</h3></a>";
 			exit;
 			}
 		echo "<h2>Add unsuccessful!  Try another MCID.</h2>";
@@ -106,7 +106,7 @@ function confirmadd() {
 <p>Entry of the proposed MCID requires that the format of 3 letters and 2 digits are enforced.  Occasionally this will result in duplication of an existing MCID.  A list of alternative MCID&apos;s are provided in the event that the the one proposed is already in use.  Merely pick one from the list provided and enter it to complete the process.</p>
 <p>Once you have successfully added a new record with a unique MCID for the member you will be presented with a blank input page where the remaining information about the member may be entered.</p>
 <br />
-<!-- <a class="btn btn-primary" href="MbrInfotabbed.php">CANCEL ADDITION</a><br /><hr> -->
+<!-- <a class="btn btn-primary" href="mbrinfotabbed.php">CANCEL ADDITION</a><br /><hr> -->
 <h4>Provide the EXACT MCID proposed for the new member record to be added:</h4>
 <div class="row">
 <div class="col-lg-4">

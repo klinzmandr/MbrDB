@@ -43,7 +43,7 @@ $trmsg  = strtr($body, $trans);
 
 echo "<div class=\"container\">";
 echo "<h3>Email Send Confirmation</h3>";
-echo "<a class=\"btn btn-primary\" href=\"MbrInfotabbed.php\">RETURN</a>";
+echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">RETURN</a>";
 
 echo "<br><br><strong>To: </strong>$to<br>";
 echo "<strong>From: </strong>$from<br>";

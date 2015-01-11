@@ -11,8 +11,8 @@
 <h3>Lables and Letters Update</h3>
 <p>This confirms that adding the member's mailing information and/or letter into the 'lablesandletters' table has been completed.  Use &apos;Reminders->Print Labels and Letters&apos; to print.</p><br />
 <p>Click this button if this message remains.</p><br />
-<a class="btn btn-primary" href="MbrInfotabbed.php" name="filter" value="--none--">RETURN</a>
-<form action="MbrInfotabbed.php" name="FORM_NAME" method="post">
+<a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="--none--">RETURN</a>
+<form action="mbrinfotabbed.php" name="FORM_NAME" method="post">
 <input autofocus type="hidden" name="" value="" />
 <input type="submit" />
 </form>

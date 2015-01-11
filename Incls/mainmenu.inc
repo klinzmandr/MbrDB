@@ -22,7 +22,7 @@ body { padding-top: 50px; }      <!-- add padding to top of each page for fixed 
     <ul class="nav navbar-nav">
       <li><a onclick="return chkchg()" href="index.php"><b>Home</b></a></li>
       <li><a onclick="return chkchg()" href="mbraddition.php">Add New Mbr</a></li>
-      <li><a onclick="return chkchg()" href="MbrInfotabbed.php">Mbr Info</a></li>
+      <li><a onclick="return chkchg()" href="mbrinfotabbed.php">Mbr Info</a></li>
 menupart1;
 
 // include EDI and Solicit menu options for special users
@@ -53,7 +53,7 @@ function adminchk() {
   <li class="dropdown">
   <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">EDInfo<b class="caret"></b></a>
   	<ul class="dropdown-menu" aria-labelledby="drop2" role="menu">
-  	  <!-- <li><a href="MbrInfotabbed.php">Active MCID Info</a></li> -->
+  	  <!-- <li><a href="mbrinfotabbed.php">Active MCID Info</a></li> -->
   		<li><a onclick="return chkchg()" href="ediaddupdate.php">EDI for Active MCID</a></li>
   		<li><a onclick="return confirmAdd()" href="ediaddupdate.php?action=addnew">Add EDI for Active MCID</a></li>
   		<li><a onclick="return confirmDelete()" href="ediaddupdate.php?action=delete">Delete EDI for Active MCID</a></li>
@@ -126,7 +126,7 @@ function setupmcid(theForm)  {
 	//alert("Filter value:" + fld);
 	fld = theForm.filter.value = fld.toUpperCase();  // format MCID to upper case
 	if (fld.length == 5)  {
-		theForm.action = "MbrInfotabbed.php";		// assume an exact MCID entered
+		theForm.action = "mbrinfotabbed.php";		// assume an exact MCID entered
 		return true;
 		}
 	//if (fld == "") { theForm.filter.value = "--none--"; } 

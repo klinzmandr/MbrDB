@@ -48,8 +48,8 @@ if ($mcid == "") {
 		$row = $results->fetch_assoc();
 		//echo "<pre>"; print_r($row); echo "</pre>";
 		print <<<expNotice
-<h3>MCID <a href="MbrInfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
-<!-- <a class="btn btn-primary" href="MbrInfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
+<h3>MCID <a href="mbrinfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
+<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </div>
@@ -66,7 +66,7 @@ $res = doSQLsubmitted($sql);
 $rc = $res->num_rows;
 $row = $res->fetch_assoc();
 if ($row[Inactive] == 'TRUE') {
-	echo "<h3>Member <a href=\"MbrInfotabbed.php\">$mcid</a> marked as inactive</h3>
+	echo "<h3>Member <a href=\"mbrinfotabbed.php\">$mcid</a> marked as inactive</h3>
 	<p>Please update the record before proceeding.</p>
 	<script src=\"jquery.js\"></script><script src=\"js/bootstrap.min.js\"></script></div></body></html>";
 	exit;
@@ -76,8 +76,8 @@ if ($row[Inactive] == 'TRUE') {
 //echo "<pre>MCID record"; print_r($row); echo "</pre>";
 if ($row['Mail'] == 'FALSE') {
 print <<<noNotice
-<h3>Member <a href="MbrInfotabbed.php">$mcid</a> does not want to receive any correspondence from PWC.</h3><br>
-<!-- <a class="btn btn-primary" href="MbrInfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
+<h3>Member <a href="mbrinfotabbed.php">$mcid</a> does not want to receive any correspondence from PWC.</h3><br>
+<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
 noNotice;
 	exit;
@@ -85,7 +85,7 @@ noNotice;
 
 // check if mailing infor is complete
 if ((strlen($row['NameLabel1stline']) == 0) OR (strlen($row['AddressLine']) == 0) OR (strlen($row['City']) == 0) OR (strlen($row['State']) == 0) OR (strlen($row['ZipCode']) == 0)) {
-	echo "<h3>Mailing informamtion for member <a href=\"MbrInfotabbed.php\">$mcid</a> is incomplete.  Please correct this before proceeding.</h3>.<br />";
+	echo "<h3>Mailing informamtion for member <a href=\"mbrinfotabbed.php\">$mcid</a> is incomplete.  Please correct this before proceeding.</h3>.<br />";
 	//echo "<pre>dump of mbr info "; print_r($row); echo "</pre>";
 	echo '<script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -101,7 +101,7 @@ $sql = "SELECT * FROM `templates` WHERE `Type` = 'mail';";
 $res = doSQLsubmitted($sql);
 print <<<tempForm1
 <div class="container"><h3>Membership Mail Notice</h3> 
-<h4>Send a mail reminder to: <a href="MbrInfotabbed.php">$mcid</a></h4>
+<h4>Send a mail reminder to: <a href="mbrinfotabbed.php">$mcid</a></h4>
 Select an Letter template from the selection list:<br>
 <form action="mbrnotice.php" method="post">
 <select name="template">
@@ -115,7 +115,7 @@ print <<<tempForm2
 </select>
 <input type="submit" name="submit" value="Submit">
 </form><br /><br />
-<!-- <a class="btn btn-primary" href="MbrInfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
+<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
 </div>	
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
 tempForm2;

@@ -44,7 +44,7 @@ if ($mcid == "") {
 
 	if ($nbr_rows > 0) {				//	any row returned means dues payment made within exp. period
 		print <<<expNotice
-<h3>MCID <a href="MbrInfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
+<h3>MCID <a href="mbrinfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
 
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
 expNotice;
@@ -63,7 +63,7 @@ $row = $res->fetch_assoc();
 
 // check if MCID is 
 if ($row['Inactive'] == 'TRUE') {
-	echo "<h3>Member <a href=\"MbrInfotabbed.php\">$mcid</a> is Inactive.</h3>
+	echo "<h3>Member <a href=\"mbrinfotabbed.php\">$mcid</a> is Inactive.</h3>
 	Please update the record before proceedding.<br>";
 	echo '</div>   <!-- containerx -->
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>';
@@ -73,8 +73,8 @@ if ($row['Inactive'] == 'TRUE') {
 //check if MCID is OK with email and has an email address
 $emaddr = $row['EmailAddress']; $emailok = $row[E_Mail];
 if (($emaddr == "") OR ($emailok == 'FALSE')) {
-	echo "<h3>Member <a href=\"MbrInfotabbed.php\">$mcid</a> does not have any email addresses on file or does not wish to get email.</h3>.<br />";
-	//echo "<a class=\"btn btn-primary\" href=\"MbrInfotabbed.php\" name=\"filter\" value=\"$mcid\">CANCEL AND RETURN</a>";
+	echo "<h3>Member <a href=\"mbrinfotabbed.php\">$mcid</a> does not have any email addresses on file or does not wish to get email.</h3>.<br />";
+	//echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\" name=\"filter\" value=\"$mcid\">CANCEL AND RETURN</a>";
 	echo '</div>   <!-- containerx -->
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>';
 	exit;
@@ -86,7 +86,7 @@ if ($tname == '') {
 	$res = doSQLsubmitted($sql);
 	print <<<templForm1
 <div class="container"><h3>Membership Email Notice</h3>
-<h4>Send a email reminder to: <a href="MbrInfotabbed.php">$mcid</a></h4>
+<h4>Send a email reminder to: <a href="mbrinfotabbed.php">$mcid</a></h4>
 Select an email template from the selection list:<br>
 <form action="mbremailnotice.php" method="post">
 <select name="template">
@@ -103,7 +103,7 @@ print <<<templForm2
 <input type="submit" name="submit" value="Submit">
 </form>	
 <br /><br />
-<!-- <a class="btn btn-primary" href="MbrInfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
+<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
 </div>
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
 
@@ -155,7 +155,7 @@ formPart1;
 //echo "<pre>template file "; print_r($template); echo "</pre>";
 }
 ?>
-<!-- <a class="btn btn-primary" href="MbrInfotabbed.php" name="filter" value="--none--">CANCEL AND RETURN</a> -->
+<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="--none--">CANCEL AND RETURN</a> -->
 </div>   <!-- containerx -->
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>

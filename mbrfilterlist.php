@@ -49,7 +49,7 @@ if ($nbrofrows == 1) {
 		$row = $results->fetch_assoc();
 		$filter = $_SESSION['ActiveMCID'] = $row['MCID'];
 print <<<oneBullet
-<form action="MbrInfotabbed.php" name="FORM_NAME" method="post">
+<form action="mbrinfotabbed.php" name="FORM_NAME" method="post">
 <input type="text" name="filter" value="$filter" />
 <-- <input type="submit" /> -->
 </form>
@@ -68,8 +68,8 @@ while ($row = $results->fetch_assoc()) {
 	$org=$row['Organization']; $addr=$row['AddressLine']; $lab1line=$row['NameLabel1stline']; 
 	$eaddr=$row['EmailAddress']; $priphone=$row[PrimaryPhone]; 
 print <<<bulletForm
-<form action="MbrInfotabbed.php" method="post">
-<tr><td><a href="MbrInfotabbed.php?filter=$mcid">$mcid</a></td><td>$lname</td><td>$fname</td><td>$lab1line</td><td>$org</td><td>$eaddr</td><td>$priphone</td></tr>
+<form action="mbrinfotabbed.php" method="post">
+<tr><td><a href="mbrinfotabbed.php?filter=$mcid">$mcid</a></td><td>$lname</td><td>$fname</td><td>$lab1line</td><td>$org</td><td>$eaddr</td><td>$priphone</td></tr>
 bulletForm;
 }
 echo "</table>";

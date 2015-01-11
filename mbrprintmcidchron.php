@@ -30,7 +30,7 @@ if ($mcid == "") {
 <div class="container">
 <br /><h4>ERROR: there is no Active MCID.&nbsp;&nbsp;&nbsp;
 <!-- <a href="javascript:self.close();" class="btn btn-primary"><b>CLOSE</b></a> -->
-<a class="btn btn-primary" href="MbrInfotabbed.php">RETURN</a>
+<a class="btn btn-primary" href="mbrinfotabbed.php">RETURN</a>
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
 errMsg;
 	exit;
@@ -46,7 +46,7 @@ echo "<div class=\"container\">";
 //echo "<h3>MCID Information   <a href=\"javascript:self.close();\" class=\"btn btn-primary\"><strong>CLOSE</strong></a></h3>";
 //echo '<div class="page-break"></div>';
 echo "<h3>MCID Information
-<a class=\"btn btn-primary\" href=\"MbrInfotabbed.php\">RETURN</a></h3>";
+<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">RETURN</a></h3>";
 echo "<table class=\"table-condensed\">";
 echo "<tr><h4>MCID: ".$r[MCID]."</h4></tr>";
 echo "<tr><td>Organization: ".$r[Organization]."</td></tr>";

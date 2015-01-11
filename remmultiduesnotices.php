@@ -276,7 +276,7 @@ foreach ($finalarray as $key=>$row) {
 	if ($purpose == 'Dues') $amt = $lastduesamount;
 	else $amt = $lastdonamount;
 print <<<bulletForm
-<tr><td><a href="MbrInfotabbed.php?filter=$mcid">$mcid</a></td><td>$labelname</td><td align="center">$emok</td><td align="center">$mok</td><td>$maxdate</td><td align="right">$$amt</td><td>$purpose</td><td align="center">$inact</td><td>$remcnt</td><td>$remdate</td><td>$remtype</td></tr>
+<tr><td><a href="mbrinfotabbed.php?filter=$mcid">$mcid</a></td><td>$labelname</td><td align="center">$emok</td><td align="center">$mok</td><td>$maxdate</td><td align="right">$$amt</td><td>$purpose</td><td align="center">$inact</td><td>$remcnt</td><td>$remdate</td><td>$remtype</td></tr>
 </div>  <!-- container -->
 
 bulletForm;

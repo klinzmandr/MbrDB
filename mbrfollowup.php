@@ -77,7 +77,7 @@ bkLib.onDomLoaded(function() {
 	'bgcolor','link','unlink']}).panelInstance('area1');
 });
 </script>
-<h3>Add Follow Up Note for MCID: <a onclick="return chkchg()" href="MbrInfotabbed.php">$mcid</a></h3>
+<h3>Add Follow Up Note for MCID: <a onclick="return chkchg()" href="mbrinfotabbed.php">$mcid</a></h3>
 <p>Please initial all updates made. Click in text area to begin.</p>
 <form action="mbrfollowup.php" method="get"  name="mcform" id="mcform" >
 <div class="row">

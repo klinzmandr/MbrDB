@@ -197,7 +197,7 @@ $results = doSQLsubmitted($sql);
 
 // multiple rows returned, list correspondence records
 $results->data_seek(0);
-echo "<h3>Correspondence Log for <a href=\"MbrInfotabbed.php\">$mcid</a>&nbsp;&nbsp; <a  class=\"btn btn-primary\" href=\"mbrcorrespondence.php?action=add\" onclick=\"return anchorconfirm()\">(Add new record)</a></h3>";
+echo "<h3>Correspondence Log for <a href=\"mbrinfotabbed.php\">$mcid</a>&nbsp;&nbsp; <a  class=\"btn btn-primary\" href=\"mbrcorrespondence.php?action=add\" onclick=\"return anchorconfirm()\">(Add new record)</a></h3>";
 echo "<table class=\"table\">";
 echo "<tr><th>Edit</th><th>Corr. ID</th><th>Corr. Type</th><th>Date Sent</th><th>Source</th><th>Notes</th></tr>";
 while ($row = $results->fetch_assoc()) {

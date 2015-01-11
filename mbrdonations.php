@@ -318,7 +318,7 @@ function confirmDel() {
 	return false;
 	}
 </script>
-<h3>Funding Log for <a href="MbrInfotabbed.php" onclick="return (validateForm(mcform)&&chkchg())">$mcid</a>&nbsp;&nbsp;<a  class="btn btn-primary" href="mbrdonations.php?action=add" onclick="return anchorconfirm()">(Add new record)</a></h3>
+<h3>Funding Log for <a href="mbrinfotabbed.php" onclick="return (validateForm(mcform)&&chkchg())">$mcid</a>&nbsp;&nbsp;<a  class="btn btn-primary" href="mbrdonations.php?action=add" onclick="return anchorconfirm()">(Add new record)</a></h3>
 <table class="table">
 <tr><th>Edit</th><th>RecNo</th><th>Purpose</th><th>Program</th><th>Campaign</th><th>DonDate</th><th>ChkNbr</th><th>Amount</th><th>Donated For</th><th>Notes</th></tr>
 listHdr;

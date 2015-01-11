@@ -31,7 +31,7 @@ if ($mcid == "") {
 	
 	echo "<br /><h4>ERROR: there is no Active MCID.";
 	//echo "<a href=\"javascript:self.close();\" class=\"btn btn-primary\"><b>CLOSE</b></a></h4>";
-	echo "<a class=\"btn btn-primary\" href=\"MbrInfotabbed.php\">RETURN</a>";
+	echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">RETURN</a>";
 	echo '<script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </div>
@@ -50,7 +50,7 @@ $r = $mrec->fetch_assoc();
 //echo "<h3>MCID Information   <a href=\"javascript:self.close();\" class=\"btn btn-primary\"><strong>CLOSE</strong></a></h3>";
 //echo '<div class="page-break"></div>';
 echo "<h3>MCID Information&nbsp;&nbsp;&nbsp;
-<a class=\"btn btn-primary\" href=\"MbrInfotabbed.php\">RETURN</a></h3>";
+<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">RETURN</a></h3>";
 //echo "<h4>MCID Information</h4>";
 //echo "<pre>donor records :"; print_r($r); echo "</pre>";
 echo "<table>";

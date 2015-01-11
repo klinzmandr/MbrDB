@@ -63,7 +63,7 @@ if (isset($_SESSION['SessionUser'])) {
 	}
 else {
 	echo "<div class=\"container\">";
-	echo "<form class=\"form-inline\" action=\"MbrInfotabbed.php\" method=\"post\"  id=\"yform\">";
+	echo "<form class=\"form-inline\" action=\"mbrinfotabbed.php\" method=\"post\"  id=\"yform\">";
 	echo "<h2>Membership Database (MbrDB)</h2>";
   echo "<h3>Home Page&nbsp  <a class=\"btn btn-primary\" href=\"index.php?action=logout\">Login</a>"; 
   if ($_SESSION['SecLevel'] == 'admin') {

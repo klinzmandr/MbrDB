@@ -42,7 +42,7 @@ while ($r = $res->fetch_assoc()) {
 	//echo "<pre>"; print_r($r); echo "</pre>";
 	$edimcid = $r[MCID]; $namelabel1stline = $r[NameLabel1stline];
 	$doe = $r[DateEntered]; $dlu = $r[LastUpdated]; $lastupdater = $r[LastUpdater];
-	echo "<tr><td><a href=\"MbrInfotabbed.php?filter=$edimcid\">$edimcid</a></td><td>$namelabel1stline</td><td>$doe</td><td>$dlu</td><td>$lastupdater</td></tr>";
+	echo "<tr><td><a href=\"mbrinfotabbed.php?filter=$edimcid\">$edimcid</a></td><td>$namelabel1stline</td><td>$doe</td><td>$dlu</td><td>$lastupdater</td></tr>";
 	}
 echo "</table>";
 ?>

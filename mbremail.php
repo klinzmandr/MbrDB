@@ -19,7 +19,7 @@ $tname = isset($_REQUEST['template']) ? $_REQUEST['template'] : "";
 $mcid = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : $_SESSION['ActiveMCID'];
 $_SESSION['ActiveMCID'] = $mcid;
 
-echo "<div class=\"container\"><h3>Edit and Send the Message to <a href=\"MbrInfotabbed.php\">$mcid.</a></h3>";
+echo "<div class=\"container\"><h3>Edit and Send the Message to <a href=\"mbrinfotabbed.php\">$mcid.</a></h3>";
 //echo "This is the active MCID: " . $_SESSION['ActiveMCID'] . "<br>";
 $sql = "SELECT * FROM `members` WHERE `Inactive` = 'FALSE' AND MCID = '$mcid'";
 $res = doSQLsubmitted($sql);
@@ -37,7 +37,7 @@ $row = $res->fetch_assoc();
 $emaddr = $row['EmailAddress']; $emailok = $row[E_Mail];
 if (($emaddr == "") OR ($emailok == 'FALSE')) {
 	echo "<h3>Member $mcid does not have any email addresses on file OR does not wish to get e-mail messages</h3>.<br />";
-	//echo "<a class=\"btn btn-primary\" href=\"MbrInfotabbed.php\" name=\"filter\" value=\"$mcid\">CANCEL AND RETURN</a>";
+	//echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\" name=\"filter\" value=\"$mcid\">CANCEL AND RETURN</a>";
 	echo '</div>   <!-- containerx -->
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>';
 	exit;

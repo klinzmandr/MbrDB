@@ -38,7 +38,7 @@ if ($filter == "") {
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-<!-- <a class="btn btn-primary" href="MbrInfotabbed.php" name="filter" value="">CANCEL AND RETURN</a> -->
+<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="">CANCEL AND RETURN</a> -->
 
 searchForm2;
 	exit;
@@ -54,19 +54,19 @@ $nbrofrows = $results->num_rows;
 if ($nbrofrows == 0) {
 	echo "<h2>No members found with the search string provided</h2>";
 	echo "<p>Enter a string to search for in first name, last name, email address, address or city</p><br /><br />";
-	echo "<a class=\"btn btn-primary\" href=\"MbrInfotabbed.php\">CANCEL AND RETURN</a></div>";
+	echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">CANCEL AND RETURN</a></div>";
 	echo '<script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
 </body></html>';
 	exit();
 	}
-// only 1 found so pass it to MbrInfotabbed page
+// only 1 found so pass it to mbrinfotabbed page
 if ($nbrofrows == 1) {
 		echo "only 1 match<br />";
 		$results->data_seek(0);
 		$row = $results->fetch_assoc();
 		$mcid = $_SESSION['ActiveMCID'] = $row['MCID'];
 print <<<oneBullet
-<form action="MbrInfotabbed.php" name="FORM_NAME" method="post">
+<form action="mbrinfotabbed.php" name="FORM_NAME" method="post">
 <input autofocus type="text" name="filter" value="$mcid" />
 <input type="submit" />
 </form>
@@ -86,7 +86,7 @@ while ($row = $results->fetch_assoc()) {
 	$org=$row['Organization']; $addr=$row['AddressLine']; $lab1line=$row['NameLabel1stline']; 
 	$city = $row[City]; $eaddr=$row['EmailAddress'];  
 print <<<bulletForm
-<tr><td><a href="MbrInfotabbed.php?filter=$mcid">$mcid</a></td><td>$lname</td><td>$fname</td><td>$addr</td><td>$city</td><td>$eaddr</td></tr>
+<tr><td><a href="mbrinfotabbed.php?filter=$mcid">$mcid</a></td><td>$lname</td><td>$fname</td><td>$addr</td><td>$city</td><td>$eaddr</td></tr>
 
 bulletForm;
 }
