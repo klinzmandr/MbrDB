@@ -92,8 +92,8 @@ while ($r = $res->fetch_assoc()) {
 	$exprpt[0] = $r[User];			// debug
 //	echo '<pre> exprpt '; print_r($exprpt); echo '</pre>';
 	if ($r[User] == '') continue;
-	
 	$rpt = end($exprpt);
+	$rpt = strtolower($rpt);
 //	echo "rpt: $rpt<br>";
 	$whatarray[$rpt] += 1;
 	$whoarray[$r[User]] += 1;
