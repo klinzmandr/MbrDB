@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<br><!DOCTYPE html>
 <html>
 <head>
 <title>MCID Information</title>
@@ -74,7 +74,7 @@ echo "<tr><td>Email: ".$r['E_Mail']."</td>";
 echo "<td>Inactive: ".$r['Inactive']."</td>";
 echo "<td>Inactive Date: ".$r['Inactivedate']."</td></tr>";
 echo "<tr><td colspan=\"3\">Notes: ".$r['Notes']."</td></tr>";
-echo "</tr>";
+//echo "</tr>";
 echo "</table></div>";
 
 // report any EDI for donor
@@ -84,11 +84,11 @@ $sql = "SELECT * FROM `extradonorinfo` WHERE `MCID` = '$mcid';";
 $res = doSQLsubmitted($sql);
 	$nbr_rows = $res->num_rows;
 	if ($nbr_rows == 0) {
-		echo "<h4>NONE</h4>";
+		echo "<div class=\"container\"><h4>NONE</h4></div>";
 		}
 	else {
 		$r = $res->fetch_assoc();
-		echo "<table class=\"table\">";
+		echo "<div class=\"container\"><table class=\"table\">";
 		echo "<tr><th>MCID</th><th>Name</th><th>Date Entered</th><th>Last Updated</th><th>Last Updater</th></tr>";
 		echo "<tr><td>$mcid</td><td>$r[NameLabel1stline]</td><td>$r[DateEntered]</td><td>$r[LastUpdated]</td><td>$r[LastUpdater]</td></tr>";
 		echo "</table>";
@@ -98,16 +98,48 @@ $res = doSQLsubmitted($sql);
 		echo "<h5>Business</h5><pre>$r[business]</pre>";
 		echo "<h5>Other Affiliations</h5><pre>$r[other]</pre>";
 		echo "<h5>Wealth Sources</h5><pre>$r[wealth]</pre>";
+		echo '</div>';		
 		}
-	}		
+	}
+	
+// report any volunteer time
+echo "<h4>Volunteer Service</h4>";
+$sql = "SELECT * FROM `voltime` WHERE `MCID` = '".$mcid."' ORDER BY `VolDate`;";
+// echo "sql: $sql<br>";
+$voltime = doSQLsubmitted($sql);
+$nbr_rows = $voltime->num_rows;
+$vsd = date("Y-m-d", strtotime("now + 1 year")); $vld = '2014-01-01'; $volsvc = array();
+if ($nbr_rows == 0) {
+	echo "<div class=\"container\"><h4>NONE</h4></div>";
+	} 
+else {
+	while ($r = $voltime->fetch_assoc()) {
+//		echo "<pre>volunteer records :"; print_r($r); echo "</pre>";
+		if (strtotime($vsd) > strtotime($r[VolDate])) $vsd = $r[VolDate]; 
+		if (strtotime($vld) < strtotime($r[VolDate])) $vld = $r[VolDate]; 
+		$volsvc[$r[VolCategory]][time] += $r[VolTime];
+		$volsvc[$r[VolCategory]][miles] += $r[VolMileage];
+		$volsvc[$r[VolCategory]][count] += 1;
+	}
+
+echo "<div class=\"container\">";
+echo "<b>Earliest date: $vsd, Latest date: $vld</b><br>";
+echo '<table><tr><th>Category</th><th>TotHours</th><th>SvcCnt</th><th>TotMileage</th></tr>';
+foreach ($volsvc as $k => $v) {
+	$tothrs += $v[time]; $totsvc += $v[count]; $totmiles += $v[miles];
+	echo "<tr><td>$k</td><td align=right>$v[time]</td><td align=right>$v[count]</td><td align=right>$v[miles]</td></tr>"; 
+	}
+echo "<tr><td><b>TOTALS</b></td><td align=right>$tothrs</td><td align=right>$totsvc</td><td align=right>$totmiles</td></tr>";
+echo '</table></div>';
+}
+//echo '</div>';
+
 // report all donation records
 $dontotal = 0;
 $sql = "SELECT * FROM `donations` WHERE MCID = '".$mcid."' order by `DonationID` desc";
 $dflds = doSQLsubmitted($sql);
-//$dflds = readDonorRecords($mcid);	
 
 echo "<h4>Funding</h4>";
-
 echo "<div class=\"container\"><b><u>Funding Summary:</u></b>";
 echo "<table>";
 echo "<tr><th>Purpose</th><th>Amount</th></tr>";
