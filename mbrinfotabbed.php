@@ -540,7 +540,7 @@ echo "<div style=\"text-align: center\">
 <a class=\"btn btn-xs btn-primary\" onclick=\"return chkem()\" href=\"mbrnotice.php\">PRINT A REMINDER LETTER</a>
 </div>
 <br />";
-echo '<table class="table"><tr>';
+echo '<table border=1 class="table"><tr>';
 
 //Funding column
 echo "<td><b>Funding</b><br />
@@ -553,15 +553,29 @@ echo "<td><b>Funding</b><br />
 //Correspondence column
 echo "<td><b>Correspondence</b><br />
 &nbsp;&nbsp;&nbsp;&nbsp;Date of Last Corr: $lastcorrdate<br />
-&nbsp;&nbsp;&nbsp;&nbsp;Last Correspondence Type: $lastcorrtype";
+&nbsp;&nbsp;&nbsp;&nbsp;Last Correspondence Type: $lastcorrtype<br><br>";
 
-echo '</tr></table>';
-echo "<div style=\"text-align: center\">
-<a class=\"btn btn-xs\" href=\"mbrprintmcid.php\">Print MCID Summary Report</a></div>
-</div>  <!-- well -->
-</div>  <!-- tab-pane -->
-<!-- end all tab definitions -->
-</div>  <!-- tab content -->";
+// volunteer lists 
+echo "<b>Vol. Email List(s)</b><br />";
+if (strlen($lists) == 0) {
+	echo "&nbsp;&nbsp;&nbsp;&nbsp;==NONE=="; }
+else {
+	$liststr = readdblist('EmailLists');
+	$listarray = formatdbrec($liststr);
+	$vollists = explode(",", rtrim($lists));
+//	echo '<pre>vol list '; print_r($vollists); echo '</pre>';
+//	echo '<pre> vol cats '; print_r($listarray); echo '</pre>';
+	foreach ($vollists as $v) {
+		if (isset($listarray[$v])) echo "&nbsp;&nbsp;&nbsp;&nbsp;$listarray[$v]<br>";
+	}
+	echo '</td></tr></table>';
+	echo "<div style=\"text-align: center\">
+	<a class=\"btn btn-xs\" href=\"mbrprintmcid.php\">Print MCID Summary Report</a></div>
+	</div>  <!-- well -->
+	</div>  <!-- tab-pane -->
+	<!-- end all tab definitions -->
+	</div>  <!-- tab content -->";
+	}
 
 ?>
 <input type="hidden" name="action" value="update">
