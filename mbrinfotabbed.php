@@ -514,7 +514,6 @@ foreach ($listkeys as $k => $v) {
 		}
 	//echo "key: $k, value: $v<br>";
 	}
-
 echo '</div>  <!-- well -->
 </div>  <!-- tab pane -->
 
@@ -540,7 +539,7 @@ echo "<div style=\"text-align: center\">
 <a class=\"btn btn-xs btn-primary\" onclick=\"return chkem()\" href=\"mbrnotice.php\">PRINT A REMINDER LETTER</a>
 </div>
 <br />";
-echo '<table border=1 class="table"><tr>';
+echo '<table border=0 class="table"><tr>';
 
 //Funding column
 echo "<td><b>Funding</b><br />
@@ -556,7 +555,7 @@ echo "<td><b>Correspondence</b><br />
 &nbsp;&nbsp;&nbsp;&nbsp;Last Correspondence Type: $lastcorrtype<br><br>";
 
 // volunteer lists 
-echo "<b>Vol. Email List(s)</b><br />";
+echo "<b>Volunteer Committees/Email List(s)</b><br />";
 if (strlen($lists) == 0) {
 	echo "&nbsp;&nbsp;&nbsp;&nbsp;==NONE=="; }
 else {
@@ -571,7 +570,7 @@ else {
 	}
 	echo '</td></tr></table>';
 	echo "<div style=\"text-align: center\">
-	<a class=\"btn btn-xs\" href=\"mbrprintmcid.php\">Print MCID Summary Report</a></div>
+	<a class=\"btn btn-xs btn-primary\" href=\"mbrprintmcid.php\">Print MCID Summary Report</a></div>
 	</div>  <!-- well -->
 	</div>  <!-- tab-pane -->
 	<!-- end all tab definitions -->

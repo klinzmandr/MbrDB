@@ -101,9 +101,29 @@ $res = doSQLsubmitted($sql);
 		echo '</div>';		
 		}
 	}
-	
+
+// report volunteer committees/email distro lists
+echo '<h4>Volunteer Committees/Email List(s)</h4>';
+$lists = $r[Lists];
+if (strlen($lists) == 0) {
+	echo '<div class="container"><h4>NONE</h4></div>'; }
+else {
+	$liststr = readdblist('EmailLists');
+	$listarray = formatdbrec($liststr);
+	$vollists = explode(",", rtrim($lists));
+//	echo '<pre>vol list '; print_r($vollists); echo '</pre>';
+//	echo '<pre> vol cats '; print_r($listarray); echo '</pre>';
+	echo '<div class="container">
+	<table>';
+	foreach ($vollists as $v) {
+		if (isset($listarray[$v])) echo "<tr><td>$listarray[$v]</td></tr>";
+		}
+	echo '</table></div>';
+	}
+
+
 // report any volunteer time
-echo "<h4>Volunteer Service</h4>";
+echo "<h4>Volunteer Time Served</h4>";
 $sql = "SELECT * FROM `voltime` WHERE `MCID` = '".$mcid."' ORDER BY `VolDate`;";
 // echo "sql: $sql<br>";
 $voltime = doSQLsubmitted($sql);
@@ -124,13 +144,17 @@ else {
 
 echo "<div class=\"container\">";
 echo "<b>Earliest date: $vsd, Latest date: $vld</b><br>";
-echo '<table><tr><th>Category</th><th>TotHours</th><th>SvcCnt</th><th>TotMileage</th></tr>';
+echo '
+<table border=0><tr><th>Category</th><th>TotHours</th><th>SvcCnt</th><th>TotMileage</th></tr>';
 foreach ($volsvc as $k => $v) {
 	$tothrs += $v[time]; $totsvc += $v[count]; $totmiles += $v[miles];
-	echo "<tr><td>$k</td><td align=right>$v[time]</td><td align=right>$v[count]</td><td align=right>$v[miles]</td></tr>"; 
+	echo "
+<tr><td>$k</td><td align=right>$v[time]</td><td align=right>$v[count]</td><td align=right>$v[miles]</td></tr>"; 
 	}
-echo "<tr><td><b>TOTALS</b></td><td align=right>$tothrs</td><td align=right>$totsvc</td><td align=right>$totmiles</td></tr>";
-echo '</table></div>';
+echo "
+<tr><td><b>TOTALS</b></td><td align=right>$tothrs</td><td align=right>$totsvc</td><td align=right>$totmiles</td>";
+echo '
+</tr></table></div>';
 }
 //echo '</div>';
 
@@ -150,7 +174,7 @@ while ($r = $res->fetch_assoc()) {
 	//echo "<pre>summary records :"; print_r($r); echo "</pre>";
 	}
 echo "</table>";
-echo "<b><u>Funding Detail:</u></b><br />";
+echo "<br><b><u>Funding Detail:</u></b><br />";
 echo "<table><tr><th>Don.ID</th><th>Purpose</th><th>Program</th><th>Don. Date</th><th>Check Nbr</th><th>Amount</th><th>Member For</th><th>Note</th></tr>";
 while ($r = $dflds->fetch_assoc()) {
 	echo "<tr><td>".$r[DonationID]."</td>";
