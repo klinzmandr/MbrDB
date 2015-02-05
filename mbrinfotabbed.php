@@ -567,6 +567,7 @@ else {
 //	echo '<pre> vol cats '; print_r($listarray); echo '</pre>';
 	foreach ($vollists as $v) {
 		if (isset($listarray[$v])) echo "&nbsp;&nbsp;&nbsp;&nbsp;$listarray[$v]<br>";
+		}
 	}
 	echo '</td></tr></table>';
 	echo "<div style=\"text-align: center\">
@@ -575,7 +576,6 @@ else {
 	</div>  <!-- tab-pane -->
 	<!-- end all tab definitions -->
 	</div>  <!-- tab content -->";
-	}
 
 ?>
 <input type="hidden" name="action" value="update">
