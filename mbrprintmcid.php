@@ -141,7 +141,6 @@ else {
 		$volsvc[$r[VolCategory]][miles] += $r[VolMileage];
 		$volsvc[$r[VolCategory]][count] += 1;
 	}
-
 echo "<div class=\"container\">";
 echo "<b>Earliest date: $vsd, Latest date: $vld</b><br>";
 echo '
@@ -156,13 +155,40 @@ echo "
 echo '
 </tr></table></div>';
 }
-//echo '</div>';
+
+// now report any vol time from previous vol time records
+$sql = "SELECT * from `voltimeprev` 
+WHERE `TMCID` = '$mcid' 
+ORDER BY `SvcDate` ASC";
+$res = doSQLsubmitted($sql);
+$rowcnt = $res->num_rows;
+if ($rowcnt > 0) {
+	$vsd = date("Y-m-d", strtotime("now + 1 year")); $vld = '2000-01-01'; 
+// table: voltime: VTID,VTDT,MCID,VolDate,VolTime,VolMilage,VolCategory,VolNotes
+	$totalvolhrs = $totaltranshrs = $totmiles = 0;
+	while ($r = $res->fetch_assoc()) {
+		if (strtotime($vsd) > strtotime($r[SvcDate])) $vsd = $r[SvcDate]; 
+		if (strtotime($vld) < strtotime($r[SvcDate])) $vld = $r[SvcDate];
+		$totalvolhrs += $r[VolHrs];
+		$totaltranshrs += $r[TransHrs];
+		$totmiles += $r[Mileage];
+		}
+echo '<h4>Volunteer Service Prior to Jan 1, 2014</h4>';
+echo '<div class=container><table>';
+echo "<tr><td><b>Previous Service Entry Count:</b></td><td align=right>$rowcnt</td></tr>";
+echo "<tr><td>Earliest Date:</td><td>$vsd</td></tr>";
+echo "<tr><td>Latest Date:</td><td>$vld</td></tr>";
+echo "<tr><td>Total Volunteer Hours:</td><td align=right>$totalvolhrs</td></tr>";
+echo "<tr><td>Total Transporter Hours:</td><td align=right>$totaltranshrs</td></tr>";
+echo "<tr><td>Total Miles Driven:</td><td align=right>$totmiles</td></tr>";
+echo '</table></div>';
+}
 
 // report all donation records
 $dontotal = 0;
 $sql = "SELECT * FROM `donations` WHERE MCID = '".$mcid."' order by `DonationID` desc";
 $dflds = doSQLsubmitted($sql);
-
+// echo '<div class="page-break"></div>';
 echo "<h4>Funding</h4>";
 echo "<div class=\"container\"><b><u>Funding Summary:</u></b>";
 echo "<table>";
