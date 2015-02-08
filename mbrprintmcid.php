@@ -235,8 +235,7 @@ if ($rowcount > 0) {
 		echo "<td>".$r[DateSent]."</td>";
 		echo "<td>".$r[SoureofInquiry]."</td>";
 		echo "<td>".$r[Notes]."</td>";
-		echo "<td>".$r[Reminders]."</td>";
-		echo "<td>".$r[Notes]."</td></tr>";
+		echo "<td>".$r[Reminders]."</td></tr>";
 		}
 	echo "</table>----- END OF REPORT -----</div>";
 }
