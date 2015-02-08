@@ -14,9 +14,13 @@
  	      	   white-space: -o-pre-wrap;   /* Opera 7 */
  	      	   white-space: pre-wrap;      /* CSS3 */
  	      	   word-wrap: break-word;      /* IE 5.5+ */ }
-	</style></head><body><div class="note" id="MbrDB Release Info"><a name="mbrdb release info"></a><h1>MbrDB Release Info</h1>Version 2.9 (Uploaded ????)
+	</style></head><body><div class="note" id="MbrDB Release Info"><a name="mbrdb release info"></a><h1>MbrDB Release Info</h1>Version 2.9 (Uploaded Feb 5, 2015)
 <ul><li dir="ltr">changed heading on SYBUNTY and clarified the explanation in the heading.
-</li><li dir="ltr"></li></ul>
+</li><li dir="ltr">updated rptnewsupporters to correct reporting errors.
+</li><li dir="ltr">updated mbrprintmcid to add volunteer service section in report
+</li><li dir="ltr">updated mbrinfotabbed to add vol service groups (email lists) to summary tab
+</li><li dir="ltr">added validation to mbrdonation to warn against posting dues payments to non-members</li></ul>
+
 Version 2.8 (Uploaded 12/29/14)
 <ul><li dir="ltr">modified admmbrsummaryloader to clear all summary info before reloading it from the donations and correspondence tables.
 </li><li dir="ltr">modified datautils.inc to eliminate logging of requests for doSQLsubmitted().
@@ -40,7 +44,7 @@ Version 2.7 (Uploaded 8/29/14)
 </li><li dir="ltr">centralized definition of site dependent variables into datautils.inc and modified all page instances that referred to them.  Added javascript checker to prevent use of email functionality unless the system 'from; email address is defined.</li></ul>
 
 Version 2.6 (Uploaded 8/1/14)
-<ul><li dir="ltr">added bootstrap3-typeahead to CSZ to mbrinfotabbed and modified cfttable in db to support city, state and zip list maintenance
+<ul><li dir="ltr">added bootstrap3-typeahead to CSZ to MbrInfotabbed and modified cfttable in db to support city, state and zip list maintenance
 </li><li dir="ltr">modified adminmenu and adminlistmaint to maintain new list row in configtable of db.
 </li><li dir="ltr">modified remmultiemailupd to correct problem with sending to only 1 email.
 </li><li dir="ltr">corrected rptmonthlyreport to count both members AND volunteers as new members in counts and sums plus provided for date of year and month of report.
@@ -60,7 +64,7 @@ Version 2.5 (Uploaded 7/2/14)
 </li><li dir="ltr">added default value of 0-Contact to MemStatus field in mbraddition when adding a new member
 </li><li dir="ltr">modified rptFundingPaid and rptprintlabels to include option to exclude members with email addresses flagged as 'TRUE'
 </li><li dir="ltr">add new report 'rptnewsubscribers' to allow identification of subscribers within a given date range.
-</li><li dir="ltr">modified mbrinfotabbed to add new 'Follow Up' tab for adding a new corrrespondence log item.</li></ul>
+</li><li dir="ltr">modified MbrInfotabbed to add new 'Follow Up' tab for adding a new corrrespondence log item.</li></ul>
 
 Version 2.4 (Uploaded 5/29/2014)
 <ul><li dir="ltr">Added datepicker functionality to all date fields where it makes sense.  Using the bootstrap version of this functionality to maintain compatibility with existing css functions.</li></ul>
@@ -77,12 +81,12 @@ Version 2.3 (Uploaded 5/23/2014)
 
 
 Version 2.2 (Uploaded 5/6/2014)
-<ul><li dir="ltr">restored broken mbrinfotabbed links to mbrnotice and mbremailnotice and tested them all.
+<ul><li dir="ltr">restored broken MbrInfotabbed links to mbrnotice and mbremailnotice and tested them all.
 </li><li dir="ltr">fixed admmbrsummaryloader to load members summary info for dbjanitor function.
 </li><li dir="ltr">modified rptinprogressreminderlist to include correspondence type in listing.
 </li><li dir="ltr">modified rptprintlabels to report no mail and no address info as different values
 </li><li dir="ltr">modified rptFundingPaid to report no mail and no address info as diff values.
-</li><li dir="ltr">fixed mbrinfotabbed to set up MailOK? flag correctly when address line is/is not entered.
+</li><li dir="ltr">fixed MbrInfotabbed to set up MailOK? flag correctly when address line is/is not entered.
 </li><li dir="ltr">modified rptmemberexceptions to list member, volunteer or donor records with inconsistent mail and email flags when compared to address line and email address fields respectively.
 </li><li dir="ltr">added new folder 'fonts' to structure to support glyphicons.
 </li><li dir="ltr">created rpt2013vs2014 to support identifying matching funds for grant.
@@ -90,7 +94,7 @@ Version 2.2 (Uploaded 5/6/2014)
 
 Version 2.1 (Uploaded 4/30/14)
 <ul><li dir="ltr">modified remmultiemailupd  to use '<a style="color:#3465A4" href="reminder@pacificwildlifecare.org'">reminder@pacificwildlifecare.org'</a> as the 'from' or sending address to try and get around SPAM blockers.
-</li><li dir="ltr">updated mbrinfotabbed to no allow navigation away from newly added record until NameLabel1stline has been entered to prevent adding new donation/correspondence records without completing the info on the new member.
+</li><li dir="ltr">updated MbrInfotabbed to no allow navigation away from newly added record until NameLabel1stline has been entered to prevent adding new donation/correspondence records without completing the info on the new member.
 </li><li dir="ltr">modified rptFundingPaid to mimic the search of rptprintlabels so that the search results are identical between the reports.  Modified searches in both to optimize.
 </li><li dir="ltr">corrected mbrdonations that was setting Inactive = NO to make it Inactive = FALSE.
 </li><li dir="ltr">added MemStatus and MCtype col's to rptmemberexceptions report.
@@ -115,7 +119,7 @@ Additionally:
 </li><li dir="ltr">modified mbrcorrespondence to list correspondence activity by date entered rather than sequence number.
 </li><li dir="ltr">modified rptfundingsummary to put the report totals at the top for easy access.
 </li><li dir="ltr">fixed rptprintlabels to skip blanks at start of first page.
-</li><li dir="ltr">modoified mbrdonations and mbrcorrespondence to make MCID in header a link to ease navigation back to mbrinfotabbed.
+</li><li dir="ltr">modoified mbrdonations and mbrcorrespondence to make MCID in header a link to ease navigation back to MbrInfotabbed.
 </li><li dir="ltr">added new report rptcorrdrilldown to allow summarization of correspondence types within a given date range.
 </li><li dir="ltr">added new report rptcorrfollowup to provide listing of non-subscribing members that have paid dues and need follow up TY's.</li></ul>
 
@@ -127,7 +131,7 @@ Version 1.6 (Uploaded 03-20-2014)
 </li><li dir="ltr">fixed mbremail to use stripslashes on read of template body.
 </li><li dir="ltr">modified mbraddition to list all available MCID when proposed one is duplicated.
 </li><li dir="ltr">fixed the mbremailsend to take out the translation of \n into &lt;br&gt; to keep formatted messages from getting distorted.
-</li><li dir="ltr">modified mbrinfotabbed to group member information on tab's differently and hopefully more user friendly.
+</li><li dir="ltr">modified MbrInfotabbed to group member information on tab's differently and hopefully more user friendly.
 </li><li dir="ltr">modified DateValidation.js so that 'now' returns the current date AND time to allow searches on date ranges to be up to instant.
 </li><li dir="ltr">updated edilistall removing bullets and replacing with MCID links.
 </li><li dir="ltr">updated admDbJanitor to include the ability to re-assign the MCID's on existing donations and corresponding records to a different one.</li></ul>
@@ -151,7 +155,7 @@ Version 1.4 (Uploaded 03-06-2014)
 </li></ul></li><li dir="ltr">created new 'monthly' report that will summarize the database for YTD, last month a current month.  Primarily for Board reporting purposes.
 </li><li dir="ltr">added nicedit.js and niceditgifs.gif to the js directory to support page level text edit functions
 </li><li dir="ltr">added text editor facilities to the admtemplateedit, mbremail and rememailnotice pages to allow text to be formatted.
-</li><li dir="ltr">added last funding amount to mbrinfotabbed summary tab.
+</li><li dir="ltr">added last funding amount to MbrInfotabbed summary tab.
 </li><li dir="ltr">fixed mbremailsend to enter correct info into correspondence log when used.
 </li><li dir="ltr">modified menu system to have single Admin button on home page and consolidated utilmenu into adminmenu
 </li><li dir="ltr">password protected dbjanitor button in adminmenu
@@ -160,7 +164,7 @@ Version 1.4 (Uploaded 03-06-2014)
 Version 1.3 (Uploaded 2014-03-02)
 <ul><li dir="ltr">added member count total to rptmembersummary report
 </li><li dir="ltr">added new report 'rptmemberexceptions' to list records of member status 0-Contacts that have their last payment marked as 'Dues' or 'Donations'.   These should probably be re-classified.
-</li><li dir="ltr">modified mbrprintmcid and mbrprintchron to be printer ready by removing mainmenu and adding a button to RETURN at mbrinfotabbed.
+</li><li dir="ltr">modified mbrprintmcid and mbrprintchron to be printer ready by removing mainmenu and adding a button to RETURN at MbrInfotabbed.
 </li><li dir="ltr">modified displayexpired and add '0-Contacts' to select list showing last dues/donations paid prior to current expiration date of 12 months from the current month. Also modified search criteria for 0-Contacts and 3-Donors to look for and report 'Dues' OR 'Donation' funding payments.
 </li><li dir="ltr">moved mail and email templates into the database with appropriate changes to the scripts that create, edit and use the email and mail templates.
 </li><li dir="ltr">move remdeleterecs into the dbjanitor page.
@@ -178,11 +182,11 @@ Version 1.2 (Uploaded 2014-02-28)
 
 Version 1.1 (Uploaded 2014-02-26)
 <ul><li dir="ltr">modified page field validation on mbrdonations to force Program field to be blanked when field error message is produced.
-</li><li dir="ltr">modified page field validation on mbrinfotabbed to assume Email OK = YES and Mail OK = YES when something is entered into the email and address line fields respectively.  They are set to NO if their respective fields are blank when the page is loaded.
-</li><li dir="ltr">modified database field to be length of 10, added page field validation to mbrinfotabbed to validate and format 5 or 9 digit zip codes entered.
+</li><li dir="ltr">modified page field validation on MbrInfotabbed to assume Email OK = YES and Mail OK = YES when something is entered into the email and address line fields respectively.  They are set to NO if their respective fields are blank when the page is loaded.
+</li><li dir="ltr">modified database field to be length of 10, added page field validation to MbrInfotabbed to validate and format 5 or 9 digit zip codes entered.
 </li><li dir="ltr">updated member records with 9 digit zip codes with those from the Access extract.
 </li><li dir="ltr">fixed drop down menu functionality for chrome in rptmaillogviewer
-</li><li dir="ltr">added new tab 'Summary' to mbrinfotabbed page summarizing funding, corresondence and vol. time with a link to allow sending an email to the member.  Added email mbrsendemail and mbrsendemailupd pages to support the functionality.</li></ul>
+</li><li dir="ltr">added new tab 'Summary' to MbrInfotabbed page summarizing funding, corresondence and vol. time with a link to allow sending an email to the member.  Added email mbrsendemail and mbrsendemailupd pages to support the functionality.</li></ul>
 
 Version 1.0 (Uploaded 2014-02-23)
 <ul><li dir="ltr">complete and test the current email notifications scripts in mbrdb rememailnotice.php and rememailnoticesent.php
