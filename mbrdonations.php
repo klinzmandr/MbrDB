@@ -11,11 +11,12 @@
 <?php
 session_start();
 include 'Incls/seccheck.inc';
-//include 'Incls/vardump.inc';
+// include 'Incls/vardump.inc';
 include 'Incls/mainmenu.inc';
 include 'Incls/datautils.inc';
 
 $mcid =   isset($_SESSION['ActiveMCID']) ? $_SESSION['ActiveMCID'] : '';
+$mcidmemstatus =   isset($_SESSION['MemStatus']) ? $_SESSION['MemStatus'] : '';
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 echo "<div class=container>";
 if ($mcid == "") {
@@ -134,17 +135,19 @@ function initSelect(control,value) {
 </script>
 
 <script>	
-// validate donation date
-function ValidateDate(fld)  {
-//var chkdate = document.getElementById("date[]").value
-var chkdate = fld.value;
-if(chkdate.match(/^[12][90][0-9]{2}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/))  { return true;	}
-else { fld.focus(); alert("Please enter the Date as YYYY-MM-DD."); return false;	}
-}
-
 var reason = "";
 // validate entire form before submission to database
 function validateForm(theForm) {
+	// validate that 'dues' payment is for a member or volunteer
+	var memstat = $mcidmemstatus;
+	var pur = theForm.Purpose.value;
+	if (pur == "Dues" && ((memstat == 0) || (memstat == 3))) {
+		var r=confirm("A Dues payment is being entered for a supporter that is not a member or volunteer.\\n\\nEither the Purpose needs to be changed or the supporter record re-classified to be a 'Member' or 'Volunteer'. \\n\\nClick CANCEL and make corrections or OK to continue.");
+		if (r==false) { return false; }
+		var rr = confirm("Do you REALLY want to post a DUES payment for a non-member/volunteer?\\n\\nCLICK OK to confirm");
+		if (rr == false) return false;
+	}
+
 	//alert("validation entered");
 	reason = "";
 	reason += validateEmpty(theForm.DonationDate);
@@ -207,8 +210,8 @@ function validateprog(fld) {
 		}
 	return true;
 	}
-
 </script>
+
 <div class="well">
 <h4>RecNo: $donid  MCID: $mcid</h4>
 <form action="mbrdonations.php" method="get"  name="mcform" id="mcform" class="form-inline" onsubmit="return validateForm(this)">

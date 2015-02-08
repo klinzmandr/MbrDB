@@ -93,6 +93,7 @@ if ($res->num_rows == 0) {
 $res->data_seek(0);
 $row = $res->fetch_assoc();
 // get data values from sql query result
+$_SESSION['MemStatus'] = $row[MemStatus];		// set memstatus for mbrdonations check
 $mcid=$row['MCID'];  $fname=$row['FName']; $lname=$row['LName'];
 $org=$row['Organization']; $addr=$row['AddressLine']; 
 $lab1line=$row['NameLabel1stline']; $corrsal=$row['CorrSal']; 
