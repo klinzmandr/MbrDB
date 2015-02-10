@@ -39,6 +39,9 @@ function chkvals(form) {
 			errmsg += "Date search but no date(s) have been entered\\n";
 			}
 		}
+	if (((form.sd.value != "") || (form.ed.value != "")) && (form.daterangechk.checked == false)) {
+		errmsg += "Date range specified but not selected\\n";
+		}
 	if (form.valrangechk.checked) {
 		chkcnt += 1;
 		if ((form.vrangelo.value == "") && (form.vrangehi.value == "")) {
@@ -50,6 +53,9 @@ function chkvals(form) {
 		if ((form.vrangehi.value !== "") && (isNaN(form.vrangehi.value))) {
 		  errmsg += "Invalid value entered for funding high range.\\n";
 			}
+		}
+	if (((form.vrangelo.value != "") || (form.vrangehi.value != "")) && (form.valrangechk.checked == false)) {
+		errmsg += "Value range specified but not selected\\n";
 		}
 	if (chkcnt == 0) {
 		errmsg += "No selection criteria has been selected.\\n";
@@ -222,7 +228,10 @@ if ($nbr_rows == 0) {
 	print <<<nothingReturned
 <!DOCTYPE html>
 <html><head><title>Funding Report-Nothing</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="css/bootstrap.min.css" rel="stylesheet" media="screen"></head><body>
+
 <h4>No MCID&apos;s meet the criteria supplied</h4>
+Criteria: $rptmbr $rptdate $rptrng<br>
+<!-- SQL: $sql<br> -->
 <a href="javascript:self.close();" class="btn btn-primary">CLOSE</a>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -231,7 +240,7 @@ if ($nbr_rows == 0) {
 nothingReturned;
 	exit;
 	}
-// create html document for labels
+// create html document
 print <<<labelPart1
 <!DOCTYPE html><html><head><title>Funding Report</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
