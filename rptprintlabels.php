@@ -40,12 +40,14 @@ function chkvals(form) {
 	if (chkcnt == 0) {
 		errmsg += "No Member Status has been selected\\n";
 		}
-
 	if (form.daterangechk.checked) {
 		chkcnt += 1;
 		if ((form.sd.value == "") && (form.ed.value == "")) {
 			errmsg += "Date search but no date(s) have been entered\\n";
 			}
+		}
+	if (((form.sd.value != "") || (form.ed.value != "")) && (form.daterangechk.checked == false)) {
+		errmsg += "Date range specified but not selected\\n";
 		}
 	if (form.valrangechk.checked) {
 		chkcnt += 1;
@@ -58,6 +60,9 @@ function chkvals(form) {
 		if ((form.vrangehi.value !== "") && (isNaN(form.vrangehi.value))) {
 		  errmsg += "Invalid value entered for funding high range.\\n";
 			}
+		}
+	if (((form.vrangelo.value != "") || (form.vrangehi.value != "")) && (form.valrangechk.checked == false)) {
+		errmsg += "Value range specified but not selected\\n";
 		}
 	if (chkcnt == 0) {
 		errmsg += "Nothing entered as criteria for label printing.\\n";
