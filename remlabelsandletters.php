@@ -82,8 +82,8 @@ print <<<pagePart3b
 <h4>Print Labels</h4>
 <p>This facility allows the creation of a page formatted as printing labels based on the criteria selected.  All labels will be sorted by zip code in ascending sequence.</p>
 <p>Clicking &apos;SUBMIT&apos; will open a new window with the lables displayed for printing.  Click &apos;CLOSE&apos; to close the window when printing has been completed</p>
-<p>Before printing labels, use your browser&apos;s print preview (File -> Print Preview) options to set the top print margin of to 1/2 (0.5) inch and all other print margins to 0 (zero).</p>
-<p>Try printing a test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the stickers.</p>
+<p>Before printing labels, use Chrome&apos;s print function (File -> Print) options to set the <b>top margin of to 0.6 inch and all other print margins to 0 (zero)</b>.</p>
+<p>Try printing a test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the blanks lables.</p>
 <form class="form" target="_blank" name="labform" action="remprintlabels.php">
 Number of labels to skip on 1st page (max. 29):
 <input type="text" name="labelstoskip" value="0" size="2" maxlength="2" /><br />
@@ -94,7 +94,7 @@ Number of labels to skip on 1st page (max. 29):
 <h4>Print Form Letters</h4>
 <p>This facility allows the creation of a formatted letter printer ready for letterhead or regular paper.</p>
 <p>Clicking &apos;SUBMIT&apos; will open a new window with the all the letters displayed.  Click &apos;CLOSE&apos; to close the window when printing has been completed</p>
-<p>Before printing the letters, use your browser&apos;s print preview (File -> Print Preview) options to set the top print margin of to 1/2 (0.5) inch and all other print margins to 0 (zero).</p>
+<p>Before printing the letters, use your browser&apos;s print preview (File -> Print Preview) options to set the top print margin of to 0.6 inch and all other print margins to 0 (zero).</p>
 <p>Try printing a test letter page on plain paper first.  Hold it up to the light behind a sheet of letterhead to make sure the printed letters lines up with the margins.</p>
 <form target="_blank" class="form" name="letterform" action="remprintletters.php">
 <input type="checkbox" name="header" value="checked" />Include letterhead image in output? <br />

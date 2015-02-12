@@ -25,8 +25,8 @@ pagePart2;
 
 print <<<pagePart3
 <p>This facility allows the creation of a page formatted as printing labels based on the criteria selected.  All labels will be sorted by zip code in ascending sequence.</p>
-<p>Before printing labels, use your browser&apos;s print preview (File -> Print Preview) options to set the top print margin of to 1/2 (0.5) inch and all other print margins to 0 (zero).</p>
-<p>Try printing a test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the stickers.</p>
+<p>Before printing labels, use Chrome&apos;s print function (File -> Print -> More Settings) to define the custom margin settings to <b>top margin to 0.6 inch and all other print margins to 0 (zero)</b>.</p>
+<p>Suggestion: try printing a single test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the lables on the page.</p>
 <h4>Select one or more of the following criteria:</h4>
 <script>
 function chkvals(form) {
