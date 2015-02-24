@@ -58,6 +58,7 @@ $dbinuse<br>
 <option value="%mbrdb/mbr%">Membership</option>
 <option value="%mbrdb/edi%">EDI Functions</option>
 <option value="%mbrdb/dev%">Develpment Functions</option>
+<option value="%bmu/dbcorradd%">BMU Corr. Adder</option>
 </select>
 <input type="hidden" name="testdb" value="$testdb">
 &nbsp;&nbsp;<input type="submit" name= "submit" value="Submit">
@@ -75,7 +76,7 @@ $msd = date('Y-m-d 00:00:00', strtotime($sd)); $med = date('Y-m-d 23:59:59', str
 $sql = "SELECT `DateTime`,`User`,`Page`
 FROM `log`
 WHERE  `DateTime` BETWEEN '$msd' AND '$med'
-	AND `SQL` LIKE 'Page%' 
+	AND (`SQL` LIKE 'Page%' OR `SQL` LIKE 'INSERT%')
 	AND `Page` LIKE '$type'
 	AND `User` NOT LIKE '%klinz%'
 ORDER BY `DateTime` ASC;";
