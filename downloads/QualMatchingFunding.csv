@@ -1,125 +1,219 @@
 Tot13;Tot14;QualDiff;LastDate;Purpose;Program;Campaign;MCID;FName;LName
+0;25;25;2014-12-17;Dues;Dues-AnnualMbr;;"ABB16";Michele;Abba
+0;200;200;2014-12-22;Dues;Dues-AnnualMbr;EOYAppeal;"ABB17";Louise;Abbott
+0;35;35;2015-02-08;Donation;Don-UnresDonation;;"ABB22";Beverly Jean;Abbey
+0;50;50;2015-02-08;Donation;Don-UnresDonation;;"ABB44";Sherry;Abbott
 0;25;25;2014-03-25;Dues;Dues-AnnualMbr;AnonMatch;"ABR89";Kimberly;Abraham
+0;50;50;2014-11-08;Dues;Dues-AnnualMbr;AnonMatch;"ADA31";Dolores H.;Adams
 0;100;100;2014-02-20;Dues;Dues-AnnualMbr;AnonMatch;"ADA45";Sharen;Adams
-0;20;20;2014-05-18;Dues;Dues-AnnualMbr;;"AEB15";Tea;Aebischer
+0;20;20;2014-05-18;Dues;Dues-AnnualMbr;AnonMatch;"AEB15";Tea;Aebischer
 0;20;20;2014-02-15;Dues;Dues-AnnualMbr;;"AIA13";Mark;Aiassa
+0;60;60;2015-01-11;Dues;Dues-Subscr;;"ALE20";Luke;Alexander
 0;40;40;2014-07-31;Dues;Dues-AnnualMbr;;"ALE92";Kathy;Alexander
 0;50;50;2014-04-02;Dues;Dues-AnnualMbr;;"ALL24";Karen;Allen
 0;20;20;2014-07-18;Dues;Dues-AnnualMbr;AnonMatch;"ALL35";Brenda;Allmann
-0;10;10;2014-02-06;Donation;Don-UnresDonation;;"ALL63";Michelle;Allison
+0;20;20;2014-12-12;Donation;Don-UnresDonation;Newsletter;"ALL63";Michelle;Allison
 0;100;100;2014-02-19;Dues;Dues-AnnualMbr;AnonMatch;"ALL64";Noel;Allan
+0;50;50;2014-12-13;Dues;Dues-AnnualMbr;;"ALP35";Eva;Alpaugh
 0;10;10;2014-07-26;Donation;Don-UnresDonation;;"ALT16";Gratia;Altmann
 35;50;15;2014-06-07;Dues;Dues-AnnualMbr;MailedNotice;"AMB52";Howard;Amborn
 0;100;100;2014-09-16;Dues;Dues-AnnualMbr;AnonMatch;"AND00";Shellee;Anderson
 0;30;30;2014-07-02;Dues;Dues-AnnualMbr;AnonMatch;"AND34";Theresa;Anderson
-0;25;25;2014-01-14;Dues;Dues-AnnualMbr;AnonMatch;"ANS38";Catherine;Ansolabehere
+0;20;20;2014-12-28;Donation;Don-UnresDonation;;"AND37";Linda;Anderson
+100;130;30;2015-01-17;Dues;Dues-Subscr;;"AND53A";Adele;Anderson
+0;20;20;2014-10-16;Donation;Don-UnresDonation;;"AND87";Benjaimin;Anderson
+0;75;75;2014-12-01;Dues;Dues-AnnualMbr;;"ANS38";Catherine;Ansolabehere
+0;20;20;2014-06-23;Donation;Don-UnresDonation;;"ARE99";Candy;Arend
+0;100;100;2014-11-08;Dues;Dues-AnnualMbr;AnonMatch;"ARM17";John;Armstrong
 0;25;25;2014-06-17;Dues;Dues-AnnualMbr;;"ASZ39";Rod;Aszman
 0;25;25;2014-02-10;Dues;Dues-AnnualMbr;AnonMatch;"ATN10";Jack;Atnip
 0;16;16;2014-02-17;Dues;Dues-AnnualMbr;;"BAC25";Maricela;Bachelor
+240;260;20;2015-01-11;Dues;Dues-Subscr;;"BAC69";Melanie;Bachman
+0;25;25;2014-10-11;Dues;Dues-AnnualMbr;AnonMatch;"BAD30";Carol;Bader
 0;50;50;2014-03-05;Donation;Don-IMO;;"BAE15";Rebecca & John;Baer
 0;20;20;2014-07-29;Donation;Don-UnresDonation;;"BAG11";Dianne;Bagwell
+0;25;25;2014-10-01;Dues;Dues-AnnualMbr;AnonMatch;"BAI17";Julie;Bailey
 0;50;50;2014-02-26;Dues;Dues-AnnualMbr;AnonMatch;"BAK26";Scott;Baksic
 0;25;25;2014-07-10;Dues;Dues-AnnualMbr;AnonMatch;"BAK52";Alex;Bakula-Davis
+120;200;80;2015-12-30;Donation;Don-UnresDonation;EOYAppeal;"BAK56";Marcelle;Bakula
+25;50;25;2015-12-18;Dues;Dues-AnnualMbr;EOYAppeal;"BAL15";Randal & Elizabeth;Ball
 0;25;25;2014-06-17;Dues;Dues-AnnualMbr;AnonMatch;"BAL18";Dianna;Ballard
 25;75;50;2014-07-15;Dues;Dues-AnnualMbr;AnonMatch;"BAL46";Lawrence;Balthasar
 0;50;50;2014-04-01;Dues;Dues-AnnualMbr;;"BAR10";Roger;Barnes
 25;35;10;2014-04-30;Dues;Dues-AnnualMbr;AnonMatch;"BAR25";Catherine;Bartley
+0;150;150;2014-12-17;Dues;Dues-AnnualMbr;Newsletter;"BAS13";Virginia L. ;Bass
+25;100;75;2014-12-15;Dues;Dues-AnnualMbr;Newsletter;"BEA76";Karen;Beatty
+0;25;25;2014-12-09;Dues;Dues-AnnualMbr;Newsletter;"BEC10";Colleen M.;Beck
+0;25;25;2014-12-13;Dues;Dues-AnnualMbr;;"BEC23";Ginny;Becchine
+363;396;33;2014-12-05;Dues;Dues-Subscr;;"BEL60";Susan;Belany
 0;100;100;2014-05-16;Dues;Dues-AnnualMbr;AnonMatch;"BEN27";Karen;Benipal
+25;50;25;2014-12-11;Dues;Dues-AnnualMbr;;"BEN39";Jodee;Bennett
 0;50;50;2014-02-02;Dues;Dues-AnnualMbr;AnonMatch;"BER16";Lori;Berg
-30;135;105;2014-09-08;Dues;Dues-Subscr;;"BER73";Brandi;Bergreen
+30;195;165;2015-01-08;Dues;Dues-Subscr;;"BER73";Brandi;Bergreen
+0;10;10;2014-11-23;Donation;Don-UnresDonation;;"BEW32";John;Bewizk
+50;75;25;2015-01-05;Dues;Dues-Subscr;MailedNotice;"BIA44";Catherine;Bianchi
+200;250;50;2014-12-09;Dues;Dues-AnnualMbr;EOYAppeal;"BIE93";Richard;Bienert
 0;50;50;2014-06-30;Dues;Dues-AnnualMbr;;"BIS47";Sandra;Bishop
 0;25;25;2014-03-22;Dues;Dues-AnnualMbr;AnonMatch;"BIT14";Nathaniel;Bittner
 0;25;25;2014-03-18;Dues;Dues-AnnualMbr;AnonMatch;"BIT15";Lindsey;Bittner
 0;100;100;2014-03-01;Dues;Dues-AnnualMbr;AnonMatch;"BLA12";Mary;Blackler
-0;250;250;2014-02-06;Dues;Dues-AnnualMbr;;"BLA13";Sheila;Blake
+0;250;250;2014-10-26;Dues;Dues-AnnualMbr;;"BLA13";Sheila;Blake
+0;100;100;2014-12-04;Dues;Dues-AnnualMbr;MailedNotice;"BLA40";Raymond ;Blanco
 0;10;10;2014-07-18;Donation;Don-UnresDonation;;"BLO17";Lynn;Blomberg
 0;25;25;2014-01-25;Dues;Dues-AnnualMbr;AnonMatch;"BOC18";Samantha;Bock
 0;100;100;2014-01-27;Dues;Dues-AnnualMbr;;"BOG13";Melissa;Boggs
 0;100;100;2014-07-16;Dues;Dues-AnnualMbr;AnonMatch;"BOI13";Karen;Boicourt
-0;50;50;2014-08-15;Dues;Dues-AnnualMbr;AnonMatch;"BON59";Mark;Bonnard
-275;385;110;2014-09-28;Dues;Dues-Subscr;;"BOO11";Beatriz;Boothe
+0;25;25;2014-12-31;Dues;Dues-AnnualMbr;;"BON07";Michael  ;Bondello
+0;70;70;2014-11-15;Donation;Don-UnresDonation;;"BON59";Mark & Heidi;Bonnard
+275;475;200;2014-12-28;Dues;Dues-Subscr;;"BOO11";Beatriz;Boothe
+0;60;60;2014-11-05;Donation;Don-UnresDonation;AnonMatch;"BOR15";Marianita;Borgstrom
 0;40;40;2014-01-11;Dues;Dues-AnnualMbr;AnonMatch;"BOS13";Jacob;Bosley
+1200;1300;100;2015-01-05;Dues;Dues-Subscr;;"BOU14";Dianne;Bougher
 0;6;6;2014-01-18;Donation;Don-UnresDonation;;"BOW14";Genete;Bowen
-55;135;80;2014-09-21;Dues;Dues-Subscr;AnonMatch;"BOW48";Darlene;Bowman
+55;180;125;2014-12-21;Dues;Dues-Subscr;;"BOW48";Darlene;Bowman
 0;30;30;2014-08-24;Dues;Dues-AnnualMbr;;"BOY19";Natalie;Boydstun
+50;100;50;2014-12-13;Dues;Dues-AnnualMbr;Newsletter;"BOY39";Jean L.;Boyd
 15;20;5;2014-06-18;Dues;Dues-AnnualMbr;AnonMatch;"BOY78";Lisa & Eric;Boyd
 0;25;25;2014-08-07;Dues;Dues-AnnualMbr;AnonMatch;"BRA08";Loreli;Brandt
+0;50;50;2014-12-18;Dues;Dues-AnnualMbr;;"BRA18";Joanne;Bradley
 0;50;50;2014-01-13;Dues;Dues-AnnualMbr;AnonMatch;"BRA47";Neffertti;Bradley
 0;50;50;2014-02-08;Dues;Dues-AnnualMbr;;"BRA76";Raymond;Bracken
 0;25;25;2014-01-16;Dues;Dues-AnnualMbr;;"BRE12";Katrina;Brewer
+0;150;150;2014-10-31;Dues;Dues-AnnualMbr;AnonMatch;"BRI09";Dianne;Brink
 100;150;50;2014-04-08;Dues;Dues-AnnualMbr;Newsletter;"BRI34";Victoria;Brien
-0;50;50;2014-05-08;Dues;Dues-AnnualMbr;;"BRO00";Wendy;Brown
+0;150;150;2014-11-03;Donation;Don-UnresDonation;AnonMatch;"BRO00";Wendy;Brown
 0;40;40;2014-05-11;Dues;Dues-AnnualMbr;AnonMatch;"BRO01";Dan;Brown
-0;20;20;2014-07-20;Donation;Don-UnresDonation;AnonMatch;"BRO46";Teri;Brown
+25;225;200;2014-12-17;Donation;Don-IHO;;"BRO13";Shawn;Brown
+0;25;25;2014-10-22;Dues;Dues-AnnualMbr;;"BRO27";Ann;Brooks
+0;45;45;2015-01-15;Dues;Dues-AnnualMbr;;"BRO46";Teri;Brown
 0;20;20;2014-07-02;Donation;Don-UnresDonation;;"BRO49";Rich;Brown
+75;100;25;2014-11-23;Dues;Dues-AnnualMbr;;"BRO53";Marilyn;Brown
 0;25;25;2014-08-06;Dues;Dues-AnnualMbr;AnonMatch;"BRO75";Mindy;Brooks
+0;10;10;2014-12-17;Donation;Don-UnresDonation;;"BRY18";Sarah;Bryant
+100;250;150;2014-12-31;Dues;Dues-AnnualMbr;;"BUN52";Virginia;Bunnell
+240;260;20;2015-01-02;Dues;Dues-Subscr;;"BUR14";Robert;Burridge
+0;25;25;2014-09-29;Dues;Dues-AnnualMbr;AnonMatch;"BUR18";Rita;Burton
 0;50;50;2014-03-15;Dues;Dues-AnnualMbr;AnonMatch;"BUR33";Marnie;Burkhardt
 0;25;25;2014-09-02;Dues;Dues-AnnualMbr;AnonMatch;"BUR42";Barbara;Burchell
 0;20;20;2014-09-27;Donation;Don-UnresDonation;;"BUS21";Eileen;Bush
-0;25;25;2014-05-25;Dues;Dues-AnnualMbr;;"BUT72";Anna;Butler
+0;45;45;2014-12-20;Donation;Don-UnresDonation;;"BUT72";Anna;Butler
+300;325;25;2015-01-03;Dues;Dues-Subscr;;"BYE80";Chad;Byers
+110;130;20;2015-01-19;Dues;Dues-Subscr;;"CAI58";Kathryn;Cain
 0;25;25;2014-04-10;Dues;Dues-AnnualMbr;;"CAL11";William;Calabrese
 0;20;20;2014-09-07;Dues;Dues-AnnualMbr;AnonMatch;"CAM12";Jerrilynn;Campbell
+100;200;100;2014-12-28;Donation;Don-UnresDonation;EOYAppeal;"CAR12A";Roger;Carver
+25;45;20;2015-01-02;Dues;Dues-AnnualMbr;EOYAppeal;"CAR25";Betty;Cary
 0;25;25;2014-06-17;Dues;Dues-AnnualMbr;AnonMatch;"CAR28";Wendi;Carducci
 150;315;165;2014-05-16;Dues;Dues-Subscr;Other;"CAR35A";Melissa;Cardenas
+200;3000;2800;2014-12-31;Donation;Don-UnresDonation;;"CAS15";Roxanne;Castro
 25;200;175;2014-08-30;Dues;Dues-AnnualMbr;AnonMatch;"CHA13";Charles;Chapman
+0;25;25;2014-10-31;Dues;Dues-AnnualMbr;;"CHA17";Robert;Chapman
 0;10;10;2014-03-05;Donation;Don-UnresDonation;;"CHA31";Sharon;Chan
-15;40;25;2014-08-29;Dues;Dues-Subscr;AnonMatch;"CHA33";Ricardo;Chavez
+15;60;45;2014-12-29;Dues;Dues-Subscr;;"CHA33";Ricardo;Chavez
+0;4000;4000;2014-12-23;Donation;Don-Other;;"CHE10";Chevron;Corporation
 0;25;25;2014-02-15;Dues;Dues-AnnualMbr;;"CHE15A";Stef;Cheneby
-0;5;5;2014-06-28;Donation;Don-UnresDonation;AnonMatch;"CHI40";Susie;Chiappari
+240;260;20;2014-12-26;Dues;Dues-Subscr;;"CHE28";Kelly;Cherry
+0;200;200;2014-12-17;Dues;Dues-AnnualMbr;Other;"CHI13";William A. ;Chilton
 0;100;100;2014-05-11;Dues;Dues-AnnualMbr;AnonMatch;"CHI62";David & Carolyn;Chivens
+0;20;20;2014-06-26;Donation;Don-UnresDonation;AnonMatch;"CHR21";Amy;Christey
+0;25;25;2014-09-25;Dues;Dues-AnnualMbr;AnonMatch;"CHR27";Kellie;Christianson
+925;1025;100;2014-12-16;Dues;Dues-Subscr;;"CHR91";Dorothy;Christie
 0;20;20;2014-08-28;Donation;Don-UnresDonation;AnonMatch;"CHR92";Susie;Christian
-5000;5530.94;530.94;2014-02-20;Dues;Dues-AnnualMbr;;"CLA62";Karen & James;Clarke
+0;5;5;2014-10-26;Donation;Don-UnresDonation;;"CIR55";;Cirner
+5000;13530.94;8530.94;2014-12-10;Donation;Don-UnresDonation;EOYAppeal;"CLA62";Karen & James;Clarke
+0;50;50;2014-10-23;Dues;Dues-AnnualMbr;AnonMatch;"CLE24";Matt;Clevenger
+30;50;20;2014-12-25;Donation;Don-IHO;;"CLE38";Thomas;Clegg
+0;25;25;2014-12-13;Dues;Dues-AnnualMbr;;"CLU76";Don;Clutter
 0;100;100;2014-06-05;Dues;Dues-AnnualMbr;AnonMatch;"COB92";Katie;Cobler
-20;110;90;2014-09-06;Dues;Dues-Subscr;;"COH26";Judith;Cohen
-0;50;50;2014-01-27;Dues;Dues-AnnualMbr;;"COH92";Nancy;Cohn
+20;170;150;2015-01-06;Dues;Dues-Subscr;;"COH26";Judith;Cohen
+0;100;100;2015-01-09;Dues;Dues-AnnualMbr;;"COH92";Nancy;Cohn
+15000;25000;10000;2014-12-31;Donation;Don-UnresDonation;;"COL00";Jim;Davis
 0;25;25;2014-06-10;Dues;Dues-AnnualMbr;AnonMatch;"COL15";Laurie & Kevin;Colton
-0;250;250;2014-02-04;Dues;Dues-AnnualMbr;;"COM14";Woody;Combrink
+0;9;9;2014-12-17;Donation;Don-UnresDonation;;"COL21";Jon;Collins
+0;500;500;2014-10-22;Dues;Dues-AnnualMbr;;"COM14";Woody;Combrink
+0;20;20;2014-12-25;Donation;Don-UnresDonation;;"CON06";Joseph;Connelly
 0;11;11;2014-08-10;Donation;Don-UnresDonation;AnonMatch;"CON56";Maxwell;Conn, DVM
+0;20;20;2014-10-08;Donation;Don-UnresDonation;AnonMatch;"CON68";Joseph;Connerly
+0;50;50;2014-11-03;Dues;Dues-AnnualMbr;AnonMatch;"COO23";Nancy N.;Cooley
+0;50;50;2014-10-21;Dues;Dues-AnnualMbr;AnonMatch;"COO41";Alice;Cook
 0;10;10;2014-05-25;Donation;Don-UnresDonation;;"COO72";Daniel;Coomey
 0;50;50;2014-01-30;Dues;Dues-AnnualMbr;;"COO95";Lee & Penny;Coombs
 0;25;25;2014-05-14;Dues;Dues-AnnualMbr;;"COR38";Cole;Cortella
+10;20;10;2014-11-26;Dues;Dues-AnnualMbr;;"COR77";Dorothy;Correa
+0;500;500;2014-11-12;Donation;Don-UnresDonation;;"COU00";;County of SLO
 0;15;15;2014-01-16;Dues;Dues-AnnualMbr;;"COV22";L. Sue;Coville
+0;100;100;2014-12-31;Dues;Dues-AnnualMbr;;"COW74";Pat;Cowdery
+0;50;50;2014-10-23;Dues;Dues-AnnualMbr;AnonMatch;"COX72";Jim & Peggie;Cox
 0;5;5;2014-09-09;Donation;Don-UnresDonation;;"COX77";Kelly;Cox
+0;25;25;2014-12-30;Dues;Dues-AnnualMbr;;"CRA57";Linda;Crawford
 0;20;20;2014-04-23;Dues;Dues-AnnualMbr;AnonMatch;"CRI18";Leticia;Cristin
 0;250;250;2014-05-30;Dues;Dues-AnnualMbr;AnonMatch;"CRO00";Diana & Bruce;Crothers
+0;8;8;2014-11-22;Donation;Don-UnresDonation;;"CRO60";Gary;Crow
 0;50;50;2014-01-30;Donation;Don-IMO;EOYrNL;"CUL13";Patricia;Cullinan
-0;40;40;2014-06-15;Donation;Don-UnresDonation;AnonMatch;"CUM63";Carol;Cumberland
-0;180;180;2014-08-12;Dues;Dues-Subscr;;"CUT00";Tammy;Cutts
+0;40;40;2014-06-15;Dues;Dues-AnnualMbr;AnonMatch;"CUM63";Carol;Cumberland
+0;20;20;2014-06-03;Donation;Don-UnresDonation;;"CUR18";Mackenzie;Curran
+0;180;180;2014-12-03;Dues;Dues-Subscr;;"CUT00";Tammy;Cutts
+50;100;50;2014-12-17;Donation;Don-UnresDonation;;"CZE33";Kate;Czekala
+0;20;20;2014-11-24;Donation;Don-UnresDonation;;"DAL12";Tom;Dalton
 0;20;20;2014-06-24;Donation;Don-UnresDonation;;"DAL13";Jean;Dalcerri
 0;40;40;2014-05-30;Dues;Dues-AnnualMbr;AnonMatch;"DAN11";Ruth;Danielson
-0;35;35;2014-06-24;Dues;Dues-AnnualMbr;AnonMatch;"DAN18";Gentle &Brigitte;Daniels
-0;100;100;2014-06-02;Donation;Don-UnresDonation;AnonMatch;"DAN67";Dana;Dana Adobe Nipomo Am
+0;85;85;2014-12-30;Donation;Don-UnresDonation;EOYAppeal;"DAN18";Brigitte;Daniels
+0;10;10;2014-10-19;Donation;Don-UnresDonation;AnonMatch;"DAN74";Alice;Daniel
+300;305;5;2015-01-12;Dues;Dues-Subscr;;"DAR10";Judith;Darknall
+0;50;50;2014-12-17;Dues;Dues-AnnualMbr;;"DAV10";Valeri;Davis
 0;100;100;2014-09-22;Dues;Dues-AnnualMbr;AnonMatch;"DAV16";Judy;Davis
+0;20;20;2014-11-08;Donation;Don-UnresDonation;;"DAV33";Lynette;Davis
+0;25;25;2014-11-13;Dues;Dues-AnnualMbr;;"DAV38";Kurt;Davis
+40;50;10;2014-12-14;Dues;Dues-AnnualMbr;EmailedNotice;"DAV45";Tim;Davis
 0;90;90;2014-08-22;Dues;Dues-Subscr;AnonMatch;"DAV71";Sydney;Davis
 0;25;25;2014-06-09;Dues;Dues-AnnualMbr;AnonMatch;"DAW34";Dianna;Dawson
-20;35;15;2014-03-16;Dues;Dues-AnnualMbr;;"DEC43";Joan;Decker
-0;20;20;2014-05-23;Dues;Dues-AnnualMbr;AnonMatch;"DEL11";Julie;Delfino
+0;1000;1000;2014-12-02;Dues;Dues-AnnualMbr;;"DAY27";Clifford;Day
+20;42.5;22.5;2014-12-17;Dues;Dues-Subscr;EOYAppeal;"DEC43";Joan;Decker
+0;120;120;2014-12-12;Dues;Dues-AnnualMbr;EOYAppeal;"DEL11";Julie & David;Delfino
+0;100;100;2015-01-15;Dues;Dues-AnnualMbr;;"DEL38";Sarah;DeLong
 0;6;6;2014-03-03;Donation;Don-UnresDonation;;"DEL60";Sarah;DeLon
-0;30;30;2014-09-08;Donation;Don-UnresDonation;AnonMatch;"DER19";Moon Leaf;DeRosier
+0;30;30;2014-09-08;Dues;Dues-AnnualMbr;AnonMatch;"DER19";Moon Leaf;DeRosier
+200;220;20;2015-01-07;Dues;Dues-Subscr;;"DER50";Rick;Derevan
 0;50;50;2014-04-01;Dues;Dues-AnnualMbr;Newsletter;"DET19";Megan;DeTrane
 0;2;2;2014-02-09;Donation;Don-UnresDonation;;"DET25";Hazel;Dettrow
 0;100;100;2014-07-26;Dues;Dues-AnnualMbr;AnonMatch;"DEV65";Eric;Devos, DVM
+0;25;25;2014-11-03;Dues;Dues-AnnualMbr;;"DEV91";Thomas;Devore
 0;60;60;2014-08-22;Dues;Dues-AnnualMbr;AnonMatch;"DEW16";Roz;Dewlaney
-0;50;50;2014-09-14;Dues;Dues-AnnualMbr;AnonMatch;"DIE59";Lesley;Santos Dierks
+0;25;25;2014-12-10;Dues;Dues-AnnualMbr;Newsletter;"DIE17";Charlotte ;Dietzel
+0;50;50;2014-09-14;Donation;Don-UnresDonation;AnonMatch;"DIE59";Lesley;Santos Dierks
 25;30;5;2014-02-06;Dues;Dues-AnnualMbr;;"DIM32";Sally;DiMaggio
 0;20;20;2014-04-27;Donation;Don-UnresDonation;;"DIX47";Michelle;Dixon
+240;260;20;2015-01-08;Dues;Dues-Subscr;;"DOR16";Sharlene;Dorsey
+0;75;75;2014-12-11;Dues;Dues-AnnualMbr;;"DOY25";Kevin & Nicole;Doyle
 0;20;20;2014-08-12;Donation;Don-UnresDonation;;"DRE10";Annie;Dreizler
 0;30;30;2014-04-17;Dues;Dues-AnnualMbr;;"DRO58";Susan;Drocco
-0;50;50;2014-09-21;Dues;Dues-AnnualMbr;AnonMatch;"DRY12";Doug;Drynan
+0;150;150;2014-10-25;Dues;Dues-AnnualMbr;AnonMatch;"DRY12";Doug;Drynan
+150;195;45;2015-01-02;Dues;Dues-Subscr;;"DUA69";Emily;Duax
 0;200;200;2014-07-06;Dues;Dues-AnnualMbr;AnonMatch;"DUN10";Cameron;Dunn
+0;50;50;2014-12-09;Dues;Dues-AnnualMbr;Other;"DUN12";James W.;Duncan
+180;190;10;2014-12-25;Dues;Dues-Subscr;;"DUN14";Julieanne;Dunkley
 0;35;35;2014-08-14;Dues;Dues-AnnualMbr;AnonMatch;"DUN30";Theoplis;Dunn
+0;40;40;2014-11-23;Dues;Dues-Subscr;AnonMatch;"DUN47";Terre;Dunivant
 0;50;50;2014-07-30;Dues;Dues-AnnualMbr;;"DUN89";Keith;Dunham
+50;100;50;2014-12-05;Dues;Dues-AnnualMbr;EOYAppeal;"DYK28";Terry;Dyksinski
 0;100;100;2014-05-02;Dues;Dues-AnnualMbr;AnonMatch;"EAG11";Bruce;McLean
+0;25;25;2014-11-01;Dues;Dues-AnnualMbr;AnonMatch;"EAT61";Mariam;Eaton
 0;20;20;2014-05-24;Donation;Don-UnresDonation;;"ECK11";Celeste;Eckrich
+0;40;40;2021-01-30;Dues;Dues-AnnualMbr;AnonMatch;"ECK15";Niki;Eckis
+500;1000;500;2014-10-29;Dues;Dues-AnnualMbr;AnonMatch;"ECK77";Kaeti;Ecker
 0;25;25;2014-07-10;Dues;Dues-AnnualMbr;AnonMatch;"EDM25";George;Edmondson
-0;25;25;2014-06-09;Dues;Dues-AnnualMbr;AnonMatch;"ELK61";Robert and Brigitte;Elke
+0;75;75;2015-12-29;Dues;Dues-AnnualMbr;;"ELK61";Robert and Brigitte;Elke
+2500;3000;500;2014-12-01;Dues;Dues-AnnualMbr;;"ELL24";Donald;Ellis
+150;225;75;2014-12-24;Donation;Don-IHO;;"ENG29";Mike;Englund
+0;25;25;2014-11-15;Dues;Dues-AnnualMbr;AnonMatch;"ERI30";Pam;Erickson
 0;100;100;2014-05-06;Dues;Dues-AnnualMbr;;"ERI69";Leanna R.;Erickson
+550;600;50;2014-12-17;Dues;Dues-Subscr;EOYAppeal;"ERL27";Marion;Erling
 0;35;35;2014-07-16;Dues;Dues-AnnualMbr;AnonMatch;"ESQ46";Megen;Esquibel
 0;25;25;2014-05-21;Dues;Dues-AnnualMbr;;"EUB20";David;Eubanks
-0;50;50;2015-06-17;Dues;Dues-AnnualMbr;;"EVA52";Becky;Evans
+0;50;50;2014-06-17;Dues;Dues-AnnualMbr;;"EVA52";Becky;Evans
 0;20;20;2014-05-20;Dues;Dues-AnnualMbr;AnonMatch;"EVE15";Marti;Evans-Conley
 0;50;50;2014-07-06;Dues;Dues-AnnualMbr;AnonMatch;"FAB92";John;Fabijanic
-0;20;20;2014-09-17;Donation;Don-UnresDonation;AnonMatch;"FEL86";David;Feleay
+0;45;45;2014-12-08;Dues;Dues-AnnualMbr;EOYAppeal;"FEL86";David;Feleay
 0;25;25;2014-05-18;Dues;Dues-AnnualMbr;;"FER09";Connie;Ferrell
 0;25;25;2014-01-26;Dues;Dues-AnnualMbr;;"FER13A";Claudia;Ferriday
 0;5;5;2014-06-09;Donation;Don-UnresDonation;;"FER15";Casey;Fera
@@ -127,221 +221,378 @@ Tot13;Tot14;QualDiff;LastDate;Purpose;Program;Campaign;MCID;FName;LName
 0;22;22;2014-09-08;Dues;Dues-AnnualMbr;AnonMatch;"FIE20";Linda;Field
 0;18;18;2014-04-27;Donation;Don-UnresDonation;;"FIG18";Marlena;Figueroa-Edwards
 0;25;25;2014-04-06;Dues;Dues-AnnualMbr;;"FIN18";Judie;Finnegan
+240;360;120;2015-01-19;Dues;Dues-Subscr;;"FLA24";Virginia;Flaherty
 0;25;25;2014-02-25;Dues;Dues-AnnualMbr;;"FLA56B";Dave;Flanders
+1000;1200;200;2014-12-03;Dues;Dues-AnnualMbr;;"FOR14";Bert;Forbes
 0;35;35;2014-05-01;Dues;Dues-AnnualMbr;AnonMatch;"FOR18";Constance;Ford
+0;5;5;2014-10-27;Donation;Don-UnresDonation;;"FOR43";Sarah;Forstner
+50;65;15;2014-12-31;Donation;Don-UnresDonation;EOYAppeal;"FRO19";Ellen & William;Frost
+0;50;50;2014-11-05;Donation;Don-UnresDonation;AnonMatch;"GAI94";Lois A.;Gaines
+250;260;10;2015-01-11;Dues;Dues-Subscr;;"GAL27";Tera;Galanti
 0;100;100;2014-05-25;Dues;Dues-AnnualMbr;AnonMatch;"GAL56";Mary;Galvin
-0;35;35;2014-04-25;Dues;Dues-AnnualMbr;AnonMatch;"GAL73";Colleen;Gall
+0;60;60;2014-12-13;Dues;Dues-AnnualMbr;EOYAppeal;"GAL73";Colleen;Gall
 0;44;44;2014-05-17;Dues;Dues-AnnualMbr;AnonMatch;"GAN28";Smita;Ganpule
 0;10;10;2014-05-30;Donation;Don-UnresDonation;AnonMatch;"GAN40";Evelyn ;Gandara
 0;15;15;2014-01-05;Dues;Dues-AnnualMbr;;"GAR12B";Melissa;Garner
 0;50;50;2014-03-17;Dues;Dues-AnnualMbr;AnonMatch;"GAR35";Jill;Garcia
 0;25;25;2014-02-12;Dues;Dues-AnnualMbr;AnonMatch;"GAR59";Diane;Garman
+0;50;50;2014-12-11;Dues;Dues-AnnualMbr;;"GAY21";Warren;Gay
+0;100;100;2014-12-14;Dues;Dues-AnnualMbr;;"GEI48";Carole;Geile
 0;100;100;2014-06-02;Dues;Dues-AnnualMbr;AnonMatch;"GEM66";Valerie;Gemanis
-0;65;65;2014-09-08;Dues;Dues-Subscr;AnonMatch;"GEO41";Gayle;George
+120;130;10;2015-01-18;Dues;Dues-Subscr;;"GEN29";Elaine;Genasci
+0;170;170;2015-01-08;Dues;Dues-Subscr;;"GEO41";Gayle;George
 0;25;25;2014-02-21;Dues;Dues-AnnualMbr;AnonMatch;"GHI16";Joan;Ghilotti
-0;50;50;2014-05-02;Dues;Dues-AnnualMbr;;"GIB54";Wendy;Gibson
+0;50;50;2014-12-23;Dues;Dues-AnnualMbr;;"GIB54";Wendy;Gibson
+25;50;25;2014-12-17;Donation;Don-IHO;;"GIB57";Kim;Gibson
 0;20;20;2014-07-05;Donation;Don-UnresDonation;;"GID38";Suzanna;Giddens
-50;75;25;2014-07-14;Dues;Dues-AnnualMbr;AnonMatch;"GIL16";Iris Paulette;Gilliland
+0;40;40;2014-12-24;Donation;Don-IHO;;"GIL10";Carolyn;Gilbert
+50;100;50;2014-12-15;Donation;Don-UnresDonation;EOYAppeal;"GIL16";Iris Paulette;Gilliland
 0;100;100;2014-09-24;Dues;Dues-AnnualMbr;AnonMatch;"GIL42";Dorreene;Gilmore
+0;300;300;2014-10-28;Dues;Dues-AnnualMbr;AnonMatch;"GIN68";Bryan;Gingg
+0;10;10;2014-10-12;Donation;Don-UnresDonation;;"GIU10";Cosette;Giusti
 0;25;25;2014-06-15;Dues;Dues-AnnualMbr;;"GIU16";Julie;Giulivo
 0;150;150;2014-05-24;Dues;Dues-AnnualMbr;AnonMatch;"GLI64";Joann;Glidden
+0;122;122;2014-12-08;Dues;Dues-AnnualMbr;Newsletter;"GLO64";Julia;Glocklee
 0;35;35;2014-07-16;Dues;Dues-AnnualMbr;AnonMatch;"GOB16";Cynthia;Goble
 0;100;100;2014-06-19;Dues;Dues-AnnualMbr;AnonMatch;"GOF13";Viv;Goff
-0;50;50;2014-02-25;Dues;Dues-AnnualMbr;EOYAppeal;"GOL24";Saul & Carol;Goldberg
+0;25;25;2014-10-23;Dues;Dues-AnnualMbr;AnonMatch;"GOL00";Patricia;Golden 
+0;250;250;2014-12-01;Dues;Dues-AnnualMbr;;"GOL24";Saul & Carol;Goldberg
 0;25;25;2014-01-11;Dues;Dues-AnnualMbr;AnonMatch;"GOO15";Michelle;Goode
 0;50;50;2014-06-15;Dues;Dues-AnnualMbr;AnonMatch;"GOO76";Laura;Goodwin
-50;75;25;2014-07-18;Dues;Dues-AnnualMbr;AnonMatch;"GRA25";George;Graves
+50;125;75;2014-12-22;Dues;Dues-AnnualMbr;;"GRA25";George;Graves
+0;25;25;2014-12-31;Dues;Dues-AnnualMbr;;"GRA52";David;Grady
 0;175;175;2014-04-24;Dues;Dues-AnnualMbr;;"GRA71";Lisa;Gray
+100;150;50;2014-12-30;Dues;Dues-AnnualMbr;;"GRA85";Pamela;Graham
+100;125;25;2014-12-07;Dues;Dues-AnnualMbr;EOYAppeal;"GRE16";Bill;Greene
 0;25;25;2014-04-14;Dues;Dues-AnnualMbr;AnonMatch;"GRE17";Lynda Bree;Greer
 0;35;35;2014-06-11;Dues;Dues-AnnualMbr;AnonMatch;"GRE48";Dianne & Carey;Greenaway
 0;100;100;2014-02-16;Dues;Dues-AnnualMbr;;"GRE83";Yvon;Gresser
+275;325;50;2015-01-18;Dues;Dues-Subscr;;"GRI11";Ed;Grimshaw
 0;50;50;2014-01-23;Dues;Dues-AnnualMbr;;"GRI71";Jacklyn;Grimshaw
 25;50;25;2014-03-03;Dues;Dues-AnnualMbr;;"GRI72";Richard;Grise
 0;35;35;2014-07-23;Donation;Don-IMO;AnonMatch;"GRO22A";Paul;Gross
+0;75;75;2014-12-10;Donation;Don-UnresDonation;EOYAppeal;"GRO25";Robbin;Gross
 0;25;25;2014-06-17;Dues;Dues-AnnualMbr;AnonMatch;"GRO74";Laurie;Grommes
-0;100;100;2014-01-30;Dues;Dues-AnnualMbr;;"GUD17";Pam & Anthony;Gudish
+0;200;200;2014-11-08;Dues;Dues-AnnualMbr;;"GUD17";Pam & Anthony;Gudish
+0;14;14;2014-10-27;Donation;Don-UnresDonation;;"GUE13";Diana Marlene;Guerrero
+240;285;45;2015-01-06;Dues;Dues-Subscr;;"GUI10";Donna;Guild
 0;100;100;2014-06-11;Dues;Dues-AnnualMbr;AnonMatch;"GUI24";Jonathan;Guild
+0;50;50;2014-10-23;Dues;Dues-AnnualMbr;AnonMatch;"GUL33";Gary;Guliasi
 0;20;20;2014-04-13;Donation;Don-UnresDonation;;"HAG17";Kara;Hagedorn
+240;280;40;2015-01-16;Dues;Dues-Subscr;;"HAL49";Donna;Halley
 0;20;20;2014-01-25;Donation;Don-UnresDonation;;"HAL58";Joe;Hall
-10;90;80;2014-09-02;Dues;Dues-Subscr;;"HAM18";Julie & David;Hammack
+10;230;220;2015-01-02;Dues;Dues-Subscr;;"HAM18";Julie & David;Hammack
+50;75;25;2014-12-10;Dues;Dues-AnnualMbr;Newsletter;"HAN665";Leslie;Hannon
 0;25;25;2014-08-17;Dues;Dues-AnnualMbr;AnonMatch;"HAN93";Shelby;Hansen
 0;25;25;2014-07-31;Dues;Dues-AnnualMbr;;"HAR01";Bailey;Hartman
 0;60;60;2014-03-06;Dues;Dues-AnnualMbr;AnonMatch;"HAR05";Joyce;Harrison
-0;100;100;2014-07-24;Dues;Dues-AnnualMbr;AnonMatch;"HAR15";Linda Lue;Harness
+300;500;200;2014-10-14;Dues;Dues-AnnualMbr;AnonMatch;"HAR11";Christine;Harvey
+0;200;200;2014-12-13;Dues;Dues-AnnualMbr;EOYAppeal;"HAR15";Linda Lue;Harness
+50;75;25;2015-01-14;Dues;Dues-AnnualMbr;;"HAR21A";Pamela;Hartmann
+0;9;9;2014-06-01;Dues;Dues-AnnualMbr;;"HAR27";Caryn;Hardt
 0;50;50;2015-06-17;Dues;Dues-AnnualMbr;;"HAR34";Rebecca;Harpain
+0;20;20;2014-10-30;Donation;Don-UnresDonation;;"HAR48";Paula;Harrill
+200;350;150;2014-12-21;Donation;Don-UnresDonation;;"HAR60";Lynne;Harkins
 0;370;370;2014-03-03;Dues;Dues-AnnualMbr;;"HAR88";Gary;Harkins
-0;3;3;2014-05-16;Donation;Don-UnresDonation;;"HAW29";Marcie;Hawthorne
+0;50;50;2014-11-13;Dues;Dues-AnnualMbr;AnonMatch;"HAT14";Anita K.;Hathway
+0;53;53;2014-12-09;Dues;Dues-AnnualMbr;EOYAppeal;"HAW29";Marcie;Hawthorne
 0;10;10;2014-03-28;Donation;Don-Other;;"HAW94";Nancy ;Haw
+0;100;100;2014-12-03;Dues;Dues-AnnualMbr;MailedNotice;"HAY28";Carla;Haynie
+0;15;15;2014-11-09;Dues;Dues-Subscr;;"HED17";Ashley;Hedtke
 25;50;25;2014-03-25;Dues;Dues-AnnualMbr;MailedNotice;"HEH56";Jean;Hehn-Bradley
 0;20;20;2014-07-15;Dues;Dues-AnnualMbr;AnonMatch;"HEL65";Melissa;Heller
 0;10;10;2014-01-26;Donation;Don-UnresDonation;;"HEN15";Jessica & Ross;Henderson-McBean
-0;75;75;2014-07-06;Donation;Don-IHO;AnonMatch;"HEN20";Rebecca;Hendrickson
+50;100;50;2014-11-11;Dues;Dues-AnnualMbr;;"HEN15A";Don;Henderson
+0;75;75;2014-07-06;Dues;Dues-AnnualMbr;AnonMatch;"HEN20";Rebecca;Hendrickson
 0;20;20;2014-04-15;Dues;Dues-AnnualMbr;;"HER18";Caren;Herbert
-0;15;15;2014-08-10;Dues;Dues-Subscr;;"HER51";Sonya;Herrera
+0;30;30;2014-10-11;Dues;Dues-Subscr;AnonMatch;"HER51";Sonya;Herrera
 0;100;100;2014-06-26;Dues;Dues-AnnualMbr;AnonMatch;"HER74";Donna;Herbst
-0;40;40;2014-01-02;Dues;Dues-AnnualMbr;;"HEY31";Craig;Heyl
+0;80;80;2014-12-31;Dues;Dues-AnnualMbr;;"HEY31";Craig;Heyl
 25;50;25;2014-03-02;Dues;Dues-AnnualMbr;;"HIG22";Ken;Highfill
+100;150;50;2014-12-03;Dues;Dues-Subscr;;"HIL14";Arylane;Hill
 0;50;50;2014-08-12;Dues;Dues-AnnualMbr;AnonMatch;"HIL16";Kristine;Hillary
+500;1000;500;2014-12-01;Dues;Dues-AnnualMbr;Newsletter;"HIS48";Phyllis;Hischier
+0;25;25;2014-11-07;Dues;Dues-AnnualMbr;AnonMatch;"HOG33";Corrina;Hogaboom
+0;40;40;2014-10-18;Donation;Don-IHO;AnonMatch;"HOL26";Thomas & Shirley;Holgate
+180;345;165;2015-01-17;Dues;Dues-Subscr;;"HOL27";Debra & Herb;Holt
+0;25;25;2015-01-05;Donation;Don-UnresDonation;Other;"HOL39";Joan;Holley
 0;15;15;2014-03-22;Donation;Don-UnresDonation;;"HOO30";Patricia;Hookstratten
-0;50;50;2014-04-09;Dues;Dues-AnnualMbr;;"HOU28";Alair;Hough
+0;500;500;2014-10-22;Dues;Dues-AnnualMbr;AnonMatch;"HOR14";Mark;Hornickel
+30;37;7;2014-12-12;Donation;Don-UnresDonation;Newsletter;"HOR20";Marilyn;Hornung
+0;150;150;2014-10-22;Donation;Don-UnresDonation;AnonMatch;"HOU28";Alair;Hough
+0;25;25;2014-12-26;Dues;Dues-AnnualMbr;EOYAppeal;"HOW12";Teri;Howard
+25;200;175;2014-12-22;Donation;Don-IHO;Newsletter;"HUB31";Jennifer;Hubbard
 0;25;25;2014-01-13;Dues;Dues-AnnualMbr;;"HUD47";Chris;Hudson
-0;50;50;2014-02-06;Dues;Dues-AnnualMbr;;"ISA16";Jodi;Isaacs
+0;50;50;2014-10-21;Dues;Dues-AnnualMbr;AnonMatch;"INB53";Cheryle;Inboden
+32;50;18;2014-11-20;Dues;Dues-AnnualMbr;;"IRV23";Marion;Irving deCruz
+0;90;90;2014-10-06;Dues;Dues-AnnualMbr;;"ISA16";Jodi;Isaacs
 0;20;20;2014-05-18;Dues;Dues-AnnualMbr;AnonMatch;"JAI92";Kristina;Jaime
 0;20;20;2014-09-14;Donation;Don-UnresDonation;AnonMatch;"JAN46";Janet;unknown
+25;50;25;2014-12-08;Dues;Dues-AnnualMbr;Newsletter;"JAN72";Ronald L.;Janney
+0;50;50;2014-11-14;Dues;Dues-AnnualMbr;MailedNotice;"JEL48";Cynthia;Jelinek
 0;40;40;2014-06-11;Dues;Dues-AnnualMbr;AnonMatch;"JOH11A";Colleen;Johnson
-0;150;150;2014-08-14;Dues;Dues-AnnualMbr;AnonMatch;"JOH23";Craig & Victoria;Johnsen
+360;390;30;2015-01-13;Dues;Dues-Subscr;;"JOH18";Prisila;Johnson
+0;250;250;2014-11-19;Donation;Don-UnresDonation;;"JOH23";Craig & Victoria;Johnsen
+100;400;300;2014-12-27;Donation;Don-UnresDonation;;"JOH27";Jackie;Johnson
 0;35;35;2014-07-13;Dues;Dues-AnnualMbr;AnonMatch;"JOH46";Ian;Johnson
 0;50;50;2014-09-04;Dues;Dues-AnnualMbr;AnonMatch;"JOH58";Anna;Johnson
 0;100;100;2014-04-07;Dues;Dues-AnnualMbr;EOYAppeal;"JOH82";Joseph;Johnson
 0;20;20;2014-07-01;Donation;Don-UnresDonation;;"JOH91";Tracy;Johnston
-0;25.5;25.5;2014-09-02;Dues;Dues-Subscr;AnonMatch;"JON26";Diondra;Jones
+0;25;25;2014-12-15;Dues;Dues-AnnualMbr;;"JON11";Susan;Jonas
+0;50;50;2014-12-30;Dues;Dues-AnnualMbr;;"JON15";Tamira;Jones
+0;42.5;42.5;2015-01-02;Dues;Dues-Subscr;;"JON26";Diondra;Jones
+0;25;25;2014-09-24;Dues;Dues-AnnualMbr;AnonMatch;"JON76";Janice;Jones
 0;25;25;2014-05-25;Dues;Dues-AnnualMbr;;"JOY18";Marcia;Joyce
+60;65;5;2015-01-15;Dues;Dues-Subscr;;"JUL50";Anne;Julian
 0;20;20;2014-05-18;Dues;Dues-AnnualMbr;AnonMatch;"JUR24";Lauren;Jurgens
+25;50;25;2014-12-14;Dues;Dues-AnnualMbr;;"KAL11";Gene & Mimi;Kalland
 0;25;25;2014-09-08;Dues;Dues-AnnualMbr;AnonMatch;"KAN22";Esta & Larry;Kandarian
 0;40;40;2014-06-13;Dues;Dues-AnnualMbr;AnonMatch;"KAN53";Anne;Kanter
+0;5;5;2014-05-31;Donation;Don-UnresDonation;;"KAT28";Dana;Katz
+100;200;100;2014-12-19;Donation;Don-UnresDonation;EOYAppeal;"KEE11";Christy;Keeling
 0;15;15;2014-06-11;Donation;Don-UnresDonation;AnonMatch;"KEL10";Ally;Keller
 100;250;150;2014-05-05;Dues;Dues-AnnualMbr;MailedNotice;"KEL26";Peggy;Kelley
-50;150;100;2014-07-08;Dues;Dues-AnnualMbr;AnonMatch;"KEN40";David;Kennedy
+0;25;25;2014-11-14;Dues;Dues-AnnualMbr;;"KEL53";Aidan;Kelly
+50;400;350;2014-10-22;Donation;Don-UnresDonation;AnonMatch;"KEN40";David;Kennedy
 0;100;100;2014-02-05;Dues;Dues-AnnualMbr;;"KIN18";Betty;King
-0;500;500;2014-07-23;Dues;Dues-AnnualMbr;AnonMatch;"KNI10";Randall;Knight
-0;10;10;2014-06-06;Donation;Don-UnresDonation;;"KNO39";William;Knowlton
+0;25;25;2014-11-28;Donation;Don-IMO;;"KIR61";Laura ;Kirschner
+0;100;100;2014-12-28;Dues;Dues-AnnualMbr;;"KIS60";Arthur;Kishiyama
+240;310;70;2015-02-08;Dues;Dues-Subscr;;"KLI46";Dave;Klinzman
+0;1000;1000;2014-12-23;Donation;Don-UnresDonation;EOYAppeal;"KNI10";Randall;Knight
+0;23;23;2014-11-25;Donation;Don-UnresDonation;;"KNO39";William;Knowlton
 0;250;250;2014-03-22;Dues;Dues-AnnualMbr;AnonMatch;"KOH12";Kohana;Pharmacy
 0;40;40;2014-06-19;Donation;Don-UnresDonation;AnonMatch;"KOL36";Alice;Kolb
 0;20;20;2014-05-24;Donation;Don-UnresDonation;;"KOR24";Gale;Kordowski
 0;100;100;2014-01-02;Dues;Dues-AnnualMbr;;"KOR45";Renou & Corina;Korff
+0;10;10;2014-12-19;Donation;Don-UnresDonation;;"KRE84";Carol;Krebs
 0;25;25;2014-01-12;Dues;Dues-AnnualMbr;AnonMatch;"KRI16";Cindy;Krist
-0;1804;1804;2014-07-22;Donation;Don-UnresDonation;;"KUN58";Jean;Kuntze
+0;2804;2804;2015-01-03;Dues;Dues-AnnualMbr;EOYAppeal;"KUN58";Jean;Kuntze
+0;50;50;2014-09-29;Dues;Dues-AnnualMbr;AnonMatch;"KUP18";Barbara;Kuperman
 25;50;25;2014-06-29;Dues;Dues-AnnualMbr;AnonMatch;"LAD18";Elaine;Ladewig
 25;50;25;2014-08-03;Dues;Dues-AnnualMbr;AnonMatch;"LAH44";Kristie;Lahr
-0;30;30;2014-02-24;Dues;Dues-AnnualMbr;;"LAK16";Sandra;Lakeman
-100;250;150;2014-03-02;Dues;Dues-AnnualMbr;;"LAN84";Lynn;Lane
-0;300;300;2014-08-12;Dues;Dues-Subscr;;"LAU00";Goloria;Lautt
-0;105;105;2014-09-11;Dues;Dues-Subscr;AnonMatch;"LEE16";Carrie;Lee
+0;60;60;2015-01-08;Dues;Dues-AnnualMbr;;"LAK16";Sandra;Lakeman
+25;50;25;2014-12-19;Dues;Dues-AnnualMbr;EOYAppeal;"LAM99";Marcia;Lamkin
+0;5;5;2014-11-30;Donation;Don-UnresDonation;Newsletter;"LAN49";Christy;Lane
+200;325;125;2014-12-07;Dues;Dues-AnnualMbr;EOYAppeal;"LAN61";James;Landreth
+100;500;400;2014-12-26;Dues;Dues-AnnualMbr;EOYAppeal;"LAN84";Lynn;Lane
+100;140;40;2015-01-02;Dues;Dues-Subscr;;"LAN97";Maureen;Lannan
+0;450;450;2014-12-10;Dues;Dues-Subscr;;"LAU00";Gloria;Lautt
+0;165;165;2015-01-11;Dues;Dues-Subscr;;"LEE16";Carrie;Lee
 0;40;40;2014-04-09;Dues;Dues-AnnualMbr;AnonMatch;"LEE38";Holly;Le
+30;130;100;2014-10-13;Dues;Dues-AnnualMbr;;"LEG25";Marje;Legerton
+0;1000;1000;2014-12-31;Dues;Dues-AnnualMbr;MailedNotice;"LEH49";Jeffrey;Lehmer
+0;50;50;2014-11-16;Dues;Dues-AnnualMbr;;"LEI83";Ariane;Leiter
 35.42;85.52;50.1;2014-06-29;Dues;Dues-Other;;"LEM13";LEMOS;Feed & Pet
-0;30;30;2014-07-22;Dues;Dues-AnnualMbr;AnonMatch;"LEM17";J.M.;Lemin
+0;80;80;2014-12-15;Dues;Dues-AnnualMbr;EOYAppeal;"LEM17";Joyce;Lemin
 0;100;100;2014-09-12;Dues;Dues-AnnualMbr;AnonMatch;"LEV69";Frank;Levine
+0;1000;1000;2014-12-28;Dues;Dues-AnnualMbr;;"LIN55";Marcella;Lindbery
 0;25;25;2014-06-18;Dues;Dues-AnnualMbr;AnonMatch;"LIN84";Jason;Linn
-0;25;25;2014-01-23;Dues;Dues-AnnualMbr;;"LIT16";Bonnie;Little
+0;20;20;2014-11-21;Donation;Don-UnresDonation;;"LIP16";Michael;Lipari
+0;5000;5000;2014-12-29;Donation;Don-UnresDonation;;"LIP53";Mitchell & Phoebe;Lipari
+0;50;50;2015-01-05;Dues;Dues-AnnualMbr;;"LIT16";Bonnie;Little
 0;40;40;2014-05-25;Dues;Dues-AnnualMbr;AnonMatch;"LOE52";Dara;Loeper
 0;20;20;2014-08-16;Donation;Don-UnresDonation;AnonMatch;"LOW22";Warren;Lowry
 0;100;100;2014-02-06;Dues;Dues-AnnualMbr;;"LUF45";Karl;Luft
+0;50;50;2014-11-29;Dues;Dues-AnnualMbr;MailedNotice;"MAA72";Ken & Laurel;Maas
 0;20;20;2014-06-03;Donation;Don-UnresDonation;;"MAC13";Michelle;Macey
+0;35;35;2014-12-31;Dues;Dues-AnnualMbr;MailedNotice;"MAC18";Eileen;Mackin-Getzoff
+75;100;25;2014-10-24;Donation;Don-UnresDonation;AnonMatch;"MAC29";Carl;MacDonald
+0;50;50;2014-10-26;Dues;Dues-AnnualMbr;;"MAC42";Lawrence;MacDonald
+0;55;55;2014-10-14;Dues;Dues-AnnualMbr;AnonMatch;"MAC46";Consuelo;Macedo
+100;130;30;2015-01-03;Dues;Dues-Subscr;;"MAN11";Barbara;Mannetter
 0;20;20;2014-06-21;Donation;Don-UnresDonation;AnonMatch;"MAR10";Roxanna;Martines
+0;25;25;2014-12-30;Dues;Dues-AnnualMbr;;"MAR12";Casey;Martinez
+80;120;40;2015-01-02;Dues;Dues-Subscr;;"MAR43";Leonna;Martinez
 0;15;15;2014-05-18;Donation;Don-UnresDonation;AnonMatch;"MAX66";Sarah;Maxwell
+50;125;75;2014-12-02;Donation;Don-UnresDonation;;"MAY51";Beverly;Mays
+0;200;200;2014-12-01;Dues;Dues-AnnualMbr;;"MCA32";Kathryn;McAdams
 0;25;25;2014-03-15;Dues;Dues-AnnualMbr;AnonMatch;"MCC20";Michelle;McCollum
+0;20;20;2014-11-01;Donation;Don-UnresDonation;;"MCC28";Val & Eva;McClure
+0;20;20;2014-12-12;Donation;Don-UnresDonation;;"MCC52";Carrol;McCain
+0;10;10;2014-09-30;Donation;Don-UnresDonation;AnonMatch;"MCC90";Merry J.;McCown
+0;50;50;2014-10-21;Donation;Don-UnresDonation;AnonMatch;"MCC96";McCollum & Associate;McCollum & Associate
 0;25;25;2014-01-11;Dues;Dues-AnnualMbr;;"MCD21";Mary;McDonald
 0;5;5;2014-05-02;Donation;Don-UnresDonation;;"MCD43";Ramie;McDowell
 0;50;50;2014-07-22;Dues;Dues-AnnualMbr;AnonMatch;"MCI26";Bonnie;McIvor
+60;65;5;2015-01-03;Dues;Dues-Subscr;;"MCK10";Scott;McKechnie
+0;25;25;2014-11-03;Dues;Dues-AnnualMbr;;"MCK48";Calli;McKenna
+0;30;30;2014-10-22;Dues;Dues-AnnualMbr;AnonMatch;"MCM38";Ruth ;Gentry McMillan
+200;250;50;2015-01-03;Dues;Dues-AnnualMbr;EmailedNotice;"MCN18";Margaret;McNamee
 0;150;150;2014-07-27;Dues;Dues-AnnualMbr;AnonMatch;"MCN63";Kristin;McNamara
+0;100;100;2014-12-13;Dues;Dues-AnnualMbr;;"MCN88";Margeri;McNeill-Manning
+180;195;15;2015-01-07;Dues;Dues-Subscr;;"MEA21";Terry;Mead
 0;50;50;2014-07-16;Dues;Dues-AnnualMbr;AnonMatch;"MEA38A";Bryan;Mealy
 1000;2500;1500;2014-08-27;Dues;Dues-AnnualMbr;AnonMatch;"MEL36";Nancy;Mellen
+0;25;25;2014-12-13;Dues;Dues-AnnualMbr;;"MER39";Lynda;Merrill
+0;10;10;2014-10-16;Donation;Don-UnresDonation;;"MER63";Robert;Mertes
+25;100;75;2014-10-20;Dues;Dues-AnnualMbr;AnonMatch;"MEY56";Jenny;Meyers
 0;50;50;2014-09-06;Dues;Dues-AnnualMbr;AnonMatch;"MIG70";Emily;Miggins
+0;25;25;2014-12-31;Dues;Dues-AnnualMbr;Newsletter;"MIL17";Sharon A.;Miles
+30;40;10;2014-11-13;Dues;Dues-AnnualMbr;Other;"MIL18";Kristin;Miller
+20;30;10;2014-11-10;Donation;Don-UnresDonation;;"MIL67";David;Miller
 0;35;35;2014-04-26;Dues;Dues-AnnualMbr;AnonMatch;"MIL68";Kimber;Miller
 0;5;5;2014-09-02;Donation;Don-UnresDonation;;"MIT13";Cam;Mitchell
-0;30;30;2014-07-17;Dues;Dues-Subscr;AnonMatch;"MON13";Christopher;Monza
+0;90;90;2015-01-17;Dues;Dues-Subscr;;"MON13";Christopher;Monza
+0;50;50;2014-10-22;Dues;Dues-AnnualMbr;AnonMatch;"MON65";Nancy;Monroe
+0;20;20;2014-12-11;Donation;Don-UnresDonation;;"MON89";Valerie;Monge
+0;10;10;2015-01-04;Donation;Don-UnresDonation;;"MOO11";Sherry;Moore
 0;10;10;2014-05-11;Donation;Don-UnresDonation;;"MOO17";Molly;Moore
 0;20;20;2014-06-14;Donation;Don-UnresDonation;;"MOO36";Nick;Moonz
+0;25;25;2014-10-31;Dues;Dues-AnnualMbr;EOYAppeal;"MOR00";Fred & Betty;Moritsch
 0;25;25;2014-03-11;Dues;Dues-AnnualMbr;AnonMatch;"MOR13";Lynn;Morales
+0;20;20;2014-10-09;Donation;Don-UnresDonation;;"MOR18";Suzanne;Morby
+25;30;5;2015-01-18;Dues;Dues-AnnualMbr;;"MOR21A";J.A.;Morton
+50;100;50;2014-12-09;Dues;Dues-AnnualMbr;Newsletter;"MOR22";Jean;Morris
+100;200;100;2014-12-04;Donation;Don-UnresDonation;;"MOR33";Grant;Morris
+1200;1300;100;2015-01-11;Dues;Dues-Subscr;;"MOR66";Kelly;Moriarty
+0;40;40;2014-10-16;Dues;Dues-AnnualMbr;AnonMatch;"MUL25";Stephanie;Mulrooney
+0;100;100;2014-11-17;Dues;Dues-AnnualMbr;;"MUL36";Vickie;Mullins
 0;25;25;2014-05-27;Dues;Dues-AnnualMbr;AnonMatch;"NAP25";Al & Deborah;Napzok
+0;100;100;2014-12-31;Dues;Dues-AnnualMbr;;"NAU13";Sandra;Naumann
 43;50;7;2014-07-13;Dues;Dues-AnnualMbr;AnonMatch;"NEL23";Kelley;Nelson
 50;200;150;2014-01-02;Donation;Don-UnresDonation;;"NEW15A";Chester & Mary Ann;Newman
+25;50;25;2014-12-08;Dues;Dues-AnnualMbr;EOYAppeal;"NIC60";Barbara & Howard;Nicholson
 100;200;100;2014-06-02;Dues;Dues-AnnualMbr;AnonMatch;"NIE11";Lonna and Keith;Nielsen
 0;20;20;2014-01-31;Dues;Dues-AnnualMbr;;"NIG15";Sam;Nigro
 0;100;100;2014-05-14;Dues;Dues-AnnualMbr;AnonMatch;"NIN13";Catherine;Nino
-0;100;100;2014-04-04;Dues;Dues-AnnualMbr;;"NOE11";Philip;Noel
+0;100;100;2014-04-04;Dues;Dues-AnnualMbr;AnonMatch;"NOE11";Philip;Noel
+0;125;125;2014-12-12;Dues;Dues-AnnualMbr;Newsletter;"NOL71";Patricia ;Nolen
 0;50;50;2014-04-20;Dues;Dues-AnnualMbr;;"NOR23";Robert;Norrington 
 50;100;50;2014-06-14;Dues;Dues-AnnualMbr;;"NOR59";Barbara;Nordin
 0;25;25;2014-02-13;Dues;Dues-AnnualMbr;AnonMatch;"OBR72";Cara;O'Brien
-0;300;300;2014-07-26;Dues;Dues-Subscr;AnonMatch;"ORB24";Gary & Eileen;Orback
+0;50;50;2014-10-17;Dues;Dues-AnnualMbr;AnonMatch;"ODU23";Patricia;Odum
+35;50;15;2014-12-31;Dues;Dues-AnnualMbr;;"OHA69";Jon;O'Hare
+0;20;20;2014-10-21;Donation;Don-UnresDonation;;"OJE13";Jan;Ojerholm
+0;50;50;2014-10-21;Dues;Dues-AnnualMbr;AnonMatch;"OLE18";Patricia;O'Lear
+0;100;100;2014-12-17;Dues;Dues-AnnualMbr;;"ONE52";Megan;O'Neill
+0;450;450;2014-10-29;Dues;Dues-Subscr;AnonMatch;"ORB24";Gary & Eileen;Orback
 0;25;25;2014-02-20;Dues;Dues-AnnualMbr;AnonMatch;"ORM30";Laura;Ormonde
-425;675;250;2014-09-19;Dues;Dues-Subscr;;"OSH13";Donna;O'Shaughnessy
+100;160;60;2014-11-16;Donation;Don-UnresDonation;;"OSB63";Leland;Osborn
+425;900;475;2014-12-19;Dues;Dues-Subscr;;"OSH13";Donna;O'Shaughnessy
 0;50;50;2014-05-26;Dues;Dues-AnnualMbr;AnonMatch;"OST13";Anna;Ostovani
-0;303.33;303.33;2014-09-04;Donation;Don-UnresDonation;;"OTD00";one time;donation
+0;374.33;374.33;2015-01-18;Donation;Don-UnresDonation;;"OTD00";one time;donation
+50;200;150;2014-12-10;Dues;Dues-AnnualMbr;Newsletter;"OTT49";Karen;Ott
 0;25;25;2014-01-18;Dues;Dues-AnnualMbr;AnonMatch;"OWE55";Corie;Owen
+0;25;25;2014-12-13;Dues;Dues-AnnualMbr;;"PAL22";Joan;Palmieri
 0;100;100;2014-01-19;Dues;Dues-AnnualMbr;AnonMatch;"PAR14";Joe;Parkhurst
+0;6;6;2014-11-06;Donation;Don-UnresDonation;;"PAR72";Kate;Pardeilhan
 0;50;50;2014-06-08;Dues;Dues-AnnualMbr;AnonMatch;"PAR73";Ann E.;Parker
+0;30;30;2015-11-26;Donation;Don-UnresDonation;;"PAT90";Melissa;Patrick
 0;50;50;2014-04-27;Dues;Dues-AnnualMbr;AnonMatch;"PAT93";James;Patterson
 0;25;25;2014-03-06;Dues;Dues-AnnualMbr;AnonMatch;"PAV20";Emily;Pavia
+0;20;20;2014-12-31;Donation;Don-UnresDonation;;"PEA84";Katie;Pearce
 0;120;120;2014-09-16;Dues;Dues-Subscr;AnonMatch;"PEM20";Joel;Pemberton
 0;300;300;2014-05-02;Dues;Dues-AnnualMbr;;"PEP21";John;Pepple
+1200;2400;1200;2015-01-14;Dues;Dues-Subscr;;"PER17";Kimberly;Perez
 0;25;25;2014-01-14;Dues;Dues-AnnualMbr;AnonMatch;"PER62";Chris;Perello
-2650.02;2741.48;91.46;2014-08-12;Donation;Don-UnresDonation;;"PGE99";PG&E;Corp.
+0;100;100;2014-12-22;Donation;Don-IHO;;"PFA24";Susan B.;Pfau
+2650.02;6258.16;3608.14;2014-12-03;Donation;Don-UnresDonation;;"PGE99";Pacific Gas;& Electric
+0;45;45;2014-12-15;Dues;Dues-AnnualMbr;EOYAppeal;"PIC27";John;Pickering
 0;20;20;2014-07-04;Donation;Don-UnresDonation;;"PLA26";Rayma;Alegre-Place
-0;350;350;2014-09-04;Dues;Dues-Subscr;AnonMatch;"PLE17";Alison;Plemons
-0;100;100;2014-03-05;Dues;Dues-AnnualMbr;MailedNotice;"POE15";Lauren;Poe
+0;370;370;2015-01-04;Dues;Dues-Subscr;;"PLE17";Alison;Plemons
+0;200;200;2014-12-09;Dues;Dues-AnnualMbr;MailedNotice;"POE15";Lauren;Poe
 0;25;25;2014-01-11;Dues;Dues-AnnualMbr;AnonMatch;"POO20";Alexis;Poole
-210;240;30;2014-09-10;Dues;Dues-Subscr;;"PRI13";Teri R.;Prince
+0;100;100;2014-10-25;Dues;Dues-AnnualMbr;AnonMatch;"POR24";Suzanne;Porter
+210;300;90;2014-11-01;Dues;Dues-Subscr;;"PRI13";Teri R.;Prince
 0;50;50;2014-02-13;Dues;Dues-AnnualMbr;;"PUL16";Gidi;Pullen
-0;20;20;2014-08-07;Donation;Don-UnresDonation;AnonMatch;"PUP75";Nicole;Nicole & Leona Pupic
+0;20;20;2014-08-07;Donation;Don-UnresDonation;AnonMatch;"PUP75";Nicole;Pupich
 0;25;25;2014-01-30;Dues;Dues-AnnualMbr;AnonMatch;"PUR67A";Justin;Purnell
+0;50;50;2014-12-15;Dues;Dues-AnnualMbr;Newsletter;"RAB17";Janine L.;Raby
 0;20;20;2014-04-27;Donation;Don-UnresDonation;;"RAB72";Theresa;Rabaut
 0;25;25;2014-01-13;Dues;Dues-AnnualMbr;AnonMatch;"RAD17";Jesse;Radon
 0;25;25;2014-03-13;Dues;Dues-AnnualMbr;AnonMatch;"RAN17";Samantha R. J.;Bley
+0;250;250;2014-12-15;Dues;Dues-AnnualMbr;;"RAT27";Lawrence;Ratner
 0;15;15;2014-06-24;Donation;Don-UnresDonation;;"RAT65";Annette ;Rathbun
 0;5;5;2014-02-09;Donation;Don-UnresDonation;;"RAY61";Calista;Rayne
 0;100;100;2014-05-27;Dues;Dues-AnnualMbr;AnonMatch;"REE21";Susan M.;Reese
+180;195;15;2015-01-10;Dues;Dues-Subscr;;"REE31";Pat;Reed
 0;100;100;2014-05-11;Donation;Don-IHO;AnonMatch;"REG25";John ;Reger
+0;100;100;2014-10-21;Dues;Dues-AnnualMbr;AnonMatch;"REN32";Debra;Renick
 0;50;50;2014-06-20;Dues;Dues-AnnualMbr;AnonMatch;"REN67";Lisa;Renelle
-0;70;70;2014-09-02;Dues;Dues-Subscr;;"RES68";Judith;Resnick
+0;110;110;2015-01-02;Dues;Dues-Subscr;;"RES68";Judith;Resnick
 0;100;100;2014-02-23;Dues;Dues-AnnualMbr;;"REY35";Beth;Reynolds
-50;125;75;2014-08-28;Donation;Don-IHO;;"RIC19A";Suzanne;Rice-Spiers
-0;100;100;2014-04-10;Dues;Dues-AnnualMbr;;"RID34";Kim;Ridenour
+50;200;150;2014-12-10;Dues;Dues-AnnualMbr;;"RIC19A";Suzanne;Rice-Spiers
+0;200;200;2014-11-03;Donation;Don-UnresDonation;AnonMatch;"RID34";Kim;Ridenour
 0;8;8;2014-04-02;Donation;Don-UnresDonation;;"RIT11";Linda;Ritchie
-50;450;400;2014-09-05;Dues;Dues-Subscr;;"RIV17";Francis;Rivinus
+50;650;600;2015-01-05;Dues;Dues-Subscr;;"RIV17";Francis;Rivinus
 0;25;25;2014-07-22;Dues;Dues-AnnualMbr;AnonMatch;"RIV20";Pearl;Rivers
 0;1000;1000;2014-04-30;Dues;Dues-AnnualMbr;AnonMatch;"ROB11";Louis;Robinson
 0;20;20;2014-04-27;Donation;Don-UnresDonation;;"ROB42";Jamie;Roberts
-0;125;125;2014-08-24;Donation;Don-UnresDonation;AnonMatch;"ROB56";Jennifer;Robillard
+0;375;375;2014-12-27;Dues;Dues-AnnualMbr;EOYAppeal;"ROB56";Jennifer;Robillard
 0;25;25;2014-01-30;Dues;Dues-AnnualMbr;;"ROB76A";Richann;Robinson
-0;20;20;2014-05-23;Donation;Don-UnresDonation;;"ROB76C";Teresa;Robinson
+0;40;40;2014-11-26;Donation;Don-UnresDonation;;"ROB76C";Teresa;Robinson
+0;95;95;2014-12-16;Donation;Don-UnresDonation;Newsletter;"ROD01";Irene;Rodarte
 0;25;25;2014-08-16;Dues;Dues-AnnualMbr;AnonMatch;"ROD12";Reuben;Rodgriguez
-50;150;100;2014-06-25;Donation;Don-UnresDonation;AnonMatch;"ROG26";Donald & Alice;Rogers
+50;200;150;2014-12-06;Dues;Dues-AnnualMbr;EOYAppeal;"ROG26";Donald & Alice;Rogers
 0;20;20;2014-06-18;Donation;Don-UnresDonation;;"ROG93";Cathy;Rogers
 0;25;25;2014-03-09;Dues;Dues-AnnualMbr;AnonMatch;"ROH66";Michaela;Rohrbough
-50;100;50;2014-01-16;Dues;Dues-AnnualMbr;;"ROS15";Stan;Rosenfield
+50;200;150;2015-01-05;Dues;Dues-AnnualMbr;EmailedNotice;"ROS15";Stan;Rosenfield
+0;25;25;2014-10-25;Dues;Dues-AnnualMbr;AnonMatch;"ROY21";Maryna;Roy
 0;25;25;2014-05-17;Dues;Dues-AnnualMbr;AnonMatch;"RUI13";Lisa;Ruiz
 0;35;35;2014-04-27;Dues;Dues-AnnualMbr;;"SAH10";Jody;Sahaydak
 0;50;50;2014-03-15;Dues;Dues-AnnualMbr;AnonMatch;"SAL11";Toni;Salgado
+100;150;50;2015-01-18;Dues;Dues-AnnualMbr;;"SAL21";Janet;Salem
 0;20;20;2014-02-09;Donation;Don-UnresDonation;;"SAL58";;Salisbury Ltd
 0;20;20;2014-09-01;Dues;Dues-AnnualMbr;AnonMatch;"SAN20";Kat;Sanders
+50;100;50;2014-12-08;Dues;Dues-AnnualMbr;Newsletter;"SAY29";Claudette ;Saylor
 0;25;25;2014-03-15;Dues;Dues-AnnualMbr;;"SCH01";Sandy;Schneider
 0;25;25;2014-07-12;Dues;Dues-AnnualMbr;AnonMatch;"SCH18";Emily;Schwartz
 0;25;25;2014-01-01;Dues;Dues-AnnualMbr;AnonMatch;"SCH24";Barbara;Schader
-0;50;50;2014-05-05;Dues;Dues-AnnualMbr;;"SCH67";Mary;Schwarz
+300;325;25;2015-01-11;Dues;Dues-Subscr;;"SCH51";Richard;Schultz
+0;150;150;2014-12-01;Donation;Don-UnresDonation;;"SCH67";Mary;Schwarz
 0;100;100;2014-01-30;Dues;Dues-AnnualMbr;;"SCH68";Susan;Schneider
-20;40;20;2014-09-09;Dues;Dues-AnnualMbr;AnonMatch;"SCH81";Minnie;Schicker
+0;25;25;2014-12-13;Dues;Dues-AnnualMbr;;"SCH78";Joseph;Schum
+20;60;40;2014-12-29;Dues;Dues-AnnualMbr;EOYAppeal;"SCH81";George;Schicker
 0;25;25;2014-06-18;Dues;Dues-AnnualMbr;AnonMatch;"SCH82";Georgette;Schaefer
 0;25;25;2014-06-08;Dues;Dues-AnnualMbr;;"SCH94";Summer;Schlageter
-0;30;30;2014-01-04;Dues;Dues-AnnualMbr;AnonMatch;"SEE29";Cheryl;See
+0;50;50;2015-01-02;Donation;Don-UnresDonation;;"SEC39";Second Chance at Lov;Humane Society
+0;60;60;2014-12-13;Dues;Dues-AnnualMbr;EOYAppeal;"SEE29";Cheryl;See
 0;25;25;2014-07-12;Dues;Dues-AnnualMbr;AnonMatch;"SEM55";Fran;Semonian
+0;15;15;2014-11-12;Donation;Don-UnresDonation;EOYAppeal;"SHA05";Nancy;Shaw
+300;500;200;2014-12-31;Dues;Dues-AnnualMbr;;"SHA56";Jennifer;Shay
 0;20;20;2014-06-06;Donation;Don-UnresDonation;;"SHA67";Shauna;L.
+0;25;25;2014-12-13;Dues;Dues-AnnualMbr;;"SHA72";Fatemeh;Shamsizadeh
 0;25;25;2014-06-09;Dues;Dues-AnnualMbr;AnonMatch;"SHE64";Clara M.;Sheets
 0;100;100;2014-01-26;Dues;Dues-AnnualMbr;AnonMatch;"SHI16";Jean;Shirley
+0;25;25;2014-12-27;Dues;Dues-AnnualMbr;;"SHI76";Douglas;Shinoda
 0;100;100;2014-02-21;Dues;Dues-AnnualMbr;AnonMatch;"SHO24";Marc A. & Adrienne;Shouse
 0;25;25;2014-02-06;Dues;Dues-AnnualMbr;AnonMatch;"SHU63";Christine;Shuck
 500;1000;500;2014-02-20;Dues;Dues-AnnualMbr;EOYAppeal;"SIM13";Linda;Sims
 0;35;35;2014-06-11;Dues;Dues-AnnualMbr;AnonMatch;"SIM20";Jena;Simmons
+100;150;50;2014-12-18;Dues;Dues-AnnualMbr;EOYAppeal;"SIM60";Georgia;Simpson
+330;360;30;2015-01-02;Dues;Dues-Subscr;;"SIN11";Amy;Sinclair
 0;25;25;2014-03-15;Dues;Dues-AnnualMbr;AnonMatch;"SIN38";Melinda;Sinay
+0;100;100;2014-10-30;Dues;Dues-AnnualMbr;AnonMatch;"SIR10";Lee & Cristina;Sirotta
 0;25;25;2014-02-09;Dues;Dues-AnnualMbr;;"SLE48";Holly;Sletteland
 0;25;25;2014-04-04;Dues;Dues-AnnualMbr;;"SMI14";Nathan;Smith
+0;50;50;2014-10-27;Dues;Dues-AnnualMbr;AnonMatch;"SMI15";Dena;Smith
 0;6;6;2014-07-19;Donation;Don-UnresDonation;;"SMI21";Kevin;Smith
+300;1000;700;2014-12-08;Dues;Dues-AnnualMbr;EOYAppeal;"SMI22A";Ann;Smith
+0;1000;1000;2014-12-25;Dues;Dues-AnnualMbr;;"SMI42";Penny D.;Smith
 0;40;40;2014-06-07;Dues;Dues-AnnualMbr;AnonMatch;"SMI44";Michael;Smiley
 0;100;100;2014-06-18;Dues;Dues-AnnualMbr;AnonMatch;"SMI93";Joseph;Smith
 0;250;250;2014-04-02;Dues;Dues-AnnualMbr;;"SOL14";Margaret;Hennessy
-0;250;250;2014-09-14;Dues;Dues-Subscr;AnonMatch;"SOR81";Kathy;Sorrells
+0;75;75;2014-10-30;Dues;Dues-AnnualMbr;;"SON60";Herbert;Sonnabend
+0;350;350;2015-01-14;Dues;Dues-Subscr;;"SOR81";Kathy;Sorrells
+0;10;10;2014-10-29;Donation;Don-UnresDonation;;"SOU72";Roberta;Soules
+0;200;200;2014-12-10;Dues;Dues-AnnualMbr;;"SOU74";Jennifer;Southward
 0;300;300;2014-04-08;Dues;Dues-AnnualMbr;;"SOV01";Steven;Sovizral
-50;85;35;2014-07-02;Donation;Don-UnresDonation;AnonMatch;"SPO12";Leslie;Spoon
+50;135;85;2014-12-10;Dues;Dues-AnnualMbr;Newsletter;"SPO12";Leslie;Spoon
 0;250;250;2014-08-24;Dues;Dues-AnnualMbr;AnonMatch;"SPO57";Avila Beach;Paddle Sports
-0;50;50;2014-05-07;Donation;Don-IHO;AnonMatch;"STA23";Mary;Stallard
+0;75;75;2014-12-30;Dues;Dues-AnnualMbr;EOYAppeal;"STA23";Mary;Stallard
+0;25;25;2014-12-13;Dues;Dues-AnnualMbr;;"STE20";Thomas;Stead
+0;1;1;2014-10-18;Donation;Don-UnresDonation;;"STE29";Hans;Steinmann
 0;100;100;2014-03-09;Dues;Dues-AnnualMbr;AnonMatch;"STE31";Jennifer;Steele
-0;200;200;2014-07-05;Dues;Dues-AnnualMbr;T-Shirts;"STE32";Kim & Jeff;Steele
-0;100;100;2014-03-15;Dues;Dues-AnnualMbr;AnonMatch;"STO03";Carolyn;Stoebig
+0;1700;1700;2014-12-12;Donation;Don-UnresDonation;EOYAppeal;"STE32";Kim & Jeff;Steele
+0;25;25;2014-12-13;Dues;Dues-AnnualMbr;;"STE42";Christine;Stead
+0;50;50;2014-11-07;Dues;Dues-AnnualMbr;AnonMatch;"STE89";Michael;Stewart
+0;40;40;2014-12-12;Dues;Dues-AnnualMbr;;"STE98";Sande;Stewart
 0;200;200;2014-04-13;Donation;Don-UnresDonation;;"STO28";Med;Stop
-0;100;100;2014-03-15;Dues;Dues-AnnualMbr;AnonMatch;"STO37";John ;Stoebig
+0;200;200;2014-03-15;Dues;Dues-AnnualMbr;AnonMatch;"STO37";John ;Stoebig
+0;25;25;2015-12-29;Dues;Dues-AnnualMbr;;"STO43";Kathleen;Stockwell
 0;50;50;2014-03-12;Dues;Dues-AnnualMbr;;"STO44";Kathleen;Stone
 0;100;100;2014-04-02;Dues;Dues-AnnualMbr;;"STO68";Ross;Stone
-160;450;290;2014-09-27;Dues;Dues-Subscr;;"STO86";Jeanette;Stone
+160;500;340;2014-11-17;Dues;Dues-Subscr;;"STO86";Jeanette;Stone
 10;25;15;2014-06-26;Dues;Dues-AnnualMbr;AnonMatch;"STO91";Ilona;Stone
 75;100;25;2014-02-06;Dues;Dues-AnnualMbr;;"STR30";Faith;Strailey
 0;20;20;2014-08-31;Donation;Don-UnresDonation;AnonMatch;"STR45";Jackie;Stringfield
@@ -349,59 +600,90 @@ Tot13;Tot14;QualDiff;LastDate;Purpose;Program;Campaign;MCID;FName;LName
 0;25;25;2014-05-08;Dues;Dues-AnnualMbr;;"SUL11";Mary;Sullivan
 0;10;10;2014-03-12;Donation;Don-UnresDonation;;"SUT50";Lee;Sutter
 0;50;50;2014-02-24;Dues;Dues-AnnualMbr;;"SWE15";Deborah;Swenson
+100;200;100;2014-10-12;Dues;Dues-AnnualMbr;AnonMatch;"SWE23";Anthony;Sweet
 0;25;25;2014-07-12;Dues;Dues-AnnualMbr;AnonMatch;"SWE75";Catherine;Swenson
 0;25;25;2014-02-06;Dues;Dues-AnnualMbr;AnonMatch;"TAL19";Gevrey;Talbert
-0;60;60;2014-09-27;Dues;Dues-Subscr;AnonMatch;"TAY30";Dulcie;Taylor
+0;120;120;2014-12-27;Dues;Dues-Subscr;;"TAY30";Dulcie;Taylor
 0;50;50;2014-06-13;Dues;Dues-AnnualMbr;AnonMatch;"TER51";Joseph;Terry
+0;150;150;2015-01-03;Dues;Dues-Subscr;;"THA14";Gregory;Thayer
+180;200.48;20.48;2015-01-06;Dues;Dues-Subscr;;"THA32";Lillian;Thayer
+0;200;200;2014-12-05;Dues;Dues-AnnualMbr;;"THA84";Shirley;Thayer
 0;25;25;2014-07-15;Dues;Dues-AnnualMbr;AnonMatch;"THA96";Katelyn;Thatcher
-0;20;20;2014-09-19;Donation;Don-UnresDonation;AnonMatch;"TIB28";Irene;Tibbetts
+0;10;10;2015-01-06;Donation;Don-UnresDonation;;"THE19";Andrew;Theros
+120;130;10;2015-01-17;Dues;Dues-Subscr;;"THO31";Bob;Thomas
 0;5;5;2014-06-17;Dues;Dues-AnnualMbr;;"TOE45";Katherine;Toews
+0;25;25;2015-01-11;Dues;Dues-AnnualMbr;;"TON88";Ruth;Tonkin
 0;25;25;2014-08-12;Donation;Don-IMO;;"TOO16";James & Debbie;Toomey
 0;30;30;2014-05-18;Dues;Dues-AnnualMbr;AnonMatch;"TOP12";Astrid;Topp
 0;20;20;2014-07-29;Donation;Don-UnresDonation;;"TOW18";Jeneva;Townsend
 0;25;25;2014-01-18;Dues;Dues-AnnualMbr;AnonMatch;"TRA14";Caroline;Trahan
 0;20;20;2014-03-23;Donation;Don-UnresDonation;;"TRI14";Matt;Tritt
+0;20;20;2014-10-17;Donation;Don-UnresDonation;;"TYG37";Terri;Tygielski
 0;10;10;2014-06-17;Donation;Don-UnresDonation;;"TYR38";Dawn;Tyra
 0;100;100;2014-04-25;Dues;Dues-AnnualMbr;;"TYR89";David;Tyra
-0;2120;2120;2014-08-18;Donation;Don-UnresDonation;;"UNI10A";University;of CA, Davis
-0;51.08;51.08;2014-07-03;Donation;Don-UnresDonation;;"UNL39";Terry;Fahey
+0;63.43;63.43;2014-11-24;Donation;Don-UnresDonation;;"UNL39";Terry;Fahey
 0;50;50;2014-08-08;Dues;Dues-AnnualMbr;AnonMatch;"URS16";John;Ursoleo
 0;25;25;2014-03-26;Dues;Dues-AnnualMbr;AnonMatch;"URS17";Chelsea;Ursoleo
+0;10;10;2014-12-24;Donation;Don-UnresDonation;;"VAL27";Malia;Valentine
 0;25;25;2014-06-09;Dues;Dues-AnnualMbr;AnonMatch;"VAL71";Kaitlyn;Valverde
 0;50;50;2014-01-11;Dues;Dues-AnnualMbr;AnonMatch;"VAN69";Anneline;Van Benthem
 0;25;25;2014-09-04;Dues;Dues-AnnualMbr;AnonMatch;"VAS15";Erika;Vasquez
-0;50;50;2014-05-18;Dues;Dues-AnnualMbr;AnonMatch;"VAS50";Bonnie;Vastbinder
+0;100;100;2014-12-24;Donation;Don-UnresDonation;EOYAppeal;"VAS50";Bonnie;Vastbinder
 0;35;35;2014-04-25;Dues;Dues-AnnualMbr;AnonMatch;"VER23";Holly;Vernazza
 0;20;20;2014-07-12;Donation;Don-UnresDonation;AnonMatch;"VER35";Lynda;Vera
-0;90;90;2014-06-13;Dues;Dues-AnnualMbr;AnonMatch;"VES16";Jason;Vest
+0;190;190;2014-10-03;Donation;Don-UnresDonation;;"VES16";Jason;Vest
 0;100;100;2014-05-06;Dues;Dues-AnnualMbr;;"VET66";Thomas;Vetsch
+25;3000;2975;2014-12-20;Dues;Dues-AnnualMbr;Other;"VID73";Oso Libre;Por Vida
 5;70;65;2014-09-07;Dues;Dues-Subscr;AnonMatch;"VIV17";June;Viviani
 0;20;20;2014-05-27;Donation;Don-UnresDonation;AnonMatch;"VOL14";Debbie;Volpi
 0;500;500;2014-01-10;Dues;Dues-AnnualMbr;;"WAD60";W. Duane;Waddell
+250;550;300;2014-12-10;Dues;Dues-AnnualMbr;;"WAD81";Kathleen;Waddell
 0;40;40;2014-03-13;Dues;Dues-AnnualMbr;AnonMatch;"WAG82";Claudia;Wagemann
 0;125;125;2014-08-19;Dues;Dues-AnnualMbr;AnonMatch;"WAL12";Dixie D.;Walker
 0;20;20;2014-06-20;Donation;Don-UnresDonation;AnonMatch;"WAL17A";Patrick;Wallen
 0;50;50;2014-04-24;Dues;Dues-AnnualMbr;;"WAL18";Michael;Walker
 0;10;10;2014-08-22;Donation;Don-UnresDonation;AnonMatch;"WAL62";Andrew;Walsh
+0;40;40;2015-01-04;Dues;Dues-Subscr;;"WAL85";Adriane;Walker-Bailey
 0;10;10;2014-08-03;Donation;Don-UnresDonation;AnonMatch;"WAR18";H.Linda;Warren
-0;40;40;2014-08-12;Donation;Don-UnresDonation;AnonMatch;"WEL15";Alice;Welchert
+0;20;20;2014-10-18;Donation;Don-UnresDonation;AnonMatch;"WAR20";Diane & Bruce;Ward
+300;400;100;2014-12-30;Dues;Dues-AnnualMbr;EOYAppeal;"WAR21";Marleta;Warneke-Garner
+0;100;100;2014-10-27;Dues;Dues-AnnualMbr;AnonMatch;"WAT10";Kevin & Dorthea;Watts
+0;100;100;2015-01-09;Dues;Dues-AnnualMbr;;"WAX42";Christopher;Waxler
+100;150;50;2014-11-02;Donation;Don-UnresDonation;AnonMatch;"WEH54";George;Wehrfritz
+0;20;20;2014-11-18;Donation;Don-UnresDonation;;"WEI38";Ellen;Weidner
+0;45;45;2014-10-13;Donation;Don-UnresDonation;;"WEL15";Alice;Welchert
 0;25;25;2014-09-06;Dues;Dues-AnnualMbr;AnonMatch;"WEL33";Emily;Weldon
-0;35;35;2014-05-25;Dues;Dues-AnnualMbr;;"WEL53";Gail;Weldon
-0;135;135;2014-09-15;Dues;Dues-Subscr;AnonMatch;"WHE22";JoAnn;Wheatley
+0;70;70;2015-01-11;Dues;Dues-AnnualMbr;;"WEL53";Gail;Weldon
+0;50;50;2014-11-03;Dues;Dues-AnnualMbr;AnonMatch;"WEL75";Fred & Helga;Welz
+0;195;195;2015-01-15;Dues;Dues-Subscr;;"WHE22";JoAnn;Wheatley
+0;100;100;2014-10-29;Dues;Dues-AnnualMbr;AnonMatch;"WHI39";Lela Rae;Whittier
 0;100;100;2014-04-14;Dues;Dues-AnnualMbr;;"WHI86";Alicia;White
+0;5;5;2014-05-22;Donation;Don-UnresDonation;;"WIL03";Nancy;Wilcox
+0;45;45;2014-10-29;Dues;Dues-AnnualMbr;AnonMatch;"WIL16";Roberta;Wilson
 0;25;25;2014-06-24;Dues;Dues-AnnualMbr;AnonMatch;"WIL18";Elise;Willcox
+0;20;20;2014-10-02;Donation;Don-UnresDonation;AnonMatch;"WIL23";Pam;Wilson
 0;25;25;2014-05-22;Dues;Dues-AnnualMbr;AnonMatch;"WIL29";Barbara;Wildey
 5;20;15;2014-03-04;Donation;Don-UnresDonation;;"WIL65";Sara;Williams
-0;40;40;2014-09-03;Dues;Dues-Subscr;AnonMatch;"WIL66";Jessica;Wilkins
+0;120;120;2015-01-03;Dues;Dues-Subscr;;"WIL66";Jessica;Wilkins
 0;25;25;2014-06-08;Dues;Dues-AnnualMbr;AnonMatch;"WIL75";Jessie;Wilkie
+0;15;15;2015-01-10;Dues;Dues-Subscr;;"WIS45";Craig;Wise
+0;100;100;2014-12-21;Dues;Dues-AnnualMbr;;"WIT57";Patricia;Wittenstein
 0;10;10;2014-06-22;Donation;Don-UnresDonation;AnonMatch;"WOL17";Diana;Wolf
 0;25;25;2014-02-18;Dues;Dues-AnnualMbr;;"WOL37";David;Wolfson
+0;250;250;2014-10-23;Dues;Dues-AnnualMbr;AnonMatch;"WOL56";Janice;Wolf
 0;50;50;2014-02-20;Dues;Dues-AnnualMbr;AnonMatch;"WOL83";Bonnie;Wolfe
+0;40;40;2014-11-14;Dues;Dues-AnnualMbr;;"WOO14";Inna ;Wood
 0;25;25;2014-09-06;Dues;Dues-AnnualMbr;AnonMatch;"WOO34";Mary Pat;Woodling
 0;250;250;2014-06-01;Dues;Dues-AnnualMbr;AnonMatch;"WOO37";Francine;Woods
-0;1000;1000;2014-03-10;Dues;Dues-AnnualMbr;AnonMatch;"WOO51";Caroline;Woods
+0;2000;2000;2014-12-27;Dues;Dues-AnnualMbr;EOYAppeal;"WOO51";Caroline;Woods
+0;50;50;2014-11-04;Dues;Dues-AnnualMbr;;"WOR50";June;Worsham
+0;25;25;2014-11-23;Dues;Dues-AnnualMbr;;"WRI77";Kim;Wright
 40;50;10;2014-09-27;Dues;Dues-AnnualMbr;;"YBA10";Margaret;Ybarra
 0;15;15;2014-07-08;Donation;Don-UnresDonation;;"YOR10";Angel;York
 0;25;25;2014-09-06;Dues;Dues-AnnualMbr;AnonMatch;"YOS41";Cynthia;Yost
+0;100;100;2014-11-03;Dues;Dues-AnnualMbr;AnonMatch;"YOU13";Paul R.;Young
+125;300;175;2014-12-18;Donation;Don-IHO;;"YOU56A";Elizabeth & Sam;Young
+0;75;75;2014-12-11;Dues;Dues-AnnualMbr;;"YOU86";Robert & Patty;Young
 0;20;20;2014-07-04;Donation;Don-UnresDonation;;"ZAC56";Dena;Zacharc
-0;25;25;2014-01-11;Dues;Dues-AnnualMbr;AnonMatch;"ZEB54";Eric & Bonnie;Zebe
+25;50;25;2014-12-23;Donation;Don-UnresDonation;;"ZAM11";Jill;ZamEk
+0;125;125;2015-01-18;Dues;Dues-AnnualMbr;;"ZEB54";Eric & Bonnie;Zebe
