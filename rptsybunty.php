@@ -27,7 +27,7 @@ if ($action == 'rpt') {
 		YEAR( `donations`.`DonationDate` ) AS `DonYr`, 
 		`members`.`NameLabel1stline`, `MemStatus`,`FName`, `LName`, 
 		`Organization`,`AddressLine`,`City`,`State`,`ZipCode`,`PrimaryPhone`,
-		`EmailAddress`, `E_Mail`, `LastDonAmount`,`LastDuesAmount` 
+		`EmailAddress`, `E_Mail`, `LastDonAmount`,`LastDonDate`,`LastDuesAmount`,`LastDuesDate` 
 	FROM `donations`, `members` 
 	WHERE `donations`.`MCID` = `members`.`MCID` 
 	GROUP BY `donations`.`MCID`, YEAR( `donations`.`DonationDate` ) 
@@ -40,9 +40,9 @@ if ($action == 'rpt') {
 	$pyr = $yr - 1;
 //	echo "yr: $yr<br>"; echo "pyr: $pyr<br>";
 	echo '<table class="table table-condensed">
-	<tr><th>MCID</th><th>CummTot</th><th>LastGift</th><th>MemSt</th><th>Label Name</th><th>First</th><th>Last</th><th>Organization</th><th>Address</th><th>City</th><th>
+	<tr><th>MCID</th><th>CummTot</th><th>LastGiftAmt</th><th>LastGiftDate</th><th>MemSt</th><th>Label Name</th><th>First</th><th>Last</th><th>Organization</th><th>Address</th><th>City</th><th>
 St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
-	$csv[] =  'MCID;'.$pyr."Tot;LastGift;MemSt;Label Name;First;Last;Organization;Address;City;St;Zip;Phone;Email\n";
+	$csv[] =  'MCID;'.$pyr."Tot;LastGiftAmt;LastGiftDate;MemSt;Label Name;First;Last;Organization;Address;City;St;Zip;Phone;Email\n";
 	while ($r = $res->fetch_assoc()) {
 //		echo '<pre> year '; print_r($r); echo '</pre>';
 		if ($r[DonYr] >= $yr) {		// ignore MCID if donated for given year
@@ -54,12 +54,15 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 		$grtot += $r[YrlyDon];
 		$em = $r[EmailAddress];
 		if ($r[E_Mail] == 'FALSE') $em = '';
-		$lgamt = number_format($r[LastDonAmount],0);
-		if ($lgamt == 0) $lgamt = number_format($r[LastDuesAmount],0);
-		$gamt = $r[LastDonAmount];
-		if ($gamt == 0) $gamt = $r[LastDuesAmount];
-		$ADRarray[$r[MCID]] = "<td align=\"right\">$$lgamt</td><td>$r[MemStatus]</td><td>$r[NameLabel1stline]</td><td>$r[FName]</td><td>$r[LName]</td><td>$r[Organization]</td><td>$r[AddressLine]</td><td>$r[City]</td><td>$r[State]</td><td>$r[ZipCode]</td><td>$r[PrimaryPhone]</td><td>$em</td>";
-		$CSVarray[$r[MCID]] = "$$gamt;$r[MemStatus];$r[NameLabel1stline];$r[FName];$r[LName];$r[Organization];$r[AddressLine];$r[City];$r[State];$r[ZipCode];$r[PrimaryPhone];$em";				
+		$lgamt = $r[LastDonAmount];
+		$lgdate = $r[LastDonDate];
+		if (strtotime($r[LastDonDate]) < strtotime($r[LastDuesDate])) {
+			$lgamt = $r[LastDuesAmount];
+			$lgdate = $r[LastDuesDate];
+			}
+		$flgamt = number_format($lgamt,0);
+		$ADRarray[$r[MCID]] = "<td align=\"right\">$$flgamt</td><td>$lgdate</td><td>$r[MemStatus]</td><td>$r[NameLabel1stline]</td><td>$r[FName]</td><td>$r[LName]</td><td>$r[Organization]</td><td>$r[AddressLine]</td><td>$r[City]</td><td>$r[State]</td><td>$r[ZipCode]</td><td>$r[PrimaryPhone]</td><td>$em</td>";
+		$CSVarray[$r[MCID]] = "$$lgamt;$lgdate;$r[MemStatus];\"$r[NameLabel1stline]\";\"$r[FName]\";\"$r[LName]\";\"$r[Organization]\";\"$r[AddressLine]\";$r[City];$r[State];$r[ZipCode];$r[PrimaryPhone];$em";				
 		}
 	$fgrtot = number_format($grtot);
 	echo "Historical supporters PRIOR TO but NOT Reporting anything for $yr: ".count($YRarray)." for a total of $$fgrtot.&nbsp;&nbsp;";
@@ -70,6 +73,7 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 	
 	arsort($YRarray);
 	foreach ($YRarray as $m => $v) {
+//		echo "m: $m, v: $v<br>";
 		$fv = number_format($v,0);
 		echo "<tr><td>$m</td><td align=\"right\">$$fv</td>" . $ADRarray[$m] . "</tr>";
 		$csv[] = "$m;$$v;$CSVarray[$m]\n";
