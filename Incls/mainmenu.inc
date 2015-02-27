@@ -98,7 +98,6 @@ print <<<menupart3
 <li class="dropdown">
 <a id="drop1" class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Reports<b class="caret"></b></a>
 <ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
-	<li><a href="rpt2013vs2014.php" target="_blank">2013 vs 2014 Funding Report</a></li>
 	<li><a href="rptdonortopten.php" target="_blank">Donor Top Ten Report</a></li>
 	<li><a href="rptnewsupporters.php" target="_blank">New Supporters by Date Range</a></li>
 	<li><a href="rptmemberstatus.php" target="_blank">List All Members by Status</a></li>
