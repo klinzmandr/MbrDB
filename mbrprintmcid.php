@@ -4,7 +4,7 @@
 <title>MCID Information</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="all">
 <style>
   .page-break  {
     clear: left;
@@ -21,8 +21,10 @@ session_start();
 
 //include 'Incls/vardump.inc';
 include 'Incls/datautils.inc';
-//include 'Incls/mainmenu.inc';
 include 'Incls/seccheck.inc';
+echo '<div class="hidden-print">';
+include 'Incls/mainmenu.inc';
+echo '</div>';
 
 if (isset($_REQUEST['filter'])) $mcid = $_REQUEST['filter'];
 else if (isset($_SESSION['ActiveMCID'])) $mcid = $_SESSION['ActiveMCID'];
@@ -30,8 +32,8 @@ echo "<div class=\"container\">";
 if ($mcid == "") {
 	
 	echo "<br /><h4>ERROR: there is no Active MCID.";
-	//echo "<a href=\"javascript:self.close();\" class=\"btn btn-primary\"><b>CLOSE</b></a></h4>";
-	echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">RETURN</a>";
+//	echo "<a href=\"javascript:self.close();\" class=\"btn btn-primary\"><b>CLOSE</b></a></h4>";
+//	echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">RETURN</a>";
 	echo '<script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </div>
@@ -49,10 +51,11 @@ $r = $mrec->fetch_assoc();
 
 //echo "<h3>MCID Information   <a href=\"javascript:self.close();\" class=\"btn btn-primary\"><strong>CLOSE</strong></a></h3>";
 //echo '<div class="page-break"></div>';
-echo "<h3>MCID Information&nbsp;&nbsp;&nbsp;
-<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">RETURN</a></h3>";
+//echo "<h3>MCID Information&nbsp;&nbsp;&nbsp;
+//<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">RETURN</a></h3>";
 //echo "<h4>MCID Information</h4>";
 //echo "<pre>donor records :"; print_r($r); echo "</pre>";
+echo "<h2>MCID Information</h2>";
 echo "<table>";
 echo "<tr><td><b>MCID: ".$r[MCID]."</b></td></tr>";
 echo "<tr><td>Organization ".$r[Organization]."</td></tr>";
@@ -183,6 +186,25 @@ echo "<tr><td>Total Transporter Hours:</td><td align=right>$totaltranshrs</td></
 echo "<tr><td>Total Miles Driven:</td><td align=right>$totmiles</td></tr>";
 echo '</table></div>';
 }
+
+// report all education classes attended
+$sql = "SELECT * FROM `volcourses` WHERE MCID = '".$mcid."' order by `CourseDate` desc";
+$resed = doSQLsubmitted($sql);
+$rced = $resed->num_rows;
+
+if ($rced) {
+	echo '<h4>Volunteer Education Courses Taken</h4>';
+	echo '<div class=container>';
+	echo '<table class="table-condensed">';
+	echo '<tr><th>Agency</th><th>CourseId</th><th>CourseDate</th><th>Dur.</th><th>Notes</th></tr>';
+	while ($r = $resed->fetch_assoc()) {
+//	echo '<pre> ed rec '; print_r($r); echo '</pre>';
+		echo "<tr><td>$r[Agency]<td>$r[CourseId]</td><td>$r[CourseDate]</td><td>$r[CourseDuration]</td><td>$r[CourseNotes]</td></tr>";
+		$totaledhrs += $r[CourseDuration];
+		}
+	echo "</table>
+	<br>Total Education Hours: $totaledhrs<br></div>";
+	}
 
 // report all donation records
 $dontotal = 0;
