@@ -35,16 +35,19 @@ include 'Incls/seccheck.inc';
 //include 'Incls/adminmenu.inc';
 include 'Incls/datautils.inc';
 echo '<div class="container">';
-$action = $_REQUEST['action'];
 
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+
+
+// delete of record(s) requested
 if ($action == "delete") {
 	$recnbr = $_REQUEST['recnbr'];
 	$table = $_REQUEST['tablename'];
 	$key = $_REQUEST['key'];
 	$sql = "SELECT * FROM `".$table."` WHERE `".$key."` = '".$recnbr."';";
-	//echo "sql: $sql<br>";
-	$res = doSQLsubmitted($sql);
-	//echo "<pre>"; print_r($res); echo "</pre>";
+//echo "sql: $sql<br>";
+	$res = doSQLsubmitted($sql);			// validate that row exists
+//echo "<pre>"; print_r($res); echo "</pre>";
 	if ($res->num_rows == 0) {
 		echo "<h4>ERROR - invalid record number entered!</h4>";
 		echo "<a href=\"admdeleterecs.php\"><h3>RETURN</h3></a>";
@@ -53,7 +56,8 @@ if ($action == "delete") {
 	$rcd = $res->fetch_assoc();
 	//echo "<pre>"; print_r($rcd); echo "</pre>";
 	
-	// delete all funding and correspondence records for given MCID
+	// delete all funding, correspondence and voltime records for given MCID
+	// $recnbr is the MCID
 	if ($table == 'members') {
 		$fsql = "DELETE FROM `donations` WHERE `MCID` = '".$recnbr."';";
 		$fdelcount = doSQLsubmitted($fsql);
@@ -61,9 +65,15 @@ if ($action == "delete") {
 		$csql = "DELETE FROM `correspondence` WHERE `MCID` = '".$recnbr."';";
 		$cdelcount = doSQLsubmitted($csql);
 		echo "Correspondence records deleted for $recnbr: $cdelcount<br>";
+		$vtsql = "DELETE FROM `voltime` WHERE `MCID` = '".$recnbr."';";
+		$vtdelcount = doSQLsubmitted($vtsql);
+		echo "Vol time records deleted for $recnbr: $vtdelcount<br>";
+		$edisql = "DELETE FROM `extradonorinfo` WHERE `MCID` = '".$recnbr."';";
+		$edidelcount = doSQLsubmitted($edisql);
+		echo "EDI records deleted for $recnbr: $edidelcount<br>";
 		}	
 	
-	// delete associated correspondence for a funding 'dues' record
+// delete associated correspondence for a funding 'dues' record
 	if (($table == 'donations') AND ($rcd[Purpose] == 'Dues')) {
 		//echo "dues record found<br>";
 		$mcid = $rcd[MCID]; $date = $rcd[DonationDate];
@@ -77,15 +87,17 @@ if ($action == "delete") {
 		$delsql = "DELETE FROM `correspondence` WHERE CORID = '".$corr_recno."' AND `MCID` = '".$mcid."' AND `DateSent` = '".$date."' AND Reminders = 'RenewalPaid';";
 		doSQLsubmitted($delsql);		// delete the associated correspondence record
 		}
-	
+
+// delete from donations or corresondence table
 	$sql = "DELETE FROM `".$table."` WHERE `".$key."` = '".$recnbr."';";  // delete row requested
 	$res = doSQLsubmitted($sql);
 	//echo "<pre>"; print_r($res); echo "</pre>";
 	echo "<h4>Deletion of record $recnbr from table \"$table\" has been completed.</h4>";
-	echo "<a class=\"btn btn-primary\" href=\"admdeleterecs.php\"><h3>RETURN</h3></a>";
+	echo "<a class=\"btn btn-primary\" href=\"admdeleterecs.php\">RETURN</a>";
 	echo "</div><script src=\"jquery.js\"></script><script src=\"js/bootstrap.min.js\"></script>";
 	exit();
 	}
+
 
 print <<<pagePart1
 <!-- <div class="well"> -->
@@ -97,7 +109,7 @@ print <<<pagePart1
 <!-- <a class="btn btn-primary" href="index.php">CANCEL AND RETURN</a><br /><hr> -->
 
 <h4>Provide the EXACT MCID for the member record to be deleted:</h4>
-<b>NOTE: deletion of an MCID record will result in the deletion of ALL associated funding and correspondence records!</b>
+<b>NOTE: deletion of an MCID record will result in the deletion of ALL associated funding, correspondence and vol time records!</b>
 <div class="row">
 <div class="col-lg-4">
 <form action="admdeleterecs.php" name="delmbr">
