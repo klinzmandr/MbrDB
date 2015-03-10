@@ -7,6 +7,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <?php
 session_start();
 
@@ -40,6 +42,7 @@ exit;
 }
 
 $expdate = date('Y-m-d',strtotime("-30 days"));
+//	echo "expdate: $expdate<br>";
 $reccnt = 0;
 if ($action == 'phone') {
 	echo "<h3>Phone number Maintenance</h3>";
@@ -76,26 +79,28 @@ if ($action == 'log') {
 	$del_log_count = doSQLsubmitted($sql);
 	echo "<h3>Maintian Log File</h3>";
 	echo "Deletion of log file completed.<br />Deleted $del_log_count log records<br />";
-	echo "<a class=\"btn\" href=\"admDBJanitor.php?action=\">Done</a>";
+	echo "<a class=\"btn btn-primary\" href=\"admDBJanitor.php?action=\">Done</a>";
 	exit();
 	}
-// identify and delete expired members older than expiration date
+
+// identify and delete members with exp dates older than 90 days from today
 $expdate = date('Y-m-d', strtotime("-90 days"));
 
 // list all expired inactive member records and their assoicated funding, corresondence and time records
 if ($action == 'list') {
 	print <<<pagePart2
 	<h3>List summary of all candidate records.<br></h3>
-	<a class="btn" href="admDBJanitor.php?action=delete">Continue</a>
-	<a class="btn" href="admDBJanitor.php?action=">Start Over</a><br />
+	<a class="btn btn-danger" href="admDBJanitor.php?action=delete">Continue</a>
+	<a class="btn btn-primary" href="admDBJanitor.php?action=">Start Over</a><br />
 pagePart2;
 	$sql = "SELECT * from `members` where `Inactivedate` <= '$expdate';";
 	$res = doSQLsubmitted($sql);
+//	echo "sql: $sql<br>";
 	$mbrsfound = $res->num_rows;
 	if ($mbrsfound == 0) {
 		echo "<h3>No expired member recordsfound</h3>";
 		echo "<p>Expired member records are those that have been marked as &apos;Inactive&apos; from more than 90 days from todays date.</p>";
-		echo "<a class=\"btn\" href=\"admDBJanitor.php?action=\">Done</a>";
+		echo "<a class=\"btn btn-primary\" href=\"admDBJanitor.php?action=\">Done</a>";
 		exit();
 		}
 	echo 'MCIDs to delete:<br />';
@@ -114,35 +119,48 @@ pagePart2;
 		$tres = doSQLsubmitted($tsql);
 		$timefound = $tres->num_rows;
 		$timecount += $timefound;
+		$edisql = "SELECT * from `extradonorinfo` where `MCID` = '$mcid';";
+		$edires = doSQLsubmitted($edisql);
+		$edifound = $edires->num_rows;
+		$edicount += $edifound;
 		}
 	echo "total member table rows to delete: $mbrsfound<br>";
-	echo "donations table rows to delete: $doncount<br>";
+	echo "donations table rows to archive: $doncount<br>";
 	echo "correspondence table rows to delete: $corrcount<br>";
-	echo "voltime table rows to delete: $timecount<br />";
+	echo "voltime table rows to archive: $timecount<br />";
+	echo "extradonorinfo table rows to delete: $edicount<br />";
 	}
 	
 if ($action == 'delete') {
 	print <<<pagePart3
 	<h3>Delete and report summary of actions.</h3>
-	<a class="btn" href="admDBJanitor?action=">Done</a>
+	<a class="btn btn-primary" href="admDBJanitor.php?action=">Done</a>
 pagePart3;
 	$sql = "SELECT * from `members` where `Inactivedate` <= '$expdate';";
 	$mres = doSQLsubmitted($sql);
 	while ($r = $mres->fetch_assoc()) {
 		$mcid = $r[MCID];
-		//$mcid = "xxxxx";
 
-		$dsql = "DELETE from `donations` where `MCID` = '$mcid';";
-		$dcnt = doSQLsubmitted($dsql);
-		$dcount += $dcnt;
-	
+//	archive donation rows		
+		$sql = "UPDATE `donations` SET `MCID`='ZZZ99', `Note`=CONCAT_WS(',',\"PREVMCID:$mcid \",`Note`) WHERE `MCID` = '$mcid'";
+		$dres = doSQLsubmitted($sql);
+		$dcount += $dres->affected_rows;
+
+// delete correspondence rows		
 		$csql = "DELETE from `correspondence` where `MCID` = '$mcid';";
 		$ccnt = doSQLsubmitted($csql);
 		$ccount += $ccnt;
+
+// archive vol time rows		
+		$vtsql = "UPDATE `voltime` SET `MCID`='ZZZ99', `VolNotes`=CONCAT_WS(',',\"PREVMCID:$mcid \", `VolNotes`) WHERE `MCID` = '$mcid'";
+		$vtres = doSQLsubmitted($vtsql);
+		$tcount = $vtres->affected_rows;
+
+// delete edi rows		
+		$edisql = "DELETE from `extradonorinfo` where `MCID` = '$mcid';";
+		$edicnt = doSQLsubmitted($edisql);
+		$edicount += $edicnt;
 		
-		$tsql = "DELETE from `voltime` where `MCID` = '$mcid';";
-		$tcnt = doSQLsubmitted($tsql);
-		$tcount += $tcnt;
 		}
 	$sql = "DELETE from `members` where `Inactivedate` <= '$expdate';";
 	$mbrcount = doSQLsubmitted($sql);
@@ -150,16 +168,10 @@ pagePart3;
 	print <<<pagePart4
 	<h3>Completion Report</h3>
 	member records deleted: $mbrcount<br>
-	donation records deleted: $dcount<br>
-	correspondence records deleted: $ccount<br>
-	voltime records deleted: $tcount<br>
+		
 pagePart4;
 	}
-
-
 ?>
 
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
