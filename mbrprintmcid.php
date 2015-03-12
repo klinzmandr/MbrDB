@@ -188,23 +188,25 @@ echo '</table></div>';
 }
 
 // report all education classes attended
-$sql = "SELECT * FROM `volcourses` WHERE MCID = '".$mcid."' order by `CourseDate` desc";
+$sql = "SELECT * FROM `voltime` WHERE MCID = '".$mcid."' order by `VolDate` desc";
 $resed = doSQLsubmitted($sql);
 $rced = $resed->num_rows;
-
+echo '<h4>Volunteer Education Courses Taken</h4>';
+echo '<div class=container>';
 if ($rced) {
-	echo '<h4>Volunteer Education Courses Taken</h4>';
-	echo '<div class=container>';
 	echo '<table class="table-condensed">';
 	echo '<tr><th>Agency</th><th>CourseId</th><th>CourseDate</th><th>Dur.</th><th>Notes</th></tr>';
 	while ($r = $resed->fetch_assoc()) {
 //	echo '<pre> ed rec '; print_r($r); echo '</pre>';
-		echo "<tr><td>$r[Agency]<td>$r[CourseId]</td><td>$r[CourseDate]</td><td>$r[CourseDuration]</td><td>$r[CourseNotes]</td></tr>";
-		$totaledhrs += $r[CourseDuration];
+	list($ed,$notes) = explode('/',$r[VolNotes]);
+	list($agency,$course) = explode(':',$ed);
+		echo "<tr><td>$agency<td>$course</td><td>$r[volDate]</td><td>$r[VolTime]</td><td>$r[VolNotes]</td></tr>";
+		$totaledhrs += $r[VolTime];
 		}
 	echo "</table>
 	<br>Total Education Hours: $totaledhrs<br></div>";
 	}
+else echo '<h4>NONE</h4></div>'; 
 
 // report all donation records
 $dontotal = 0;
