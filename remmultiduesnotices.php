@@ -20,7 +20,7 @@
 //   remmultimail.php -> remmultimailupd.php			to print mail message
 //	 remmultimakeinactive.php											to set members inactive
 //
-//These 5 pages all have to work in sync to make this work out.
+//These 4 pages all have to work in sync to make this work out.
 //
 //=====================================
 session_start();
@@ -73,6 +73,7 @@ $results = doSQLsubmitted($sql);
 $nbr_rows = $results->num_rows;
 //echo "rows returned from sql: $nbr_rows<br>";
 $count = 0;
+// $resarray is list of all MCID's with expired dates
 while ($row = $results->fetch_assoc()) {
 	// ignore payments within expiration period
 	if (strtotime($row['MaxDate']) < strtotime($expdate)) $resarray[] = $row;
@@ -103,12 +104,17 @@ noExp;
 	}
 
 // find mcid's with in-progress reminders, load date of last one and count of each mcid's into sep arrays
-$sql = "SELECT `correspondence`.`MCID`, `correspondence`.`DateSent`, `correspondence`.`Reminders`, `members`.`MemStatus`, `members`.`Inactive` 
-FROM `correspondence`, `members`
+$sql = "SELECT `correspondence`.`MCID`, 
+`correspondence`.`DateSent`, 
+`correspondence`.`Reminders`, 
+`correspondence`.`CorrespondenceType`,
+`members`.`MemStatus`, `members`.`Inactive` 
+FROM `correspondence`, `members` 
 WHERE `members`.`MCID` = `correspondence`.`MCID` 
-  AND `correspondence`.`Reminders` IS NOT NULL 
-  AND `members`.`Inactive` = 'FALSE' 
+AND `correspondence`.`Reminders` IS NOT NULL 
+AND `members`.`Inactive` = 'FALSE' 
 ORDER BY `correspondence`.`MCID` ASC, `correspondence`.`DateSent` ASC";
+//echo "sql: $sql<br>";
 $results = doSQLsubmitted($sql);
 $dr = array();			// array of mcid's with date of last reminder sent
 $ar = array();			// array of mcid's with count of reminders sent
@@ -119,12 +125,14 @@ while ($r = $results->fetch_assoc()) {
 		$ar[$mcidid] += 1;
 		if (strtotime($dr[$mcidid]) <= strtotime($r[DateSent])) {
 			$dr[$mcidid] = $r[DateSent];
+			$ct[$mcidid] = $r[CorrespondenceType];	// save last for final report output
 			//echo 'mcid: '.$mcidid.', corr time: ' . $dr[$mcidid] . '<br />';
 			}
 		}
-	// sort order of returned rows means last row for an mcid is the last thing done: reminder vs renewal
+//	sort order of returned rows means last row for an mcid 
+//	is the last thing done: a reminder or a renewal
 	if (stripos($r['Reminders'],"renew") !== FALSE) {		// forget it all since a renewal was done last
-		unset($ar[$mcidid]); unset($dr[$mcidid]);
+		unset($ar[$mcidid]); unset($dr[$mcidid]); unset($ct[$mcidid]);
 		//echo "unset mcid: $mcidid<br />";
 		}
 	}
@@ -209,6 +217,8 @@ $notedate = strtotime($delay);
 
 // NOTE: form action set based on button selection
 echo "<form name=\"boxform\" action=\"\" method=\"post\">";
+
+// dondate array is expired rows sorted by date+mcid
 foreach ($dondate as $key => $row) {
 	//echo '<pre> resarray '; print_r($row); echo '</pre>';
 	if (stripos($row[MCtype], 'lifetime') !== FALSE) continue;	// NO REMINDER FOR LIFETIME MEMBERS
@@ -276,7 +286,7 @@ foreach ($finalarray as $key=>$row) {
 	if ($purpose == 'Dues') $amt = $lastduesamount;
 	else $amt = $lastdonamount;
 print <<<bulletForm
-<tr><td><a href="mbrinfotabbed.php?filter=$mcid">$mcid</a></td><td>$labelname</td><td align="center">$emok</td><td align="center">$mok</td><td>$maxdate</td><td align="right">$$amt</td><td>$purpose</td><td align="center">$inact</td><td>$remcnt</td><td>$remdate</td><td>$remtype</td></tr>
+<tr><td><a href="mbrinfotabbed.php?filter=$mcid">$mcid</a></td><td>$labelname</td><td align="center">$emok</td><td align="center">$mok</td><td>$maxdate</td><td align="right">$$amt</td><td>$purpose</td><td align="center">$inact</td><td>$remcnt</td><td>$remdate</td><td>$ct[$mcid]</td></tr>
 </div>  <!-- container -->
 
 bulletForm;
