@@ -13,7 +13,7 @@ session_start();
 include 'Incls/seccheck.inc';
 include 'Incls/datautils.inc';
 
-$lodate = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-m-01', strtotime("previous month"));
+$lodate = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-01-01 ', strtotime("now"));
 $hidate = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-t', strtotime("previous month"));
 
 echo "<div class=\"container\">";
@@ -51,8 +51,7 @@ $sql = "SELECT `donations`.`MCID`, COUNT( `donations`.`MCID` ) AS `TransCnt`,
 	FROM `donations`, `members` 
 	WHERE `members`.`Inactive` = 'FALSE' 
 		AND `donations`.`MCID` = `members`.`MCID` 
-		AND `donations`.`DonationDate` >= {D '$lodate' } 
-		AND `donations`.`DonationDate` < {D '$hidate' } 
+		AND `donations`.`DonationDate` BETWEEN '$lodate' AND '$hidate' 
 	GROUP BY `donations`.`MCID` 
 	ORDER BY `TransCnt` DESC 
 	LIMIT 0 , 10;";
@@ -79,11 +78,11 @@ $sql = "SELECT `donations`.`MCID`,
 	FROM `donations`, `members` 
 	WHERE `members`.`Inactive` = 'FALSE' 
 		AND `donations`.`MCID` = `members`.`MCID` 
-		AND `donations`.`DonationDate` >= {D '$lodate' } 
-		AND `donations`.`DonationDate` < {D '$hidate' } 
+		AND `donations`.`DonationDate` BETWEEN '$lodate' AND '$hidate'  
 	GROUP BY `donations`.`MCID` 
 	ORDER BY `LargestDon` DESC 
 	LIMIT 0 , 10;";
+// echo "sql: $sql<br>";
 $res = doSQLsubmitted($sql);
 echo "<h4>Top 10 By Period Largest Single Amount</h4>";
 echo "<table class=\"table-condensed\">";
@@ -107,8 +106,7 @@ $sql = "SELECT `donations`.`MCID`,
 	FROM `donations`, `members` 
 	WHERE `members`.`Inactive` = 'FALSE' 
 		AND `donations`.`MCID` = `members`.`MCID` 
-		AND `donations`.`DonationDate` >= {D '$lodate' } 
-		AND `donations`.`DonationDate` < {D '$hidate' } 
+		AND `donations`.`DonationDate` BETWEEN '$lodate' AND '$hidate'  
 		GROUP BY `donations`.`MCID` 
 		ORDER BY `GrandTot` DESC 
 		LIMIT 0 , 10;";
@@ -135,8 +133,7 @@ $sql = "SELECT `donations`.`MCID`,
 	FROM `donations`, `members` 
 	WHERE `members`.`Inactive` = 'FALSE' 
 		AND `donations`.`MCID` = `members`.`MCID` 
-		AND `donations`.`DonationDate` >= {D '$lodate' } 
-		AND `donations`.`DonationDate` < {D '$hidate' } 
+		AND `donations`.`DonationDate` BETWEEN '$lodate' AND '$hidate'  
 	GROUP BY `donations`.`MCID` 
 	ORDER BY `AvgDon` DESC 
 	LIMIT 0 , 10;";
