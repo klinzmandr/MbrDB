@@ -15,6 +15,7 @@ if ($nbr_rows == 0) {
 <html><head><title>Print Labels-Nothing</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="css/bootstrap.min.css" rel="stylesheet" media="screen"></head><body>
 <div class="container">
 <h4>There are no entries in the letters and labels queue.</h4>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <a href="javascript:self.close();" class="btn btn-primary">CLOSE</a>
 </div>
 <script src="jquery.js"></script>
@@ -49,12 +50,15 @@ for ($i=0; $i<$blanks; $i++) {
 	$sheetcount += 1;
 	}
 while ($r = $res->fetch_assoc()) {
-	$mcid = $r[MCID]; $date = $r[Date]; $org = $r[Organization];	$name = $r[NameLabel1stline]; 
+	$mcid = $r[MCID]; $date = $r[Date]; $org = substr($r[Organization],0,24);	
+	$name = substr($r[NameLabel1stline],0,24); 
 	$addr = $r[AddressLine]; $city = $r[City]; $state = $r[State]; $zipcode = $r[ZipCode];
 	if ($org == '') 
 		echo "<div class=\"label\">$name<br>$addr<br>$city, $state  $zipcode</div>";
-	else		
+	else {
+		$name = 'Attn: ' . substr($r[NameLabel1stline],0,19);		
 		echo "<div class=\"label\">$org<br>$name<br>$addr<br>$city, $state  $zipcode</div>";
+		}
 	//echo "<pre>"; print_r($r); echo "</pre>";
 	$sheetcount += 1;
 	if ($sheetcount >= 30) {

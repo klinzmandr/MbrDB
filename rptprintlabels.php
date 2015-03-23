@@ -210,7 +210,8 @@ if ($action == 'search') {
 if ($nbr_rows == 0) {
 	print <<<nothingReturned
 <!DOCTYPE html>
-<html><head><title>Print Labels-Nothing</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="css/bootstrap.min.css" rel="stylesheet" media="screen"></head><body>
+<html><head><title>Print Labels-Nothing</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+//<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"></head><body>
 <div class="container">
 <h4>No MCID&apos;s meet the criteria supplied</h4>
 <a href="javascript:self.close();" class="btn btn-primary">CLOSE</a>
@@ -251,13 +252,15 @@ for ($i=0;$i<$blanks;$i++) {
 $corrarray = array(); $corrarray[] = "MCID,Name\n";
 if (count($results) != 0) {
 foreach ($results as $k => $r) {
-	$mcid = $r[MCID]; $zipcode = $r[ZipCode]; $org = $r[Organization];
-	$name = $r[NameLabel1stline]; $addr = $r[AddressLine]; $city = $r[City]; $state = $r[State];
+	$mcid = $r[MCID]; $zipcode = $r[ZipCode]; $org = substr($r[Organization],0,24);
+	$name = substr($r[NameLabel1stline],0,24); $addr = $r[AddressLine]; $city = $r[City]; $state = $r[State];
 	$corrarray[] = $r[MCID] . ',' .  $r[NameLabel1stline] . "\n";
 	if ($org == '')
-		echo "<div class=\"label\">$name<br>$addr<br>$city, $state  $zipcode</div>";
-	else 
-		echo "<div class=\"label\">$org<br>$name<br>$addr<br>$city, $state  $zipcode</div>";
+		echo "<div class=\"label\">$name<br>$addr<br>$city, $state  $zipcode</div>\n";
+	else {
+		$name = 'Attn: ' . substr($name,0,19);
+		echo "<div class=\"label\">$org<br>$name<br>$addr<br>$city, $state  $zipcode</div>\n";
+	}
 	//echo "<pre>"; print_r($r); echo "</pre>";
 	$sheetcount += 1;
 	if ($sheetcount >= 30) {
