@@ -17,7 +17,8 @@ include 'Incls/seccheck.inc';
 ?>
 <a name="top"></a><div class="container">
 <h2>Reminders Explained&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="remmultiduesnotices.php">RETURN</a></h2>
-<a href="#workflow">Recommended Workfow</a>
+<a href="#workflow">Recommended Workfow</a><br>
+<a href="http://youtu.be/v0463JH3ojQ" target="_blank">Instructional Video (19:14)</a>
 <h3>Overview</h3>
 <p>Reminders and notifications are utilized to maintain the enrolled membership.  Membership provides an essential source of funding to support the ongoing fulfilment of the organization's mission. This function is provided to allow members to be advised when their annual membership is due.</p>
 <p>Reminders revolve around the expired membership list that is created from the Reminders menu. The expired list is comprised of 'active' member records which show that no payment marked as "DUES"(or a 'Donation' in the case of a 'Donor) has been entered within the last 11 months. This would indicate that renewal reminders may need to be initiated.</p><p>It should be noted that an 'active' member, volunteer or donor is a record with a member status of '1-Member', '2-Volunteer' or '3-Donor' with the 'Mbr Inactive' flag as 'NO'.</p>
