@@ -23,7 +23,7 @@ if (isset($_REQUEST['upd'])) {  // update with info from admtemplateedit
 	$body = $_REQUEST['body'];
 	$flds[Name] = $name;
 	$flds[Body] = $body;
-	echo '<pre> flds '; print_r($flds); echo '</pre>';
+//	echo '<pre> flds '; print_r($flds); echo '</pre>';
 	sqlupdate('templates',$flds, "`TID` = '$path'");
 	//echo "save editted template: $path -> $req<br>";
 	}
