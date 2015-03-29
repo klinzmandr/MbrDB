@@ -188,7 +188,10 @@ echo '</table></div>';
 }
 
 // report all education classes attended
-$sql = "SELECT * FROM `voltime` WHERE MCID = '".$mcid."' order by `VolDate` desc";
+$sql = "SELECT * FROM `voltime` 
+	WHERE MCID = '".$mcid."'
+	AND `VolCategory` = 'Education'  
+	ORDER BY `VolDate` desc";
 $resed = doSQLsubmitted($sql);
 $rced = $resed->num_rows;
 echo '<h4>Volunteer Education Courses Taken</h4>';
