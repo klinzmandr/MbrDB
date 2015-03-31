@@ -152,8 +152,8 @@ print <<<updPage
 <div id="myTabContent" class="tab-content">
 <div class="tab-pane fade active in" id="usage">
 <p>Information on each of these tabs represent extended research on selected donors and supporters.  <b>It is intended that this information be confidential and private for the use of Pacific Wildlife Care only.</b>  Any unauthorized use is prohibited.</p>
-<p>Each tab is free form in nature.  In initial entry of information, specific examples ore provided that usually are noted during research.  Inforation placed in each tab may be searched for so the use of 'keywords' is encouraged to facilitate finding specific information across all donors for which research is done.</p>
-<p>Click the appropriate tab to begin.  Updates or edits to informaiton on each tab may be done by clicking the 'UPDATE' button for that tab.</p>
+<p>Each tab is free form in nature.  In initial entry of information, specific examples are provided that usually are noted during research.  Inforation placed in each tab may be searched for so the use of 'keywords' is encouraged to facilitate finding specific information across all donors for which research is done.</p>
+<p>Click the appropriate tab to begin.  Updates or edits to information on each tab may be done by clicking the 'UPDATE' button for that tab.</p>
 <p>Please enter all donor funding activity on the 'Funding' tab and all contacts made on the 'Correspondence' tab.</p>
 </div>
 

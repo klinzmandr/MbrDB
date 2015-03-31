@@ -17,13 +17,13 @@ $sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-m-d', strtotime('-1 day
 $ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-d H:i:s', strtotime(now));
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
-echo "<h3>Activity Log Viewer&nbsp;&nbsp;&nbsp;<a class=\"btn btn-sm btn-primary\" href=\"javascript:self.close();\">(CLOSE)</a>&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btn-success\" href=\"admlogviewer.php?sd=$sd&ed=$ed&action=form\">New Search</a></h3>";
+echo "<h3>Activity Log Viewer&nbsp;&nbsp;&nbsp;<a class=\"btn btn-sm btn-primary\" href=\"javascript:self.close();\">CLOSE</a>&nbsp;&nbsp;&nbsp;<a class=\"btn btn-primary btn-success\" href=\"admlogviewer.php?sd=$sd&ed=$ed&action=form\">New Search</a></h3>";
 if ($action == '') {
 print <<<pagePart1
 <h3>Database Activity Log Viewer</h3>
 <p>This utility allows the activity log of the database to be examined.  This log is where all database requests are recorded along with the date/time, the originating page address and userid performing the action.</p>
 <p>All actions within the date/time range are listed.  If there is a search string entered, it will be used to filter those actions listing only those that have matching strings in the userid and log activity fields.</p>
-<p>The date format will default to the system standrd of 'YYYY-MM-DD HH:MM:SS' for any date entered.  This willl allow very narrow date/time ranges to be specific - right down to the second.</p>
+<p>The date format will default to the system standard of 'YYYY-MM-DD HH:MM:SS' for any date entered.  This will allow very narrow date/time ranges to be specific - right down to the second.</p>
 <p>Default date range is from midnight of the current date to midnight of the date 30 days prior.</p>
 
 pagePart1;
