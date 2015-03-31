@@ -11,8 +11,6 @@
 <?php
 // change to track in smartgit
 session_start();
-//unset($_SESSION['TEST_MODE']);
-//if (isset($_REQUEST['testdb'])) $_SESSION['TEST_MODE'] = 'ON'; 
 //include 'Incls/vardump.inc';
 //include 'Incls/seccheck.inc';
 // include 'Incls/mainmenu.inc';

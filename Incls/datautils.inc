@@ -14,14 +14,9 @@ $EmailFROM = 'reminders@pacificwildlifecare.org';
 $EmailTO = 'pacificwildlifecare@gmail.com';
 // ====== End Installation Parameters ==========
 
-if (!isset($_SESSION['TEST_MODE'])) {
-	// production database
-	$db = ProdDBName;
-		}
-else {
-	// test database
-	$db = TestDBName;
-	}
+// production database
+$db = ProdDBName;
+
 $mysqli = new mysqli("localhost", DBUserName, DBPassword, $db);
 
 if ($mysqli->connect_errno) {
