@@ -140,7 +140,7 @@ echo "Listing funding records for $listitem&nbsp;&nbsp;";
 echo "<a href=\"rptfundingdrilldown.php?name=$name&listitem=\">(Choose Again)</a><br />";
 
 //$sql = "SELECT * FROM `donations` WHERE `$name` = '$listitem'";
-$sql = "SELECT `donations`.`MCID`, `donations`.`$name`, `donations`.`DonationDate`, `donations`.`TotalAmount`, `members`.`NameLabel1stline` 
+$sql = "SELECT `donations`.`MCID`, `donations`.`$name`, `donations`.`DonationDate`, `donations`.`TotalAmount`, `donations`.`Note`, `members`.`NameLabel1stline` 
 	FROM `members`, `donations`
 	WHERE `members`.`MCID` = `donations`.`MCID` 
 		AND `donations`.`$name` = '$listitem' 
@@ -160,9 +160,9 @@ echo "<div class=\"well\">";
 $detailtot = number_format($detailtot,2);
 echo "Count: $detailcnt&nbsp;&nbsp;&nbsp;&nbsp;Total: $$detailtot<br />";
 echo "<table class=\"table-condensed\">";
-echo "<tr><th>MCID</th><th>$name</th><th>DonationDate</th><th>Amount</th><th>Donor Name</th></tr>";
+echo "<tr><th>MCID</th><th>$name</th><th>DonationDate</th><th>Amount</th><th>Donor Name</th><th>Donation Note(s)</th></tr>";
 foreach ($resarray as $r) {
-		echo "<tr><td>$r[MCID]</td><td>".$r[$name]."</td><td>$r[DonationDate]</td><td align=\"right\">$$r[TotalAmount]</td><td>$r[NameLabel1stline]</td></tr>";
+		echo "<tr><td>$r[MCID]</td><td>".$r[$name]."</td><td>$r[DonationDate]</td><td align=\"right\">$$r[TotalAmount]</td><td>$r[NameLabel1stline]</td><td>$r[Note]</td></tr>";
 	}	
 echo "</table>";
 echo "----- END OF LIST -----<br>";
