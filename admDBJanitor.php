@@ -25,7 +25,7 @@ print <<<pagePart1
 <ul>
 	<li><a class="btn btn-primary btn-xs" href="admlogtailer.php">Tail Database Activity Log</a><br />Log Tailer will display the last 15 log records in reverse chronological order and auto-refresh every 5 seconds.  This will allow the latest activity to be followed ('tailed').</li>
 	<li><a class="btn btn-primary btn-xs" href="admdeleterecs.php?action=list">Delete Records</a><br />Delete an individual member, funding or correspondence record.</li>
-	<li><a class="btn btn-primary btn-xs" href="admDBJanitor.php?action=list">Delete Expired Inactive</a><br />Delete all expired, inactive members records and their assoicated funding and correspondence records.  (NOTE: expired records are those marked as &apos;Inactive&apos; for longer than 90 days.)</li>
+	<li><a class="btn btn-primary btn-xs" href="admDBJanitor.php?action=list">Delete Expired Inactive</a><br />Delete inactive members records and their assoicated correspondence and EDI records. Inactive records are those marked as &apos;Inactive&apos; for longer than 90 days.<br>NOTE: associated funding and vol. time records are archived as MCID ZZZ99 and adding the original MCID into the notes field.</li>
 	<li><a class="btn btn-primary btn-xs" href="admDBJanitor.php?action=log">Maintain Log</a><br />Deletion of all system log entries dated over 30 days.</li>
 	<li><a class="btn btn-primary btn-xs" href="admmbrsummaryloader.php">Load/Reload Summary Info to Mbr Records</a><br />Read all funding and corresondence records and update all corresponding member record summary fields with the appropriate information. (NOTE: member record fiels are updated dynamically when funding and/or correspondece records are entered.  This utility is just to make sure all fields are up to date.)</li>
 	<li><a class="btn btn-primary btn-xs" href="admsetmemdate.php">Load MemDate</a>This page will search the membership database for all records that have a NULL value in the MemDate field and replace it with the earliest funding record date found from the donations table.</li>
@@ -103,10 +103,10 @@ pagePart2;
 		echo "<a class=\"btn btn-primary\" href=\"admDBJanitor.php?action=\">Done</a>";
 		exit();
 		}
-	echo 'MCIDs to delete:<br />';
+//	echo 'MCIDs to delete:<br />';
 	while ($r = $res->fetch_assoc()) {
 		$mcid = $r[MCID];
-		echo "&nbsp;&nbsp;$mcid<br />";
+//		echo "&nbsp;&nbsp;$mcid<br />";
 		$dsql = "SELECT * from `donations` where `MCID` = '$mcid';";
 		$dres = doSQLsubmitted($dsql);
 		$donationsfound = $dres->num_rows;
@@ -125,9 +125,9 @@ pagePart2;
 		$edicount += $edifound;
 		}
 	echo "total member table rows to delete: $mbrsfound<br>";
-	echo "donations table rows to archive: $doncount<br>";
+	echo "donations table rows to <b>archive</b>: $doncount<br>";
 	echo "correspondence table rows to delete: $corrcount<br>";
-	echo "voltime table rows to archive: $timecount<br />";
+	echo "voltime table rows to <b>archive</b>: $timecount<br />";
 	echo "extradonorinfo table rows to delete: $edicount<br />";
 	}
 	
@@ -167,7 +167,7 @@ pagePart3;
 	
 	print <<<pagePart4
 	<h3>Completion Report</h3>
-	member records deleted: $mbrcount<br>
+	MCID&apos;s deleted: $mbrcount<br>
 		
 pagePart4;
 	}
