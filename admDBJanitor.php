@@ -31,7 +31,7 @@ print <<<pagePart1
 	<li><a class="btn btn-primary btn-xs" href="admsetmemdate.php">Load MemDate</a>This page will search the membership database for all records that have a NULL value in the MemDate field and replace it with the earliest funding record date found from the donations table.</li>
 	<li><a class="btn btn-primary btn-xs" href="admreassignfunding.php">Reassign Funding Record(s)</a><br />Re-assign the existing MCID for a one or more funding record(s) by replacing it with a new one.</li>
 	<li><a class="btn btn-primary btn-xs" href="admreassigncorr.php">Reassign Correspondence Record(s)</a><br />Re-assign the existing MCID for a one or more correspondence record(s) by replacing it with a new one.</li>
-	<li><a class="btn btn-primary btn-xs" href="admreassignMCIDs.php">Batch Reassignment of MICDs</a><br />Re-assignment of ALL the funding and correspondence records assoicated with an MCID to a different, existing MCID.  Usually the &apos;OLD&apos; MCID record is deleted after this action has been performed by using the 'Delete Records' function to complete the process.</li>
+	<li><a class="btn btn-primary btn-xs" href="admreassignMCIDs.php">Batch Reassignment of MICDs</a><br />Re-assignment of ALL the funding, correspondence and vol time records assoicated with an MCID to a different, existing MCID.  Usually the &apos;OLD&apos; MCID record is deleted after this action has been performed by using the 'Delete Records' function to complete the process.</li>
 </ul>
 <p>These actions are seperate actions that must be indiviually selected in this utility.</p>
 <br />

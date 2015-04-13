@@ -17,11 +17,11 @@ $action = $_REQUEST['action'] ? $_REQUEST['action'] : "";
 
 if ($action == '') {
 	print <<<pagePart1
-<h3>Reassignment of MCIDs on Funding and Corresondence Records</h3>
-<p>This utility will replace the current MCID field of all existing funding and corresondence record(s) with the new one specified.  </p>
-<p>The new MCID must be exist on the database before this utility will proceed.  Use the 'Add New MCID' function on the main menu if necessary.</p>
-<p>A preliminary report of all existing records assigned to the existing MCID will be presented for review before any changes are made.  It is recommended that this report be printed in case any reversal actions are necessary.  Reversals must be on a record by record basis using the record number provided.</p>
-<p>The records identified will not be changed other than to have the new MCID replace the current one.</p>
+<h3>Reassignment of MCIDs on Funding, Corresondence and Vol Time Records</h3>
+<p>This utility will replace the current MCID field of all existing funding, corresondence and volunteer time record(s) with the new one specified.  </p>
+<p>The new MCID must be exist on the database before this utility will proceed.  Use the 'Add New MCID' function on the main menu to create the new MCID, if necessary.</p>
+<p>A preliminary report of all existing records assigned to the existing MCID will be presented for review before any changes are made.  <b>It is recommended that this report be printed in case any reversal actions are necessary.</b></p>
+<p>The records identified will not be modified in any way other than to have the new MCID replace the old one.</p>
 
 <a class="btn btn-warning" href="admreassignMCIDs.php?action=form">CONTINUE</a><br /><br />
 <a class="btn btn-primary" href="admDBJanitor.php">CANCEL AND RETURN</a><br />
@@ -81,6 +81,7 @@ if ($action == 'report') {
 			}
 		}
 	else echo "<h4>No donation records assoicated with the existing MCID $oldmcid</h4>";
+
 	// report impacted corresondence records on old MCID
 	$sql = "SELECT * FROM `correspondence` WHERE `MCID` = '$oldmcid';";
 	$res = doSQLsubmitted($sql);
@@ -93,6 +94,30 @@ if ($action == 'report') {
 			}
 		}
 	else echo "<h4>No corresondence records assoicated with the existing MCID $oldmcid</h4>";
+
+	// report impacted voltime records on old MCID
+	$sql = "SELECT * FROM `voltime` WHERE `MCID` = '$oldmcid';";
+	$res = doSQLsubmitted($sql);
+	$vtrows = $res->num_rows;
+	//echo "vtrows: $corrows<br />";
+	if ($vtrows > 0) {
+		echo "<h4>Volunteer Time Records for $oldmcid: the following $vtrows will be modified:</h4>";
+		while ($r = $res->fetch_assoc()) {
+			echo "$r[VTID], ";
+			}
+		}
+	else echo "<h4>No volunteer time records assoicated with the existing MCID $oldmcid</h4>";
+
+	// report impacted previous voltime records on old MCID
+	$sql = "SELECT * FROM `voltimeprev` WHERE `TMCID` = '$oldmcid';";
+	$res = doSQLsubmitted($sql);
+	$pvtrows = $res->num_rows;
+	//echo "vtrows: $corrows<br />";
+	if ($pvtrows > 0) {
+		echo "<h4>Prev Volunteer Time Records for $oldmcid: $pvtrows will be modified.</h4>";
+		}
+	else echo "<h4>No volunteer time records assoicated with the existing MCID $oldmcid</h4>";
+
 	echo '<h3>This list should be printed before proceeding in case any reversal of this action is necessary.</h3>----- End of Report -----<br />';
 	echo "<a class=\"btn btn-success\" href=\"admreassignMCIDs.php?action=apply&oldmcid=$oldmcid&newmcid=$newmcid\">CONTINUE</a><br /><br />";
 	echo "<a class=\"btn btn-danger\" href=\"admDBJanitor.php\">CANCEL AND RETURN</a><br />";
@@ -105,12 +130,19 @@ if ($action == 'apply') {
 	//echo "oldmcid: $oldmcid, newmcid: $newmcid<br />";
 	$newfld[MCID] = $newmcid;
 	$where = "`MCID` = '$oldmcid'";
-	$donrows = 0; $corrows = 0;
+	$donrows = 0; $corrows = 0; $vtrows = 0; $pvtrows = 0;
 	$donrows = sqlupdate('donations', $newfld, $where);
 	$corrows = sqlupdate('correspondence', $newfld, $where);
+	$vtrows = sqlupdate('voltime', $newfld, $where);
+	$newfldpvt[TMCID] = $newmcid;
+	$where = "`TMCID` = '$oldmcid'";	
+	$pvtrows = sqlupdate('voltimeprev', $newfldpvt, $where);
 	echo "<h4>Update completed successfully</h4>
 	Donation records updated: $donrows<br />
-	Corresondence records changed: $corrows<br /><br />";
+	Corresondence records changed: $corrows<br />
+	Vol Time records changed: $vtrows<br />
+	Prev Prev Vol Time records changed: $pvtrows<br />
+	<br />";
 	echo "<a class=\"btn btn-primary\" href=\"admDBJanitor.php\">RETURN</a><br />";
 	}
 
