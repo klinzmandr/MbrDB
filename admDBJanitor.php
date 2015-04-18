@@ -88,6 +88,7 @@ $expdate = date('Y-m-d', strtotime("-90 days"));
 
 // list all expired inactive member records and their assoicated funding, corresondence and time records
 if ($action == 'list') {
+	$sd = date('Y-m-d H:i:s',strtotime(now));
 	print <<<pagePart2
 	<h3>List summary of all candidate records.<br></h3>
 	<a class="btn btn-danger" href="admDBJanitor.php?action=delete">Continue</a>
@@ -132,6 +133,7 @@ pagePart2;
 	}
 	
 if ($action == 'delete') {
+	$sd = date('Y-m-d H:i:s',strtotime(now));
 	print <<<pagePart3
 	<h3>Delete and report summary of actions.</h3>
 	<a class="btn btn-primary" href="admDBJanitor.php?action=">Done</a>
@@ -171,6 +173,10 @@ pagePart3;
 		
 pagePart4;
 	}
+echo "Start date/time: $sd<br />";
+$ed = date('Y-m-d H:i:s',strtotime(now));
+echo "End date/time: $ed<br />";
+	
 ?>
 
 </body>
