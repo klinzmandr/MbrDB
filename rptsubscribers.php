@@ -20,9 +20,10 @@ echo '<h3>Subscribing Members Report&nbsp;&nbsp;&nbsp;<a class="btn btn-primary"
 if ($action == '') {
 print <<<pagePart1
 <p>This report provides a reconciliation point for members that have been indentified as &apos;subscribing&apos; members where a subscribing member is defined as having a Member Status of &apos;1-Member&apos; with a Member Type of &apos;1-Subscriber&apos; or a Member Status of &apos;2-Volunteer&apos; with a Member Type of &apos;2-VolSubsciber&apos;.  
-<p>This report has 3 potential sections:</p>
+<p>This report has 5 potential sections:</p>
 <ol>
-	<li>Listing of all members whose last DUES payments was marked as a &apos;subscription&apos; payment but their membership status and type do not indicate them as a &apos;subscribing&apos; member.  These MCID&apos;s should be examined and either the payment changed to a &apos;regular&apos; Purpose OR the member&apos;s record be updated to make them a &apos;subscribing&apos; member or volunteer.</li>
+	<li>Listing of all subscription members whose last DUES payments was marked as a &apos;non-subscription&apos; payment but their membership status and type indicate them as a &apos;subscribing&apos; member.  These MCID&apos;s should be examined and either the payment changed to a &apos;subscription&apos; payment OR the member&apos;s record be updated to make them a &apos;regular&apos; member or volunteer.</li>
+	<li>Listing of all regular members whose last DUES payments was marked as a &apos;subscription&apos; payment but their membership status and type do NOT indicate them as a &apos;subscribing&apos; member.  These MCID&apos;s should be examined and either the payment changed to a &apos;regular&apos; Purpose OR the member&apos;s record be updated to make them a &apos;subscribing&apos; member or volunteer.</li>
 
 	<li>Listing of all &apos;subscribing&apos; members that do not have a &apos;subscription&apos; DUES payment within the last 120 days.  These MCID&apos;s may need to be reclassified making them &apos;non-subscribers&apos; or the DUES payment deleted and re-entered as a subscription payment.</li>
 
@@ -40,29 +41,103 @@ pagePart1;
 exit;
 }
 
-// create report - first list those that are exceptions
+// create the report output
 if ($action == 'report') {
-	$sql = "SELECT `donations`.`MCID`, `donations`.`Program`, MAX( `donations`.`DonationDate` ) AS `LastPay`, `members`.`NameLabel1stline`, `members`.`MemStatus`, `members`.`MCtype` 
-	FROM `donations`, `members` 
-	WHERE `donations`.`MCID` = `members`.`MCID` 
-		AND `donations`.`Program` LIKE '%subscr%' 
-		AND `members`.`MCtype` NOT LIKE '%subscr%' 
-	GROUP BY `donations`.`MCID` 
-	ORDER BY `donations`.`MCID` ASC;";
+// =================================================	
+// Section 1: create regular member report that have last payment as subscription
+	echo '<h4>1. Subscribing Members with Last Payment as Non-Subscription</h4>';
+	$p = array(); $inarray = array(); $sqlstr = ''; $instr = '';
+	$sql = "SELECT `f`.`MCID`, `f`.`Program`, `f`.`TotalAmount`, `f`.`DonationDate` 
+	FROM ( 
+		SELECT `MCID`, MAX( `DonationDate` ) AS `MaxDate` 
+		FROM `pwcmbrdb`.`donations` 
+		GROUP BY `MCID` ) AS `x` 
+	INNER JOIN `donations` AS `f` ON `f`.`MCID` = `x`.`MCID` 
+		AND `f`.`DonationDate` = `x`.`MaxDate` 
+	WHERE `f`.`Program` NOT LIKE '%subscr%';";
 	$res = doSQLsubmitted($sql);
 	$rowcount = $res->num_rows;
-	if ($rowcount > 0) {
-		echo '<h4>List of exceptions ('.$rowcount.')</h4>Members having their last Dues payment marked as a &apos;subsciption&apos; payment but are not noted as a subscribing member or subscribing volunteer.<br>';
+//	echo "Rows returned: $rowcount<br>";
+	while ($r = $res->fetch_assoc()) {
+//		echo "<pre>subscription "; print_r($r); echo '</pre>';
+		$inarray[] = $r[MCID];
+		$p[$r[MCID]] = $r;
+		}
+//	echo "sqlstr: $sqlstr<br>";
+//	echo '<pre>payments '; print_r($p); echo '</pre>';
+	$instr = implode("','", $inarray);
+	$sqlstr = "SELECT * FROM `members` 
+	WHERE `MCID` IN ('" . $instr . "')
+		AND `Inactive` = 'FALSE'
+		AND `MCtype` LIKE '%subscr%';";
+// now get the corresonding members and check them
+	$res = doSQLsubmitted($sqlstr);
+	$rowcount = $res->num_rows;
+//	echo "Rows returned: $rowcount<br>";
+
+	if ($rowcount > 0) {	
+		echo 'Subscription members having their last Dues payment marked as a &apos;non-subsciption&apos; payment noted as a subscribing member or subscribing volunteer.<br>';
 		echo '<table class="table-condensed">
-		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemStatus</th><th>MemType</th></tr>';
+		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 		while ($r = $res->fetch_assoc()) {
-			echo "<tr><td>$r[MCID]</td><td>$r[Program]</td><td>$r[LastPay]</td><td>$r[NameLabel1stline]</td><td>$r[MemStatus]</td><td>$r[MCtype]</td></tr>";
+//			echo '<pre>Exceptions '; print_r($r); echo '</pre>';
+			$mcid = $r[MCID];
+			$program = $p[$mcid][Program];
+			$lastpay = $p[$mcid][DonationDate];
+			echo "<tr><td>$r[MCID]</td><td>$program</td><td>$lastpay</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
+			}
+		}
+	echo '</table>----- END OF LIST -----<br>';
+
+// ======================================================
+// Section 2: create non-subscribers report - first get array of last subscriptions
+	$p = array(); $inarray = array(); $sqlstr = ''; $instr = '';
+	$sql = "SELECT `f`.`MCID`, `f`.`Program`, `f`.`TotalAmount`, `f`.`DonationDate` 
+	FROM ( 
+		SELECT `MCID`, MAX( `DonationDate` ) AS `MaxDate` 
+		FROM `pwcmbrdb`.`donations` 
+		GROUP BY `MCID` ) AS `x` 
+	INNER JOIN `donations` AS `f` ON `f`.`MCID` = `x`.`MCID` 
+		AND `f`.`DonationDate` = `x`.`MaxDate` 
+	WHERE `f`.`Program` LIKE '%subscr%';";
+	$res = doSQLsubmitted($sql);
+	$rowcount = $res->num_rows;
+//	echo "Rows returned: $rowcount<br>";
+	while ($r = $res->fetch_assoc()) {
+//		echo "<pre>subscription "; print_r($r); echo '</pre>';
+		$inarray[] = $r[MCID];
+		$p[$r[MCID]] = $r;
+		}
+	$instr = implode("','", $inarray);
+	$sqlstr = "SELECT * FROM `members` 
+	WHERE `MCID` IN ('" . $instr . "')
+	AND `Inactive` = 'FALSE';";
+//	echo "sqlstr: $sqlstr<br>";
+//	echo '<pre>payments '; print_r($p); echo '</pre>';
+
+// now get the corresonding members and check them
+	$res = doSQLsubmitted($sqlstr);
+	$rowcount = $res->num_rows;
+//	echo "Rows returned: $rowcount<br>";
+	echo '<h4>2. Non-Subscribing Members with Subscription Payments</h4>';
+	if ($rowcount > 0) {	
+		echo 'Members having their last Dues payment marked as a &apos;subsciption&apos; payment but are not noted as a subscribing member or subscribing volunteer.<br>';
+		echo '<table class="table-condensed">
+		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
+		while ($r = $res->fetch_assoc()) {
+			$mcid = $r[MCID];
+			$program = $p[$mcid][Program];
+			$lastpay = $p[$mcid][DonationDate];
+			if (($ret = stripos($r[MCtype],'subscr')) !== FALSE) continue;
+			echo "<tr><td>$r[MCID]</td><td>$program</td><td>$lastpay</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
 		//echo '<pre>Delinquents '; print_r($delarray); echo '</pre>';
 			} 
-		echo '</table>----- END OF LIST -----<br>';
 		//echo '<pre>Exceptions '; print_r($r); echo '</pre>';
 		}
-	// now get all those subscribers with last payment as a subscription
+	echo '</table>----- END OF LIST -----<br>';
+
+
+// get all those subscribers with last payment as a subscription
 	//echo "Subscribers<br />";
 	$sql = "
 	SELECT `donations`.`MCID`, 
@@ -74,7 +149,8 @@ if ($action == 'report') {
 		`members`.`MCtype`,
 		`members`.`PrimaryPhone`,
 		`members`.`EmailAddress`,
-		`members`.`LastDuesAmount`
+		`members`.`LastDuesAmount`,
+		`members`.`Notes`
 	FROM { OJ `donations` 
 		LEFT OUTER JOIN `members` ON `donations`.`MCID` = `members`.`MCID` } 
 	WHERE `donations`.`Purpose` = 'dues' 
@@ -105,44 +181,46 @@ if ($action == 'report') {
 			$payarray[$r[MCID]] = $r;									// payment classified incorrectly
 			continue;
 			}
+
 		$subarray[$r[MCID]] = $r;										// all info good 
 		$totamt += $r[TotalAmount];
 		$subamt += $r[LastDuesAmount]; 
 		}
 
-		//echo "<br>subarray count: ".count($subarray).", delarray count: ".count($delarray).', payarray count: '.count($payarray).'<br />';
-		
-	// now list all those delinquent and/or improperly classified
+// =================================================		
+// Section 3: list all those delinquent and/or improperly classified
+	echo '<h4>3. Delinquent Subscribing Members</h4>';
 	if (count($delarray) > 0) {
-		echo '<h4>Delinquent Subscribing Members ('.count($delarray).')</h4>
-		Subscribing members with no subscription payment in last 120 days.  <br>(NOTE: some may also have their last payments improperly classified.)<br>';
+		echo 'Subscribing members with no subscription payment in last 120 days.  <br>(NOTE: some may also have their last payments improperly classified.)<br>';
 		echo '<table class="table-condensed">
-		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Phone</th><th>Email Address</th></tr>';
+		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 		ksort($delarray);
 		foreach ($delarray as $r) {
-			echo "<tr><td>$r[MCID]</td><td>$r[LastProg]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[PrimaryPhone]</td><td>$r[EmailAddress]</td></tr>";
+			echo "<tr><td>$r[MCID]</td><td>$r[LastProg]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
 		//echo '<pre>Delinquents '; print_r($delarray); echo '</pre>';
 			}
 		echo '</table>----- END OF LIST -----';
 		}
 
-// now list all those improperly classified
+// =================================================
+// Section 4: now list all those with unclassified payment program
+	echo '<h4>4. Subscribing Members with Unclassified Payment Program</h4>';
 	if (count($payarray) > 0) {
-		echo '<h4>Subscribing Members with Incorrectly Classified Payment ('.count($payarray).')</h4>
-		Subscribing members with a subscription payment within last 120 days that apprears to be incorrrectly classified.<br>';
+		echo 'Subscribing members with a subscription payment without a payment program designated.<br>';
 		echo '<table class="table-condensed">
-		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Phone</th><th>Email Address</th></tr>';
+		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 		ksort($payarray);
 		foreach ($payarray as $r) {
-			echo "<tr><td>$r[MCID]</td><td>$r[LastProg]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[PrimaryPhone]</td><td>$r[EmailAddress]</td></tr>";
+			echo "<tr><td>$r[MCID]</td><td>$r[LastProg]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
 		//echo '<pre>Delinquents '; print_r($delarray); echo '</pre>';
 			}
-		echo '</table>----- END OF LIST -----';
 		}
+	echo '</table>----- END OF LIST -----';
 
-$subamt = number_format($subamt,2);
-	// listing of all current subscribers with proper payment info
-	echo '<h4>Current Subscribing Members ('.count($subarray).')</h4>
+// =================================================
+// Section 5:listing of all current subscribers with proper payment info
+	$subamt = number_format($subamt,2);
+	echo '<h4> 5. Current Subscribing Members ('.count($subarray).')</h4>
 	Subscribing members with current, up to date subscription payments.<br>';
 	echo "Total value of all subscriptions: $$subamt<br>";
 	echo '<table class="table-condensed">
