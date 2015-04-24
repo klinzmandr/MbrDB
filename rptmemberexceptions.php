@@ -29,11 +29,11 @@ if (!isset($_REQUEST['rpt'])) {
 	<p>It should be the goal is to classify all those who provide financial support and/or volunteer time into as a member, volunteer or donor.  Those that do not qualify should be re-classified as a &apos;0-Contact&apos;</p>
 	<p>The expiration date used is 11 months from the current month and is listed with each report section.</p>
 	<h4>Report Sections</h4>
-	<p>NOTE: a section may not appear if there are no records to list.</p>
 	<p><b>0-Contact That Paid Dues or Made A Donaton</b> - lists all records classified as Member Status of 0 (Contacts) that have current funding records paid within the expiration period</p>
 	<p><b>1-Members or 2-Volunteers With NO Dues Payment Record</b> - list of all records classified as 1-Member or 2-Volunteer with NO funding records paid within the expiration period.</p>
 	<p><b>3-Donors with NO Donations</b> - list of all records classified as 3-Donor with NO donation or dues funding records paid within the expiration period.</p>
 	<p><b>Invalid Mail or Email Flag Settings</b> - list of those records that have incosistant flag settings on the Mail and/or Email flags indicating that they want mail and/or email but there is no information provided to do so.</p>
+	<p><b>Member records with NO funding records</b> - list of member MCID&apos;s that have no assoicated funding records.  These should be examined to determine if they should be made inactive.</p>
 	<a class="btn btn-success" href="rptmemberexceptions.php?rpt">CONTINUE</a>';
 	exit;
 	}
@@ -48,9 +48,9 @@ $res = doSQLsubmitted($sql);
 $rowcnt = $res->num_rows;
 //echo "SQL: $sql<br />";
 //echo "rowcnt: $rowcnt<br />";
+echo "<div class=\"container\"><h4>0-Contact That Paid Dues or Made A Donaton</a></h4>";
 if ($rowcnt > 0) {
-	echo "<div class=\"container\"><h4>0-Contact That Paid Dues or Made A Donaton</a></h4>
-<p>There were $rowcnt records classified as &apos;0-Contacts&apos; that made a payment marked as either &apos;Dues&apos; or as a &apos;Donation&apos; of some kind.  Those listed are were paid <b>within</b> the expiration period. These member records MAY qualify as members, volunteers or donaors.  
+echo "<p>There were $rowcnt records classified as &apos;0-Contacts&apos; that made a payment marked as either &apos;Dues&apos; or as a &apos;Donation&apos; of some kind.  Those listed are were paid <b>within</b> the expiration period. These member records MAY qualify as members, volunteers or donaors.  
 <p>Those in this list should probably be re-clasified as members or donors.</p>
 <p>The expiration date used is $expdate</p>";
 
@@ -74,9 +74,9 @@ $res = doSQLsubmitted($sql);
 $rowcount = $res->num_rows;
 //echo "SQL: $sql<br />";
 //echo "rowcount: $rowcount<br />";
+echo "<h4>1-Members or 2-Volunteers With NO Dues Payment Record</a></h4>";
 if ($rowcount > 0) {
-	echo "<h4>1-Members or 2-Volunteers With NO Dues Payment Record</a></h4>
-<p>There were $rowcount records classified as &apos;1-Members&apos; or &apos;2-Volunteer&apos;; without ANY payment records marked as &apos;Dues&apos; associated them.  These member records should be reviewed and reclassified if warranted.</p>
+echo "<p>There were $rowcount records classified as &apos;1-Members&apos; or &apos;2-Volunteer&apos;; without ANY payment records marked as &apos;Dues&apos; associated them.  These member records should be reviewed and reclassified if warranted.</p>
 <p>If the record is to be retained as a member or volunteer, a $0 dues payment should be entered to remove the record from this list and allow review of this status at the end of the next expiration period.</p>
 <p>The expiration date used is $expdate</p>";
 	echo '<table border="0" class="table table-condensed">
@@ -98,9 +98,9 @@ $res = doSQLsubmitted($sql);
 $rowcount = $res->num_rows;
 //echo "SQL: $sql<br />";
 //echo "rowcount: $rowcount<br />";
+echo "<h4>3-Donors with NO Donations</a></h4>";
 if ($rowcount > 0) {
-	echo "<h4>3-Donors with NO Donations</a></h4>
-<p>There were $rowcount records classified as &apos;3-Donor&apos; that have NO non-Dues payment logged within the expriation period.  These member records should be reviewed and reclassified if warranted.</p>
+echo "<p>There were $rowcount records classified as &apos;3-Donor&apos; that have NO non-Dues payment logged within the expriation period.  These member records should be reviewed and reclassified if warranted.</p>
 
 <p>The expiration date used is $expdate</p>";
 	echo '<table border="0" class="table table-condensed">
@@ -121,19 +121,38 @@ $res = doSQLsubmitted($sql);
 $rowcount = $res->num_rows;
 //$rowcount = $res->num_rows;
 //echo "SQL: $sql<br />";
+echo "<h4>Invalid Mail or Email Flag Settings</h4>";
 if ($rowcount > 0) {
-	echo "<h4>Invalid Mail or Email Flag Settings</h4>
-	<p>There are $rowcount ACTIVE member, volunteer or donor records that have EITHER the &apos;Mail OK?&apos; flag set to YES/TRUE witih no information in the Address Line OR the &apos;Email OK?&apos; set to YES/TRUE with no email address provided.  All these records should reviewed and corrected.</p>";
+echo "<p>There are $rowcount ACTIVE member, volunteer or donor records that have EITHER the &apos;Mail OK?&apos; flag set to YES/TRUE witih no information in the Address Line OR the &apos;Email OK?&apos; set to YES/TRUE with no email address provided.  All these records should reviewed and corrected.</p>";
 	echo '<table class="table-condensed">
 	<tr><th>MCID</th><th>Name</th><th>MC Type</th><th>MailFlag</th><th>AddressLine</th><th>EmailFlag</th>EmailAddress<th></th></tr>';
 	while ($r = $res->fetch_assoc()) {
 		echo "<tr><td>$r[MCID]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Mail]</td><td>$r[AddressLine]</td><td>$r[E_Mail]</td><td>$r[EmailAddress]</td></tr>";
 		//echo '<pre> mail with no address '; print_r($r); echo '</pre>';	
 		}
-	echo '</table>----- END OF LIST -----<br>';
 	}
+echo '</table>----- END OF LIST -----<br>';
 
-
+$sql = "SELECT `members`.`MCID`, `members`.`MemStatus`, `members`.`MemDate`, `members`.`Inactive`, `members`.`FName`, `members`.`LName` 
+FROM { OJ `pwcmbrdb`.`members` AS `members` LEFT OUTER JOIN `pwcmbrdb`.`donations` AS `donations` 
+ON `members`.`MCID` = `donations`.`MCID` } 
+WHERE `donations`.`MCID` IS NULL 
+	AND `members`.`Inactive` = FALSE 
+	ORDER BY `members`.`MCID` ASC";
+$res = doSQLsubmitted($sql);
+$rowcount = $res->num_rows;
+//$rowcount = $res->num_rows;
+//echo "SQL: $sql<br />";
+echo "<h4>List of MCID's with NO associated funding records</h4>";
+if ($rowcount > 0) {
+echo "<p>There are $rowcount active MCID's that have NO funding records assoicated with them.  All these records should reviewed and probably set inactive.</p>";
+	echo '<table class="table-condensed">
+	<tr><th>MCID</th><th>FName</th><th>LName</th><th>MemStatus</th><th>MemDate</th><th>Inactive</th></tr>';
+	while ($r = $res->fetch_assoc()) {
+		echo "<tr><td>$r[MCID]</td><td>$r[FName]</td><td>$r[LName]</td><td>$r[MemStatus]</td><td>$r[MemDate]</td><td>$r[Inactive]</td></tr>";
+		}
+	}
+echo '</table>----- END OF LIST -----<br>';
 
 ?>
 <script src="jquery.js"></script>
