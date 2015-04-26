@@ -353,7 +353,6 @@ function validatezipcode(fld) {
   <li class="active"><a href="#home" data-toggle="tab">Main</a></li>
   <li class=""><a href="mbrdonations.php" onclick="return chkchg()">Funding</a></li>
   <li class=""><a href="mbrcorrespondence.php" onclick="return chkchg()">Correspondence</a></li>
-  <li class=""><a href="#notes" data-toggle="tab">Notes</a></li>
 
 pagePart1;
 if ($memstatus == 2) echo '<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>';
@@ -405,8 +404,12 @@ $('#CI').typeahead({source: citylist})
 
 <div class="row">
 <div class="col-sm-4">Phone: <input type="text" name="PrimaryPhone" value="$priphone" size="12" maxlength="12" style="width: 125px;" onchange="return ValidatePhone(this)"  placeholder="Primary Phone" /></div>
+
 <div class="col-sm-4">Email: <input id="EMA" placeholder="Email" style="width: 200px;" name="EmailAddress" value="$eaddr" onchange="setupemailok()"></td></tr></div>
 </div>
+<div class="row">
+<div class="col-sm-12">Notes:<textarea name="Notes" rows="2" cols="60">$notes</textarea></div>
+</div>  <!-- row -->
 </div>  <!-- well -->
 <!-- </div>  tab pane -->
 
@@ -485,16 +488,6 @@ function chkvalidmail(fld) {
 </div> <!-- tab 1 pane -->
 
 <!-- tabs 2 & 3 are new pages -->
-
-<!-- Tab 4 member notes -->
-<div class="tab-pane fade" id="notes">
-<div class="well">
-<h4>Notes</h4>
-<div class="row">
-<div class="col-sm-6"><textarea name="Notes" rows="10" cols="90">$notes</textarea></div>
-</div>  <!-- row -->
-</div>  <!-- well -->
-</div>	<!-- tab 4 pane -->
 
 pagePart3;
 echo '
