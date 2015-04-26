@@ -98,18 +98,13 @@ print <<<menupart3
 <li class="dropdown">
 <a id="drop1" class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Reports<b class="caret"></b></a>
 <ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
-	<li><a href="rptdonortopten.php" target="_blank">Donor Top Ten Report</a></li>
-	<li><a href="rptnewsupporters.php" target="_blank">New Supporters by Date Range</a></li>
-	<li><a href="rptmemberstatus.php" target="_blank">List All Members by Status</a></li>
 	<li><a href="rptFundingPaid.php" target="_blank">Funding Paid Report</a></li>
 	<li><a href="rptprintlabels.php" target="_blank">Print Labels on Criteria</a></li>
-	<li><a href="rptfundingdrilldown.php" target="_blank">Funding Drill Down Report</a></li>
 	<li><a href="rptmembersummary.php" target="_blank">Membership Drill Down Report</a></li>
 	<li><a href="rptmemberexceptions.php" target="_blank">Membership Exception Report</a></li>
 	<li><a href="rptsubscribers.php" target="_blank">Subscribing Members Report</a></li>
 	<li><a href="rptcorrdrilldown.php" target="_blank">Correspondence Drill Down</a></li>
 	<li><a href="rpttransactionlog.php" target="_blank">Transaction Log Report</a></li>
-	<li><a href="rpttransactionsummary.php" target="_blank">Transactions Summary Report</a></li>
 	<li><a href="rptinactiveMCIDs.php" target="_blank">Inactive MCID Report</a></li>
 	<li><a href="rptmaillogviewer.php" target="_blank">Mail Log Viewer</a></li>	
 	<li><a href="rptlybunty.php" target="_blank">LYBUNTY Report</a></li>
