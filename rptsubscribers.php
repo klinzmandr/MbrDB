@@ -44,8 +44,8 @@ exit;
 // create the report output
 if ($action == 'report') {
 // =================================================	
-// Section 1: create regular member report that have last payment as subscription
-	echo '<h4>1. Subscribing Members with Last Payment as Non-Subscription</h4>';
+// Section 1: create subscriber member report that have last dues payment as non-subscription
+	echo '<h4>1. Subscribing Members with Last Payment marked as Dues is a &apos;non-subscription&apos; Payment</h4>';
 	$p = array(); $inarray = array(); $sqlstr = ''; $instr = '';
 	$sql = "SELECT `f`.`MCID`, `f`.`Program`, `f`.`TotalAmount`, `f`.`DonationDate` 
 	FROM ( 
@@ -54,7 +54,8 @@ if ($action == 'report') {
 		GROUP BY `MCID` ) AS `x` 
 	INNER JOIN `donations` AS `f` ON `f`.`MCID` = `x`.`MCID` 
 		AND `f`.`DonationDate` = `x`.`MaxDate` 
-	WHERE `f`.`Program` NOT LIKE '%subscr%';";
+	WHERE `f`.`Program` LIKE 'dues%'
+		AND `f`.`Program` NOT LIKE '%subscr%';";
 	$res = doSQLsubmitted($sql);
 	$rowcount = $res->num_rows;
 //	echo "Rows returned: $rowcount<br>";
@@ -76,7 +77,7 @@ if ($action == 'report') {
 //	echo "Rows returned: $rowcount<br>";
 
 	if ($rowcount > 0) {	
-		echo 'Subscription members having their last Dues payment marked as a &apos;non-subsciption&apos; payment noted as a subscribing member or subscribing volunteer.<br>';
+		echo 'Subscription members having their last Dues payment marked as a &apos;non-subsciption&apos; payment.  Their status should be reveiwed and either the payment&apos;s Program or the member&apos; status changed appropriately.<br>';
 		echo '<table class="table-condensed">
 		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 		while ($r = $res->fetch_assoc()) {
@@ -119,7 +120,7 @@ if ($action == 'report') {
 	$res = doSQLsubmitted($sqlstr);
 	$rowcount = $res->num_rows;
 //	echo "Rows returned: $rowcount<br>";
-	echo '<h4>2. Non-Subscribing Members with Subscription Payments</h4>';
+	echo '<h4>2. Non-Subscribing Members with Last Payment marked as Dues is a &apos;subscription&apos; Payment</h4>';
 	if ($rowcount > 0) {	
 		echo 'Members having their last Dues payment marked as a &apos;subsciption&apos; payment but are not noted as a subscribing member or subscribing volunteer.<br>';
 		echo '<table class="table-condensed">
@@ -178,7 +179,7 @@ if ($action == 'report') {
 			continue;
 			}
 		if ($r[LastProg] == '') { 
-			$payarray[$r[MCID]] = $r;									// payment classified incorrectly
+			$payarray[$r[MCID]] = $r;									// payment missing a Program classification
 			continue;
 			}
 
@@ -204,9 +205,9 @@ if ($action == 'report') {
 
 // =================================================
 // Section 4: now list all those with unclassified payment program
-	echo '<h4>4. Subscribing Members with Unclassified Payment Program</h4>';
+	echo '<h4>4. Subscribing Members with Unclassified Payment</h4>';
 	if (count($payarray) > 0) {
-		echo 'Subscribing members with a subscription payment without a payment program designated.<br>';
+		echo 'Subscribing members with a subscription payment without a payment Program designated.<br>';
 		echo '<table class="table-condensed">
 		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 		ksort($payarray);
