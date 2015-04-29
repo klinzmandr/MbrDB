@@ -164,7 +164,7 @@ function initSelect(control,value) {
 <form class="form-inline" name="MemStat">
 <select onchange="this.form.submit()" name="rptmemstatus" size="1">
 <option value="">Select New Status</option>
-<option value="0">0-Contact</option>
+<!-- <option value="0">0-Contact</option> -->
 <option value="1">1-Member</option>
 <option value="2">2-Volunteer</option>
 <option value="3">3-Donor</option>
