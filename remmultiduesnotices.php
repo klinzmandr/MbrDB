@@ -120,23 +120,25 @@ $dr = array();			// array of mcid's with date of last reminder sent
 $ar = array();			// array of mcid's with count of reminders sent
 // parse result rows to find those reminders with renewal notices
 while ($r = $results->fetch_assoc()) {
+//	echo '<pre> corr '; print_r($r); echo '</pre>';
 	$mcidid = $r['MCID'];
 	if (stripos($r['Reminders'],"remind") !== FALSE) {  // count the reminder notices sent and latest date
 		$ar[$mcidid] += 1;
 		if (strtotime($dr[$mcidid]) <= strtotime($r[DateSent])) {
+//			echo "mcid: $r[MCID], dr[mcidid]: $dr[$mcidid], r[DateSent]: $r[DateSent]<br>";
 			$dr[$mcidid] = $r[DateSent];
 			$ct[$mcidid] = $r[CorrespondenceType];	// save last for final report output
-			//echo 'mcid: '.$mcidid.', corr time: ' . $dr[$mcidid] . '<br />';
+//			echo 'mcid: '.$mcidid.', corr time: ' . $dr[$mcidid] . '<br />';
 			}
 		}
 //	sort order of returned rows means last row for an mcid 
 //	is the last thing done: a reminder or a renewal
-	if (stripos($r['Reminders'],"renew") !== FALSE) {		// forget it all since a renewal was done last
+	if (stripos($r['Reminders'],"RenewalPaid") !== FALSE) {		// forget it all since a renewal was done last
 		unset($ar[$mcidid]); unset($dr[$mcidid]); unset($ct[$mcidid]);
-		//echo "unset mcid: $mcidid<br />";
+//		echo "unset mcid: $mcidid<br />";
 		}
 	}
-//echo "<pre>active MCID's"; print_r($ar); echo "</pre>";
+// echo "<pre>active MCID's"; print_r($ar); echo "</pre>";
 print <<<formPart1
 <script>
 function initAllFields(form) {
