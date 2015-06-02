@@ -12,7 +12,7 @@
 
 <?php
 session_start();
-include 'Incls/vardump.inc';
+//include 'Incls/vardump.inc';
 include 'Incls/seccheck.inc';
 include 'Incls/datautils.inc';
 
@@ -68,7 +68,7 @@ foreach ($mcidarray as $mcid => $cnt) {
 
 echo "
 <div class=\"container\">
-<h3>$rc Correspondence records successfull added.</h3>
+<h3>$rc Correspondence records successfully added.</h3>
 <br><br>
 <a class=\"btn btn-primary btn-success\" href=\"admcorrbulkloader.php\">RETURN</a>
 </div>  <!-- container -->

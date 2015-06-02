@@ -35,8 +35,8 @@ if ($tname == "") {
 	$res = doSQLsubmitted($sql);
 	print <<<tempForm1
 <div class="container"><h3>Membership Mail Notice</h3> 
-<h4>Send Email Reminders&nbsp;&nbsp;<a class="btn btn-primary btn-xs" href="remmultiduesnotices.php">RETURN</a></h4>
-Select an Letter template from the selection list:<br>
+<h4>Send Mail Reminders&nbsp;&nbsp;<a class="btn btn-primary btn-xs" href="remmultiduesnotices.php">RETURN</a></h4>
+Select a letter template from the selection list:<br>
 <form action="remmultimail.php" method="post">
 tempForm1;
 	echo "<select name=\"template\">";

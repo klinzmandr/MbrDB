@@ -56,7 +56,7 @@ $subject = $_REQUEST['Topic'];
 $message = $_REQUEST['Letter'];
 
 echo "<div class=\"container\">
-<h3>Bulk Mail Confirmation&nbsp;&nbsp;<a href=\"remmultiduesnotices.php\" class=\"btn btn-primary\">RETURN</a></h3>";
+<h3>Bulk Email Confirmation&nbsp;&nbsp;<a href=\"remmultiduesnotices.php\" class=\"btn btn-primary\">RETURN</a></h3>";
 
 $tce = count($emarray); $sll = strlen($subject);
 $sl = isset($_REQUEST['Topic'])? $sll : 0;
@@ -164,7 +164,7 @@ for ($i = 0; $i < count($emarray); $i++) {
 	}
 
 echo "<br><h4>***Bulk Email Processing Complete***</h4><br>";
-echo '<h5>Please refer to the mail log entry to review the results</h5>';
+echo '<h5>Please refer to the Mail Log Viewer to review the results</h5>';
 //echo '<a href="javascript:self.close();" class="btn btn-primary"><strong>(CLOSE)</strong></a>';
 $logmsg .= "Last end tag used: $tag<br />\n";
 $endtime = date('r', strtotime(now));

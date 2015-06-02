@@ -33,7 +33,7 @@ if (!isset($_REQUEST['rpt'])) {
 	<p><b>1-Members or 2-Volunteers With NO Dues Payment Record</b> - list of all records classified as 1-Member or 2-Volunteer with NO funding records paid within the expiration period.</p>
 	<p><b>3-Donors with NO Donations</b> - list of all records classified as 3-Donor with NO donation or dues funding records paid within the expiration period.</p>
 	<p><b>Invalid Mail or Email Flag Settings</b> - list of those records that have inconsistent flag settings on the Mail and/or Email flags indicating that they want mail and/or email but there is no information provided to do so.</p>
-	<p><b>Member records with NO funding records</b> - list of member MCID&apos;s that have no associated funding records.  These should be examined to determine if they should be made inactive.</p>
+	<p><b>Supporter records with NO funding records</b> - list of supporter&apos;s that have no associated funding records.  These should be examined to determine if they should be made inactive.</p>
 	<a class="btn btn-success" href="rptmemberexceptions.php?rpt">CONTINUE</a>';
 	exit;
 	}
@@ -74,10 +74,10 @@ $res = doSQLsubmitted($sql);
 $rowcount = $res->num_rows;
 //echo "SQL: $sql<br />";
 //echo "rowcount: $rowcount<br />";
-echo "<h4>1-Members or 2-Volunteers With NO Dues Payment Record</a></h4>";
+echo "<h4>1-Members or 2-Volunteers With NO Dues Payments Recorded</a></h4>";
 if ($rowcount > 0) {
-echo "<p>There were $rowcount records classified as &apos;1-Members&apos; or &apos;2-Volunteer&apos;; without ANY payment records marked as &apos;Dues&apos; associated them.  These member records should be reviewed and reclassified if warranted.</p>
-<p>If the record is to be retained as a member or volunteer, a $0 dues payment should be entered to remove the record from this list and allow review of this status at the end of the next expiration period.</p>
+echo "<p>There were $rowcount records classified as &apos;1-Members&apos; or &apos;2-Volunteer&apos;; without ANY funding records marked as &apos;Dues&apos; associated with them.  These member records should be reviewed and reclassified if warranted.</p>
+<p>If the record is to be retained as a member or volunteer, a $0 dues payment could be entered to remove the record from this list and allow review of this status in 11 months.</p>
 <p>The expiration date used is $expdate</p>";
 	echo '<table border="0" class="table table-condensed">
 <tr><th>MCID</th><th>Name</th><th>MCType</th><th>Last Dues Date</th><th>Last Dues Amount</th></tr>';
@@ -143,9 +143,9 @@ $res = doSQLsubmitted($sql);
 $rowcount = $res->num_rows;
 //$rowcount = $res->num_rows;
 //echo "SQL: $sql<br />";
-echo "<h4>List of MCIDs with NO associated funding records</h4>";
+echo "<h4>List of supporters with NO associated funding records</h4>";
 if ($rowcount > 0) {
-echo "<p>There are $rowcount active MCIDs that have NO funding records associated with them.  All these records should reviewed and probably set inactive.</p>";
+echo "<p>There are $rowcount active supporters that have NO funding records associated with them.  All these records should reviewed and probably set inactive.</p>";
 	echo '<table class="table-condensed">
 	<tr><th>MCID</th><th>FName</th><th>LName</th><th>MCType</th><th>MemDate</th><th>Inactive</th></tr>';
 	while ($r = $res->fetch_assoc()) {

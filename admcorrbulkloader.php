@@ -31,16 +31,21 @@ if ($action == '') {
 print <<<pagePart1
 
 <h3>Correspondence Bulk Update Utility</h3>
-<p>This page is designed to upload a spreadsheet of any format (xls, xlsx, csv or odp) and use it to add individual records to the correspondence table of the database for each MCID found in the spreadsheet.</p>
-<p>The prerequisites of the file to be uploaded are:
-
+<p>This page is designed to upload a spreadsheet and use it to add individual records to the correspondence table of the database for each MCID found in the spreadsheet.</p>
+<p>Spreadsheets are usually saved in one of the following formats:  xls, xlsx, csv or odp.  This utility will accept a spreadsheet saved in any of these formats.</p>
+<p>The prerequisites of the spreadsheet file to be uploaded are:
 <ol>
-<li>Only the FIRST spreadsheet of the file is examined.</li>
-<li>The first row, <b>(ROW &apos;1</b>&apos;) of the FIRST spreadsheet MUST contain the column names.</li>
-<li>There MUST be one (1), column name in ROW &apos;1&apos; named &apos;<b>MCID</b>&apos; spelled exactly that way - in all CAPS&apos;s. </li>
-<li>The contents of this column are assumed to be valid MCID&apos;s of the membership database and a new correspondence record for each will be created.</li>
+<li>Only the FIRST worksheet tab of a spreadsheet file is used;</li>
+<li>One cell in Row 1 must contain the column header MCID (uppercase);</li>
+<li>All cells below Row 1 in that column must contain actual MCIDs that are in the
+Membership Database;</li>
+<li>Only MCIDs in that column are used.  All other column values are ignored.</li>
 </ol></p>
-<p style="color: red; "><b>NOTE: if the correspondence type list does not contain an apporpriate selection, a new one correspondence type should be added using other administrative functions.</b></p>
+<p style="color: red; ">
+<b>
+NOTE: if the Corr. Type drop-down list does not contain an appropriate selection, a new
+correspondence type can be added using Maint. Lists -> Corr Types.
+</b></p>
 
 <p><a href="http://youtu.be/FSp0x00l6ak" target="_blank">Click this link for an instructional video (8:14)</a></p>
 pagePart1;
@@ -155,9 +160,9 @@ if (strlen($errs) > 0) {
 	<a class=\"btn btn-primary btn-danger\" href=\"admcorrbulkloader.php\">CANCEL</a>";
 }
 else {
-	echo "<h3>Spreadsheet validated.</h3><br>
+	echo "<h3>Uploaded file validated.</h3><br>
 	<h4>MCID column heading found in Column &apos;$colalpha&apos; of 1st spreadsheet in file &apos;" . $_FILES["file"]["name"] . "&apos;.<br>
-	Corresondence Type to be applied to all MCID's: $corrtype<br>
+	Corresondence Type to be applied to all MCIDs: $corrtype<br>
 	Date to be applied to all corrrespondence records: $datesent<br><br>
 	Click CONTINUE to apply updates or CANCEL to change parameters.</h4><br>
 	<a class=\"btn btn-primary btn-success\"  href=\"admcorrbulkupd.php?file=$Filepath&corrtype=$corrtype&DateSent=$datesent&Notes=$notes&colidx=$colidx\">CONTINUE</a>

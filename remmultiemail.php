@@ -32,9 +32,10 @@ if ($tname == "") {
 	$sql = "SELECT * FROM `templates` WHERE `Type` = 'email';";
 	$res = doSQLsubmitted($sql);
 	print <<<tempForm1
-<div class="container"><h3>Membership Email Notice</h3> 
+<div class="container">
+<h3>Membership Email Notice</h3> 
 <h4>Send Email Reminders&nbsp;&nbsp;<a class="btn btn-primary btn-xs" href="remmultiduesnotices.php">RETURN</a></h4>
-Select an Letter template from the selection list:<br>
+Select an Email template from the selection list:<br>
 <form action="remmultiemail.php" method="post">
 tempForm1;
 	echo "<select name=\"template\">";
