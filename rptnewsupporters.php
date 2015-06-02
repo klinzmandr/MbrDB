@@ -125,7 +125,7 @@ endPage;
 	$duestot = number_format($duestot);
 	$dontot = number_format($dontot);
 	$rowcnt = count($mcidarray);
-	$hdr = 'MCID;MemStatus;MemDate;MCType;Lname;Fname;Org;Address;City;St;Zip;';
+	$hdr = 'MCID;MemStatus;MemDate;MCType;Lname;Fname;LabelLine;Org;Address;City;St;Zip;';
 	$hdr .= "Phone;Email;DuesCt;TotDues;DonCt;TotDonations;Notes\n";
 	$fa[] =  $hdr;
 	echo "<h5>New supporters in date range: $rowcnt with total dues paid of $$duestot and total donations paid of $$dontot</h5>";
@@ -155,7 +155,7 @@ foreach ($mcidarray as $k => $r) {
 		$r[MCID] = "\"$r[MCID]\"";		// escape for csv output
 		$r[Notes] = "\"$r[Notes]\"";
 		$r[AddressLine] = "\"$r[AddressLine]\"";
-		$fa[] = "$r[MCID];$r[MemStatus];$r[MemDate];$r[MCType];$r[LName];$r[FName];$r[Organization];$r[AddressLine];$r[City];$r[State];$r[ZipCode];$r[PrimaryPhone];$r[EmailAddress];$duescsvct;$duescsv;$donscsvct;$donscsv;$r[Notes]\n";
+		$fa[] = "$r[MCID];$r[MemStatus];$r[MemDate];$r[MCType];$r[LName];$r[FName];$r[NameLabel1stline];$r[Organization];$r[AddressLine];$r[City];$r[State];$r[ZipCode];$r[PrimaryPhone];$r[EmailAddress];$duescsvct;$duescsv;$donscsvct;$donscsv;$r[Notes]\n";
 //	echo '<pre> New member '; print_r($r); echo '</pre>';
 		}
 	echo '</table>----- End of Report -----';		
