@@ -92,6 +92,7 @@ if ($res->num_rows == 0) {
 // get row data from result
 $res->data_seek(0);
 $row = $res->fetch_assoc();
+//echo '<pre> MCID'; print_r($row); echo '</pre>';
 // get data values from sql query result
 $_SESSION['MemStatus'] = $row[MemStatus];		// set memstatus for mbrdonations check
 $mcid=$row['MCID'];  $fname=$row['FName']; $lname=$row['LName'];
@@ -127,14 +128,26 @@ function validateForm(theForm) {
 	reason += validateEmpty(theForm.MCtype);
 	//reason += validateEmpty(theForm.MemDate);
 	//reason += validatePassword(theForm.pwd);
-	//reason += validateEmail(theForm.email);
+	reason += validateEmail(theForm.EmailAddress);
 	//reason += validatePhone(theForm.phone);
 	//reason += validateEmpty(theForm.from);    
 	if (reason != "") {
-		var r=confirm("Some fields need attention.\\n\\nClick Cancel to correct.\\n\\nClick OK to Continue.");	
+		var r=confirm("Highlighted fields need attention.\\n\\nClick Cancel to correct.\\n\\nClick OK to Continue.");	
 		if (r == true) { return true; }
 		return false;
   	}
+	}
+
+function validateEmail(fld) {
+	var error = "";
+//       document.getElementById("EMR1").checked = true;	
+	if ((document.getElementById("EMR1").checked == true) && (fld.value.length == 0)) {
+		fld.style.background = '#F7645E';
+		error = "Email address needs to be supplied.\\n";
+		return error;
+		}
+	fld.style.background = 'White';
+	return error;
 	}
 
 function validateCorrSal(fld) {
@@ -190,10 +203,10 @@ function initAllFields(form) {
 		initRadio(Inactive,"$inact");
   	}
 	// if no email address defined
-	if (document.getElementById("EMA").value == "") {
-		document.getElementById("EMR1").checked = false;
-		document.getElementById("EMR2").checked = true;
-		}
+	//if (document.getElementById("EMA").value == "") {
+	//	document.getElementById("EMR1").checked = false;
+	//	document.getElementById("EMR2").checked = true;
+	//	}
 	// if no address line defined
 	if (document.getElementById("ALN").value == "") {
 		document.getElementById("ALR1").checked = false;
@@ -209,6 +222,10 @@ function setupemailok() {
 	if (document.getElementById("EMA").value != "") {
 		document.getElementById("EMR1").checked = true;
 		document.getElementById("EMR2").checked = false;
+		}
+	else {
+		document.getElementById("EMR1").checked = false;
+		document.getElementById("EMR2").checked = true;
 		}
 	}
 
