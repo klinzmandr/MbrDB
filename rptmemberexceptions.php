@@ -18,7 +18,7 @@ include 'Incls/datautils.inc';
 echo "<div class=\"container\"><h3>MbrDB Exception Report&nbsp;&nbsp;<a class=\"btn btn-xs btn-primary\" href=\"javascript:self.close();\">(CLOSE)</a></h3>";
 
 if (!isset($_REQUEST['rpt'])) {
-	echo '<h4>Explaination of report</h4>
+	echo '<h4>Explanation of report</h4>
 	<p>The classifications of the records for Mbrdb is:</p>
 	<ol>
 	<li>Members - records with a member status of &apos;1-Member&apos; with at least 1 payment record marked as &apos;Dues&apos; paid within the expiration period.</li>
@@ -125,9 +125,12 @@ echo "<h4>Invalid Mail or Email Flag Settings</h4>";
 if ($rowcount > 0) {
 echo "<p>There are $rowcount ACTIVE member, volunteer or donor records that have EITHER the &apos;Mail OK?&apos; flag set to YES/TRUE with no information in the Address Line OR the &apos;Email OK?&apos; set to YES/TRUE with no email address provided.  All these records should reviewed and corrected.</p>";
 	echo '<table class="table-condensed">
-	<tr><th>MCID</th><th>Name</th><th>MC Type</th><th>MailFlag</th><th>AddressLine</th><th>EmailFlag</th>EmailAddress<th></th></tr>';
+	<tr><th>MCID</th><th>Name</th><th>MC Type</th><th>MailOK?</th><th>AddressLine</th><th>EmailOK?</th><th>EmailAddress<th></th></tr>';
 	while ($r = $res->fetch_assoc()) {
-		echo "<tr><td>$r[MCID]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Mail]</td><td>$r[AddressLine]</td><td>$r[E_Mail]</td><td>$r[EmailAddress]</td></tr>";
+//		echo "Mail: $r[Mail], E_Mail: $r[E_Mail]<br>";
+		$mf = ($r[Mail] == 'TRUE') ? 'YES' : 'NO';
+		$ef = ($r[E_Mail] == 'TRUE') ? 'YES' : 'NO';
+		echo "<tr><td>$r[MCID]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$mf</td><td>$r[AddressLine]</td><td>$ef</td><td>$r[EmailAddress]</td></tr>";
 		//echo '<pre> mail with no address '; print_r($r); echo '</pre>';	
 		}
 	}
