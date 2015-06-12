@@ -33,6 +33,7 @@ include 'Incls/mainmenu.inc';
 
 echo "<div class=container>";
 $mcid = $_SESSION['ActiveMCID'];
+$seclevel = $_SESSION['SecLevel'];
 $action = $_REQUEST['action'];
 if ($filterflag == "--none--") { 
 	$m = "<p><b>Use of the MCID field</b></p><p>The MCID field is used to access and update member/contact informaton.  No MCID entered will provide access to a page to do a general search of the entire database.</p>
@@ -372,7 +373,10 @@ function validatezipcode(fld) {
   <li class=""><a href="mbrcorrespondence.php" onclick="return chkchg()">Correspondence</a></li>
 
 pagePart1;
-if ($memstatus == 2) echo '<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>';
+// show lists tab if member is a volunteer
+// or an admin because admins can see everything!
+if (($memstatus == 2) OR ($seclevel == 'admin')) 
+	echo '<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>';
 
 print <<<pagePart2
 	<li class=""><a href="#summary" data-toggle="tab">Summary</a></li>
@@ -514,6 +518,7 @@ echo '
 <h4>Email Lists</h4>';
 $text = readdblist('EmailLists');
 $listkeys = formatdbrec($text);
+if ($seclevel == 'admin') $listkeys[VolInactive] = 'Vol Inactive';
 
 foreach ($listkeys as $k => $v) {
 	//echo "key: $k, value: $v<br />";
