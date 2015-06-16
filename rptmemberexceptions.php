@@ -19,21 +19,21 @@ echo "<div class=\"container\"><h3>MbrDB Exception Report&nbsp;&nbsp;<a class=\"
 
 if (!isset($_REQUEST['rpt'])) {
 	echo '<h4>Explanation of report</h4>
-	<p>The classifications of the records for Mbrdb is:</p>
+	<p>The classifications of the records in Mbrdb are:</p>
 	<ol>
 	<li>Members - records with a member status of &apos;1-Member&apos; with at least 1 payment record marked as &apos;Dues&apos; paid within the expiration period.</li>
 	<li>Volunteers - a member (see above) that is donating time as well as being a dues paying member.</li>
-	<li>Donors - non-members that provide funding support.  Usually entities that are not a person like a company, estate, trust, business, affiliated organization, etc.  Usually this entity will be registered with a contact person acting as a representative or interal contact for the entity.</li>
+	<li>Donors - non-members that provide funding support.  Usually entities that are not a person like a company, estate, trust, business, affiliated organization, etc.  Usually this entity will be registered with a contact person acting as a representative or internal contact for the entity.</li>
 	<li>Contacts - None of the above.  This represents the &apos;pool&apos; of candidates for recruitment of both financial and volunteer time support.</li>
 	</ol>
-	<p>It should be the goal is to classify all those who provide financial support and/or volunteer time into as a member, volunteer or donor.  Those that do not qualify should be re-classified as a &apos;0-Contact&apos;</p>
-	<p>The expiration date used is 11 months from the current month and is listed with each report section.</p>
+	<p>The goal is to classify all supporters who provide financial support and/or volunteer time as a member, volunteer or donor.  Those that do not qualify should be re-classified as a &apos;0-Contact&apos;</p>
+	<p>The expiration date is listed with each report section and represents an expiration period covering the 11 months prior to the current month</p>
 	<h4>Report Sections</h4>
 	<p><b>0-Contact That Paid Dues or Made A Donation</b> - lists all records classified as Member Status of 0 (Contacts) that have current funding records paid within the expiration period</p>
 	<p><b>1-Members or 2-Volunteers With NO Dues Payment Record</b> - list of all records classified as 1-Member or 2-Volunteer with NO funding records paid within the expiration period.</p>
 	<p><b>3-Donors with NO Donations</b> - list of all records classified as 3-Donor with NO donation or dues funding records paid within the expiration period.</p>
-	<p><b>Invalid Mail or Email Flag Settings</b> - list of those records that have inconsistent flag settings on the Mail and/or Email flags indicating that they want mail and/or email but there is no information provided to do so.</p>
-	<p><b>Supporter records with NO funding records</b> - list of supporter&apos;s that have no associated funding records.  These should be examined to determine if they should be made inactive.</p>
+	<p><b>Invalid Mail or Email Flag Settings</b> - list of those records that have inconsistent Mail and/or Email flags indicating that they want mail and/or email but there is no information provided to do so.</p>
+	<p><b>Supporter records with NO funding records</b> - list of supporter records that have no associated funding records.  These should be examined to determine if they should be made inactive.</p>
 	<a class="btn btn-success" href="rptmemberexceptions.php?rpt">CONTINUE</a>';
 	exit;
 	}
