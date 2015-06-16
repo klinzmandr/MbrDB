@@ -116,6 +116,7 @@ var reason = "";
 // validate entire form before submission to database
 function validateForm(theForm) {
 	//alert("validation entered");
+	if (!validateLists()) return false;
 	reason = "";
 	reason += validateEmpty(theForm.FName);
 	reason += validateEmpty(theForm.LName);
@@ -131,12 +132,27 @@ function validateForm(theForm) {
 	//reason += validatePassword(theForm.pwd);
 	reason += validateEmail(theForm.EmailAddress);
 	//reason += validatePhone(theForm.phone);
-	//reason += validateEmpty(theForm.from);    
+	//reason += validateEmpty(theForm.from);
+	//reason += validateLists();    
 	if (reason != "") {
 		var r=confirm("Highlighted fields need attention.\\n\\nClick Cancel to correct.\\n\\nClick OK to Continue.");	
 		if (r == true) { return true; }
 		return false;
   	}
+	}
+
+function validateLists() {
+	var cnt = 0; var error = ""; 
+	//var memstatus = $memstatus;
+	var memstatus = document.getElementsByName("MemStatus"); 
+	var fld = document.getElementsByName("mlist[]");
+	for(var i=0; i < fld.length; i++) {
+		if(fld[i].checked) cnt += 1; }
+	if ((memstatus[2].checked) && (cnt == 0)) {				
+		alert("A volunteer must be registered on at least one mailing list.\\n");
+		return false;
+		}
+	return true;
 	}
 
 function validateEmail(fld) {
@@ -375,10 +391,11 @@ function validatezipcode(fld) {
 pagePart1;
 // show lists tab if member is a volunteer
 // or an admin because admins can see everything!
-if (($memstatus == 2) OR ($seclevel == 'admin')) 
-	echo '<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>';
+//if (($memstatus == 2) OR ($seclevel == 'admin')) 
+//	echo '<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>';
 
 print <<<pagePart2
+ 	<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>
 	<li class=""><a href="#summary" data-toggle="tab">Summary</a></li>
 	<li class=""><a href="mbrfollowup.php" onclick="return chkchg()">Follow Up</a></li>
 </ul>
@@ -515,10 +532,11 @@ echo '
 <!-- Tab 5 Email lists (hidden unless memstatus == 2) -->
 <div class="tab-pane fade" id="lists">
 <div class="well">
-<h4>Email Lists</h4>';
+<h4>Volunteer Email Lists</h4>';
 $text = readdblist('EmailLists');
-$listkeys = formatdbrec($text);
-if ($seclevel == 'admin') $listkeys[VolInactive] = 'Vol Inactive';
+$listkeys[AUL] = 'Active/Unlisted';
+$listkeys += formatdbrec($text);
+$listkeys[VolInactive] = 'Vol Inactive';
 
 foreach ($listkeys as $k => $v) {
 	//echo "key: $k, value: $v<br />";
