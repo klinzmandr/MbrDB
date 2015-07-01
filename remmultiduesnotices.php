@@ -65,8 +65,8 @@ GROUP BY `donations`.`MCID`, `donations`.`Purpose`
  HAVING ( $rpthaving );";
 
 //echo "rptmemstatus: $rptmemstatus<br />";
-//echo "expdate: $expdate<br />";
-//echo "sql: $sql<br>";
+echo "expdate: $expdate<br />";
+echo "sql: $sql<br>";
 $results = doSQLsubmitted($sql);
 
 // parse out those rows to just show the latest payment made
@@ -114,7 +114,7 @@ WHERE `members`.`MCID` = `correspondence`.`MCID`
 AND `correspondence`.`Reminders` IS NOT NULL 
 AND `members`.`Inactive` = 'FALSE' 
 ORDER BY `correspondence`.`MCID` ASC, `correspondence`.`DateSent` ASC";
-//echo "sql: $sql<br>";
+echo "in progress sql: $sql<br>";
 $results = doSQLsubmitted($sql);
 $dr = array();			// array of mcid's with date of last reminder sent
 $ar = array();			// array of mcid's with count of reminders sent
@@ -138,7 +138,7 @@ while ($r = $results->fetch_assoc()) {
 //		echo "unset mcid: $mcidid<br />";
 		}
 	}
-// echo "<pre>active MCID's"; print_r($ar); echo "</pre>";
+echo "<pre>active MCID's"; print_r($dr); echo "</pre>";
 print <<<formPart1
 <script>
 function initAllFields(form) {

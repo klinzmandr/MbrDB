@@ -35,7 +35,7 @@ function confirmAdd() {
 	return false;
 	}
 function confirmDelete() {
-	var r=confirm("This action will DELETE the EDI Record for Active MCID.\\n\\nNOTE: THIS ACTION CAN NOT BE REVERSED!!\\n\\nConfirm by clicking OK.");	
+	var r=confirm("This action will DELETE the EDI Record and all associated photos for the Active MCID.\\n\\nNOTE: THIS ACTION CAN NOT BE REVERSED!!\\n\\nConfirm by clicking OK.");	
 	if (r == true) { return true; }
 	return false;
 	}

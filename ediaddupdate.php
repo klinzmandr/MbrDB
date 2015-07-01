@@ -16,6 +16,8 @@ include 'Incls/datautils.inc';
 
 $mcid = isset($_SESSION['ActiveMCID']) ? $_SESSION['ActiveMCID'] : "";
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
+$precno = isset($_REQUEST['precno']) ? $_REQUEST['precno'] : "";
+$pathinfo = isset($_REQUEST['pathinfo']) ? $_REQUEST['pathinfo'] : "";
 
 if (($mcid == "") AND ($action == "delete")) {
 	print <<<delError
@@ -25,6 +27,15 @@ if (($mcid == "") AND ($action == "delete")) {
 delError;
 	exit;
 	}
+	
+if ($action == 'photodelete') {
+//	echo "deleting photo row number: $precno<br>"; 
+	$fsql = "DELETE FROM `photos` WHERE `Phid` = '".$precno."';";
+	doSQLsubmitted($fsql);
+//	echo "pathinfo for file: $pathinfo<br>";
+	unlink($pathinfo);
+	}
+	
 if (($mcid == "") AND ($action == "addnew")) {
 	print <<<noMCID
 <div class="container">
@@ -68,9 +79,17 @@ nothingToDelete;
 	else {
 		$sql = "DELETE FROM `extradonorinfo` WHERE `MCID` = '$mcid'";
 		$res = doSQLsubmitted($sql);
+		$sql = "DELETE FROM `photos` WHERE `MCID` = '$mcid'";
+		$res = doSQLsubmitted($sql);
+		$pics = scandir('../mbrdbphotos');
+		$l = strlen($mcid);
+//		echo '<pre> pics'; print_r($pics); echo '</pre>';
+		foreach ($pics as $p) {
+			if (substr($p,0,$l) == $mcid) unlink('../mbrdbphotos/' . $p);
+			} 
 		print<<<delPage
 <div class="container">
-<h4>Deletion of EDI record for: $mcid complete.</h4>
+<h4>Deletion of EDI record and photos for: $mcid complete.</h4>
 <!-- <a class="btn btn-primary" href="mbrinformation.php">CONTINUE</a> -->
 </div>  <!-- container -->
 <script src="jquery.js"></script>
@@ -136,7 +155,7 @@ nadaEDI;
 	$personal = $row[personal]; $education = $row[education]; $business = $row[business];
 	$other = $row[other]; $wealth = $row[wealth]; $research = $row[research];
 	}
-print <<<updPage
+print <<<updPage1
 <div class="container">
 <h3>Extended Donor Information for $mcid</h3>
 <ul id="myTab" class="nav nav-tabs">
@@ -146,6 +165,7 @@ print <<<updPage
   <li class=""><a href="#business" data-toggle="tab">Business</a></li>
   <li class=""><a href="#other" data-toggle="tab">Other Affilliations</a></li>
   <li class=""><a href="#wealth" data-toggle="tab">Wealth Sources</a></li>  
+  <li class=""><a href="#photos" data-toggle="tab">Photos</a></li>
   <li class=""><a href="#research" data-toggle="tab">Research By</a></li>
  </ul>
 
@@ -158,7 +178,7 @@ print <<<updPage
 </div>
 
 <div class="tab-pane fade" id="personal">
-(Spouse, children, parents, siblings, other sig. Relationships)
+Info about Spouse, children, parents, siblings, other sig. Relationships
 <a class="btn btn-primary btn-mini" href="edidbupdate.php?field=personal">Update</a>
 <div class="well">
 <pre>
@@ -167,7 +187,7 @@ $personal
 </div>  <!-- well -->
 </div>  <!-- tab-pane -->
 <div class="tab-pane fade" id="education">
-College, Advanced Degrees, Honorary Degrees
+Info about College, Advanced Degrees, Honorary Degrees
 <a class="btn btn-primary btn-mini" href="edidbupdate.php?field=education">Update</a>
 <div class="well">
 <pre>
@@ -176,7 +196,7 @@ $education
 </div>  <!-- well -->
 </div>
 <div class="tab-pane fade" id="business">
-Address, position, description, private or public, phone, email
+Info about Address, position, description, private or public, phone, email
 <a class="btn btn-primary btn-mini" href="edidbupdate.php?field=business">Update</a>
 <div class="well">
 <pre>
@@ -185,7 +205,7 @@ $business
 </div>  <!-- well -->
 </div>
 <div class="tab-pane fade" id="other">
-Board memberships, nonprofits, political, religious, social groups
+Info about Board memberships, nonprofits, political, religious, social groups
 <a class="btn btn-primary btn-mini" href="edidbupdate.php?field=other">Update</a>
 <div class="well">
 <pre>
@@ -194,7 +214,7 @@ $other
 </div>  <!-- well -->
 </div>  <!-- tab-pane -->
 <div class="tab-pane fade" id="wealth">
-Salary/annual income, Stock holdings, Real property, Personal Property, Foundations, Company ownership
+Info about Salary/annual income, Stock holdings, Real property, Personal Property, Foundations, Company ownership
 <a class="btn btn-primary btn-mini" href="edidbupdate.php?field=wealth">Update</a>
 <div class="well">
 <pre>
@@ -202,6 +222,49 @@ $wealth
 </pre>
 </div>  <!-- well -->
 </div>  <!-- tab-pane -->
+<script>
+function confirmContinue() {
+	var r=confirm("This action cannot be reversed.\\n\\nConfirm this action by clicking OK or CANCEL"); 
+	if (r==true) { return true; }
+	return false;
+	}
+function advisory() {
+	var r=confirm("This will open a new window or tab.\\n\\nConfirm this action by clicking OK or CANCEL"); 
+	if (r==true) { return true; }
+	return false;
+	}
+</script>
+
+<div class="tab-pane fade" id="photos">
+<a class="btn btn-primary btn-mini" href="edidbphotoupd.php?field=photos&action=NEW">Add new photo</a><br><br>
+<table class="table">
+
+updPage1;
+
+$sql = "SELECT * from `photos` WHERE `MCID` = '$mcid'";
+$res = doSQLsubmitted($sql);
+$rows = $res->num_rows;
+if ($rows == 0) {
+		echo '<h3>No photos available.</h3>';
+		}
+else {
+	echo '<tr><th>View</th><th>Del</th><th>Title</th><th>Notes</th></tr>';
+		while ($r = $res->fetch_assoc()) {
+			echo "<tr><td width=\"5%\">
+<a href=\"$r[PathInfo]\" target=\"_blank\" <span onclick=\"return advisory()\" title=\"View Photo\" class=\"glyphicon glyphicon-camera\" style=\"color: blue; font-size: 20px\"></span></a>
+</td>
+<td width=\"5%\">
+<a href=\"ediaddupdate.php?action=photodelete&precno=$r[Phid]&pathinfo=$r[PathInfo]\" <span onclick=\"return confirmContinue()\" title=\"Delete Photo\" class=\"glyphicon glyphicon-trash\" style=\"color: blue; font-size: 20px\"></span></a>
+</td>
+<td>$r[Title]</td>
+<td>$r[Notes]</td>
+</tr>";
+ 	}
+ }
+echo '</table>';
+echo '</div>  <!-- tab-pane -->';
+
+print <<<updPage2
 <div class="tab-pane fade" id="research">
 Prepared for, Requested by, Date, Researchers comments
 <a class="btn btn-primary btn-mini" href="edidbupdate.php?field=research">Update</a>
@@ -213,7 +276,7 @@ $research
 </div>  <!-- tab-pane -->
 </div>  <!-- tab-content -->
 </div>  <!-- container -->
-updPage;
+updPage2;
 ?>
 
 <script src="jquery.js"></script>

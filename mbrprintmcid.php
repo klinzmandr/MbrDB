@@ -83,24 +83,29 @@ echo "</table></div>";
 // report any EDI for donor
 if (($_SESSION['SecLevel'] == "devuser") OR ($_SESSION['SecLevel'] == "admin")) {
 echo "<div class=\"container\"><h4>Extra Donor Information</h4>";
-$sql = "SELECT * FROM `extradonorinfo` WHERE `MCID` = '$mcid';";
-$res = doSQLsubmitted($sql);
-	$nbr_rows = $res->num_rows;
-	if ($nbr_rows == 0) {
+$esql = "SELECT * FROM `extradonorinfo` WHERE `MCID` = '$mcid';";
+$eres = doSQLsubmitted($esql);
+	$enbr_rows = $eres->num_rows;
+	if ($enbr_rows == 0) {
 		echo "<div class=\"container\"><h4>NONE</h4></div>";
 		}
 	else {
-		$r = $res->fetch_assoc();
+		$er = $eres->fetch_assoc();
 		echo "<div class=\"container\"><table class=\"table\">";
 		echo "<tr><th>MCID</th><th>Name</th><th>Date Entered</th><th>Last Updated</th><th>Last Updater</th></tr>";
 		echo "<tr><td>$mcid</td><td>$r[NameLabel1stline]</td><td>$r[DateEntered]</td><td>$r[LastUpdated]</td><td>$r[LastUpdater]</td></tr>";
 		echo "</table>";
 		
-		echo "<h5>Personal</h5><pre>$r[personal]</pre>";
-		echo "<h5>Education</h5><pre>$r[education]</pre>";
-		echo "<h5>Business</h5><pre>$r[business]</pre>";
-		echo "<h5>Other Affiliations</h5><pre>$r[other]</pre>";
-		echo "<h5>Wealth Sources</h5><pre>$r[wealth]</pre>";
+		echo "<h5>Personal</h5><pre>$er[personal]</pre>";
+		echo "<h5>Education</h5><pre>$er[education]</pre>";
+		echo "<h5>Business</h5><pre>$er[business]</pre>";
+		echo "<h5>Other Affiliations</h5><pre>$er[other]</pre>";
+		echo "<h5>Wealth Sources</h5><pre>$er[wealth]</pre>";
+		
+		$psql = "SELECT * from `photos` WHERE `MCID` = '$mcid'";
+		$pres = doSQLsubmitted($psql);
+		$prows = $pres->num_rows;
+		echo "<h5>Photos available online: $prows.</h5>";
 		echo '</div>';		
 		}
 	}
