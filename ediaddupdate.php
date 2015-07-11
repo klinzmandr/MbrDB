@@ -165,7 +165,7 @@ print <<<updPage1
   <li class=""><a href="#business" data-toggle="tab">Business</a></li>
   <li class=""><a href="#other" data-toggle="tab">Other Affilliations</a></li>
   <li class=""><a href="#wealth" data-toggle="tab">Wealth Sources</a></li>  
-  <li class=""><a href="#photos" data-toggle="tab">Photos</a></li>
+  <li class=""><a href="#photos" data-toggle="tab">Pics &amp; Docs</a></li>
   <li class=""><a href="#research" data-toggle="tab">Research By</a></li>
  </ul>
 
@@ -236,7 +236,8 @@ function advisory() {
 </script>
 
 <div class="tab-pane fade" id="photos">
-<a class="btn btn-primary btn-mini" href="edidbphotoupd.php?field=photos&action=NEW">Add new photo</a><br><br>
+<p>Listing of all related pictures and documents uploaded.</p>
+<a class="btn btn-primary btn-mini" href="edidbphotoupd.php?field=photos&action=NEW">Add new Pic or Doc</a><br><br>
 <table class="table">
 
 updPage1;
@@ -245,7 +246,7 @@ $sql = "SELECT * from `photos` WHERE `MCID` = '$mcid'";
 $res = doSQLsubmitted($sql);
 $rows = $res->num_rows;
 if ($rows == 0) {
-		echo '<h3>No photos available.</h3>';
+		echo '<h3>No photos or documents available.</h3>';
 		}
 else {
 	echo '<tr><th>View</th><th>Del</th><th>Title</th><th>Notes</th></tr>';

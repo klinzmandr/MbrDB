@@ -105,7 +105,7 @@ $eres = doSQLsubmitted($esql);
 		$psql = "SELECT * from `photos` WHERE `MCID` = '$mcid'";
 		$pres = doSQLsubmitted($psql);
 		$prows = $pres->num_rows;
-		echo "<h5>Photos available online: $prows.</h5>";
+		echo "<h5>Photos and documents available online: $prows</h5>";
 		echo '</div>';		
 		}
 	}
