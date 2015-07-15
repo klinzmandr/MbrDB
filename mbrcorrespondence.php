@@ -176,6 +176,7 @@ if ($_REQUEST['action'] == "apply") {
 	unset($vararray[action]); unset($vararray[id]);
 	$vararray[Notes] = stripslashes($vararray[Notes]);
 	//echo "before update call - recno: $recno, mcid: $mcid<br>";
+	$vararray['Reminders'] = '';										// default value for Reminder field is NULL unless --
 	if ($vararray['CorrespondenceType'] == 'RenewalReminder') {
 		//echo "reminder flag seen<br>";
 		$vararray['Reminders'] = 'RenewalReminder';		// set renewal notice flag in Reminders col as well
