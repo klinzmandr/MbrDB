@@ -20,7 +20,7 @@
 //   remmultimail.php -> remmultimailupd.php			to print mail message
 //	 remmultimakeinactive.php											to set members inactive
 //
-//These 4 pages all have to work in sync to make this work out.
+//These pages all have to work in sync to make this work out.
 //
 //=====================================
 session_start();
@@ -37,21 +37,24 @@ include 'Incls/seccheck.inc';
 include 'Incls/mainmenu.inc';
 include 'Incls/datautils.inc';
 
-// select info from database.  rows returned will be sorted by MCID then DonatedDate
+// get last sort sequence if any
 $rnseq = isset($_REQUEST['rnseq']) ? $_REQUEST['rnseq'] : $_SESSION['rnseq'];
 if ($rnseq == "") $rnseq = 'SORT_DESC';
 $_SESSION['rnseq'] = $rnseq;
 
+// get last member status if any
 $rptmemstatus = isset($_REQUEST['rptmemstatus']) ? $_REQUEST['rptmemstatus'] : $_SESSION['rptmemstatus'];
 if ($rptmemstatus == "") $rptmemstatus = 1;
 $_SESSION['rptmemstatus'] = $rptmemstatus;
 
+// select info from database.  rows returned will be sorted by MCID then DonatedDate
 if (($rptmemstatus == 0) OR ($rptmemstatus == 3)) 
 	$rpthaving = "`donations`.`Purpose` = 'dues' OR `donations`.`Purpose` LIKE '%don%'";
 else
 	$rpthaving = "`donations`.`Purpose` = 'dues'";
 
 $expdate = calcexpirationdate();									// this is the expiration period
+//echo "expdate: $expdate<br>";
 
 $sql = "SELECT `donations`.`MCID`, `donations`.`Purpose`, `donations`.`DonationDate`, 
 	`donations`.`TotalAmount`, 
@@ -65,14 +68,13 @@ GROUP BY `donations`.`MCID`, `donations`.`Purpose`
  HAVING ( $rpthaving );";
 
 //echo "rptmemstatus: $rptmemstatus<br />";
-echo "expdate: $expdate<br />";
-echo "sql: $sql<br>";
+//echo "sql: $sql<br>";
 $results = doSQLsubmitted($sql);
 
 // parse out those rows to just show the latest payment made
 $nbr_rows = $results->num_rows;
 //echo "rows returned from sql: $nbr_rows<br>";
-$count = 0;
+
 // $resarray is list of all MCID's with expired dates
 while ($row = $results->fetch_assoc()) {
 	// ignore payments within expiration period
@@ -82,7 +84,8 @@ while ($row = $results->fetch_assoc()) {
 		}
 	}
 //ksort($resarray);
-//echo '<pre>Selected rows: '; print_r($resarray); echo '</pre>';
+// echo '<pre>resarray: '; print_r($resarray); echo '</pre>';
+
 $rowcount = count($resarray);
 //echo "rowcount after expire date filter: $rowcount<br />";
 if ($rowcount == 0) {
@@ -103,7 +106,12 @@ noExp;
 	exit;
 	}
 
-// find mcid's with in-progress reminders, load date of last one and count of each mcid's into sep arrays
+// NOTE: at this point the array '$resarray' contains all members that have dates for last 
+// dues payment later than the expiration date.  This indicates that their membership has expired.  
+// This list now must be vetted to see if any in-progress reminders have been sent. 
+
+// find all mcid's with in-progress reminders and then
+// load the date of last one sent, count all sent and last type for each mcid's into sep arrays
 $sql = "SELECT `correspondence`.`MCID`, 
 `correspondence`.`DateSent`, 
 `correspondence`.`Reminders`, 
@@ -114,15 +122,22 @@ WHERE `members`.`MCID` = `correspondence`.`MCID`
 AND `correspondence`.`Reminders` IS NOT NULL 
 AND `members`.`Inactive` = 'FALSE' 
 ORDER BY `correspondence`.`MCID` ASC, `correspondence`.`DateSent` ASC";
-echo "in progress sql: $sql<br>";
+// echo "in progress sql: $sql<br>";
+
 $results = doSQLsubmitted($sql);
 $dr = array();			// array of mcid's with date of last reminder sent
-$ar = array();			// array of mcid's with count of reminders sent
-// parse result rows to find those reminders with renewal notices
+$ar = array();			// array of mcid's with count of all reminders sent
+$ct = array();			// array of last correspondence type for each MCID
+
+// NOTE: parse the result rows to find those reminders with renewal notices.
+// The 'Reminders' column either has the string 'remind' (a reminder has been sent) or
+// 'RenewalPaid' (a payment has been made)
+
 while ($r = $results->fetch_assoc()) {
 //	echo '<pre> corr '; print_r($r); echo '</pre>';
 	$mcidid = $r['MCID'];
-	if (stripos($r['Reminders'],"remind") !== FALSE) {  // count the reminder notices sent and latest date
+	// count the reminder notices sent, remember the latest date and corr type
+	if (stripos($r['Reminders'],"remind") !== FALSE) {  
 		$ar[$mcidid] += 1;
 		if (strtotime($dr[$mcidid]) <= strtotime($r[DateSent])) {
 //			echo "mcid: $r[MCID], dr[mcidid]: $dr[$mcidid], r[DateSent]: $r[DateSent]<br>";
@@ -131,14 +146,22 @@ while ($r = $results->fetch_assoc()) {
 //			echo 'mcid: '.$mcidid.', corr time: ' . $dr[$mcidid] . '<br />';
 			}
 		}
-//	sort order of returned rows means last row for an mcid 
-//	is the last thing done: a reminder or a renewal
-	if (stripos($r['Reminders'],"RenewalPaid") !== FALSE) {		// forget it all since a renewal was done last
+	
+// NOTE: forget it all if a RenewalPaid record is found since a renewal was last sent.
+//	The sort order of returned rows means last row for an MCID 
+//	is the last thing done for that MCID: a reminder sent or a dues payment
+	if (stripos($r['Reminders'],"RenewalPaid") !== FALSE) {		
 		unset($ar[$mcidid]); unset($dr[$mcidid]); unset($ct[$mcidid]);
-//		echo "unset mcid: $mcidid<br />";
+		//echo "<pre>dropped MCID's "; print_r($r); echo "</pre>";
 		}
+	// echo "<pre>all returned MCID corr recs "; print_r($r); echo "</pre>";
 	}
-echo "<pre>active MCID's"; print_r($dr); echo "</pre>";
+// echo "<pre>overdue MCID's "; print_r($dr); echo "</pre>";
+
+// NOTE: at this point the arrays $ar, $dr and $ct contain the reminder count, date sent and 
+// correspondence type for each MCID.  The array key for each is the MCID
+
+// now prepare the output page 
 print <<<formPart1
 <script>
 function initAllFields(form) {
@@ -201,7 +224,7 @@ formPart1;
 //echo "resarray count before sort: " . count($resarray) . '<br>';
 foreach ($resarray as $row) {
 	$key = $row['MaxDate'] . $row[MCID];			// to create a unique key
-	$dondate[$key] = $row;		// sorting by donation date + MCID
+	$dondate[$key] = $row;										// sorting by donation date + MCID
 	//echo "<pre> key: $key "; print_r($row); echo "</pre>";
 	}
 //echo "resarray count after sort: " . count($dondate) . '<br>';
@@ -220,18 +243,25 @@ $notedate = strtotime($delay);
 // NOTE: form action set based on button selection
 echo "<form name=\"boxform\" action=\"\" method=\"post\">";
 
-// dondate array is expired rows sorted by date+mcid
+// array $dondate is expired MCIDs sorted by date+mcid
+// array $dr is the date of the last dues payment
 foreach ($dondate as $key => $row) {
 	//echo '<pre> resarray '; print_r($row); echo '</pre>';
 	if (stripos($row[MCtype], 'lifetime') !== FALSE) continue;	// NO REMINDER FOR LIFETIME MEMBERS
 	if ($row[TotalAmount] <= $duesthreshold) continue;					// NO REMINDER IF < THAN THRESHOLD VALUE
-	//echo "notedate: $notedate, dondate: ".strtotime($dr[$row[MCID]]).'<br />';
 	if ($notedate <= strtotime($dr[$row[MCID]])) continue; 			// NO REMINDER IF < DELAY DAYS
 	$finalarray[$key] = $row;
-	//echo '<pre> final array '; print_r($row); echo '</pre>';
+//	echo '<pre> final array '; print_r($row); echo '</pre>';
 	}
 
-if (count($finalarray) == 0) {
+// NOTE: at this point the array '$finalarray' contains the info for all MCIDs that 
+// have their last dues payments that prior to the expiration date, are 'ACTIVE' members
+// and have not been sent a reminder during the $listingthreshold period. 
+
+$rowcount = count($finalarray);
+//echo "final array count: $rowcount<br>";
+
+if ($rowcount == 0) {
 	print <<<emptyList
 <div class="container">
 <h4>There are no expired memberships to report.</h4>
@@ -239,7 +269,7 @@ if (count($finalarray) == 0) {
 To be included in this list the MCID must:
 <ol>
 	<li>be active (e.g. member &apos;Inactive&apos; flag = &apos;FALSE&apos;,</li>
-	<li>a payment marked as &apos;Dues&apos; has not been entered in the last 11 months, and</li>
+	<li>a payment marked as &apos;Dues&apos; has not been entered since $expdate,</li>
 	<li>the last reminder has not been sent within the last $listingthreshold days.</li>
 </ol>
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
@@ -249,13 +279,12 @@ emptyList;
 	}
 
 else {
-$rowcount = count($finalarray);
 $rpttitle = "List of $rowcount Members with expired memberships";
 if ($rptmemstatus == 2) $rpttitle = "List of $rowcount Volunteers with expired memberships";
 elseif ($rptmemstatus == 3) $rpttitle = "List of $rowcount Donors without recent funding support";
 elseif ($rptmemstatus == 0) $rpttitle = "List of $rowcount Contacts without recent funding support";
 echo "<font size=\"+3\">$rpttitle</font><br />";
-echo "Notices sent since " . date('Y-m-d H:i:s',$notedate) .' not listed.<br />';
+echo "Expiration date being used: $expdate. Notices sent since " . date('Y-m-d',$notedate) .' not listed.<br />';
 echo "<table border=\"0\" class=\"table table-condensed\">
 <tr><th>MCID</th><th>Name</th><th align=\"center\">EMail?</th><th align=\"center\">Mail?</th><th>Last Paid</th><th>Amount</th><th>Purpose</th><th align=\"center\">Inactive?</th><th>Rem Cnt.</th><th>LastReminder</th><th>RemType</th></tr>";
 
@@ -289,11 +318,12 @@ foreach ($finalarray as $key=>$row) {
 	else $amt = $lastdonamount;
 print <<<bulletForm
 <tr><td><a href="mbrinfotabbed.php?filter=$mcid">$mcid</a></td><td>$labelname</td><td align="center">$emok</td><td align="center">$mok</td><td>$maxdate</td><td align="right">$$amt</td><td>$purpose</td><td align="center">$inact</td><td>$remcnt</td><td>$remdate</td><td>$ct[$mcid]</td></tr>
-</div>  <!-- container -->
 
 bulletForm;
 	}
 }
+
+// now we add an extra row with the buttons
 echo "<tr><td>&nbsp;</td>
 <td>&nbsp;</td>
 <td><input type=\"submit\" value=\"SendEmail\" onclick=\"return redirector(this)\"></td>
@@ -301,7 +331,7 @@ echo "<tr><td>&nbsp;</td>
 <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
 <td><input type=\"submit\" name=\"submit\" value=\"MakeInactive\" onclick=\"return redirector(this)\"></td>
 <td>&nbsp;</td><td>&nbsp;</td>
-</tr></form></table>";
+</tr></form></table></div>  <!-- container -->";
 
 ?>
 <script src="jquery.js"></script>
