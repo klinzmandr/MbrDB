@@ -68,12 +68,12 @@ GROUP BY `donations`.`MCID`, `donations`.`Purpose`
  HAVING ( $rpthaving );";
 
 //echo "rptmemstatus: $rptmemstatus<br />";
-//echo "sql: $sql<br>";
+// echo "sql: $sql<br>";
 $results = doSQLsubmitted($sql);
 
 // parse out those rows to just show the latest payment made
 $nbr_rows = $results->num_rows;
-//echo "rows returned from sql: $nbr_rows<br>";
+// echo "rows returned from sql: $nbr_rows<br>";
 
 // $resarray is list of all MCID's with expired dates
 while ($row = $results->fetch_assoc()) {
@@ -87,7 +87,7 @@ while ($row = $results->fetch_assoc()) {
 // echo '<pre>resarray: '; print_r($resarray); echo '</pre>';
 
 $rowcount = count($resarray);
-//echo "rowcount after expire date filter: $rowcount<br />";
+// echo "rowcount after expire date filter: $rowcount<br />";
 if ($rowcount == 0) {
 	$_SESSION['rptmemstatus'] = '';
 	print <<<noExp
@@ -128,6 +128,8 @@ $results = doSQLsubmitted($sql);
 $dr = array();			// array of mcid's with date of last reminder sent
 $ar = array();			// array of mcid's with count of all reminders sent
 $ct = array();			// array of last correspondence type for each MCID
+$nbr_crows = $results->num_rows;
+// echo "number of correspondence rows: $nbr_crows<br>";
 
 // NOTE: parse the result rows to find those reminders with renewal notices.
 // The 'Reminders' column either has the string 'remind' (a reminder has been sent) or
@@ -259,7 +261,7 @@ foreach ($dondate as $key => $row) {
 // and have not been sent a reminder during the $listingthreshold period. 
 
 $rowcount = count($finalarray);
-//echo "final array count: $rowcount<br>";
+// echo "final array count: $rowcount<br>";
 
 if ($rowcount == 0) {
 	print <<<emptyList
