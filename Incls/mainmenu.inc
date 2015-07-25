@@ -111,6 +111,7 @@ print <<<menupart3
 	<li><a href="rptlybunty.php" target="_blank">LYBUNTY Report</a></li>
 	<li><a href="rptsybunty.php" target="_blank">SYBUNTY Report</a></li>
 	<li><a href="rptmonthlyreport.php" target="_blank">Monthly Report</a></li>
+	<li><a href="rptfollowups.php" target="_blank">Follow Up Forms</a></li>
 	<li><a href="#myModal" data-toggle="modal" data-keyboard="true">About MbrDB</a></li>
 </ul>
 </li>  <!-- class="dropdown" -->
