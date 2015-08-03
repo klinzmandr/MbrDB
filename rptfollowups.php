@@ -142,9 +142,19 @@ function chkvrc() {
 <input type="checkbox" onchange="return chkvrc()" name="valrangechk" value="valrange" id="VRC" size="1"> - Total Funding Range :
 <input placeholder="Low Amount" type="text" name="vrangelo" id="VRL" value="$vrangelo" autocomplete="off"> and/or : 
 <input placeholder="High Amount" type="text" name="vrangehi" id="VRH" value="$vrangehi" autocomplete="off"><br />
+<script>
+function toggle1() {
+	if (document.getElementById("EMC").checked) document.getElementById("SUB").checked = false;
+	return true;
+	}
+function toggle2() {
+	if (document.getElementById("SUB").checked) document.getElementById("EMC").checked = false;
+	return true;
+	}
+</script>
 Choose one:
-<ul><input type="checkbox" name="noemail" value="noemail" id="EMC"> - Exclude those with email addresses, OR<br>
-<input type="checkbox" name="subscr" value="subscr" id="SUB"> - Include only subscribing members</ul>
+<ul><input type="checkbox" onchange="return toggle1()" name="noemail" value="noemail" id="EMC"> - Exclude those with email addresses, OR<br>
+<input type="checkbox" onchange="return toggle2()" name="subscr" value="subscr" id="SUB"> - Include only subscribing members</ul>
 <input type="hidden" name="action" value="search"><br />
 <input type="submit" name="submit" value-"submit">
 </form>
@@ -333,8 +343,8 @@ $sheetcount = 0;
 echo "<div class=\"page-break\"></div>";
 foreach ($results as $k => $r) {
 	$ld = "Last Dues Paid: $r[LastDuesDate]";
-	if ($memstat == 3)
-		$ld .= "<br>Last Donation Paid: $r[LastDonDate]";
+	if ($r[MemStatus] == 3)
+		$ld = "Last Donation Made: $r[LastDonDate]";
 echo "<div class=mbrsec>
 ";
 echo "<table width='100%' border=0>
