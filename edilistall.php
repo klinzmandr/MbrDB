@@ -14,12 +14,16 @@ include 'Incls/mainmenu.inc';
 include 'Incls/datautils.inc';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
+$kw = isset($_REQUEST['kw']) ? $_REQUEST['kw'] : "";
 
-if ($action == "update") {
-	echo "action is update<br>";
-	}
-
-$sql = "SELECT * FROM `extradonorinfo` ORDER BY `MCID`;";
+$sql = "SELECT * FROM `extradonorinfo` 
+WHERE `personal` LIKE '%$kw%' 
+   OR `education` LIKE '%$kw%'
+   OR `business` LIKE '%$kw%'
+   OR `other` LIKE '%$kw%'
+   OR `wealth` LIKE '%$kw%'
+   OR `research` LIKE '%$kw%'
+ORDER BY `MCID`;";
 $res = doSQLsubmitted($sql);
 $nbr_rows = $res->num_rows;
 	if ($nbr_rows == 0) {
@@ -35,6 +39,21 @@ nadaEDI;
 print <<<pagePart1
 <div class="container">
 <h3>List of MCID with EDI Records</h3>
+
+<!-- filter form -->
+<script>
+function rset() {
+	//alert("reset function");
+	//document.getElementById("sd").value = '';
+	document.getElementById("kw").value='';
+	return true;
+	}
+</script>
+<form name="filter" action="edilistall.php" method="post">
+Filter: <input type="text" name="kw" id="kw" value="$kw">
+<input type="submit" value="Apply"><input type="button" value="Reset" onclick="return rset()">
+</form>
+
 pagePart1;
 echo "<table class=\"table-condensed\">";
 echo "<tr><th>MCID</th><th>Name</th><th>Date Entered</th><th>Last Updated</th><th>Last Updater</th></tr>";
