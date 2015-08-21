@@ -163,7 +163,7 @@ print <<<updPage1
   <li class=""><a href="#personal" data-toggle="tab">Personal</a></li>
   <li class=""><a href="#education" data-toggle="tab">Education</a></li>
   <li class=""><a href="#business" data-toggle="tab">Business</a></li>
-  <li class=""><a href="#other" data-toggle="tab">Other Affilliations</a></li>
+  <li class=""><a href="#other" data-toggle="tab">Other Affiliations</a></li>
   <li class=""><a href="#wealth" data-toggle="tab">Wealth Sources</a></li>  
   <li class=""><a href="#photos" data-toggle="tab">Pics &amp; Docs</a></li>
   <li class=""><a href="#research" data-toggle="tab">Research By</a></li>
@@ -172,7 +172,7 @@ print <<<updPage1
 <div id="myTabContent" class="tab-content">
 <div class="tab-pane fade active in" id="usage">
 <p>Information on each of these tabs represent extended research on selected donors and supporters.  <b>It is intended that this information be confidential and private for the use of Pacific Wildlife Care only.</b>  Any unauthorized use is prohibited.</p>
-<p>Each tab is free form in nature.  In initial entry of information, specific examples are provided that usually are noted during research.  Inforation placed in each tab may be searched for so the use of 'keywords' is encouraged to facilitate finding specific information across all donors for which research is done.</p>
+<p>Each tab is free form in nature.  In initial entry of information, specific examples are provided that usually are noted during research.  Information placed in each tab may be searched for so the use of 'keywords' is encouraged to facilitate finding specific information across all donors for which research is done.</p>
 <p>Click the appropriate tab to begin.  Updates or edits to information on each tab may be done by clicking the 'UPDATE' button for that tab.</p>
 <p>Please enter all donor funding activity on the 'Funding' tab and all contacts made on the 'Correspondence' tab.</p>
 </div>
