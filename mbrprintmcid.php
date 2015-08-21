@@ -218,7 +218,7 @@ else echo '<h4>NONE</h4></div>';
 
 // report all donation records
 $dontotal = 0;
-$sql = "SELECT * FROM `donations` WHERE MCID = '".$mcid."' order by `DonationID` desc";
+$sql = "SELECT * FROM `donations` WHERE MCID = '".$mcid."' order by `DonationDate` desc";
 $dflds = doSQLsubmitted($sql);
 // echo '<div class="page-break"></div>';
 echo "<h4>Funding</h4>";
