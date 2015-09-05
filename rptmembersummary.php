@@ -109,10 +109,16 @@ $sql = "SELECT *
 	ORDER BY `MCID`";
 $res = doSQLsubmitted($sql);
 echo "<div class=\"well\"><table class=\"table-condensed\">";
-echo "<tr><td><b>MCID</b></td><td><b>MemStatus</b></td><td><b>Member Name</b></td></tr>";
+if (substr($listitem,0,1) == '3') {
+	echo "<tr><th>MCID</th><th>MemStatus</th><th>Organization</th><th>FirstName</th><th>LastName</th><th>MemDate</th><th>Phone</th><th>Notes</th></tr>"; }
+else {
+	echo "<tr><th>MCID</th><th>MemStatus</th><th>FirstName</th><th>LastName</th><th>MemDate</th><th>Phone</th><th>Notes</th></tr>"; }
 while ($r = $res->fetch_assoc()) {
 	//echo "<pre>$name: "; print_r($r); echo "</pre>";
-	echo "<tr><td>$r[MCID]</td><td align=\"center\">$r[MemStatus]</td><td>$r[NameLabel1stline]</td></tr>";
+	if (substr($listitem,0,1) == '3') {
+		echo "<tr><td>$r[MCID]</td><td align=\"center\">$r[MemStatus]</td><td>$r[Organization]</td><td>$r[FName]</td><td>$r[LName]</td><td>$r[MemDate]</td><td>$r[PrimaryPhone]</td><td>$r[Notes]</td></tr>"; }
+	else {
+		echo "<tr><td>$r[MCID]</td><td align=\"center\">$r[MemStatus]</td><td>$r[FName]</td><td>$r[LName]</td><td>$r[MemDate]</td><td>$r[PrimaryPhone]</td><td>$r[Notes]</td></tr>"; }
 	$detailcnt += 1;
 	}
 $detailtot = number_format($detailtot,2);
