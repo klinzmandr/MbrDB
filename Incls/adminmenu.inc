@@ -75,7 +75,6 @@ function adminchk() {
 		<li><a href="rptnewsubscribers.php" target="_blank">New Subscribing Members Report</a></li>
 		<li><a href="rptcorrfollowup.php" target="_blank">Correspondence Followup Report</a></li>
 		<li><a href="maillogchecker.php" target="_blank">Server Log Viewer</a></li>
-	<li><a href="rptfundingdrilldown.php" target="_blank">Funding Drill Down Report</a></li>
 	<li><a href="rptdonortopten.php" target="_blank">Donor Top Ten Report</a></li>
 	<li><a href="rptmemberstatus.php" target="_blank">List All Members by Status</a></li>
 	<li><a href="rpttransactionsummary.php" target="_blank">Transactions Summary Report</a></li>

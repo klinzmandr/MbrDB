@@ -100,7 +100,8 @@ print <<<menupart3
 <ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
 	<li><a href="rptFundingPaid.php" target="_blank">Funding Paid Report</a></li>
 	<li><a href="rptprintlabels.php" target="_blank">Print Labels on Criteria</a></li>
-	<li><a href="rptmembersummary.php" target="_blank">Membership Drill Down Report</a></li>
+	<li><a href="rptmembersummary.php" target="_blank">Membership Drill Down</a></li>
+	<li><a href="rptfundingdrilldown.php" target="_blank">Funding Drill Down</a></li>
 	<li><a href="rptnewsupporters.php" target="_blank">New Supporters by Date Range</a></li>
 	<li><a href="rptmemberexceptions.php" target="_blank">Membership Exception Report</a></li>
 	<li><a href="rptsubscribers.php" target="_blank">Subscribing Members Report</a></li>
