@@ -80,9 +80,11 @@ $clrrc = sqlupdate('members',$UPDarray, '1');
 	$drowcnt = $res->num_rows;
 	$dondatearray = array(); $duesdatearray = array(); 
 	$donamtarray = array(); $duesamtarray = array(); 
-	$purarray = array(); $mcidarray = array();
+	$purarray = array(); $dmcidarray = array(); $cmcidarray = array();
+	$mcidarray = array();
 	while ($r = $res->fetch_assoc()) {
 		$mcidarray[$r[MCID]] += 1;
+		$dmcidarray[$r[MCID]] += 1;
 		if ($r[Purpose] == 'Dues') {
 			$duesamtarray[$r[MCID]] = $r[TotalAmount];
 			$duesdatearray[$r[MCID]] = $r[DonationDate];	
@@ -99,6 +101,7 @@ $clrrc = sqlupdate('members',$UPDarray, '1');
 	$resc = doSQLsubmitted($sql);
 	$crowcnt = $resc->num_rows;
 	while ($c = $resc->fetch_assoc()) {
+		$cmcidarray[$c[MCID]] += 1;
 		$mcidarray[$c[MCID]] += 1;
 		$corrtypearray[$c[MCID]] = $c[CorrespondenceType];
 		$corrdatearray[$c[MCID]] = $c[DateSent];
@@ -127,11 +130,11 @@ $clrrc = sqlupdate('members',$UPDarray, '1');
 	echo '<h3>Member Summary Loader - Update Completed&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="admDBJanitor.php">RETURN</a></h3>';
 	echo "Start date/time: $sd<br />";
 	echo "Total Member records in DB: $totalmembercnt<br />";
-	echo "Rows with summary info deleted: $clrrc<br>";
+	echo "Rows with summary info reset: $clrrc<br>";
 	echo "Total Donation records in DB: $drowcnt<br />";
 	echo "Total Corresdonence records id DB: $crowcnt<br />";
-	echo 'Unique MCIDs Count in funding log: ' . count($purarray) . '<br />';
-	echo 'Unique MCIDs Count in correspondence log: ' . count($corrdatearray) . '<br />';
+	echo 'Unique MCIDs Count in funding log: ' . count($dmcidarray) . '<br />';
+	echo 'Unique MCIDs Count in correspondence log: ' . count($cmcidarray) . '<br />';
 	echo "MCIDs updated: $mbrcnt<br />";
 	$sd = date('Y-m-d H:i:s',strtotime(now));
 	echo "End date/time: $sd<br />";
