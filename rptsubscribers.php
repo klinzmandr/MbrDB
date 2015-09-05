@@ -50,7 +50,8 @@ if ($action == 'report') {
 	$sql = "SELECT `f`.`MCID`, `f`.`Program`, `f`.`TotalAmount`, `f`.`DonationDate` 
 	FROM ( 
 		SELECT `MCID`, MAX( `DonationDate` ) AS `MaxDate` 
-		FROM `pwcmbrdb`.`donations` 
+		FROM `pwcmbrdb`.`donations`
+		WHERE `Program` LIKE 'dues%' 
 		GROUP BY `MCID` ) AS `x` 
 	INNER JOIN `donations` AS `f` ON `f`.`MCID` = `x`.`MCID` 
 		AND `f`.`DonationDate` = `x`.`MaxDate` 
@@ -59,19 +60,22 @@ if ($action == 'report') {
 	$res = doSQLsubmitted($sql);
 	$rowcount = $res->num_rows;
 //	echo "Rows returned: $rowcount<br>";
-	while ($r = $res->fetch_assoc()) {
+	while ($r = $res->fetch_assoc()) {		
 //		echo "<pre>subscription "; print_r($r); echo '</pre>';
 		$inarray[] = $r[MCID];
 		$p[$r[MCID]] = $r;
 		}
-//	echo "sqlstr: $sqlstr<br>";
-//	echo '<pre>payments '; print_r($p); echo '</pre>';
+
+// 'p' array now contains all funding records that are dues payments but NOT subscribing dues   		
+//	echo '<pre>non-subscribing dues payments '; print_r($p); echo '</pre>';
+
 	$instr = implode("','", $inarray);
 	$sqlstr = "SELECT * FROM `members` 
 	WHERE `MCID` IN ('" . $instr . "')
 		AND `Inactive` = 'FALSE'
 		AND `MCtype` LIKE '%subscr%';";
 // now get the corresonding members and check them
+//	echo "sqlstr: $sqlstr<br>";
 	$res = doSQLsubmitted($sqlstr);
 	$rowcount = $res->num_rows;
 //	echo "Rows returned: $rowcount<br>";
@@ -97,6 +101,7 @@ if ($action == 'report') {
 	FROM ( 
 		SELECT `MCID`, MAX( `DonationDate` ) AS `MaxDate` 
 		FROM `pwcmbrdb`.`donations` 
+		WHERE `Program` LIKE 'dues%' 
 		GROUP BY `MCID` ) AS `x` 
 	INNER JOIN `donations` AS `f` ON `f`.`MCID` = `x`.`MCID` 
 		AND `f`.`DonationDate` = `x`.`MaxDate` 
@@ -112,25 +117,26 @@ if ($action == 'report') {
 	$instr = implode("','", $inarray);
 	$sqlstr = "SELECT * FROM `members` 
 	WHERE `MCID` IN ('" . $instr . "')
-	AND `Inactive` = 'FALSE';";
+		AND `MCtype` NOT LIKE '%subscr%'
+		AND `Inactive` = 'FALSE';";
 //	echo "sqlstr: $sqlstr<br>";
 //	echo '<pre>payments '; print_r($p); echo '</pre>';
 
 // now get the corresonding members and check them
 	$res = doSQLsubmitted($sqlstr);
-	$rowcount = $res->num_rows;
-//	echo "Rows returned: $rowcount<br>";
+	$rowcount2 = $res->num_rows;
+//	echo "Rows returned: $rowcount2<br>";
 	echo '<h4>2. Non-Subscribing Members with Last Payment marked as Dues is a &apos;subscription&apos; Payment</h4>';
-	if ($rowcount > 0) {	
+	if ($rowcount2 > 0) {	
 		echo 'Members having their last Dues payment marked as a &apos;subsciption&apos; payment but are not noted as a subscribing member or subscribing volunteer.<br>';
 		echo '<table class="table-condensed">
 		<tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
-		while ($r = $res->fetch_assoc()) {
-			$mcid = $r[MCID];
+		while ($p = $res->fetch_assoc()) {
+			$mcid = $p[MCID];
 			$program = $p[$mcid][Program];
 			$lastpay = $p[$mcid][DonationDate];
 			if (($ret = stripos($r[MCtype],'subscr')) !== FALSE) continue;
-			echo "<tr><td>$r[MCID]</td><td>$program</td><td>$lastpay</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
+			echo "<tr><td>$p[MCID]</td><td>$program</td><td>$lastpay</td><td>$p[NameLabel1stline]</td><td>$p[MCtype]</td><td>$p[Notes]</td></tr>";
 		//echo '<pre>Delinquents '; print_r($delarray); echo '</pre>';
 			} 
 		//echo '<pre>Exceptions '; print_r($r); echo '</pre>';
