@@ -200,9 +200,9 @@ if ($action == 'report') {
 			echo "<tr><td>$r[MCID]</td><td>$r[LastProg]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
 		//echo '<pre>Delinquents '; print_r($delarray); echo '</pre>';
 			}
-		echo '</table>----- END OF LIST -----';
+		echo '</table>';
 		}
-
+	echo '----- END OF LIST -----';
 // =================================================
 // Section 4: now list all those with unclassified payment program
 	echo '<h4>4. Subscribing Members with Unclassified Payment</h4>';
