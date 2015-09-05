@@ -25,10 +25,9 @@ if ($name == "") {
 print <<<pagePart1
 <div class="container">
 <h3>Funding Summary Drilldown&nbsp;&nbsp;<a href="javascript:self.close();" class="btn btn-primary"><b>CLOSE</b></a></h3>
-<p>This report provides the ability to list and detail the various funding categories that are currently in the funding records of the database.  The categories are: Purpose, Program and Campaign.  Each category should only the values defined by the organization.  When importing an existing database, many category values are retained and either should be redefined.  If not, then certain reports will have to be date constraigned to show on those funding items received since the implementation of the system.</p>
-<p>Define the date range needed (the default is last calendar month) THEN choose one of the categories to examine.  A list of all unique values in that category will be listed.</p>
-<p>Then you may select one of those values from the dropdown list to inspect the detail funding records associated with it.</p>
-<p>NOTE:  this report is generatd from the values actually found on the database and does NOT take into consideration the values that have been defined for these categories when a new funding record is created.</p>
+<p>This report provides the ability to list and detail the various funding categories that are in the funding records of the database.</p>
+<p>Specify the date range needed (the default is last calendar month) THEN choose one of the categories to examine.  A list of all unique values in that category will be produced.</p>
+<p>Select one of those values from the dropdown list to inspect the detail funding records associated with it.</p>
 
 <form action="rptfundingdrilldown.php">
 From:<input type="text" name="sd" id="sd" value="$earliest">
@@ -66,7 +65,8 @@ $sql = "SELECT *
 $res = doSQLsubmitted($sql);
 $startdate = array(); $enddate = array();
 while ($r = $res->fetch_assoc()) {
-	//echo "<pre>$name: "; print_r($r); echo "</pre>";
+//	echo "<pre>$name: "; print_r($r); echo "</pre>";
+	if ($r[Purpose] == '**NewRec**') continue;		// ignore empty records
 	$totreccount++;												// total record count from query
 	$fn = $r[$name];											// $name = Purpose, Program or Category now
 	$nt[$fn] += $r[TotalAmount];					// capture purpose, program or campaign name amount
@@ -104,10 +104,10 @@ echo "</form>";
 if ($listitem == "") {
   echo "<div class=\"well\">";
 	echo "<table border=\"0\" class=\"table-condensed\">";
-	echo "<tr><td><b>Name</b></td><td><b>Rec.Count</b></td><td><b>Total Funds</b></td><td><b>Earliest Start</b></td><td><b>Latest End</b></td></tr>";
+	echo "<tr><th>Name</th><th>Rec.Count</th><th>Total Funds</th><th>Earliest Start</th><th>Latest End</th></tr>";
 
 	foreach ($nc as $k=>$v) {
-		if ($k == "") echo "<td>NONE: $v</td>";
+		if ($k == "") echo "<td>NONE:</td><td align=\"right\">$v</td>";
 		else { 
 			$ftot = number_format($nt[$k],2);
 			echo "<tr>";
@@ -118,7 +118,8 @@ if ($listitem == "") {
 			}
 		}	
 	$grtot = number_format($grandtot,2);
-	echo "<tr><td>Total $name&apos;s: ". count($nc)."</td><td>Rec's: $catcount out of $totreccount</td><td>Total Value:</td><td>$". 	$grtot ."</td></tr>";
+	echo "</table>
+	Total $name&apos;s: ". count($nc).", Rec's: $catcount out of $totreccount, Total Value:&nbsp;$". 	$grtot ."<br>";
 	echo "</table>";
 	echo "</div> <!-- well -->";
 	print <<<secForm
