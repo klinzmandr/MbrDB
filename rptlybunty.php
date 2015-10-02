@@ -51,6 +51,11 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 			unset($ADRarray[$r[MCID]]);
 			continue;
 			}
+		if ($r[YrlyDon] == 0) {		// ignore MCID if nothing giv
+			unset($YRarray[$r[MCID]]);
+			unset($ADRarray[$r[MCID]]);
+			continue;
+			}
 		if ($r[DonYr] == $yr - 1 ) {
 			$YRarray[$r[MCID]] += $r[YrlyDon];		// remember MCID if NOT donated for year
 			$grtot += $r[YrlyDon];
@@ -99,6 +104,7 @@ Select the Year: <br>
 <form action="rptlybunty.php">
 <input type="hidden" name="action" value="rpt">
 <select name=yr>
+<option value=2017>2017</option>
 <option value=2016>2016</option>
 <option value=2015 selected>2015</option>
 <option value=2014>2014</option>
