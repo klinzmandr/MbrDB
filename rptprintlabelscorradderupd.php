@@ -54,7 +54,7 @@ catch (Exception $E)	{
 
 // the MCID's are all isolated in an array, now we update the correspondence table
 // echo '<pre mcidarray: >'; print_r($mcidarray); echo '</pre>';
-$updarray = array(); $rc = 0;
+$updarray = array(); $rc = 0; $mbrarray = array();
 foreach ($mcidarray as $mcid => $cnt) {
 //	if ($updarray[MCID] == '') 
 	$updarray[MCID] = strtoupper($mcid);
@@ -64,6 +64,12 @@ foreach ($mcidarray as $mcid => $cnt) {
 //	echo '***TEST MODE ON***<pre updarray: >'; print_r($updarray); echo '</pre>';
 	sqlinsert('correspondence', $updarray);
 	$rc++;
+// update mbr record with new corr info	
+	$mbrarray[LastCorrDate] = $datesent;
+	$mbrarray[LastCorrType] = $corrtype;
+	$where = "`MCID`='" . $mcid . "'";
+	sqlupdate('members',$mbrarray, $where);	
+
 }
 
 echo "
