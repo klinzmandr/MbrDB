@@ -131,7 +131,8 @@ echo '</ul></td></tr></table>';
 
 print <<<pagePart4
 AND<br />
-<input type="checkbox" name="noemail" value="noemail"> - Exclude those with email addresses<br>
+<input type="checkbox" name="noemail" value="TRUE"> - Exclude those WITH email addresses<br>
+<input type="checkbox" name="email" value="TRUE"> - Exclude those WITHOUT email addresses<br>
 <input type="checkbox" name="daterangechk" value="daterange" size="1"> - Funding Date Range is from:
 <input type="text" name="sd" id="sd" value=""> and/or before: 
 <input type="text" name="ed" id="ed" value=""><br />
@@ -158,14 +159,15 @@ pagePart4;
 // ------------------ start ----------------
 // use input parameters to select records
 if ($action == 'search') {
-	//include 'Incls/vardump.inc';
+//	include 'Incls/vardump.inc';
 	$blanks = isset($_REQUEST['blanklabels']) ? $_REQUEST['blanklabels'] : 0;	
 	$cbox = $_REQUEST['cbox'];
 	$drangelo = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : '';
 	$drangehi = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : '';
 	$vrangelo = isset($_REQUEST['vrangelo']) ? $_REQUEST['vrangelo'] : '';
 	$vrangehi	= isset($_REQUEST['vrangehi']) ? $_REQUEST['vrangehi'] : '';
-	$noemail = isset($_REQUEST['noemail']) ? $_REQUEST['noemail'] : '';
+	$noemail = isset($_REQUEST['noemail']) ? $_REQUEST['noemail'] : 'FALSE';
+	$email = isset($_REQUEST['email']) ? $_REQUEST['email'] : 'FALSE';
 
 // echo '<pre> cbox'; print_r($cbox); echo '</pre>';
 	$cblist = "('" . implode("','",$cbox) . "')";
@@ -216,7 +218,7 @@ if ($action == 'search') {
 			$having
 		ORDER BY `ZipCode` ASC;";
 		}
-	//echo "SQL: $sql<br>";
+//	echo "SQL: $sql<br>";
 	$res = doSQLsubmitted($sql);
 	$nbr_rows = $res->num_rows;
 	//echo "rows returned: $nbr_rows<br />";
@@ -225,15 +227,22 @@ if ($action == 'search') {
 		if ($vrangehi == '') $vrangehi = 10000000;
 		}
 //echo "vrangelo: $vrangelo, vrangehi: $vrangehi<br />";
-	$valcount = 0; $noaddr = 0; $nomail = 0; $withemail = 0;
+	$valcount = 0; $noaddr = 0; $nomail = 0; $withemail = 0; $withoutemail = 0;
 	while ($row = $res->fetch_assoc()) {
 		$mcid = $row[MCID];
 		//echo '<pre> row returned '; print_r($row); echo '</pre>';
-		if (($row[E_Mail] == 'TRUE') AND ($noemail == 'noemail')) { 
-			$withemail++; 							// member has a valid email so ignore it 
-			continue; 
+
+		if (($row[E_Mail] == 'TRUE') AND ($noemail == 'TRUE')) { 		// member has a valid email so ignore it
+			$withemail++; 
+//			echo "E_Mail: $row[E_Mail], noemail: $noemail<br>";
+			continue; 							 
 			}
-		
+		if ((($row[E_Mail] == 'FALSE') OR ($row[E_Mail] == '')) AND ($email == 'TRUE')) {			// member does NOT has a valid email so ignore it
+			$withoutemail++;
+//			echo "E_Mail: $row[E_Mail], email: $email<br>";
+			continue; 							 
+			}
+	
 		if (($row[AddressLine] == "") AND ($row[Mail] == 'TRUE')) {
 			$noaddr++;									// bad address 
 			//echo '<pre> bad address '; print_r($row); echo '</pre>';
@@ -284,7 +293,12 @@ $sheetcount = 0;
 $cnt = count($results);
 if ($blanks > 0) $blanks -= 1;
 echo "<div class=\"label\">";
-echo "Rows extracted: $nbr_rows<br />No mail/no addr: $nomail/$noaddr<br />Excl Email: $withemail<br>Labels printed: " . $cnt . '<br />';
+echo "
+Rows extracted: $nbr_rows<br />
+No mail/no addr: $nomail/$noaddr<br />
+Excl w/wo Eml: $withemail/$withoutemail<br>
+Labels printed: $cnt<br />
+";
 echo '<a href="javascript:self.close();" class="btn btn-primary">CLOSE</a>/
 <a href="rptprintlabelscorradder.php?count=' . $cnt . '" class="btn btn-primary">CONTINUE</a>
 </div>';
