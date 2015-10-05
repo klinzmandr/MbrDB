@@ -220,10 +220,10 @@ function initAllFields(form) {
 		initRadio(Inactive,"$inact");
   	}
 	// if no email address defined
-	//if (document.getElementById("EMA").value == "") {
-	//	document.getElementById("EMR1").checked = false;
-	//	document.getElementById("EMR2").checked = true;
-	//	}
+	if (document.getElementById("EMA").value == "") {
+		document.getElementById("EMR1").checked = false;
+		document.getElementById("EMR2").checked = true;
+		}
 	// if no address line defined
 	if (document.getElementById("ALN").value == "") {
 		document.getElementById("ALR1").checked = false;
