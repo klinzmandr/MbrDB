@@ -2,7 +2,8 @@
     body {
         width: 8.5in;
         margin: 0in .1875in;
-        font-size:0.875em;     	/* 16px x 0.875em = 14px */
+        /* font-size:0.875em;     	 16px x 0.875em = 14px */
+        font-size:0.750em;     	/* 16px x 0.750em = 12px */
         }
     .label{
         /* for Avery 5160 labels */
