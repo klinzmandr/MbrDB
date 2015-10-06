@@ -55,8 +55,6 @@ foreach ($mcidarray as $m) {
 	// update member summary info
 	$mbrflds[LastCorrType] = $fields[CorrespondenceType];  
 	$mbrflds[LastCorrDate] = $fields[DateSent];
-	$mbrflds[Inactive] = 'TRUE';
-	$mbrflds[Inactivedate] = date('Y-m-d', strtotime(now));
 	sqlupdate('members', $mbrflds, "`MCID` = '$mcid';");
 	//echo '<pre> members '; print_r($mbrflds); echo '</pre>';
 	echo "$mr[MCID], ";
