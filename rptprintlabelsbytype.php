@@ -1,29 +1,32 @@
 <?php
 session_start();
-
-include 'Incls/seccheck.inc';
-//include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
-
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
-$ua = $_SERVER['HTTP_USER_AGENT'];
-
-$systemlists = readdblist('MCTypes');
-$mctypes = formatdbrec($systemlists);
-// echo '<pre> syslistsarray '; print_r($mctypes); echo '</pre>';
-
 if ($action == '') {
-	//include 'Incls/vardump.inc';
 	print <<<pagePart1
-<!DOCTYPE html><html><head><title>Print Labels</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Print Labels</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="css/datepicker3.css" rel="stylesheet">
-</head><body><div class="container">
+</head>
+<body>
+<div class="container">
 
 <h3>Print Labels  <a href="javascript:self.close();" class="btn btn-primary"><strong>(CLOSE)</strong></a></h3>
 
 pagePart1;
+//include 'Incls/vardump.inc';
+
+include 'Incls/seccheck.inc';
+include 'Incls/datautils.inc';
+
+$systemlists = readdblist('MCTypes');
+$mctypes = formatdbrec($systemlists);
+// echo '<pre> syslistsarray '; print_r($mctypes); echo '</pre>';	
+
+$ua = $_SERVER['HTTP_USER_AGENT'];
 
 foreach ($mctypes as $k => $v) {
 	$val = substr($k,0,1);
@@ -42,7 +45,7 @@ pagePart2;
 
 print <<<pagePart3
 <p>This facility allows the creation of a page formatted as printing labels based on the criteria selected.  All labels will be sorted by zip code in ascending sequence.</p>
-<p>Before printing labels, use Chrome&apos;s print function (File -> Print -> More Settings) to define the custom margin settings to <b>top margin to 0.6 inch and all other print margins to 0 (zero)</b>.</p>
+<p>Before printing labels, use Chrome&apos;s print function (File -> Print -> More Settings) to define the custom margin settings to <b>top margin to 0.5 inch and all other print margins to 0 (zero)</b>.</p>
 <p>Suggestion: try printing a single test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the lables on the page.</p>
 <h4>Select one or more of the following criteria:</h4>
 <script>
@@ -98,39 +101,30 @@ function chkvals(form) {
 <ul>
 pagePart3;
 
-echo 'Member Type(s)<br><table width="90%" class="table-condensed" border=1>
-<tr><td valign=top>Contacts:<ul>';
+echo 'Member Type(s)<br>
+<table class="table table-condensed" border=0>
+<tr><td valign="top">Contacts:<ul>';
 foreach ($mctype0 as $k => $v) {
-	echo "
-<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>
-";
+	echo "<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>";
 	}
-echo '</ul></td><td valign=top>Members:<ul>
-';
+echo '</ul></td><td valign=top>Members:<ul>';
 foreach ($mctype1 as $k => $v) {
-	echo "
-<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>
-";
+	echo "<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>";
 	}
 echo '</ul></td><td valign=top>Volunteers:<ul>';
 foreach ($mctype2 as $k => $v) {
-	echo "
-<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>
-";
+	echo "<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>";
 	}
 echo '</ul></td><td valign=top>Supporters:<ul>';
 foreach ($mctype3 as $k => $v) {
-	echo "
-<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>
-";
+	echo "<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>";
 	}
-
 echo '</ul></td></tr></table>';
 
 // <input type="checkbox" name="mstat0" value="0" /> - 0-Contacts, or<br />
 
 print <<<pagePart4
-AND<br />
+<h4>AND</h4>
 <input type="checkbox" name="noemail" value="TRUE"> - Exclude those WITH email addresses<br>
 <input type="checkbox" name="email" value="TRUE"> - Exclude those WITHOUT email addresses<br>
 <input type="checkbox" name="daterangechk" value="daterange" size="1"> - Funding Date Range is from:
@@ -142,7 +136,7 @@ AND<br />
 Number of labels to skip on 1st page (max. 29): 
 <input type="text" name="blanklabels" value="0" size="2" maxlength="2" /><br />
 <input type="hidden" name="action" value="search"><br />
-<input type="submit" name="submit" value-"submit">
+<input type="submit" name="submit" value="submit">
 </form>
 </ul>
 </div>  <!-- container -->
@@ -159,7 +153,24 @@ pagePart4;
 // ------------------ start ----------------
 // use input parameters to select records
 if ($action == 'search') {
+	
+// create html document for labels
+print <<<labelPart1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MbrDB Label Output</title>
+</head>
+<body>
+
+labelPart1;
+
+
 //	include 'Incls/vardump.inc';
+	include 'Incls/seccheck.inc';
+	include 'Incls/datautils.inc';
+	
 	$blanks = isset($_REQUEST['blanklabels']) ? $_REQUEST['blanklabels'] : 0;	
 	$cbox = $_REQUEST['cbox'];
 	$drangelo = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : '';
@@ -262,42 +273,26 @@ if ($action == 'search') {
 //echo "results count: " . count($results) . '<br />';
 if ($nbr_rows == 0) {
 	print <<<nothingReturned
-<!DOCTYPE html>
-<html><head><title>Print Labels-Nothing</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
-//<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"></head><body>
-<div class="container">
-<h4>No MCID&apos;s meet the criteria supplied</h4>
+<h3>No supporter records meet the criteria supplied</h3>
 <a href="javascript:self.close();" class="btn btn-primary">CLOSE</a>
-</div>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 nothingReturned;
 	exit;
 	}
-// create html document for labels
-print <<<labelPart1
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>MbrDB Label Output</title>
-</head>
-<body>
-labelPart1;
+
 // include in CSS to format label printing
-include 'Incls/label_print_css.inc';		
+include 'Incls/label_print_css.inc';
+		
 // leave empty labels empty
 $sheetcount = 0;
 $cnt = count($results);
 if ($blanks > 0) $blanks -= 1;
 echo "<div class=\"label\">";
 echo "
-Rows extracted: $nbr_rows<br />
+Ext/Prt: $nbr_rows/$cnt<br />
 No mail/no addr: $nomail/$noaddr<br />
 Excl w/wo Eml: $withemail/$withoutemail<br>
-Labels printed: $cnt<br />
 ";
 echo '<a href="javascript:self.close();" class="btn btn-primary">CLOSE</a>/
 <a href="rptprintlabelscorradder.php?count=' . $cnt . '" class="btn btn-primary">CONTINUE</a>
@@ -328,16 +323,10 @@ foreach ($results as $k => $r) {
 	}
 }
 file_put_contents('uploads/corraddarray.csv', $corrarray); // for corr adder page
-	print <<<labelPart2
+print <<<labelPart2
 </body>
 </html>
-<!-- <div class="label"><a href="javascript:self.close();" class="btn btn-primary">CLOSE</a></div> -->
 labelPart2;
-	exit;
+
+exit;
 ?>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
-</body>
-</html>
