@@ -38,15 +38,19 @@ foreach ($mctypes as $k => $v) {
 		}
 	}
 
-if (stripos($ua,'Chrome') === FALSE)
+if (stripos($ua,'Chrome') === FALSE) {
 print <<<pagePart2
-<h4 style="color: red; ">Please note that printing labels is best done when using the Chrome web browser.  Other browers may be used but careful testing must be done BEFORE trying to print on label stock.  Make sure that browser margin settings are correctly set in any case.</h4>
+<h3 style="color: red; ">Please note that printing labels can only be done when using the Chrome web browser.</h3>
+
 pagePart2;
+exit;
+}
 
 print <<<pagePart3
 <p>This facility allows the creation of a page formatted as printing labels based on the criteria selected.  All labels will be sorted by zip code in ascending sequence.</p>
 <p>Before printing labels, use Chrome&apos;s print function (File -> Print -> More Settings) to define the custom margin settings to <b>top margin to 0.5 inch and all other print margins to 0 (zero)</b>.</p>
-<p>Suggestion: try printing a single test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the lables on the page.</p>
+<p>PLEASE NOTE: for the labels to print properly, the default font setting for Chorme MUST be set to 'LARGE'.  For Chrome, this setting is at 'Settings -> Show Advanced Settings -> Web Content'.</p>
+<p>Before printing multiple pages on label stock try printing a single test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the lables on the page.  This will ensure that all settings are in effect.</p>
 <h4>Select one or more of the following criteria:</h4>
 <script>
 function chkvals(form) {
@@ -95,27 +99,47 @@ function chkvals(form) {
 	alert(errmsg);
 	return false;
 	}
-
 </script>
+<script>
+function chckr(val) {
+	var v = val; var cb = false;
+	var elems = document.getElementsByName("cbox[]");
+	switch (v) {
+		case(0): cb = document.getElementById("cb0").checked; break; 
+		case(1): cb = document.getElementById("cb1").checked; break;
+		case(2): cb = document.getElementById("cb2").checked; break;
+		case(3): cb = document.getElementById("cb3").checked; break;
+		default: alert("Invalid checkbox id."); return;
+	}
+	for (i = 0; i < elems.length; i++) {
+		var str = elems[i].value;
+		if (str.substring(0,1) == v) {
+			elems[i].checked = cb;
+			}
+		}
+return false;
+}
+</script>
+
 <form action="rptprintlabelsbytype.php" method="post"  class="form" onsubmit="return chkvals(this)">
 <ul>
 pagePart3;
 
 echo 'Member Type(s)<br>
 <table class="table table-condensed" border=0>
-<tr><td valign="top">Contacts:<ul>';
+<tr><td valign="top"><input type=checkbox id="cb0" onchange="chckr(0);"> Contacts:<ul>';
 foreach ($mctype0 as $k => $v) {
 	echo "<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>";
 	}
-echo '</ul></td><td valign=top>Members:<ul>';
+echo '</ul></td><td valign=top><input type=checkbox id="cb1" onchange="chckr(1);"> Members:<ul>';
 foreach ($mctype1 as $k => $v) {
 	echo "<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>";
 	}
-echo '</ul></td><td valign=top>Volunteers:<ul>';
+echo '</ul></td><td valign=top><input type=checkbox id="cb2" onchange="chckr(2);"> Volunteers:<ul>';
 foreach ($mctype2 as $k => $v) {
 	echo "<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>";
 	}
-echo '</ul></td><td valign=top>Supporters:<ul>';
+echo '</ul></td><td valign=top><input type=checkbox id="cb3" onchange="chckr(3);"> Supporters:<ul>';
 foreach ($mctype3 as $k => $v) {
 	echo "<input type=checkbox name=cbox[] value=\"$k\"> - $v<br>";
 	}
@@ -209,25 +233,14 @@ labelPart1;
 	
 //echo "where: $where<br />";
 // now ready to do db search for list by criteria
-
+	$sql = "SELECT `donations`.`MCID`, SUM( `donations`.`TotalAmount` ) AS `Total`, `members`.* 
+FROM { OJ `members` LEFT OUTER JOIN `donations` ON `members`.`MCID` = `donations`.`MCID` } 
+WHERE $where 
+GROUP BY `donations`.`MCID` 
+$having 
+ORDER BY `members`.`ZipCode` ASC;";
 	if (($extwhere == '') AND ($having == '')) {
-		$sql = "SELECT `donations`.`MCID`, SUM( `donations`.`TotalAmount` ) AS `Total`, `members`.* 
-		FROM `donations`, `members`
-		WHERE `donations`.`MCID` = `members`.`MCID` 
-			AND `Inactive` = 'FALSE'  
-			AND $where
-		GROUP BY `donations`.`MCID`
-		ORDER BY `ZipCode` ASC;";
-		}
-	else {
-		$sql = "SELECT `donations`.`MCID`, SUM( `donations`.`TotalAmount` ) AS `Total`, `members`.* 
-		FROM `donations`, `members`
-		WHERE `donations`.`MCID` = `members`.`MCID` 
-			AND `Inactive` = 'FALSE' 
-			AND $where 
-		GROUP BY `donations`.`MCID` 
-			$having
-		ORDER BY `ZipCode` ASC;";
+		$sql = "SELECT * FROM `members` WHERE $where";
 		}
 //	echo "SQL: $sql<br>";
 	$res = doSQLsubmitted($sql);
@@ -309,10 +322,21 @@ foreach ($results as $k => $r) {
 	$name = substr($r[NameLabel1stline],0,24); $addr = $r[AddressLine]; $city = $r[City]; $state = $r[State];
 	$corrarray[] = $r[MCID] . ',' .  $r[NameLabel1stline] . "\n";
 	if ($org == '')
-		echo "<div class=\"label\">$name<br>$addr<br>$city, $state  $zipcode</div>\n";
+		echo "<div class=\"label\">
+$name<br>
+$addr<br>
+$city, $state  $zipcode
+<div style=\"text-align: right; \"><mcid>$mcid</mcid></div>
+</div>\n";
 	else {
 		$name = 'Attn: ' . substr($name,0,19);
-		echo "<div class=\"label\">$org<br>$name<br>$addr<br>$city, $state  $zipcode</div>\n";
+		echo "<div class=\"label\">
+$org<br>
+$name<br>
+$addr<br>
+$city, $state  $zipcode
+<div style=\"text-align: right; \"><mcid>$mcid</mcid></div>
+</div>\n";
 	}
 	//echo "<pre>"; print_r($r); echo "</pre>";
 	$sheetcount += 1;

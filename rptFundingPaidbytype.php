@@ -81,20 +81,41 @@ function chkvals(form) {
 	}
 
 </script>
+<script>
+function chckr(val) {
+	var v = val; var cb = false;
+	var elems = document.getElementsByName("cbox[]");
+	switch (v) {
+		case(0): cb = document.getElementById("cb0").checked; break; 
+		case(1): cb = document.getElementById("cb1").checked; break;
+		case(2): cb = document.getElementById("cb2").checked; break;
+		case(3): cb = document.getElementById("cb3").checked; break;
+		default: alert("Invalid checkbox id."); return;
+	}
+	for (i = 0; i < elems.length; i++) {
+		var str = elems[i].value;
+		if (str.substring(0,1) == v) {
+			elems[i].checked = cb;
+			}
+		}
+return false;
+}
+</script>
 <form action="rptFundingPaidbytype.php" method="post"  class="form" onsubmit="return chkvals(this)">
 <ul>
 
 pagePart1;
 
-echo 'Member Type(s)<br><table width="90%" class="table-condensed" border=0>
-<tr><td valign=top>Contacts:<ul>';
+echo 'Member Type(s)<br>
+<table width="90%" class="table-condensed" border=0>
+<tr><td valign=top><input type=checkbox id="cb0" onchange="chckr(0);"> Contacts:<ul>';
 foreach ($mctype0 as $k => $v) {
 //	echo "mctype key: $k, value:$v<br>";
 	echo "
 <input type=checkbox name=cbox[] value=\"$k\"> - $v<br>
 ";
 	}
-echo '</ul></td><td valign=top>Members:<ul>
+echo '</ul></td><td valign=top><input type=checkbox id="cb1" onchange="chckr(1);"> Members:<ul>
 ';
 foreach ($mctype1 as $k => $v) {
 //	echo "mctype key: $k, value:$v<br>";
@@ -102,14 +123,14 @@ foreach ($mctype1 as $k => $v) {
 <input type=checkbox name=cbox[] value=\"$k\"> - $v<br>
 ";
 	}
-echo '</ul></td><td valign=top>Volunteers:<ul>';
+echo '</ul></td><td valign=top><input type=checkbox id="cb2" onchange="chckr(2);"> Volunteers:<ul>';
 foreach ($mctype2 as $k => $v) {
 //	echo "mctype key: $k, value:$v<br>";
 	echo "
 <input type=checkbox name=cbox[] value=\"$k\"> - $v<br>
 ";
 	}
-echo '</ul></td><td valign=top>Supporters:<ul>';
+echo '</ul></td><td valign=top><input type=checkbox id="cb3" onchange="chckr(3);"> Supporters:<ul>';
 foreach ($mctype3 as $k => $v) {
 //	echo "mctype key: $k, value:$v<br>";
 	echo "
@@ -157,7 +178,7 @@ if ($action == 'search') {
 
 	$mbrwhere = "`MCtype` in $cblist ";
 
-	$rptmbr = rtrim($rptmbr, ', ');
+	$rptmbr = 'In list: '. $cblist;
 	//echo "$rptmbr<br />";
 	if (isset($_REQUEST['daterangechk'])) {
 		$rptdate = 'Date Range ';
@@ -201,26 +222,14 @@ if ($action == 'search') {
 	
 //echo "where: $where<br />";
 // now ready to do db search for list by criteria
-
-
+	$sql = "SELECT `donations`.`MCID`, SUM( `donations`.`TotalAmount` ) AS `Total`, `members`.* 
+FROM { OJ `members` LEFT OUTER JOIN `donations` ON `members`.`MCID` = `donations`.`MCID` } 
+WHERE $where 
+GROUP BY `donations`.`MCID` 
+$having 
+ORDER BY `members`.`ZipCode` ASC;";
 	if (($extwhere == '') AND ($having == '')) {
-		$sql = "SELECT `donations`.`MCID`, SUM( `donations`.`TotalAmount` ) AS `Total`, `members`.* 
-		FROM `donations`, `members`
-		WHERE `donations`.`MCID` = `members`.`MCID` 
-			AND `Inactive` = 'FALSE'  
-			AND $where
-		GROUP BY `donations`.`MCID`
-		ORDER BY `Total` DESC;";
-		}
-	else {
-		$sql = "SELECT `donations`.`MCID`, SUM( `donations`.`TotalAmount` ) AS `Total`, `members`.* 
-		FROM `donations`, `members`
-		WHERE `donations`.`MCID` = `members`.`MCID` 
-			AND `Inactive` = 'FALSE' 
-			AND $where 
-		GROUP BY `donations`.`MCID` 
-		$having
-		ORDER BY `Total` DESC;";
+		$sql = "SELECT * FROM `members` WHERE $where";
 		}
 //	echo "SQL: $sql<br>";
 	$res = doSQLsubmitted($sql);
@@ -287,7 +296,7 @@ if ($blanks > 0) $blanks -= 1;
 
 echo '<h3>Funding Report Results&nbsp;&nbsp;';
 echo " <a href=\"javascript:self.close();\" class=\"btn btn-primary btn-xs\">CLOSE</a><br></h3>";
-echo "$rptmbr $rptdate $rptrng<br />";
+echo "Criteria: $rptmbr $rptdate $rptrng<br />";
 $grandtotal = number_format($grandtotal);
 echo "Rows extracted: $nbr_rows, No mail: $nomail, Missing address: $noaddr, Email Excluded: $withemail, Records selected: " . count($results) . ", Grand Total: $" . $grandtotal . '<br>';
 
