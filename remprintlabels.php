@@ -54,10 +54,20 @@ while ($r = $res->fetch_assoc()) {
 	$name = substr($r[NameLabel1stline],0,24); 
 	$addr = $r[AddressLine]; $city = $r[City]; $state = $r[State]; $zipcode = $r[ZipCode];
 	if ($org == '') 
-		echo "<div class=\"label\">$name<br>$addr<br>$city, $state  $zipcode</div>";
+		echo "<div class=\"label\">
+$name<br>
+$addr<br>
+$city, $state  $zipcode
+<div style=\"text-align: right; \"><mcid>$mcid</mcid></div>
+</div>";
 	else {
 		$name = 'Attn: ' . substr($r[NameLabel1stline],0,19);		
-		echo "<div class=\"label\">$org<br>$name<br>$addr<br>$city, $state  $zipcode</div>";
+		echo "<div class=\"label\">
+$org<br>
+$name<br>
+$addr<br>$city, $state  $zipcode
+<div style=\"text-align: right; \"><mcid>$mcid</mcid></div>
+</div>";
 		}
 	//echo "<pre>"; print_r($r); echo "</pre>";
 	$sheetcount += 1;

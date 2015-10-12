@@ -82,7 +82,8 @@ print <<<pagePart3b
 <h4>Print Labels</h4>
 <p>This facility allows the creation of a page formatted as printing labels based on the criteria selected.  All labels will be sorted by zip code in ascending sequence.</p>
 <p>Clicking &apos;SUBMIT&apos; will open a new window with the lables displayed for printing.  Click &apos;CLOSE&apos; to close the window when printing has been completed</p>
-<p>Before printing labels, use Chrome&apos;s print function (File -> Print) options to set the <b>top margin of to 0.6 inch and all other print margins to 0 (zero)</b>.</p>
+<p>Before printing labels, use Chrome&apos;s print function (File -> Print) options to set the <b>top margin of to 0.5 inch and all other print margins to 0 (zero)</b>.</p>
+<p>PLEASE NOTE: for the labels to print properly, the default font setting for Chorme MUST be set to 'LARGE'.  For Chrome, this setting is at 'Settings -> Show Advanced Settings -> Web Content'.</p>
 <p>Try printing a test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the blanks lables.</p>
 <form class="form" target="_blank" name="labform" action="remprintlabels.php">
 Number of labels to skip on 1st page (max. 29):
