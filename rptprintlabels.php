@@ -25,7 +25,8 @@ pagePart2;
 
 print <<<pagePart3
 <p>This facility allows the creation of a page formatted as printing labels based on the criteria selected.  All labels will be sorted by zip code in ascending sequence.</p>
-<p>Before printing labels, use Chrome&apos;s print function (File -> Print -> More Settings) to define the custom margin settings to <b>top margin to 0.6 inch and all other print margins to 0 (zero)</b>.</p>
+<p>Before printing labels, use Chrome&apos;s print function (File -> Print -> More Settings) to define the custom margin settings to <b>top margin to 0.5 inch and all other print margins (left, right and bottom) to 0 (zero)</b>.</p>
+<p>PLEASE NOTE: for the labels to print properly, the default font setting for Chorme MUST be set to 'LARGE'.  For Chrome, this setting is at 'Settings -> Show Advanced Settings -> Web Content'.</p>
 <p>Suggestion: try printing a single test page on plain paper first.  Hold it up to the light behind a sheet of labels to make sure the printed labels line up with the lables on the page.</p>
 <h4>Select one or more of the following criteria:</h4>
 <script>
@@ -256,10 +257,21 @@ foreach ($results as $k => $r) {
 	$name = substr($r[NameLabel1stline],0,24); $addr = $r[AddressLine]; $city = $r[City]; $state = $r[State];
 	$corrarray[] = $r[MCID] . ',' .  $r[NameLabel1stline] . "\n";
 	if ($org == '')
-		echo "<div class=\"label\">$name<br>$addr<br>$city, $state  $zipcode</div>\n";
+		echo "<div class=\"label\">
+$name<br>
+$addr<br>
+$city, $state  $zipcode
+<div style=\"text-align: right; \"><mcid>$mcid</mcid></div>
+</div>\n";
 	else {
 		$name = 'Attn: ' . substr($name,0,19);
-		echo "<div class=\"label\">$org<br>$name<br>$addr<br>$city, $state  $zipcode</div>\n";
+		echo "<div class=\"label\">
+$org<br>
+$name<br>
+$addr<br>
+$city, $state  $zipcode
+<div style=\"text-align: right; \"><mcid>$mcid</mcid></div>
+</div>\n";
 	}
 	//echo "<pre>"; print_r($r); echo "</pre>";
 	$sheetcount += 1;
