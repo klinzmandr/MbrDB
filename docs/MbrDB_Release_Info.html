@@ -15,6 +15,30 @@
  	      	   white-space: pre-wrap;      /* CSS3 */
  	      	   word-wrap: break-word;      /* IE 5.5+ */ }
 	</style></head><body><div class="note" id="MbrDB Release Info"><a name="mbrdb release info"></a><h1>MbrDB Release Info</h1>
+Version 2.13 (uploaded 10/12/2015)
+<ul><li dir="ltr">fixed reporting issues in rptmembersexceptions
+</li><li dir="ltr">corrected validation scripts regarding email flag and email address entry.
+</li><li dir="ltr">fixed list validation check for volunteer member status in mbrinfotabbed
+</li><li dir="ltr">added validation to prevent update to volunteer with no email lists selected
+</li><li dir="ltr">added sort selections to reminprogressreminderlist 
+</li><li dir="ltr">added functionality to upload and display photos in edi facility.
+</li><li dir="ltr">updated mbrcorrespondence to set reminders col to null unless corr type = 'renewalreminder'
+</li><li dir="ltr">added notes and comments into remmultiduesnotes to annotate its operation
+</li><li dir="ltr">added new report 'rptfollowups' that allows selection by criteria and printing of report for telephone followups.
+</li><li dir="ltr">added filter search ability to edilistall
+</li><li dir="ltr">changed sort order of donations in mbrprintmcid
+</li><li dir="ltr">fixed listing problems with rptsubcribers
+</li><li dir="ltr">fixed listing issues with rptfundingdrilldown
+</li><li dir="ltr">created rptFundingPaidbytype to select rows based on mbr type field.
+</li><li dir="ltr">created rptcreatelabelsbytype to select rows based on mbr type field.
+</li><li dir="ltr">updated rptlybuntly and rptsybunty reports to exclude $0 funding and set default year to 2015
+</li><li dir="ltr">updated rptcreatelabelsbytype to add selection criteria to exclude rows without email addresses
+</li><li dir="ltr">updated mbrinfotabbed to add in email flag default vaue to FALSE if no entered.
+</li><li dir="ltr">REMOVED setting of mbr record inactive from remmultimailupd
+</li><li dir="ltr">updated rptprintlabelsmytype, rptprintlabels and remprintlabels and label_print_css.inc to use new label layout.
+</li><li dir="ltr">add single checkbox for multiple choices for rptFundignPaidbytype.php and rptprintlabelsbytype.php.  Also updated the sql code to use outerjoin logic.
+</li><li dir="ltr">added new report rptmembersbytype to admin menu to list specific member status groups.</li></ul>
+
 Version 2.12 (uploaded 6/2/15)
 <ul><li dir="ltr">moved the report rptnewsupporters back to the main menu
 </li><li dir="ltr">updated verbiage and corrected spelling errors on a series of pages
