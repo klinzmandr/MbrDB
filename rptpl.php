@@ -159,7 +159,7 @@ $rc = $res->num_rows;
 // echo "Total Pages Used: $rc<br />";
 
 while ($r = $res->fetch_assoc()) {
-	echo '<pre> logged in '; print_r($r); echo '</pre>';
+//	echo '<pre> logged in '; print_r($r); echo '</pre>';
 	if ($r[User] == '') continue;	
 	$usr = $r[User];
 //	echo '<pre> whotimemax '; print_r($whotimemax); echo '</pre>';
@@ -172,7 +172,7 @@ while ($r = $res->fetch_assoc()) {
 	if ($now > $lasttime) continue;
 	
 	$sqlparts = explode('@', $r[SQL]);
-	echo '<pre> sqlparts '; print_r($sqlparts); echo '</pre>';
+//	echo '<pre> sqlparts '; print_r($sqlparts); echo '</pre>';
 	if ($sqlparts[0] == "Logged In") {
 		$user[$r[User]] = $r;
 		$addr[$r[User]] = $sqlparts[1];
@@ -184,11 +184,11 @@ while ($r = $res->fetch_assoc()) {
 	 
 	}
 	
-	echo '<pre> user '; print_r($user); echo '</pre>';
-	echo '<pre> addr '; print_r($addr); echo '</pre>';
+//	echo '<pre> user '; print_r($user); echo '</pre>';
+//	echo '<pre> addr '; print_r($addr); echo '</pre>';
 if (count($user) > 0) {
 //	echo '<pre> addr '; print_r($addr); echo '</pre>';
-	echo '<h4>Current Users:</h4>
+	echo '<h4>Current Active Users:</h4>
 	(NOTE: IP at Center: 175.5.141.139)<ul>';
 	foreach ($user as $k => $v) {
 		$u = $v[User]; $s = $v[SecLevel]; $d = $v[DateTime]; $a = $addr[$k];
