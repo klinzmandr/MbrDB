@@ -43,7 +43,7 @@ print <<<pagePart2
 <h3 style="color: red; ">Please note that printing labels can only be done when using the Chrome web browser.</h3>
 
 pagePart2;
-exit;
+// exit;
 }
 
 print <<<pagePart3
