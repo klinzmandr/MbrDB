@@ -99,17 +99,18 @@ function checktitle() {
 </head>
 scriptBody;
 
+if ($field == 'photos') $field = 'Pictures and Documents';
 print <<<formPage
 <div class="container">
-<h3 id="hdr3">EDI Photo Update</h3>
+<h3 id="hdr3">EDI Photo/Document Update</h3>
 <h4>MCID: $mcid</h4>
 <h4>Extra Donor Info Section: $field</h4>
 <div class="well">
 <form action="edidbphotoupd.php?action=APPLY" onsubmit="return checktitle()" method="post" enctype="multipart/form-data">
-Photo Title: <input id="PT" type="text" size=80 name=Title value=""><br>
-Notes: <input type="text" size=80 name=Notes value=""><br>
+Picture/Document Title: <input id="PT" type="text" size=80 name=Title value=""><br>
+Additional Note: <input type="text" size=80 name=Notes value=""><br>
 <label for="file">Filename to upload:</label>
-<input size=25 type="file" name="file" id="file" /><br><br>
+<input size=25 type="file" name="file" id="file" />
 <input type="submit" name="submit" value="Upload" onclick="loadProgress()"><br>
 <img src="config/verifying01.gif" height="30" alt="ProgressBar" id="progress" style="visibility: hidden; " /><br />
 </form>
