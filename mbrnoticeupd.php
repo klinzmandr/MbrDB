@@ -42,7 +42,7 @@ $res = sqlinsert('labelsandletters', $vararray);
 $fields[CorrespondenceType] = 'MailReminder';
 $fields[DateSent] = date('Y-m-d');
 $fields[MCID] = $mcid;
-$fields[Reminders] = 'MailReminder';
+$fields[Reminders] = 'MailNotice';
 $fields[Notes] = "Subject: $notes";
 sqlinsert('correspondence', $fields);
 
