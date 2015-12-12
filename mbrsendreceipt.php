@@ -84,7 +84,7 @@ echo '
 
 if ($donrowcnt == 0) { exit(0); }		// no funding for this year - need to choose again
 
-$progarray = array();
+$progarray = array();								// get program names
 $progblob = readdblist('Programs');
 $progarray = formatdbrec($progblob);
 // echo '<pre> Programs '; print_r($progarray); echo '</pre>';
@@ -106,8 +106,9 @@ formPart2;
 	}
 echo '</table>
 <input type="hidden" name="action" value="create">
-<input type="hidden" name="total" id="total" value="0">
-<input type="submit" name="submit" value="Select Checked">
+<input type="hidden" name="total" id="total" value="0">';
+echo "<input type=\"hidden\" name=\"yr\" value=\"$yr\">";
+echo '<input type="submit" name="submit" value="Select Checked">
 </form></div>
 ';
 print <<<scriptPart2
@@ -127,20 +128,21 @@ exit(0);
 
 // action == 'create' - Creation of receipt 
 // include 'Incls/vardump.inc';
+//echo "action: $action"; echo ", startyr: $startyr<br>";
 $total = isset($_REQUEST['total']) ? $_REQUEST['total'] : 0;
 $items = $_REQUEST['items'];
 $listitems = '(' . implode(',',$items) . ')';
-// echo "listitems: $listitems<br>";
-	
+//echo "items: $items"; echo "listitems: $listitems<br>";
+
 $sqldon = "SELECT * FROM `donations` WHERE `DonationID` IN $listitems 
 AND `DonationDate` BETWEEN '$startyr' AND '$endyr' 
 ORDER BY `DonationID`;";
 // echo "sql: $sqldon<br>";
 $resdon = doSQLsubmitted($sqldon);
-$donrowcnt = $resdon->num_rows;
+$donrowcnt = $resdon->num_rows;	
+// echo "donrowcnt: $donrowcnt<br>";
 $total = 0;
 while ($rowdon = $resdon->fetch_assoc()) {
-	// echo '<pre> items '; print_r($rowdon); echo '</pre>';
 	$total += $rowdon[TotalAmount];
 	}
 echo '<h2>Reciept data collection complete.</h2><h3>Click to <a class="btn btn-primary" href="mbrsendreceipt.php">RE-DO</a> the selection criteria.<br>';
