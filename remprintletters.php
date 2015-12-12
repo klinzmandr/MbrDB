@@ -39,11 +39,8 @@ labelPart1;
 // include css to print the letter
 include 'Incls/letter_print_css.inc';
 while ($r = $res->fetch_assoc()) {
-	$mcid = $r[MCID]; $date = $r[Date]; $org = $r[Organization];	$name = $r[NameLabel1stline]; 
-	$addr = $r[AddressLine]; $city = $r[City]; $state = $r[State]; $zipcode = $r[ZipCode];
 	$ltr = stripslashes($r[Letter]);
 	
-	$corrsal = $r[CorrSal];
 	if (isset($_REQUEST['header'])) { 
 		$body = "<div class=\"hdr\"><img src=\"Incls/letterlogo.jpg\" width=\"100%\" height=\"130\" alt=\"PWC Logo\" /></div>";
 		}
@@ -51,7 +48,7 @@ while ($r = $res->fetch_assoc()) {
 		$body = "<div class=\"hdr\"></div>";	
 		}
 	//$body .= "<div class=\"ltr\">";
-	$body .= "$org<br>$name<br>$addr<br>$city, $state  $zipcode";
+	//$body .= "$org<br>$name<br>$addr<br>$city, $state  $zipcode";
 	//$body .= "<br /><br /><br />Dear $corrsal,";
 	$body .= "<br />$ltr</div>";
 	$body .= "<div class=\"page-break\"></div>";
