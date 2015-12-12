@@ -14,10 +14,14 @@ include 'Incls/seccheck.inc';
 include 'Incls/mainmenu.inc';
 include 'Incls/datautils.inc';
 
+$items = isset($_REQUEST['items']) ? $_REQUEST['items'] : "";
+$itemcount = isset($_REQUEST['itemcount']) ? $_REQUEST['itemcount'] : "";
+$total = isset($_REQUEST['total']) ? $_REQUEST['total'] : "";
+$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : "";
+
 $tname = isset($_REQUEST['template']) ? $_REQUEST['template'] : "";
 $mcid = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : $_SESSION['ActiveMCID'];
 $_SESSION['ActiveMCID'] = $mcid;
-
 
 if ($mcid == "") {
 	//check if there is an active MCID, bail if not, access the members info for name and email address info.
@@ -41,16 +45,17 @@ if ($mcid == "") {
 // parse out those rows to just show the latest payment made
 	$results->data_seek(0);
 	$nbr_rows = $results->num_rows;
-
-	if ($nbr_rows > 0) {				//	any row returned means dues payment made within exp. period
-		print <<<expNotice
-<h3>MCID <a href="mbrinfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
+	
+	if ($type != 'reciept') {
+		if ($nbr_rows > 0) {				//	any row returned means dues payment made within exp. period
+			print <<<expNotice
+<h3>PLEASE NOTE: MCID <a href="mbrinfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
 
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
 expNotice;
-		exit;
+//		exit;
+			}
 		}
-		
 
 //echo "This is the active MCID: " . $_SESSION['ActiveMCID'] . "<br>";
 $sql = "SELECT * FROM `members` WHERE MCID = '$mcid'";
@@ -100,10 +105,14 @@ templForm1;
 		}
 print <<<templForm2
 </select>
+<input type="hidden" name="mcid" value="$mcid">
+<input type="hidden" name="items" value="$items">
+<input type="hidden" name="itemcount" value="$itemcount">
+<input type="hidden" name="total" value="$total">
+<input type="hidden" name="type" value="reciept">
 <input type="submit" name="submit" value="Submit">
 </form>	
-<br /><br />
-<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
+<br><br>
 </div>
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
 
@@ -111,9 +120,10 @@ templForm2;
 	exit();
 	}
 
-
 // list template options in a form and pick one to use 
 if ($tname != "") {
+// include 'Incls/vardump.inc';	
+// echo "<pre>row "; print_r($row); echo "</pre>";
 echo "<div class=\"container\"><h3>Edit and Send the Message to ".$_SESSION['ActiveMCID']."</h3>";
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$tname';";
 $res = doSQLsubmitted($sql);
@@ -125,6 +135,30 @@ $emx= $row[FName] . " " . $row[LName] . " <" . $row[EmailAddress] . ">";
 $emx = htmlentities($emx);
 $fromaddr = $EmailFROM;			// defined in datautils.inc
 
+// perform shortcode translations
+$regex = "/\[(.*?)\]/";
+preg_match_all($regex, $template, $matches);
+// echo "<pre>matches "; print_r($matches); echo "</pre>";
+// echo "<pre>row "; print_r($row); echo "</pre>";
+for ($i = 0; $i < count($matches[1]); $i++) {
+	$match = rtrim($matches[1][$i]);
+	if (strpos($match, 'EmailAddress') !== false) $newValue = $row[EmailAddress];
+	if ($match == 'total') $newValue = $total;
+	if ($match == 'itemcount') $newValue = $itemcount; 
+	if ($match == 'date') $newValue = date("F d, Y",strtotime(now));
+	if ($match == 'CorrSal') $newValue = $row[CorrSal];
+	if ($match == 'NameLabel1stline') $newValue = $row[NameLabel1stline];
+	if ($match == 'FName') $newValue = $row[FName];
+	if ($match == 'LName') $newValue = $row[LName];
+	if ($match == 'AddressLine') $newValue = $row[AddressLine];
+	if ($match == 'City') $newValue = $row[City]; 
+	if ($match == 'State') $newValue = $row[State]; 
+	if ($match == 'ZipCode') $newValue = $row[ZipCode];
+	if ($match == 'Organization') $newValue = $row[Organization]; 
+	$template = str_replace($matches[0][$i], $newValue, $template);
+	//echo "template: $template<br>";
+	$newValue = '';
+	}
 print <<<formPart1
 <script type="text/javascript" src="js/nicEdit.js"></script>
 <script type="text/javascript">
@@ -142,7 +176,7 @@ From: $fromaddr<br />
 Subject:<br />
 <input type="text" name="subject" value="$templatename" style="width: 500; "  placeholder="Subject" /><br />
 Message:<br />
-<textarea id="area1" name="body" rows="8" cols="90">$template</textarea><br />
+<textarea id="area1" name="body" rows="8" cols="100">$template</textarea><br />
 <input type="hidden" name="to" value="$emaddr">
 <input type="hidden" name="from" value="$fromaddr">
 <input type ="submit" name="Submit" value="Send"><br />
