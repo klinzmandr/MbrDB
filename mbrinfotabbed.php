@@ -569,6 +569,7 @@ return true;
 </script>';
 echo "<div style=\"text-align: center\">
 <a class=\"btn btn-xs btn-primary\" onclick=\"return chkem()\" href=\"mbremail.php?tname=x\">SEND AN EMAIL</a> &nbsp;&nbsp;
+<a class=\"btn btn-xs btn-primary\" href=\"mbrsendreceipt.php\" onclick=\"return chkem()\">SEND A RECEIPT</a>&nbsp;&nbsp;
 <a class=\"btn btn-xs btn-primary\" onclick=\"return chkem()\" href=\"mbremailnotice.php\">SEND A REMINDER EMAIL</a>&nbsp;&nbsp;
 <a class=\"btn btn-xs btn-primary\" onclick=\"return chkem()\" href=\"mbrnotice.php\">PRINT A REMINDER LETTER</a>
 </div>
