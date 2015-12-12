@@ -15,6 +15,11 @@ include 'Incls/seccheck.inc';
 include 'Incls/mainmenu.inc';
 include 'Incls/datautils.inc';
 
+$items = isset($_REQUEST['items']) ? $_REQUEST['items'] : "";
+$itemcount = isset($_REQUEST['itemcount']) ? $_REQUEST['itemcount'] : "";
+$total = isset($_REQUEST['total']) ? $_REQUEST['total'] : "";
+$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : "";
+
 $tname = isset($_REQUEST['template']) ? $_REQUEST['template'] : "";
 $mcid = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : $_SESSION['ActiveMCID'];
 $_SESSION['ActiveMCID'] = $mcid;
@@ -44,10 +49,12 @@ if ($mcid == "") {
 	$results->data_seek(0);
 	$nbr_rows = $results->num_rows;
 
-	if ($nbr_rows > 0) {				//	any row returned means dues payment made within exp. period
-		$row = $results->fetch_assoc();
+	
+	if ($type != 'reciept') {
+		if ($nbr_rows > 0) {				//	any row returned means dues payment made within exp. period
+			$row = $results->fetch_assoc();
 		//echo "<pre>"; print_r($row); echo "</pre>";
-		print <<<expNotice
+			print <<<expNotice
 <h3>MCID <a href="mbrinfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
 <!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
 <script src="jquery.js"></script>
@@ -56,7 +63,8 @@ if ($mcid == "") {
 </body>
 </html>
 expNotice;
-		exit;
+//			exit;
+			}	
 		}
 
 // check if MCID is inactive
@@ -97,6 +105,8 @@ if ((strlen($row['NameLabel1stline']) == 0) OR (strlen($row['AddressLine']) == 0
 
 // now we can list the template list for selection
 if ($tname == "") {
+// include 'Incls/vardump.inc';	
+// echo "<pre>row "; print_r($row); echo "</pre>";	
 $sql = "SELECT * FROM `templates` WHERE `Type` = 'mail';";
 $res = doSQLsubmitted($sql);
 print <<<tempForm1
@@ -113,9 +123,13 @@ tempForm1;
 		}
 print <<<tempForm2
 </select>
+<input type="hidden" name="mcid" value="$mcid">
+<input type="hidden" name="items" value="$items">
+<input type="hidden" name="itemcount" value="$itemcount">
+<input type="hidden" name="total" value="$total">
+<input type="hidden" name="type" value="reciept">
 <input type="submit" name="submit" value="Submit">
 </form><br /><br />
-<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
 </div>	
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
 tempForm2;
@@ -132,8 +146,31 @@ $t = $tres->fetch_assoc();
 $templatename = stripslashes($t[Name]);
 $template = stripslashes($t[Body]);
 
-$org = $row['Organization']; $name = $row['NameLabel1stline']; $addr = $row['AddressLine'];
-$city = $row['City']; $state = $row['State']; $zip = $row['ZipCode']; $corrsal = $row['CorrSal'];
+// perform shortcode translations
+$regex = "/\[(.*?)\]/";
+preg_match_all($regex, $template, $matches);
+// echo "<pre>matches "; print_r($matches); echo "</pre>";
+// echo "<pre>row "; print_r($row); echo "</pre>";
+for ($i = 0; $i < count($matches[1]); $i++) {
+	$match = rtrim($matches[1][$i]);
+	if (strpos($match, 'EmailAddress') !== false) $newValue = $row[EmailAddress];
+	if ($match == 'total') $newValue = $total;
+	if ($match == 'itemcount') $newValue = $itemcount; 
+	if ($match == 'date') $newValue = date("F d, Y",strtotime(now));
+	if ($match == 'CorrSal') $newValue = $row[CorrSal];
+	if ($match == 'NameLabel1stline') $newValue = $row[NameLabel1stline];
+	if ($match == 'FName') $newValue = $row[FName];
+	if ($match == 'LName') $newValue = $row[LName];
+	if ($match == 'AddressLine') $newValue = $row[AddressLine];
+	if ($match == 'City') $newValue = $row[City]; 
+	if ($match == 'State') $newValue = $row[State]; 
+	if ($match == 'ZipCode') $newValue = $row[ZipCode];
+	if ($match == 'Organization') $newValue = $row[Organization]; 
+	$template = str_replace($matches[0][$i], $newValue, $template);
+	//echo "template: $template<br>";
+	$newValue = '';
+	}
+
 print <<<editForm
 <script type="text/javascript" src="js/nicEdit.js"></script>
 <script type="text/javascript">
@@ -147,13 +184,13 @@ Template Name: $templatename<br />
 <form action="mbrnoticeupd.php" method="get"  class="form">
 <textarea id="area1" name="Letter" rows="20" cols="80">$template</textarea><br />
 <input type="hidden" name="MCID" value="$mcid">
-<input type="hidden" name="Organization" value="$org">
-<input type="hidden" name="NameLabel1stline" value="$name">
-<input type="hidden" name="AddressLine" value="$addr">
-<input type="hidden" name="City" value="$city">
-<input type="hidden" name="State" value="$state">
-<input type="hidden" name="ZipCode" value="$zip">
-<input type="hidden" name="CorrSal" value="$corrsal">
+<input type="hidden" name="Organization" value="$row[Organization]">
+<input type="hidden" name="NameLabel1stline" value="$row[NameLabel1stline]">
+<input type="hidden" name="AddressLine" value="$row[AddressLine]">
+<input type="hidden" name="City" value="$row[City]">
+<input type="hidden" name="State" value="$row[State]">
+<input type="hidden" name="ZipCode" value="$row[ZipCode]">
+<input type="hidden" name="CorrSal" value="$row[CorrSal]">
 <input type="hidden" name="Notes" value="$templatename">
 <input type="submit" name="submit" value="Submit">
 <form><br /><br />
