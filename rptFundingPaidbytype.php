@@ -227,7 +227,7 @@ FROM { OJ `members` LEFT OUTER JOIN `donations` ON `members`.`MCID` = `donations
 WHERE $where 
 GROUP BY `donations`.`MCID` 
 $having 
-ORDER BY `members`.`ZipCode` ASC;";
+ORDER BY `Total` DESC;";
 	if (($extwhere == '') AND ($having == '')) {
 		$sql = "SELECT * FROM `members` WHERE $where";
 		}

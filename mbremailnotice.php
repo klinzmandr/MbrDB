@@ -143,7 +143,6 @@ Subject:<br />
 <input type="text" name="subject" value="$templatename" style="width: 500; "  placeholder="Subject" /><br />
 Message:<br />
 <textarea id="area1" name="body" rows="8" cols="90">$template</textarea><br />
-
 <input type="hidden" name="to" value="$emaddr">
 <input type="hidden" name="from" value="$fromaddr">
 <input type ="submit" name="Submit" value="Send"><br />
