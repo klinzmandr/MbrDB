@@ -80,7 +80,6 @@ bkLib.onDomLoaded(function() {
 </script>
 scrPart;
 
-echo "<form action=\"remmultiemailupd.php\" method=\"post\"  class=\"form\">";
 foreach ($mcidarray as $m) {
 	$sql = "SELECT * FROM `members` WHERE `MCID` = '$m';";
 	$mres = doSQLsubmitted($sql);
@@ -97,12 +96,36 @@ $templatename = stripslashes($t[Name]);
 $templatebody = stripslashes($t[Body]);
 $temprecno = $t[TID];
 
-$org = $row['Organization']; $name = $row['NameLabel1stline']; $addr = $row['AddressLine'];
-$city = $row['City']; $state = $row['State']; $zip = $row['ZipCode']; $corrsal = $row['CorrSal'];
+// perform shortcode translations
+$regex = "/\[(.*?)\]/";
+preg_match_all($regex, $templatebody, $matches);
+// echo "<pre>matches "; print_r($matches); echo "</pre>";
+// echo "<pre>row "; print_r($row); echo "</pre>";
+for ($i = 0; $i < count($matches[1]); $i++) {
+	$match = rtrim($matches[1][$i]);
+	if (strpos($match, 'EmailAddress') !== false) $newValue = $row[EmailAddress];
+	if ($match == 'total') $newValue = $total;
+	if ($match == 'itemcount') $newValue = $itemcount; 
+	if ($match == 'date') $newValue = date("F d, Y",strtotime(now));
+	if ($match == 'CorrSal') $newValue = $row[CorrSal];
+	if ($match == 'NameLabel1stline') $newValue = $row[NameLabel1stline];
+	if ($match == 'FName') $newValue = $row[FName];
+	if ($match == 'LName') $newValue = $row[LName];
+	if ($match == 'AddressLine') $newValue = $row[AddressLine];
+	if ($match == 'City') $newValue = $row[City]; 
+	if ($match == 'State') $newValue = $row[State]; 
+	if ($match == 'ZipCode') $newValue = $row[ZipCode];
+	if ($match == 'Organization') $newValue = $row[Organization]; 
+	$templatebody = str_replace($matches[0][$i], $newValue, $templatebody);
+	//echo "templatebody: $templatebody<br>";
+	$newValue = '';
+	}
+
 print <<<editForm
 <h4>Edit Subject and Message</h4>
+<form action="remmultiemailupd.php" method="post"  class="form">
 <input type="text" name="Topic" value="$templatename" style="width: 650px;" placeholder="Subject"><br>
-<textarea id="area1" name="Letter" rows="10" cols="80">$templatebody</textarea><br />
+<textarea id="area1" name="Letter" rows="10" cols="100">$templatebody</textarea><br />
 <input type="submit" name="submit" value="Submit">
 <form><br /><br />
 
