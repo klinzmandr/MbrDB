@@ -80,7 +80,7 @@ if ($mresp == FALSE) {
 $fields[CorrespondenceType] = 'EmailReminder';
 $fields[DateSent] = date('Y-m-d');
 $fields[MCID] = $mcid;
-$fields[Reminders] = 'EMailReminder';
+$fields[Reminders] = 'EMailNotice';
 $fields[Notes] = "Subject: $trsub";
 sqlinsert('correspondence', $fields);
 
