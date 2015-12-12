@@ -43,6 +43,30 @@ bkLib.onDomLoaded(function() {
 <input type="submit" name="submit" value="Submit">
 
 form;
+print <<<scPart
+<h3>Shortcode values available</h3>
+<p>Shortcode allows message customization by allowing the insertion of specific data items from the members record into the message. The following may be inserted anyplace in a message template. Please note the use of the square brackets and capitalization both of which are REQUIRED.</p>
+For all types of messages:
+<ul>
+First line of label: [NameLabel1stline]<br>
+Correspondence salutation: [CorrSal]<br>
+First name: [FName]<br>
+Last name: [LName]<br>
+Address line: [AddressLine]<br>
+City: [City]<br>
+State: [State]<br>
+Zip: [ZipCode]<br>
+Org name: [Organization]<br>
+Email: [EmailAddress]<br>
+Today&apos;s date: [date]<br>
+
+</ul>
+For reciepts only:
+<ul>
+[total]<br>
+[itemcount]<br>
+</ul
+scPart;
 ?>
 <br /><br />
 <!-- <a class="btn btn-primary" href="admtemplatemaint.php">CANCEL AND RETURN</a><br /> -->
