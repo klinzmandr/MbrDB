@@ -50,7 +50,7 @@ if ($mcid == "") {
 	$nbr_rows = $results->num_rows;
 
 	
-	if ($type != 'reciept') {
+	if ($type != 'receipt') {
 		if ($nbr_rows > 0) {				//	any row returned means dues payment made within exp. period
 			$row = $results->fetch_assoc();
 		//echo "<pre>"; print_r($row); echo "</pre>";
@@ -127,7 +127,7 @@ print <<<tempForm2
 <input type="hidden" name="items" value="$items">
 <input type="hidden" name="itemcount" value="$itemcount">
 <input type="hidden" name="total" value="$total">
-<input type="hidden" name="type" value="reciept">
+<input type="hidden" name="type" value="receipt">
 <input type="submit" name="submit" value="Submit">
 </form><br /><br />
 </div>	

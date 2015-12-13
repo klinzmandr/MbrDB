@@ -46,7 +46,7 @@ if ($mcid == "") {
 	$results->data_seek(0);
 	$nbr_rows = $results->num_rows;
 	
-	if ($type != 'reciept') {
+	if ($type != 'receipt') {
 		if ($nbr_rows > 0) {				//	any row returned means dues payment made within exp. period
 			print <<<expNotice
 <h3>PLEASE NOTE: MCID <a href="mbrinfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
@@ -109,7 +109,7 @@ print <<<templForm2
 <input type="hidden" name="items" value="$items">
 <input type="hidden" name="itemcount" value="$itemcount">
 <input type="hidden" name="total" value="$total">
-<input type="hidden" name="type" value="reciept">
+<input type="hidden" name="type" value="receipt">
 <input type="submit" name="submit" value="Submit">
 </form>	
 <br><br>

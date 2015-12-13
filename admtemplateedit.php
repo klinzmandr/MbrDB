@@ -61,7 +61,7 @@ Email: [EmailAddress]<br>
 Today&apos;s date: [date]<br>
 
 </ul>
-For reciepts only:
+For receipts only:
 <ul>
 [total]<br>
 [itemcount]<br>

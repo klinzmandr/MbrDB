@@ -145,31 +145,31 @@ $total = 0;
 while ($rowdon = $resdon->fetch_assoc()) {
 	$total += $rowdon[TotalAmount];
 	}
-echo '<h2>Reciept data collection complete.</h2><h3>Click to <a class="btn btn-primary" href="mbrsendreceipt.php">RE-DO</a> the selection criteria.<br>';
-echo "<h3>A reciept for $donrowcnt item(s) totalling $$total for member $mcid is ready.</h3>
-<h4>Continue by choosing to send an email or printed reciept.</h4><br>";
+echo '<h2>Receipt data collection complete.</h2><h3>Click to <a class="btn btn-primary" href="mbrsendreceipt.php">RE-DO</a> the selection criteria.<br>';
+echo "<h3>A receipt for $donrowcnt item(s) totalling $$total for member $mcid is ready.</h3>
+<h4>Continue by choosing to send an email or printed receipt.</h4><br>";
 
 echo '
 <table class="table">
-<tr><td width="50%">A reciept will be sent to the email address on file for the member. Check the webmail in-box at pacificwildlifecare.org/webmail user \'reminders\' for any reply that might be sent in response.<br><br>
+<tr><td width="50%">A receipt will be sent to the email address on file for the member. Check the webmail in-box at pacificwildlifecare.org/webmail user \'reminders\' for any reply that might be sent in response.<br><br>
 <div align="center">
 <form action="mbremailnotice.php" method="post">';
 echo "<input type=\"hidden\" name=\"items\" value=\"$items\">";
 echo "<input type=\"hidden\" name=\"itemcount\" value=\"$donrowcnt\">";
 echo "<input type=\"hidden\" name=\"total\" value=\"$total\">";
-echo '<input type="hidden" name="type" value="reciept">';
+echo '<input type="hidden" name="type" value="receipt">';
 echo "<input type=\"submit\" name=\"sendemail\" value=\"Send Email Receipt\">";
 echo '
 </form>
 </div>
 </td>
-<td>A reciept will be created and queued for printing. Use the \'Reminders-> Print Labels and Letters\' menu item to print the hardcopy. Don\'t forget to delete the reciept once the printing has been completed.<br><br>
+<td>A receipt will be created and queued for printing. Use the \'Reminders-> Print Labels and Letters\' menu item to print the hardcopy. Don\'t forget to delete the receipt once the printing has been completed.<br><br>
 <div align="center">
 <form action="mbrnotice.php" method="post">';
 echo "<input type=\"hidden\" name=\"items\" value=\"$items\">";
 echo "<input type=\"hidden\" name=\"itemcount\" value=\"$donrowcnt\">";
 echo "<input type=\"hidden\" name=\"total\" value=\"$total\">";
-echo '<input type="hidden" name="type" value="reciept">';
+echo '<input type="hidden" name="type" value="receipt">';
 echo "<input type=\"submit\" name=\"sendemail\" value=\"Print Mail Receipt\">";
 echo '</form></div>
 <hr></td></tr>

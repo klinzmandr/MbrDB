@@ -39,10 +39,10 @@ unset($vararray[Notes]);
 $res = sqlinsert('labelsandletters', $vararray);
 
 // add entry to correspondence table about this action
-$fields[CorrespondenceType] = 'MailReminder';
+$fields[CorrespondenceType] = 'MailNotice';
 $fields[DateSent] = date('Y-m-d');
 $fields[MCID] = $mcid;
-$fields[Reminders] = 'MailNotice';
+$fields[Reminders] = 'MailReminder';
 $fields[Notes] = "Subject: $notes";
 sqlinsert('correspondence', $fields);
 
