@@ -114,7 +114,7 @@ print <<<tempForm1
 <h4>Send a mail reminder to: <a href="mbrinfotabbed.php">$mcid</a></h4>
 Select an Letter template from the selection list:<br>
 <form action="mbrnotice.php" method="post">
-<select name="template">
+<select name="template" onchange="this.form.submit()">
 <option value=""></option>
 tempForm1;
 	while ($t = $res->fetch_assoc()) {
@@ -128,7 +128,6 @@ print <<<tempForm2
 <input type="hidden" name="itemcount" value="$itemcount">
 <input type="hidden" name="total" value="$total">
 <input type="hidden" name="type" value="receipt">
-<input type="submit" name="submit" value="Submit">
 </form><br /><br />
 </div>	
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>

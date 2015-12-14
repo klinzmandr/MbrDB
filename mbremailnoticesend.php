@@ -77,7 +77,7 @@ if ($mresp == FALSE) {
 //echo "<h2>TEST MODE ENABLED - reminder noted - but NO email sent<br /></h2>";
 
 // finally add new correspondence record noting send of this email
-$fields[CorrespondenceType] = 'EmailReminder';
+$fields[CorrespondenceType] = 'EmailNotice';
 $fields[DateSent] = date('Y-m-d');
 $fields[MCID] = $mcid;
 $fields[Reminders] = 'EMailNotice';

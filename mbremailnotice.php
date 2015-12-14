@@ -94,7 +94,7 @@ if ($tname == '') {
 <h4>Send a email reminder to: <a href="mbrinfotabbed.php">$mcid</a></h4>
 Select an email template from the selection list:<br>
 <form action="mbremailnotice.php" method="post">
-<select name="template">
+<select name="template" onchange="this.form.submit()">
 <option value=""></option>
 templForm1;
 	while ($t = $res->fetch_assoc()) {
@@ -110,7 +110,6 @@ print <<<templForm2
 <input type="hidden" name="itemcount" value="$itemcount">
 <input type="hidden" name="total" value="$total">
 <input type="hidden" name="type" value="receipt">
-<input type="submit" name="submit" value="Submit">
 </form>	
 <br><br>
 </div>
