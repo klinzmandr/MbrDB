@@ -9,11 +9,13 @@
 
 <?php
 session_start();
-//include 'Incls/vardump.inc';
 
+unset($_SESSION['ActiveMCID']);
+
+//include 'Incls/vardump.inc';
 include 'Incls/datautils.inc';
 include 'Incls/seccheck.inc';
-include 'Incls/mainmenu.inc';
+//include 'Incls/mainmenu.inc';
 
 $action = $_REQUEST['action'];
 
@@ -99,7 +101,7 @@ function confirmadd() {
 	}
 </script>
 <div class="container">
-<h2>Adding A New Member</h2>
+<h2>Adding A New Member  <a href="index.php" class="btn btn-danger">CANCEL</a></h2>
 <p>This function is to add a new member/contact record to the database.</p>
 <p>This requires that a unique 5 character Member/Contact Identifier (MCID) be proposed to be used to identify that member.</p>
 <p>The MCID is comprise of 3 alphabetic letters (usually the first three letters of the name of the member or organizational name or any organizational achronym) plus 2 numeric digits (usually the first 2 digits of the members street address or the last 2 digits of their phone number.)  This combination provides a predictable method that facilitates easy lookup for future reference.</p>

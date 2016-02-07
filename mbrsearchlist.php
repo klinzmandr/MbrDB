@@ -9,13 +9,13 @@
 <body>
 <?php
 session_start();
+unset($_SESSION['ActiveMCID']);
+
 include 'Incls/seccheck.inc';
 include "Incls/datautils.inc";
 //include "Incls/vardump.inc";
 if ($_SESSION['SecLevel'] == 'readonly') include 'Incls/romenu.inc';
 else include 'Incls/mainmenu.inc';
-
-
 
 $filter = (isset($_REQUEST['filter'])) ? $_REQUEST['filter'] : "";
 
