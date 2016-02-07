@@ -8,6 +8,11 @@
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="Incls/bootstrap-datepicker-range.inc"></script>
+
 <?php
 session_start();
 //include 'Incls/vardump.inc';
@@ -17,16 +22,31 @@ include 'Incls/datautils.inc';
 $action = isset($_REQUEST[action]) ? $_REQUEST[action] : '';
 $sd = isset($_REQUEST[sd]) ? $_REQUEST[sd] : date('Y-01-01', strtotime(now));
 $ed = isset($_REQUEST[ed]) ? $_REQUEST[ed] : date('Y-m-t', strtotime(now));
-
 if (($sd == "") OR ($ed == "")) $action = '';
+
+$mtarray = $_REQUEST['mt'];
+if ($mtarray != "") $mtvals = "['" . implode("','", $mtarray) . "']";
+else $mtvals = "[]";
 
 print <<<formPart
 <!-- <div class="container"> -->
 <h3>New Supporters Report&nbsp;&nbsp;&nbsp;<a class="btn btn-sm btn-primary" href="javascript:self.close();">(CLOSE)</a></h3>
-<form action="rptnewsupporters.php" method="post">
+<script type="text/javascript">
+$(document).ready(function () {
+	var initValues = $mtvals;
+	$('#myForm').find(':checkbox[name^="mt"]').each(function () {
+  $(this).prop("checked", ($.inArray($(this).val(), initValues) != -1));
+  });
+});
+</script>
+<form id="myForm" action="rptnewsupporters.php" method="post">
 Start Date:
 <input type="text" name="sd" id="sd" value="$sd">
-End Date:<input type="text" name="ed" id="ed" value="$ed" >
+End Date:<input type="text" name="ed" id="ed" value="$ed" ><br>
+Supporter Types: <input type="checkbox" name="mt[]" value="0">Contacts,&nbsp;
+<input type="checkbox" name="mt[]" value="1" checked>Members,&nbsp;
+<input type="checkbox" name="mt[]" value="2" checked>Volunteers,&nbsp;
+<input type="checkbox" name="mt[]" value="3">Donors&nbsp;&nbsp;&nbsp;
 <input type="hidden" name="action" value="continue">
 <input type="submit" name="submit" value="Submit">
 </form>
@@ -49,14 +69,18 @@ pagePart1;
 exit;
 }
 if ($action == 'continue') {
+//  echo '<pre> MTypes '; print_r($mtarray); echo '</pre>';
+  $typelist = implode("','", $mtarray);
 	$sql= "SELECT `members`.*, `members`.`MemDate`, `members`.`MCID`, `donations`.`MCID` AS `MCID-Funding`, `donations`.`DonationDate`, `donations`.`TotalAmount`, `donations`.`Purpose`, `members`.`MemDate` 
 	FROM `pwcmbrdb`.`donations` AS `donations`, 
 		`pwcmbrdb`.`members` AS `members` 
-	WHERE `donations`.`MCID` = `members`.`MCID` 
+	WHERE (`donations`.`MCID` = `members`.`MCID` 
 	AND `members`.`MemDate` BETWEEN '$sd' AND '$ed' 
 	AND `donations`.`DonationDate` BETWEEN '$sd' AND '$ed' 
-	AND ( `donations`.`Purpose` = 'donation' OR `donations`.`Purpose` = 'dues' ) 
+	AND ( `donations`.`Purpose` = 'donation' OR `donations`.`Purpose` = 'dues' )) 
+	AND `members`.`MemStatus` IN ('" . $typelist . "')
 	ORDER BY `members`.`MCID` ASC;";
+//	echo "sql: $sql<br>";
 	$res = doSQLsubmitted($sql);
 	$rowcnt = $res->num_rows;
 	if ($rowcnt == 0) {
@@ -165,9 +189,5 @@ foreach ($mcidarray as $k => $r) {
 
 ?>
 </div>  <!-- container -->
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
 </body>
 </html>
