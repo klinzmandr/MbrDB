@@ -80,14 +80,6 @@ bkLib.onDomLoaded(function() {
 </script>
 scrPart;
 
-foreach ($mcidarray as $m) {
-	$sql = "SELECT * FROM `members` WHERE `MCID` = '$m';";
-	$mres = doSQLsubmitted($sql);
-	$row = $mres->fetch_assoc();
-	$emaddr = $row[MCID].":".$row[EmailAddress];
-	echo "<input type=\"checkbox\" name=\"email[]\" value=\"$emaddr\" checked>".$row[MCID].' '.$row[NameLabel1stline].'<br />';
-	}
-
 // read the template and prep edit form
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$tid' AND `Type` = 'email';";
 $res = doSQLsubmitted($sql);
@@ -121,15 +113,22 @@ for ($i = 0; $i < count($matches[1]); $i++) {
 	$newValue = '';
 	}
 
-print <<<editForm
+echo '
 <h4>Edit Subject and Message</h4>
-<form action="remmultiemailupd.php" method="post"  class="form">
-<input type="text" name="Topic" value="$templatename" style="width: 650px;" placeholder="Subject"><br>
-<textarea id="area1" name="Letter" rows="10" cols="100">$templatebody</textarea><br />
+<form action="remmultiemailupd.php" method="post"  class="form">';
+foreach ($mcidarray as $m) {
+	$sql = "SELECT * FROM `members` WHERE `MCID` = '$m';";
+	$mres = doSQLsubmitted($sql);
+	$row = $mres->fetch_assoc();
+	$emaddr = $row[MCID].":".$row[EmailAddress];
+	echo "<input type=\"checkbox\" name=\"email[]\" value=\"$emaddr\" checked>".$row[MCID].' '.$row[NameLabel1stline].'<br />';
+	}
+echo '
+<input type="text" name="Topic" value="'.$templatename.'" style="width: 650px;" placeholder="Subject"><br>
+<textarea id="area1" name="Letter" rows="10" cols="100">'.$templatebody.'</textarea><br />
 <input type="submit" name="submit" value="Submit">
-<form><br /><br />
+<form><br /><br />';
 
-editForm;
 //echo '<pre> templatebody '; print_r($templatebody); echo '</pre>';
 ?>
 <script src="jquery.js"></script>
