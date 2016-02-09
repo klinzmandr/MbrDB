@@ -250,7 +250,7 @@ echo "<form name=\"boxform\" action=\"\" method=\"post\">";
 foreach ($dondate as $key => $row) {
 	//echo '<pre> resarray '; print_r($row); echo '</pre>';
 	if (stripos($row[MCtype], 'lifetime') !== FALSE) continue;	// NO REMINDER FOR LIFETIME MEMBERS
-	if ($row[TotalAmount] <= $duesthreshold) continue;					// NO REMINDER IF < THAN THRESHOLD VALUE
+	if ($row[TotalAmount] < $duesthreshold) continue;					// NO REMINDER IF < THAN THRESHOLD VALUE
 	if ($notedate <= strtotime($dr[$row[MCID]])) continue; 			// NO REMINDER IF < DELAY DAYS
 	$finalarray[$key] = $row;
 //	echo '<pre> final array '; print_r($row); echo '</pre>';
