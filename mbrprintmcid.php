@@ -69,6 +69,8 @@ echo "<tr><td>State: ".$r['State']."</td>";
 echo "<td>Zip: ".$r['ZipCode']."</td></tr>";
 echo "<tr><td>Home Phone: ".$r['PrimaryPhone']."</td>";
 echo "<td>Email: ".$r['EmailAddress']."</td></tr>";
+if (strlen($r['EmailAddress2'])>0)
+  echo "<td>&nbsp;</td><td>2nd Email: ".$r['EmailAddress2']."</td></tr>";
 echo "<tr><td>Date Joined: ".$r['MemDate']."</td>";
 echo "<td>Member Status: ".$r['MemStatus']."</td>";
 echo "<tr><td>MC Type: ".$r['MCtype']."</td>";

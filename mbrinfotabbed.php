@@ -99,7 +99,8 @@ $_SESSION['MemStatus'] = $row[MemStatus];		// set memstatus for mbrdonations che
 $mcid=$row['MCID'];  $fname=$row['FName']; $lname=$row['LName'];
 $org=$row['Organization']; $addr=$row['AddressLine']; 
 $lab1line=$row['NameLabel1stline']; $corrsal=$row['CorrSal']; 
-$eaddr=$row['EmailAddress']; $city=$row['City']; $state=$row['State']; 
+$eaddr=$row['EmailAddress']; $eaddr2=$row['EmailAddress2'];
+$city=$row['City']; $state=$row['State']; 
 $zip=$row['ZipCode']; $priphone=$row['PrimaryPhone'];
 $memstatus=$row['MemStatus'];$memdate=$row['MemDate'];
 $mctype=$row['MCtype'];$inact=$row['Inactive'];$inactdate=$row['Inactivedate'];
@@ -131,6 +132,7 @@ function validateForm(theForm) {
 	//reason += validateEmpty(theForm.MemDate);
 	//reason += validatePassword(theForm.pwd);
 	reason += validateEmail(theForm.EmailAddress);
+	//reason += validateEmail(theForm.EmailAddress2);
 	//reason += validatePhone(theForm.phone);
 	//reason += validateEmpty(theForm.from);
 	//reason += validateLists();    
@@ -241,6 +243,7 @@ function setupemailok() {
 		document.getElementById("EMR2").checked = false;
 		}
 	else {
+	  document.getElementById("EMA2").value = "";
 		document.getElementById("EMR1").checked = false;
 		document.getElementById("EMR2").checked = true;
 		}
@@ -441,10 +444,13 @@ $('#CI').typeahead({source: citylist})
 </script>
 
 <div class="row">
-<div class="col-sm-4">Phone: <input type="text" name="PrimaryPhone" value="$priphone" size="12" maxlength="12" style="width: 125px;" onchange="return ValidatePhone(this)"  placeholder="Primary Phone" /></div>
-
-<div class="col-sm-4">Email: <input id="EMA" placeholder="Email" style="width: 200px;" name="EmailAddress" value="$eaddr" onchange="setupemailok()"></td></tr></div>
+Phone: <input type="text" name="PrimaryPhone" value="$priphone" size="12" maxlength="12" style="width: 125px;" onchange="return ValidatePhone(this)"  placeholder="Primary Phone" />
+&nbsp;
+Email: <input id="EMA" placeholder="Email" style="width: 200px;" name="EmailAddress" value="$eaddr" onchange="setupemailok()"></td></tr>
+&nbsp;
+2nd Email: <input id="EMA2" placeholder="Alt Email" style="width: 200px;" name="EmailAddress2" value="$eaddr2"></td></tr>
 </div>
+
 <div class="row">
 <div class="col-sm-12">Notes:<textarea name="Notes" rows="2" cols="60">$notes</textarea></div>
 </div>  <!-- row -->

@@ -45,7 +45,7 @@ searchForm2;
 	}
 
 // search db for filter value
-$sql = "SELECT * FROM `members` WHERE `MCID` LIKE '%".$filter."%' OR `FName` LIKE '%".$filter."%' OR `LName` LIKE '%".$filter."%' OR `NameLabel1stline` LIKE '%".$filter."%' OR `Organization` LIKE '%".$filter."%' OR `AddressLine` LIKE '%".$filter."%' OR `EmailAddress` LIKE '%".$filter."%' OR `City` LIKE '%".$filter."%' OR `ZipCode` LIKE '%".$filter."%'OR `Notes` LIKE '%".$filter."%' ORDER BY `MCID`";
+$sql = "SELECT * FROM `members` WHERE `MCID` LIKE '%".$filter."%' OR `FName` LIKE '%".$filter."%' OR `LName` LIKE '%".$filter."%' OR `NameLabel1stline` LIKE '%".$filter."%' OR `Organization` LIKE '%".$filter."%' OR `AddressLine` LIKE '%".$filter."%' OR `EmailAddress` LIKE '%".$filter."%' OR `EmailAddress2` LIKE '%".$filter."%' OR `City` LIKE '%".$filter."%' OR `ZipCode` LIKE '%".$filter."%'OR `Notes` LIKE '%".$filter."%' ORDER BY `MCID`";
 $results = doSQLsubmitted($sql);
 //$results = searchForMember($filter);
 $nbrofrows = $results->num_rows;
@@ -80,15 +80,16 @@ $results->data_seek(0);
 //echo "<fieldset><legend>List containing: $filter</legend>";
 echo "<fieldset><h3>List of $nbrofrows containing: $filter</h3>";
 echo "<table class=\"table table-condensed\">";
-echo '<tr><th>MCID</th><th>Last Name</th><th>First Name</th><th>Address</th><th>City</th><th>Email</th></tr>';
+echo '<tr><th>MCID</th><th>Last Name</th><th>First Name</th><th>Address</th><th>City</th><th>Email(s)</th></tr>';
 while ($row = $results->fetch_assoc()) {
 	$mcid=$row['MCID'];  $fname=$row['FName']; $lname=$row['LName'];
 	$org=$row['Organization']; $addr=$row['AddressLine']; $lab1line=$row['NameLabel1stline']; 
-	$city = $row[City]; $eaddr=$row['EmailAddress'];  
-print <<<bulletForm
-<tr><td><a href="mbrinfotabbed.php?filter=$mcid">$mcid</a></td><td>$lname</td><td>$fname</td><td>$addr</td><td>$city</td><td>$eaddr</td></tr>
+	$city = $row[City]; $eaddr=$row['EmailAddress']; $eaddr2=$row['EmailAddress2'];
+echo "
+<tr><td><a href=\"mbrinfotabbed.php?filter=$mcid\">$mcid</a></td><td>$lname</td><td>$fname</td><td>$addr</td><td>$city</td><td>$eaddr";
+if (strlen($eaddr2)>0) echo "<br>$eaddr2";
+echo '</td></tr>';
 
-bulletForm;
 }
 echo "</fieldset></table>";
 ?>
