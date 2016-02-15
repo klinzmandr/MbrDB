@@ -255,7 +255,10 @@ ORDER BY `members`.`ZipCode` ASC;";
 	while ($row = $res->fetch_assoc()) {
 		$mcid = $row[MCID];
 		//echo '<pre> row returned '; print_r($row); echo '</pre>';
-
+    if ($row[Inactive] == 'TRUE') {    // ignore if record marked inactive
+      $inactcnt += 1;
+      continue;
+      }
 		if (($row[E_Mail] == 'TRUE') AND ($noemail == 'TRUE')) { 		// member has a valid email so ignore it
 			$withemail++; 
 //			echo "E_Mail: $row[E_Mail], noemail: $noemail<br>";
@@ -279,6 +282,7 @@ ORDER BY `members`.`ZipCode` ASC;";
 			}
 		$results[$mcid] = $row;				
 		}
+//	echo "Inactive count: $inactcnt<br>";
 	}		// action == search
 // --------------------- end -----------------------------
 //echo "falsecount: $falsecount<br />";
@@ -296,7 +300,7 @@ nothingReturned;
 
 // include in CSS to format label printing
 include 'Incls/label_print_css.inc';
-		
+
 // leave empty labels empty
 $sheetcount = 0;
 $cnt = count($results);

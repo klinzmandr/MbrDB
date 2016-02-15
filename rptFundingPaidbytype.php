@@ -244,7 +244,11 @@ ORDER BY `Total` DESC;";
 	while ($row = $res->fetch_assoc()) {
 		$mcid = $row[MCID];
 		//echo '<pre> row returned '; print_r($row); echo '</pre>';
-		
+		if ($row[Inactive] == 'TRUE') {    // ignore if record marked inactive
+      $inactcnt += 1;
+      continue;
+      }
+
 		if (($row[E_Mail] == 'TRUE') AND ($noemail == 'noemail')) { 
 			$withemail++;									// bypass those with email addresses 
 			continue; 
@@ -261,6 +265,7 @@ ORDER BY `Total` DESC;";
 		$results[$mcid] = $row;
 		$grandtotal += $row[Total];
 		}
+//	echo "Inactive count: $inactcnt<br>";
 	}		// action == search
 // --------------------- end -----------------------------
 //echo "falsecount: $falsecount<br />";
