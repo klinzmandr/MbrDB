@@ -61,6 +61,11 @@ function adminchk() {
   	</ul>   <!-- ul dropdown-menu -->
   </li>  <!-- li dropdown -->
 
+<!-- Menu for Solictation Functions pages -->  
+  <li><a onclick="return chkchg()" href="devscripts.php" target='_blank'>Solict</a></li>
+menupart2;
+}
+/*
 <!-- Menu dropdown for Solictation Functions pages -->	
   <li class="dropdown">
   <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Solicit<b class="caret"></b></a>
@@ -71,10 +76,8 @@ function adminchk() {
   		<li><a onclick="return chkchg()" href="devpaymentconfirmation.php">Payment Confirmation</a></li>
   		<!-- <li><a onclick="return chkchg()" href="#">Mark MCID as Paid</a></li> -->
   	</ul>   <!-- ul dropdown-menu -->
-  </li>  <!-- li dropdown -->
-menupart2;
-}
-
+  </li>  <!-- li dropdown --> 
+*/
 print <<<menupart3
   <!-- <li><a href="mbrdonations.php" onclick="return chkchg()">Funding</a></li> -->
   <!-- <li><a href="mbrcorrespondence.php" onclick="return chkchg()">Corr.</a></li> -->
