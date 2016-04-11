@@ -14,7 +14,9 @@ $HomeURL = 'http://www.pacificwildlifecare.org';
 $EmailFROM = 'reminders@pacificwildlifecare.org';
 $EmailTO = 'pacificwildlifecare@gmail.com';
 // ====== End Installation Parameters ==========
-
+echo "dbname: ProdDBName<br>"
+echo "username: DBUserName<br>";
+echo "password: DBPassword<br>";
 // production database
 $db = ProdDBName;
 

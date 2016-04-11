@@ -24,7 +24,7 @@ $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
 echo '<h2>2015 vs 2016 Matching Fund Report</h2>';
 
-$sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('2016-03-01', strtotime("now"));
+$sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-m-d', strtotime("2016-03-01"));
 $ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-t', strtotime("2016-12-31"));
 
 if ($action == '') {
@@ -44,9 +44,9 @@ print <<<pagePart1
 	  <li>A payment record with a 'Purpose' of 'Dues' or 'Donation' must be dated within the program period.</li>
 	  <li>New supporter funding paid within the program period is automatically fully qualified.</li>
 	  <li>A supporter is considered 'new' if there was no funding paid in the program period for 2015.</li>
-    <li>Existing supporter funding within the period must be in excess of total funding for the total dues and donations paid during in 2015.</li>
+    <li>Existing supporter funding within the period must be in excess of total funding for the total dues and donations paid in 2015.</li>
     </ol>
-  <li>The default report start date is March 1, 2016 and can not be changed.</li>
+  <li>The default report start date is Jan 1, 2016 and can not be changed.</li>
 	<li>The default report end date is December 31, 2016.  This can be optionally be changed if needed.</li>
 	<li></li>
 	<li></li>
@@ -63,10 +63,10 @@ WHERE `DonationDate` BETWEEN '2015-01-01' AND '2015-12-31'
 AND (`Purpose` = 'dues' 
  OR `Purpose` = 'donation' )
 ORDER BY `donations`.`DonationDate` ASC";
-echo "SQL: $sql<br>";
+//echo "SQL: $sql<br>";
 $res = doSQLsubmitted($sql);
 $rc = $res->num_rows;
-echo "2015 rc: $rc<br>";
+//echo "2015 rc: $rc<br>";
 
 $d15 = array(); $d15dues = array(); $d15don = array(); $d15fr = array();
 while ($r = $res->fetch_assoc()) {
@@ -87,10 +87,10 @@ WHERE `donations`.`MCID` = `members`.`MCID`
 	AND ( `donations`.`Purpose` = 'dues' 
 	 OR `donations`.`Purpose` = 'donation' )
 ORDER BY `donations`.`DonationDate` ASC";
-echo "SQL: $sql<br>";
+//echo "SQL: $sql<br>";
 $res = doSQLsubmitted($sql);
 $rc = $res->num_rows;
-echo "2016 rc: $rc<br>";
+//echo "2016 rc: $rc<br>";
 
 $d16 = array(); $d16dues = array(); $d16don = array(); $d16fr = array();
 $d16dueslp = array(); $d16donlp = array();
@@ -177,14 +177,13 @@ $tbl .= "</table>";
 
 print <<<pageForm
 <form action="rpt2016matchingfunds.php" method="post">
-From: $sd
-<input type="hidden" name="sd" id="sd" value="$sd">
+From:
+<input type="text" name="sd" id="sd" value="$sd">
 &nbsp;&nbsp;
 To:<input type="text" name="ed" id="ed" value="$ed">
 <input type="hidden" name="action" value="continue">
 <input type="submit" name="submit" value="Generate Report">
 </form>
-<br>
 
 pageForm;
 
