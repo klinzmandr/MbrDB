@@ -9,24 +9,24 @@
 <body>
 <?php
 session_start();
-//include 'Incls/vardump.inc';
+//include 'Incls/vardump.inc.php';
 
 unset($_SESSION['ActiveMCID']);
 unset($_SESSION['DB_ERROR']);
 if ((($_REQUEST['action']) == 'logout')) {
-	include 'Incls/datautils.inc';
+	include 'Incls/datautils.inc.php';
 	addlogentry("Logging Out");
 	unset($_SESSION['SessionTimer']);
 	unset($_SESSION['SessionUser']);
 	unset($_SESSION['SecLevel']);
-	include 'Incls/seccheck.inc';
+	include 'Incls/seccheck.inc.php';
 	}
 if ((($_REQUEST['action']) == 'login')) {
 	//echo "login request received<br>";
 	$userid = $_REQUEST['userid'];
 	$password = $_REQUEST['password'];
 	if ($userid != "") {
-		include 'Incls/datautils.inc';	
+		include 'Incls/datautils.inc.php';	
 		$ok = checkcredentials($userid, $password);
 		if ($ok) {
 			//echo "check of user id and password passed<br>";
@@ -40,10 +40,10 @@ if ((($_REQUEST['action']) == 'login')) {
 		}
 	}
 
-//include 'Incls/vardump.inc';
+//include 'Incls/vardump.inc.php';
 
 if (isset($_SESSION['SessionUser'])) {
-	include 'Incls/mainmenu.inc';
+	include 'Incls/mainmenu.inc.php';
 	echo "<div class=\"container\">";
 	echo '<h4>Session user logged in: ' . $_SESSION['SessionUser'] . '</h4>';
 	echo '<h5>Security level: ' . $_SESSION['SecLevel'] . '</h5>';

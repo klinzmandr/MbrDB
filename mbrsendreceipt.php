@@ -12,10 +12,10 @@
 <div class="container">
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 $mcid = $_SESSION['ActiveMCID'];
@@ -127,7 +127,7 @@ exit(0);
 }
 
 // action == 'create' - Creation of receipt 
-// include 'Incls/vardump.inc';
+// include 'Incls/vardump.inc.php';
 //echo "action: $action"; echo ", startyr: $startyr<br>";
 $total = isset($_REQUEST['total']) ? $_REQUEST['total'] : 0;
 $items = $_REQUEST['items'];
@@ -151,7 +151,7 @@ echo "<h3>A receipt for $donrowcnt item(s) totalling $$total for member $mcid is
 
 echo '
 <table class="table">
-<tr><td width="50%">A receipt will be sent to the email address on file for the member. Check the webmail in-box at pacificwildlifecare.org/webmail user \'reminders\' for any reply that might be sent in response.<br><br>
+<tr><td width="50%">A receipt will be sent to the email address on file for the member. Check the webmail in-box at pacwilica.org/roundcube user \'reminders\' for any reply that might be sent in response.<br><br>
 <div align="center">
 <form action="mbremailnotice.php" method="post">';
 echo "<input type=\"hidden\" name=\"items\" value=\"$items\">";

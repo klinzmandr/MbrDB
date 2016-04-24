@@ -11,8 +11,8 @@
 <?php
 session_start();
 
-include 'Incls/datautils.inc';
-include 'Incls/seccheck.inc';
+include 'Incls/datautils.inc.php';
+include 'Incls/seccheck.inc.php';
 
 $cname = isset($_REQUEST['cname']) ? $_REQUEST['cname'] : "";
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
@@ -41,7 +41,7 @@ print <<<pagePart1
 <p>First, choose one of the categories to examine.  A list of all detail records in that category will be listed for the date range specified.</p>
 </script><script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body></html>
 
 pagePart1;
@@ -72,7 +72,7 @@ foreach ($ctypearray as $k => $v) {
 echo "</ul></div>";
 if ($cname == '') {
 	echo '</script><script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></body></html><script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 ';
 	exit;
 	}
@@ -105,7 +105,7 @@ echo "----- END OF LIST -----<br>";
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 </div>
 </body>

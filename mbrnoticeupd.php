@@ -23,9 +23,9 @@
 session_start();
 
 $mcid = $_SESSION['ActiveMCID'];
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 // add new row to table labelsandletters with info provided
 $uri = $_SERVER['QUERY_STRING'];

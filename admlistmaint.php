@@ -27,9 +27,9 @@ function flagChange() {
 
 <?php
 session_start();
-include 'Incls/seccheck.inc';
-include 'Incls/adminmenu.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+include 'Incls/adminmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $file = isset($_REQUEST['file'])? $_REQUEST['file'] : "";
 $action = isset($_REQUEST['action'])? $_REQUEST['action'] : "";
@@ -143,7 +143,7 @@ if ($file == "Locs") {
 	}
 
 if ($file == "Tester") {
-	echo "<h3>Tester Record - called when adminmenu.inc is changed</h3>";
+	echo "<h3>Tester Record - called when adminmenu.inc.php is changed</h3>";
 	echo "<form action=\"admlistmaint.php\" method=\"post\">";
 	echo "<textarea name=\"ta\" rows=\"20\" cols=\"100\">";
 	echo readdblist('Tester');

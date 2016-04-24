@@ -9,8 +9,8 @@
 <body>
 <?php
 session_start();
-include 'Incls/seccheck.inc';
-include 'Incls/adminmenu.inc';
+include 'Incls/seccheck.inc.php';
+include 'Incls/adminmenu.inc.php';
 
 
 print <<<pagePart1

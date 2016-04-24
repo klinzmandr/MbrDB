@@ -18,9 +18,9 @@ It does not use the 'Campaign' field
 Keep this in case someone wants this it.
 */
 session_start();
-include 'Incls/seccheck.inc';
-//include 'Incls/vardump.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/vardump.inc.php';
+include 'Incls/datautils.inc.php';
 
 $drangelo = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-m-01', strtotime('-1 months'));
 $drangehi = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-01', strtotime(now));
@@ -84,7 +84,7 @@ if (count($totarray) > 0) {
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </div>
 </body>
 </html>

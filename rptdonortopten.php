@@ -10,8 +10,8 @@
 <body>
 <?php
 session_start();
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 $lodate = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-01-01 ', strtotime("now"));
 $hidate = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-t', strtotime("previous month"));
@@ -34,7 +34,7 @@ if ($lodate == '') {
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body>
 </html>
 startRpt;
@@ -156,6 +156,6 @@ echo "</table><br /><br />";
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body>
 </html>

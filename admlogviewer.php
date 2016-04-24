@@ -9,9 +9,9 @@
 <body>
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 $sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-m-d', strtotime('-1 day'));
 $ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-d H:i:s', strtotime(now));

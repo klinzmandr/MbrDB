@@ -1,9 +1,9 @@
 <?php
 session_start();
-include 'Incls/seccheck.inc';
+include 'Incls/seccheck.inc.php';
 
 // now ready to do db search
-include 'Incls/datautils.inc';
+include 'Incls/datautils.inc.php';
 $sql = "SELECT * FROM `labelsandletters` WHERE '1' ORDER BY `ZipCode` ASC;";
 //echo "SQL: $sql<br>";
 $res = doSQLsubmitted($sql);
@@ -36,7 +36,7 @@ print <<<labelPart1
 <body>
 labelPart1;
 // include in CSS to format label printing
-include 'Incls/label_print_css.inc';
+include 'Incls/label_print_css.inc.php';
 // leave empty labels empty
 
 echo "<div class=\"label\"><a href=\"javascript:self.close();\" class=\"btn btn-primary\">CLOSE</a></div>";

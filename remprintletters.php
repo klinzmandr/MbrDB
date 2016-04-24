@@ -1,10 +1,10 @@
 <?php
 session_start();
-include 'Incls/seccheck.inc';
-//include 'Incls/vardump.inc';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/vardump.inc.php';
 
 // now ready to do db search
-include 'Incls/datautils.inc';
+include 'Incls/datautils.inc.php';
 
 $sql = "SELECT * FROM `labelsandletters` WHERE `Letter` IS NOT NULL ORDER BY `ZipCode` ASC;";
 //echo "SQL: $sql<br>";
@@ -37,7 +37,7 @@ print <<<labelPart1
 <body>
 labelPart1;
 // include css to print the letter
-include 'Incls/letter_print_css.inc';
+include 'Incls/letter_print_css.inc.php';
 while ($r = $res->fetch_assoc()) {
 	$ltr = stripslashes($r[Letter]);
 	

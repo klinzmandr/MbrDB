@@ -11,13 +11,13 @@
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST[action]) ? $_REQUEST[action] : '';
 $sd = isset($_REQUEST[sd]) ? $_REQUEST[sd] : date('Y-01-01', strtotime(now));
@@ -62,7 +62,7 @@ print <<<pagePart1
 <p>The &apos;Date Joined&apos; of the supporter record is set on introduction of the supporter into the database.  It can not be changed once established.</p>
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body></html>
 
 pagePart1;
@@ -72,8 +72,8 @@ if ($action == 'continue') {
 //  echo '<pre> MTypes '; print_r($mtarray); echo '</pre>';
   $typelist = implode("','", $mtarray);
 	$sql= "SELECT `members`.*, `members`.`MemDate`, `members`.`MCID`, `donations`.`MCID` AS `MCID-Funding`, `donations`.`DonationDate`, `donations`.`TotalAmount`, `donations`.`Purpose`, `members`.`MemDate` 
-	FROM `pwcmbrdb`.`donations` AS `donations`, 
-		`pwcmbrdb`.`members` AS `members` 
+	FROM `pacwilic_mbrdb`.`donations` AS `donations`, 
+		`pacwilic_mbrdb`.`members` AS `members` 
 	WHERE (`donations`.`MCID` = `members`.`MCID` 
 	AND `members`.`MemDate` BETWEEN '$sd' AND '$ed' 
 	AND `donations`.`DonationDate` BETWEEN '$sd' AND '$ed' 
@@ -89,7 +89,7 @@ if ($action == 'continue') {
 		</div>  <!-- container -->
 <script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body></html>
 
 endPage;

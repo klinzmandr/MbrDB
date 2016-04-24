@@ -12,9 +12,9 @@
 <a class="btn btn-primary" href="admtemplatemaint.php">CANCEL AND RETURN</a><br /><br />
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 $path = $_REQUEST['path'];
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$path';";

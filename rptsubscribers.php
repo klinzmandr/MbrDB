@@ -10,9 +10,9 @@
 <div class="container">
 <?php
 session_start();
-include 'Incls/seccheck.inc';
-//include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
@@ -50,7 +50,7 @@ if ($action == 'report') {
 	$sql = "SELECT `f`.`MCID`, `f`.`Program`, `f`.`TotalAmount`, `f`.`DonationDate` 
 	FROM ( 
 		SELECT `MCID`, MAX( `DonationDate` ) AS `MaxDate` 
-		FROM `pwcmbrdb`.`donations`
+		FROM `pacwilic_mbrdb`.`donations`
 		WHERE `Program` LIKE 'dues%' 
 		GROUP BY `MCID` ) AS `x` 
 	INNER JOIN `donations` AS `f` ON `f`.`MCID` = `x`.`MCID` 
@@ -100,7 +100,7 @@ if ($action == 'report') {
 	$sql = "SELECT `f`.`MCID`, `f`.`Program`, `f`.`TotalAmount`, `f`.`DonationDate` 
 	FROM ( 
 		SELECT `MCID`, MAX( `DonationDate` ) AS `MaxDate` 
-		FROM `pwcmbrdb`.`donations` 
+		FROM `pacwilic_mbrdb`.`donations` 
 		WHERE `Program` LIKE 'dues%' 
 		GROUP BY `MCID` ) AS `x` 
 	INNER JOIN `donations` AS `f` ON `f`.`MCID` = `x`.`MCID` 

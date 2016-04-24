@@ -14,10 +14,10 @@ function setUpd() {
 </script>
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $mcid = isset($_SESSION['ActiveMCID']) ? $_SESSION['ActiveMCID'] : "";
 $field = isset($_REQUEST['field']) ? $_REQUEST['field'] : "";

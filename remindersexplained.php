@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="Incls/letter_print_css.inc" rel="stylesheet" media="screen">
+<link href="Incls/letter_print_css.inc.php" rel="stylesheet" media="screen">
 </head>
 <body>
 
 <?php
 session_start();
 
-include 'Incls/seccheck.inc';
-//include 'Incls/mainmenu.inc';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/mainmenu.inc.php';
 
 ?>
 <a name="top"></a><div class="container">

@@ -11,8 +11,8 @@
 <?php
 session_start();
 
-include 'Incls/datautils.inc';
-include 'Incls/seccheck.inc';
+include 'Incls/datautils.inc.php';
+include 'Incls/seccheck.inc.php';
 
 //$start = $_REQUEST['startdate'] : date('Y-m-d', strtotime("first day of previous month"));
 $name = isset($_REQUEST['name']) ? $_REQUEST['name'] : "";
@@ -43,7 +43,7 @@ To:<input type="text" name="ed" id="ed" value="$oldest">
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </div>
 </body>
 </html>
@@ -126,7 +126,7 @@ if ($listitem == "") {
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </div>
 </body>
 </html>
@@ -173,7 +173,7 @@ echo "----- END OF LIST -----<br>";
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 </div>
 </body>

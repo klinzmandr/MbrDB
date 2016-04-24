@@ -9,8 +9,8 @@
 <body>
 <?php
 session_start();
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 

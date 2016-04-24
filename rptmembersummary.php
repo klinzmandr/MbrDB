@@ -10,9 +10,9 @@
 <?php
 session_start();
 
-//include 'Incls/vardump.inc';
-include 'Incls/datautils.inc';
-include 'Incls/seccheck.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/datautils.inc.php';
+include 'Incls/seccheck.inc.php';
 
 $name = isset($_REQUEST['name']) ? $_REQUEST['name'] : "";
 $listitem = isset($_REQUEST['listitem']) ? $_REQUEST['listitem'] : "";

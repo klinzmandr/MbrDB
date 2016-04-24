@@ -10,15 +10,15 @@
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 <?php
 // temp report to track matching funds for 2016 program
 session_start();
-//include 'Incls/vardump.inc';
-//include 'Incls/seccheck.inc';
-//include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+//include 'Incls/seccheck.inc.php';
+//include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
@@ -81,7 +81,7 @@ while ($r = $res->fetch_assoc()) {
 //echo '<pre> d15fr '; print_r($d15fr); echo '</pre>';
 
 $sql = "SELECT `donations`.`DonationID`, `donations`.`MCID`, `donations`.`Purpose`, `donations`.`Program`, `donations`.`Campaign`, `donations`.`DonationDate`, `donations`.`TotalAmount`, `members`.* 
-FROM `pwcmbrdb`.`donations` AS `donations`, `pwcmbrdb`.`members` AS `members` 
+FROM `pacwilic_mbrdb`.`donations` AS `donations`, `pacwilic_mbrdb`.`members` AS `members` 
 WHERE `donations`.`MCID` = `members`.`MCID` 
 	AND `donations`.`DonationDate` BETWEEN '$sd' AND '$ed'
 	AND ( `donations`.`Purpose` = 'dues' 

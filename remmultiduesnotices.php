@@ -32,10 +32,10 @@ $duesthreshold = 0;						  // NOTE: this is the threshold for sending a reminder
 																// number of days to elapse before members receiving reminders
 $listingthreshold = 30;					// are listed again in this report
 																//
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 // get last sort sequence if any
 $rnseq = isset($_REQUEST['rnseq']) ? $_REQUEST['rnseq'] : $_SESSION['rnseq'];

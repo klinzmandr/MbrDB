@@ -18,9 +18,9 @@ $mcidarray = $_REQUEST['mail'];
 $letter = $_REQUEST['Letter'];
 $topic = $_REQUEST['Topic'];
 
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 // add new row to table labelsandletters with info provided
 echo '<h4>';

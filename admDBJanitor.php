@@ -12,9 +12,9 @@
 <?php
 session_start();
 
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';			// NOTE: need to make sure the production database is being used.
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';			// NOTE: need to make sure the production database is being used.
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 

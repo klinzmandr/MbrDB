@@ -9,10 +9,10 @@
 <body onChange="flagChange()">
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $mcid = isset($_SESSION['ActiveMCID']) ? $_SESSION['ActiveMCID'] : "";
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
@@ -104,7 +104,7 @@ delPage;
 // add of dup record will get kicked by DB if record already exists for mcid
 // if dup exists, merely pass through and let the existing record be read.
 if (($mcid != "") AND ($action == "addnew")) {
-	include 'Incls/edi_template.inc';
+	include 'Incls/edi_template.inc.php';
 	$sql = "Select `NameLabel1stline` FROM `members` WHERE `Inactive` = 'FALSE' AND `MCID` = '$mcid';";
 	$res = doSQLsubmitted($sql);
 	$rows = $res->num_rows;

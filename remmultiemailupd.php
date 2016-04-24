@@ -11,8 +11,8 @@
 <?php 
 session_start();
 
-//include 'Incls/vardump.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/datautils.inc.php';
 
 function clickable($string){
   // if anchors already exist - don't translate
@@ -33,7 +33,7 @@ $emarrayin = $_REQUEST['email'];
 
 // delete senders email address from list
 //echo '<pre>emarrayin before '; print_r($emarrayin); echo '</pre>';
-$from = $EmailFROM;			// defined in datautils.inc
+$from = $EmailFROM;			// defined in datautils.inc.php
 echo "from: $from<br />";
 foreach ($emarrayin as $k => $v) {
 	if (stripos($v, $from) !== FALSE) {
@@ -124,7 +124,7 @@ for ($i = 0; $i < count($emarray); $i++) {
 	$finmsg = "";
 	$finmsg = $trmsg;
 	$tag = "<br><br><font size=1><center>
-	<a href=".$HomeURL."/unsubscribenew.php?unsubscribe=";		// HomeURL defined in datautils.inc
+	<a href=".$HomeURL."/unsubscribenew.php?unsubscribe=";		// HomeURL defined in datautils.inc.php
 	$tag .= urlencode($to);
 	$tag .= "&MCID=$mcid>Click to unsubscribe from future emails from PWC.</a></center></font>";
 	$finmsg .= $tag;

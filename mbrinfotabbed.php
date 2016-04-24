@@ -13,10 +13,10 @@
 
 <?php
 session_start();
-//include "Incls/vardump.inc";
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
-include 'Incls/createcitydd.inc';
+//include "Incls/vardump.inc.php";
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
+include 'Incls/createcitydd.inc.php';
 
 $filter = isset($_REQUEST['filter']) ? $_REQUEST['filter']: "";
 $filter = $filterflag = rtrim($filter);
@@ -29,7 +29,7 @@ if ($filter != "") {
 	$_SESSION['ActiveMCID'] = $filter;
 	}
 	
-include 'Incls/mainmenu.inc';
+include 'Incls/mainmenu.inc.php';
 
 echo "<div class=container>";
 $mcid = $_SESSION['ActiveMCID'];

@@ -11,10 +11,10 @@
 <?php
 // change to track in smartgit
 session_start();
-//include 'Incls/vardump.inc';
-//include 'Incls/seccheck.inc';
-// include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+//include 'Incls/seccheck.inc.php';
+// include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 // generate the report
 $sql = "SELECT `MCID`
@@ -50,7 +50,7 @@ echo '</ul>';
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 </body>
 </html>

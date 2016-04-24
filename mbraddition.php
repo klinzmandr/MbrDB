@@ -12,10 +12,10 @@ session_start();
 
 unset($_SESSION['ActiveMCID']);
 
-//include 'Incls/vardump.inc';
-include 'Incls/datautils.inc';
-include 'Incls/seccheck.inc';
-//include 'Incls/mainmenu.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/datautils.inc.php';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/mainmenu.inc.php';
 
 $action = $_REQUEST['action'];
 

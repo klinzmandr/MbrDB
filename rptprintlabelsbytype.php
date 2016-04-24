@@ -17,10 +17,10 @@ if ($action == '') {
 <h3>Print Labels  <a href="javascript:self.close();" class="btn btn-primary"><strong>(CLOSE)</strong></a></h3>
 
 pagePart1;
-//include 'Incls/vardump.inc';
+//include 'Incls/vardump.inc.php';
 
-include 'Incls/seccheck.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 $systemlists = readdblist('MCTypes');
 $mctypes = formatdbrec($systemlists);
@@ -167,7 +167,7 @@ Number of labels to skip on 1st page (max. 29):
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body>
 </html>
 pagePart4;
@@ -191,9 +191,9 @@ print <<<labelPart1
 labelPart1;
 
 
-//	include 'Incls/vardump.inc';
-	include 'Incls/seccheck.inc';
-	include 'Incls/datautils.inc';
+//	include 'Incls/vardump.inc.php';
+	include 'Incls/seccheck.inc.php';
+	include 'Incls/datautils.inc.php';
 	
 	$blanks = isset($_REQUEST['blanklabels']) ? $_REQUEST['blanklabels'] : 0;	
 	$cbox = $_REQUEST['cbox'];
@@ -299,7 +299,7 @@ nothingReturned;
 	}
 
 // include in CSS to format label printing
-include 'Incls/label_print_css.inc';
+include 'Incls/label_print_css.inc.php';
 
 // leave empty labels empty
 $sheetcount = 0;

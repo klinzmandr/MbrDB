@@ -9,10 +9,10 @@
 
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 
 $tname = isset($_REQUEST['template']) ? $_REQUEST['template'] : "";
@@ -48,7 +48,7 @@ if (($emaddr == "") OR ($emailok == 'FALSE')) {
 $em = $row[FName] . " " . $row[LName] . " &lt;" . $emaddr . "&gt;";
 
 $emh = $mcid . ':' . $em;
-$fromaddr = $EmailFROM;		// defined in datautils.inc
+$fromaddr = $EmailFROM;		// defined in datautils.inc.php
 
 print <<<formPart1
 <script type="text/javascript" src="js/nicEdit.js"></script>
@@ -62,9 +62,9 @@ bkLib.onDomLoaded(function() {
 <script>
 function chkemail(form) {
 	//alert("email validation seen");
-	var subj = form.subject.value.length;
+	var subj = document.getElementById('subject').value.length;
 	var body = document.getElementById('area1').value.length;
-	if ((subj == 0) || (body == 0)) {
+	if ((subj == 0) || (body < 10)) {
 		alert("Subject and/or text body is empty.");
 		return false;
 		}
@@ -77,7 +77,7 @@ From: $fromaddr<br />
 <br />
 <form name="emf" class="form" action="mbremailsend.php" method="post" onsubmit="return chkemail(this)">
 Subject:<br />
-<input type="text" name="subject" value="$templatename" style="width: 500; "  placeholder="Subject" /><br />
+<input type="text" id="subject" name="subject" value="$templatename" style="width: 500; "  placeholder="Subject" /><br />
 Message:<br />
 <textarea id="area1" name="body" rows="10" cols="90"></textarea><br />
 

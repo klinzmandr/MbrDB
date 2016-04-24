@@ -10,11 +10,11 @@
 
 <?php
 session_start();
-//include 'Incls/seccheck.inc';
+//include 'Incls/seccheck.inc.php';
 unset($_SESSION['ActiveMCID']);
-//include 'Incls/vardump.inc';
-include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $m = "<p><b>Use of the Filter field</b></p><p>The Filter field is used to access member informaton by specifying all or the starting part of their MCID.  For example, if a members MCID is \"ABC12\" one could enter the entire string (in either upper or lower case) to access the record directly.  If one were to enter any of the beginning of the MCID (e.g. \"A\", or \"AB\", or \"ABC\" or even \"ABC1\" a list of candidate MCID's would be produced to choose your specific one from.  At any time the entry of a partial MCID produces only 1 record, it will be shown.</p>
 	<p>In the event a more general search is needed, click the <a href=\"mbrsearchlist.php\">general search</a> button and enter any string of characters to search the first name, last name, label name, address, or email addresses of the entire database to produce a listing of ALL records that contain the target string entered.</p>

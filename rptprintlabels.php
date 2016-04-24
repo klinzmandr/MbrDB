@@ -1,15 +1,15 @@
 <?php
 session_start();
 
-include 'Incls/seccheck.inc';
-//include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
 $ua = $_SERVER['HTTP_USER_AGENT'];
 if ($action == '') {
-	//include 'Incls/vardump.inc';
+	//include 'Incls/vardump.inc.php';
 	print <<<pagePart1
 <!DOCTYPE html><html><head><title>Print Labels</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -102,7 +102,7 @@ Number of labels to skip on 1st page (max. 29):
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body>
 </html>
 pagePart3;
@@ -112,7 +112,7 @@ pagePart3;
 // ------------------ start ----------------
 // use input parameters to select records
 if ($action == 'search') {
-	//include 'Incls/vardump.inc';
+	//include 'Incls/vardump.inc.php';
 	$blanks = isset($_REQUEST['blanklabels']) ? $_REQUEST['blanklabels'] : 0;	
 	$mstat0 = isset($_REQUEST['mstat0']) ? $_REQUEST['mstat0'] : '';
 	$mstat1 = isset($_REQUEST['mstat1']) ? $_REQUEST['mstat1'] : '';
@@ -235,7 +235,7 @@ print <<<labelPart1
 <body>
 labelPart1;
 // include in CSS to format label printing
-include 'Incls/label_print_css.inc';		
+include 'Incls/label_print_css.inc.php';		
 // leave empty labels empty
 $sheetcount = 0;
 $cnt = count($results);
@@ -292,6 +292,6 @@ labelPart2;
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body>
 </html>

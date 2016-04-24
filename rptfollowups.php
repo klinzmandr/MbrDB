@@ -12,9 +12,9 @@
 <?php
 session_start();
 
-include 'Incls/seccheck.inc';
-//include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST[action]) ? $_REQUEST[action] : '';
 $sd = isset($_REQUEST[sd]) ? $_REQUEST[sd] : '';
@@ -42,7 +42,7 @@ echo '
 <div class="hidden-print"><a class="btn btn-sm btn-primary" href="javascript:self.close();">(CLOSE)</a></div>
 ';
 
-//include 'Incls/vardump.inc';
+//include 'Incls/vardump.inc.php';
 print <<<formPart
 
 <h4>Select one or more of the following criteria:</h4>
@@ -180,7 +180,7 @@ pagePart2;
 // ------------------ start ----------------
 // use input parameters to select records
 if ($action == 'search') {
-	//include 'Incls/vardump.inc';
+	//include 'Incls/vardump.inc.php';
 	
 	$mbrwhere = "( ";
 	$rptmbr = "Mbr Status: ";
@@ -317,7 +317,7 @@ Criteria: $rptmbr$rptdate $rptrng$rptsub$rptemail<br>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body>
 </html>
 nothingReturned;
@@ -327,11 +327,11 @@ nothingReturned;
 echo "
 Criteria: $rptmbr$rptdate $rptrng$rptsub$rptemail<br>
 <b>MCIDs meeting criteria: " . count($results) . "</b><br><br>";
-include 'Incls/followup_print_css.inc';
+include 'Incls/followup_print_css.inc.php';
 
 // create html document
 // include in CSS to format label printing
-//include 'Incls/label_print_css.inc';	
+//include 'Incls/label_print_css.inc.php';	
 // leave empty labels empty
 $sheetcount = 0;
 
@@ -369,6 +369,6 @@ $sheetcount += 1;
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body>
 </html>

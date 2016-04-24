@@ -10,10 +10,10 @@
 
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $items = isset($_REQUEST['items']) ? $_REQUEST['items'] : "";
 $itemcount = isset($_REQUEST['itemcount']) ? $_REQUEST['itemcount'] : "";
@@ -105,7 +105,7 @@ if ((strlen($row['NameLabel1stline']) == 0) OR (strlen($row['AddressLine']) == 0
 
 // now we can list the template list for selection
 if ($tname == "") {
-// include 'Incls/vardump.inc';	
+// include 'Incls/vardump.inc.php';	
 // echo "<pre>row "; print_r($row); echo "</pre>";	
 $sql = "SELECT * FROM `templates` WHERE `Type` = 'mail';";
 $res = doSQLsubmitted($sql);

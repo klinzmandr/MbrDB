@@ -11,8 +11,8 @@
 <?php
 session_start();
 
-include 'Incls/datautils.inc';
-include 'Incls/seccheck.inc';
+include 'Incls/datautils.inc.php';
+include 'Incls/seccheck.inc.php';
 
 $cname = isset($_REQUEST['cname']) ? $_REQUEST['cname'] : "";
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
@@ -64,7 +64,7 @@ The last donation payment for the MCID is less than the minimum (if specified)
 <p>A member&apos;s MCID being in this list means that there probably should be a follow up contact made with the member acknowledging the funding payment.</p>
 </script><script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body></html>
 
 pagePart1;
@@ -128,7 +128,7 @@ else echo "<h3>No follow up actions for the given date range.</h3>";
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 </div>
 </body>

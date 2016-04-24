@@ -9,10 +9,10 @@
 
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $items = isset($_REQUEST['items']) ? $_REQUEST['items'] : "";
 $itemcount = isset($_REQUEST['itemcount']) ? $_REQUEST['itemcount'] : "";
@@ -121,7 +121,7 @@ templForm2;
 
 // list template options in a form and pick one to use 
 if ($tname != "") {
-// include 'Incls/vardump.inc';	
+// include 'Incls/vardump.inc.php';	
 // echo "<pre>row "; print_r($row); echo "</pre>";
 echo "<div class=\"container\"><h3>Edit and Send the Message to ".$_SESSION['ActiveMCID']."</h3>";
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$tname';";
@@ -132,7 +132,7 @@ $templatename = stripslashes($t[Name]);
 $em= $mcid . ':' . $row[FName] . " " . $row[LName] . " <" . $row[EmailAddress] . ">";
 $emx= $row[FName] . " " . $row[LName] . " <" . $row[EmailAddress] . ">";
 $emx = htmlentities($emx);
-$fromaddr = $EmailFROM;			// defined in datautils.inc
+$fromaddr = $EmailFROM;			// defined in datautils.inc.php
 
 // perform shortcode translations
 $regex = "/\[(.*?)\]/";

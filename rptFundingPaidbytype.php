@@ -9,9 +9,9 @@
 <?php
 session_start();
 
-include 'Incls/seccheck.inc';
-//include 'Incls/mainmenu.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/mainmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
@@ -30,7 +30,7 @@ foreach ($mctypes as $k => $v) {
 
 //echo "action: $action<br>";
 if ($action == '') {
-	//include 'Incls/vardump.inc';
+	//include 'Incls/vardump.inc.php';
 	print <<<pagePart1
 <h3>Funding Paid Report <a href="javascript:self.close();" class="btn btn-primary"><strong>(CLOSE)</strong></a></h3>
 <p>This report lists all records that would be used for by the &apos;Print Labels on Criteria&apos; for printing labels based on the criteria selected.  The output is sorted by Total amount in descending sequence.</p>
@@ -163,7 +163,7 @@ else {
 // ------------------ start ----------------
 // use input parameters to select records
 if ($action == 'search') {
-//	include 'Incls/vardump.inc';
+//	include 'Incls/vardump.inc.php';
 	$blanks = isset($_REQUEST['blanklabels']) ? $_REQUEST['blanklabels'] : 0;	
 	$cbox = $_REQUEST['cbox'];
 	$drangelo = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : '';
@@ -294,7 +294,7 @@ print <<<labelPart1
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"></head><body>
 labelPart1;
 // include in CSS to format label printing
-//include 'Incls/label_print_css.inc';	
+//include 'Incls/label_print_css.inc.php';	
 // leave empty labels empty
 $sheetcount = 0;
 if ($blanks > 0) $blanks -= 1;
@@ -334,6 +334,6 @@ echo '----- END OF LISTING -----<br />';
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body>
 </html>

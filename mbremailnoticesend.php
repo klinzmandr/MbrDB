@@ -11,8 +11,8 @@
 <?php
 session_start();
 
-include 'Incls/datautils.inc';
-//include 'Incls/vardump.inc';
+include 'Incls/datautils.inc.php';
+//include 'Incls/vardump.inc.php';
 
 $mcid = $_SESSION['ActiveMCID'];
 
@@ -64,9 +64,9 @@ $foption = "-f" . $from;												// notify of undeliverable mail to sender
 
 $finmsg = "";
 $finmsg = $trmsg;
-$finmsg .= "<br><br><font size=1><center><a href=".$HomeURL."/unsubscribenew.php?unsubscribe=";
-$finmsg .= $to;
-$finmsg .= ">Unsubscribe from further PWC e-mail.</a></center></font>";
+//$finmsg .= "<br><br><font size=1><center><a href=".$HomeURL."/unsubscribenew.php?unsubscribe=";
+//$finmsg .= $to;
+//$finmsg .= ">Unsubscribe from further PWC e-mail.</a></center></font>";
 $finmsg = wordwrap($finmsg);
 echo date("r") . ": Sent To: $to<br>";
 $tolist .= $to . "\n";

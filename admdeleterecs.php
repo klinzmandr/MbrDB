@@ -27,13 +27,13 @@ function flagChange() {
 </script>
 <?php
 session_start();
-//include 'Incls/vardump.inc';
+//include 'Incls/vardump.inc.php';
 
 //NOTE: should also add delete of assoc EDI record when deleting and MCID record!!!!
 
-include 'Incls/seccheck.inc';
-//include 'Incls/adminmenu.inc';
-include 'Incls/datautils.inc';
+include 'Incls/seccheck.inc.php';
+//include 'Incls/adminmenu.inc.php';
+include 'Incls/datautils.inc.php';
 echo '<div class="container">';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';

@@ -10,10 +10,10 @@
 
 <?php
 session_start();
-//include 'Incls/vardump.inc';
-include 'Incls/seccheck.inc';
-include 'Incls/adminmenu.inc';
-include 'Incls/datautils.inc';
+//include 'Incls/vardump.inc.php';
+include 'Incls/seccheck.inc.php';
+include 'Incls/adminmenu.inc.php';
+include 'Incls/datautils.inc.php';
 
 //echo "Check in:<br />";
 
