@@ -10,6 +10,7 @@
 <?php
 session_start();
 //include 'Incls/vardump.inc.php';
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 unset($_SESSION['ActiveMCID']);
 unset($_SESSION['DB_ERROR']);
