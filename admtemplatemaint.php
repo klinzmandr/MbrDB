@@ -22,7 +22,10 @@ if (isset($_REQUEST['upd'])) {  // update with info from admtemplateedit
 	$name = $_REQUEST['name'];
 	$body = $_REQUEST['body'];
 	$flds[Name] = $name;
-	$flds[Body] = $body;
+	$trans = array("\\" => ' ', "\n" => ' ', "\t"=>' ', "\r"=>' ', "'"=>'\'', "\""=>'\"');
+  $flds[body] = strtr($body, $trans);
+
+//	$flds[Body] = htmlentities($body, ENT_QUOTES,'ISO-8859-1', true);
 //	echo '<pre> flds '; print_r($flds); echo '</pre>';
 	sqlupdate('templates',$flds, "`TID` = '$path'");
 	//echo "save editted template: $path -> $req<br>";

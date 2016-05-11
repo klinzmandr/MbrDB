@@ -35,12 +35,14 @@ bkLib.onDomLoaded(function() {
 
 <form action="admtemplatemaint.php" method="post">
 <b>Title:</b><br />
-<input type="text" name="name" value="$name" style="width: 600px; " /><br /><br />
+<input type="text" name="name" value="$name" style="width: 600px; " />
+<h3 style="color: #FF0000; ">NOTE: Do NOT Copy/Paste from a word processor!!</h3>
 <b>Body:</b><br />
 <textarea id="area1" name="body" rows="20" cols="90">$body</textarea><br />
 <input type="hidden" name="path" value="$path">
 <input type="hidden" name="upd" value="upd">
 <input type="submit" name="submit" value="Submit">
+</form>
 
 form;
 print <<<scPart
