@@ -3,6 +3,7 @@
 <head>
 <title>Membership Notice</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
@@ -10,7 +11,7 @@
 
 <?php
 session_start();
-//include 'Incls/vardump.inc.php';
+// include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';
 include 'Incls/mainmenu.inc.php';
 include 'Incls/datautils.inc.php';
@@ -66,7 +67,7 @@ tempForm1;
 // -------------- template name is supplied, read it for edit and list mcid's for review
 $tid = $_REQUEST['template'];
 
-echo "<div class=\"container\"><h4>Send To List&nbsp;&nbsp;<a class=\"btn btn-primary btn-xs\" href=\"remmultiduesnotices.php\">RETURN</a></h4>";
+echo "<div class=\"container\"><h4>Send To List&nbsp;&nbsp;<a class=\"btn btn-danger btn-xs\" href=\"remmultiduesnotices.php\">CANCEL & RETURN</a></h4>";
 //echo '<pre> Template Name '; print_r($t[Name]); echo '</pre>';
 //echo '<pre> Template Body '; print_r($t[Body]); echo '</pre>';
 
@@ -113,6 +114,8 @@ for ($i = 0; $i < count($matches[1]); $i++) {
 	$newValue = '';
 	}
 
+// echo '<a href="remmultiemailupd.orig.php">GOTO orig</a>';
+
 echo '
 <h4>Edit Subject and Message</h4>
 <form action="remmultiemailupd.php" method="post"  class="form">';
@@ -120,16 +123,24 @@ foreach ($mcidarray as $m) {
 	$sql = "SELECT * FROM `members` WHERE `MCID` = '$m';";
 	$mres = doSQLsubmitted($sql);
 	$row = $mres->fetch_assoc();
-	$emaddr = $row[MCID].":".$row[EmailAddress];
-	echo "<input type=\"checkbox\" name=\"email[]\" value=\"$emaddr\" checked>".$row[MCID].' '.$row[NameLabel1stline].'<br />';
+	$emaddr = $row[MCID].":".$row[FName].' '.$row[LName].' <'.$row[EmailAddress].'>';
+	echo "<input type=\"checkbox\" name=\"email[]\" value=\"$emaddr\" checked>".htmlspecialchars($emaddr).'<br />';
 	}
+
+$templatename = htmlentities($templatename, ENT_COMPAT,'ISO-8859-1', true);
 echo '
-<input type="text" name="Topic" value="'.$templatename.'" style="width: 650px;" placeholder="Subject"><br>
-<textarea id="area1" name="Letter" rows="10" cols="100">'.$templatebody.'</textarea><br />
+<input type="text" name="Topic" value="'.$templatename.'" style="width: 650px;" placeholder="Subject"><br>';
+//echo '<pre>'; print_r($templatebody); echo '</pre>';
+$templatebody = htmlentities($templatebody, ENT_COMPAT,'ISO-8859-1', true);
+echo '
+<textarea id="area1" name="Letter" rows="10" cols="100">'.$templatebody.'</textarea><br />';
+
+echo '
 <input type="submit" name="submit" value="Submit">
 <form><br /><br />';
 
 //echo '<pre> templatebody '; print_r($templatebody); echo '</pre>';
+
 ?>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>

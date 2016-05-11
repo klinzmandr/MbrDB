@@ -141,7 +141,8 @@ print <<<editForm
 <input type="text" name="Topic" value="$templatename" style="width: 650px;" placeholder="Subject"><br>
 <textarea id="area1" name="Letter" rows="10" cols="80">$templatebody</textarea><br />
 <input type="submit" name="submit" value="Submit">
-<form><br /><br />
+</form>
+<br /><br />
 
 editForm;
 
