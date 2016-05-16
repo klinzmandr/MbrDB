@@ -80,7 +80,6 @@ Subject:<br />
 <input type="text" id="subject" name="subject" value="$templatename" style="width: 500; "  placeholder="Subject" /><br />
 Message:<br />
 <textarea id="area1" name="body" rows="10" cols="90"></textarea><br />
-
 <input type="hidden" name="to" value="$emh">
 <input type="hidden" name="from" value="$fromaddr">
 <input type ="submit" name="Submit" value="Send"><br />
