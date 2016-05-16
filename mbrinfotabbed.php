@@ -398,7 +398,8 @@ pagePart1;
 //	echo '<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>';
 
 print <<<pagePart2
- 	<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>
+ 	<li class=""><a href="#lists" data-toggle="tab">VolLists</a></li>
+ 	<li class=""><a href="#time" data-toggle="tab">VolTime</a></li>
 	<li class=""><a href="#summary" data-toggle="tab">Summary</a></li>
 	<li class=""><a href="mbrfollowup.php" onclick="return chkchg()">Follow Up</a></li>
 </ul>
@@ -534,8 +535,9 @@ function chkvalidmail(fld) {
 <!-- tabs 2 & 3 are new pages -->
 
 pagePart3;
-echo '
-<!-- Tab 5 Email lists (hidden unless memstatus == 2) -->
+
+echo '<!-- Tab 5 Vol Lists -->
+<!-- Tab ? Email lists (hidden unless memstatus == 2) -->
 <div class="tab-pane fade" id="lists">
 <div class="well">
 <h4>Volunteer Email Lists</h4>';
@@ -555,9 +557,53 @@ foreach ($listkeys as $k => $v) {
 	//echo "key: $k, value: $v<br>";
 	}
 echo '</div>  <!-- well -->
-</div>  <!-- tab pane -->
+</div>  <!-- tab pane -->';
 
-<!-- Tab 6 Summary of member dues/correspondence -->';
+echo '
+<!-- Tab 6 Vol Time -->
+<div class="tab-pane fade" id="time">
+<div class="well">
+<h4>Volunteer Time</h4>';
+
+$sql = "SELECT * FROM `voltime` 
+WHERE `MCID` = '$mcid' 
+ORDER BY `VolDate` DESC;";
+$res = doSQLsubmitted($sql);
+$rowcnt = $res->num_rows;
+
+if ($rowcnt > 0) {
+echo "<b>Period Entry Count:</b> $rowcnt<br />";
+// table: voltime: VTID,VTDT,MCID,VolDate,VolTime,VolMilage,VolCategory,VolNotes
+
+while ($r = $res->fetch_assoc()) {
+$trows[] = "<tr><td>$r[VolDate]</td><td>$r[VolTime]</td><td>$r[VolMileage]</td><td>$r[VolCategory]</td><td>$r[VolNotes]</td></tr>";
+$vc = 'Uncategorized';
+if (strlen($r[VolCategory]) > 0) $vc = $r[VolCategory];
+$totalvolhrs += $r[VolTime];
+$tothrs[$vc] += $r[VolTime];
+$totmiles += $r[VolMileage];
+	}
+echo "<b>Total Miles Driven:</b> $totmiles,&nbsp;";
+echo "<b>Total Volunteer Hours:</b> $totalvolhrs<br />";
+echo "<b>Total Hours by Category:</b><br />";
+if (count($tothrs) != 0) {
+	foreach ($tothrs as $k => $v) echo "&nbsp;&nbsp;&nbsp;$k: $v<br />";
+	}
+echo "<b>Detail Records</b><br />";
+echo '<table class="table-condensed">';
+echo '<tr><th>Date</th><th>Vol Time</th><th>Mileage</th><th>Category</th><th>Notes</th></tr>';
+if (count($trows) != 0) foreach ($trows as $l) { echo $l; }
+echo '</table>---- End of Report ----<br>';	
+}
+else {
+	echo 'NO TIME RECORDS TO REPORT<br>';
+}
+
+echo '</div>  <!-- well -->
+</div>  <!-- tab pane -->';
+
+
+echo '<!-- Tab 7 Summary of member dues/correspondence -->';
 echo '<div class="tab-pane fade" id="summary">
 <div class="well">';
 //echo '<p>this will be a pane with the summary of the members donations, correspondence volunteer time and a link to the email send page.</p>';
