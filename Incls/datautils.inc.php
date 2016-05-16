@@ -90,6 +90,7 @@ function sqlinsert($table,$fields) {
 global $mysqli;
 
 $nowdate = date('Y-m-d');					// now date if needed
+$fieldnames = ''; $fieldvalues = '';
 $sql = "INSERT INTO $table (";
 foreach ($fields as $k => $v) {		// field names for sql statement
 	$fieldnames .= "`$k`, ";
@@ -150,7 +151,7 @@ errMsg;
 
 // ------------------------- add new log entry ----------------------------
 function addlogentry($text) {
-	global $mysqli;
+	global $mysqli; $errno = '';
 	if (isset($_SESSION['DB_ERROR'])) return(FALSE);
 	$user = $_SESSION['SessionUser'];
 	$seclevel = $_SESSION['SecLevel'];
@@ -164,7 +165,7 @@ function addlogentry($text) {
 		$errmsg = $mysqli->error;
 		echo "LOGGING ERROR: $errno -> $errmsg<br>";
 		}
-	return($err);
+	return($errno);
 	}
 
 // ------------------------- add new MAIL log entry ----------------------------
