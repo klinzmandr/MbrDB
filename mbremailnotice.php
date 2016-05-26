@@ -76,8 +76,9 @@ if ($row['Inactive'] == 'TRUE') {
 	}
 
 //check if MCID is OK with email and has an email address
-$emaddr = $row['EmailAddress']; $emailok = $row[E_Mail];
-if (($emaddr == "") OR ($emailok == 'FALSE')) {
+$emaddr = $mcid.':'.$row['FName'].' '.$row['LName'].' <'.$row['EmailAddress'].'>'; 
+$emailok = $row[E_Mail];
+if (($row['EmailAddress'] == "") OR ($emailok == 'FALSE')) {
 	echo "<h3>Member <a href=\"mbrinfotabbed.php\">$mcid</a> does not have any email addresses on file or does not wish to get email.</h3>.<br />";
 	//echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\" name=\"filter\" value=\"$mcid\">CANCEL AND RETURN</a>";
 	echo '</div>   <!-- containerx -->
@@ -100,7 +101,7 @@ templForm1;
 	while ($t = $res->fetch_assoc()) {
 		$name = $t[Name];
 		$recno = $t[TID];
-		if (substr($t,0,1) == '.') continue;
+		//if (substr($t,0,1) == '.') continue;
 		echo "<option value=\"$recno\">$name</option>";
 		}
 print <<<templForm2
@@ -162,8 +163,9 @@ print <<<formPart1
 <script type="text/javascript" src="js/nicEdit.js"></script>
 <script type="text/javascript">
 bkLib.onDomLoaded(function() {
-	new nicEditor({buttonList : ['fontSize', 'fontFormat', 'left', 'center', 'right', 	'bold','italic','underline','indent', 'outdent', 'ul', 'ol', 'hr', 'forecolor', 
-	'bgcolor','link','unlink']}).panelInstance('area1');
+	var myNicEditor = new nicEditor({fullPanel : true});
+	myNicEditor.setPanel('myNicPanel');
+	myNicEditor.addInstance('area1');
 });
 </script>
 
@@ -175,6 +177,7 @@ From: $fromaddr<br />
 Subject:<br />
 <input type="text" name="subject" value="$templatename" style="width: 500; "  placeholder="Subject" /><br />
 Message:<br />
+<div id="myNicPanel" style="width: 750px;"></div>
 <textarea id="area1" name="body" rows="8" cols="100">$template</textarea><br />
 <input type="hidden" name="to" value="$emaddr">
 <input type="hidden" name="from" value="$fromaddr">

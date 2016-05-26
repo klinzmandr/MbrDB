@@ -28,8 +28,9 @@ print <<<form
 <script type="text/javascript" src="js/nicEdit.js"></script>
 <script type="text/javascript">
 bkLib.onDomLoaded(function() {
-	new nicEditor({buttonList : ['fontSize', 'fontFormat', 'left', 'center', 'right', 	'bold','italic','underline','indent', 'outdent', 'ul', 'ol', 'hr', 'forecolor', 
-	'bgcolor','link','unlink']}).panelInstance('area1');
+	var myNicEditor = new nicEditor({fullPanel : true});
+	myNicEditor.setPanel('myNicPanel');
+	myNicEditor.addInstance('area1');
 });
 </script>
 
@@ -38,6 +39,7 @@ bkLib.onDomLoaded(function() {
 <input type="text" name="name" value="$name" style="width: 600px; " />
 <h3 style="color: #FF0000; ">NOTE: Do NOT Copy/Paste from a word processor!!</h3>
 <b>Body:</b><br />
+<div id="myNicPanel" style="width: 750px;"></div>
 <textarea id="area1" name="body" rows="20" cols="90">$body</textarea><br />
 <input type="hidden" name="path" value="$path">
 <input type="hidden" name="upd" value="upd">
