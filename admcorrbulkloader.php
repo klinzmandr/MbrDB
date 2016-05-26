@@ -36,7 +36,7 @@ print <<<pagePart1
 <p>The prerequisites of the spreadsheet file to be uploaded are:
 <ol>
 <li>Only the FIRST worksheet tab of a spreadsheet file is used;</li>
-<li>One cell in Row 1 must contain the column header MCID (uppercase);</li>
+<li>One cell in Row 1 must contain either a column header 'MCID' (uppercase) or 'ForeignKey';</li>
 <li>All cells below Row 1 in that column must contain actual MCIDs that are in the
 Membership Database;</li>
 <li>Only MCIDs in that column are used.  All other column values are ignored.</li>
@@ -136,7 +136,7 @@ try {
 //	echo '<pre> curritem: '; print_r($curritem); echo '</pre>';
 	if (count($curritem) == 0) $errs .= 'Unable to read spreadsheet from XLSX file<br>';
 	foreach ($curritem as $Name) {
-		if ($Name == 'MCID') {
+		if (($Name == 'MCID') OR ($Name == 'ForeignKey')) {
 			$foundMCID = 1;
 			break;
 		}
@@ -149,9 +149,9 @@ catch (Exception $E) {
 	}
 echo "<h3>Upload successful. File stored as: " . "&apos;" . $_FILES["file"]["name"] . '&apos;</h3>';
 // report errors or continue with what is entered	
-if (!$foundMCID) $errs .= "No column named &apos;MCID&apos; is present.";
+if (!$foundMCID) $errs .= "No column named &apos;MCID&apos; or &apos;ForeignKey&apos; were present.";
 $alpha = array(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z);
-if ($colidx > 26) $errs .= 'Column named &apos;MCID&apos; was not found in the firstr 26 columns of the spreadsheet<br>';
+if ($colidx > 26) $errs .= 'A column named &apos;MCID&apos; or &apos;ForeignKey&apos; was not found in the firstr 26 columns of the spreadsheet<br>';
 $colalpha = strtoupper($alpha[$colidx]);
 if (strlen($errs) > 0) { 
 	echo "$errs<br>";
@@ -161,7 +161,7 @@ if (strlen($errs) > 0) {
 }
 else {
 	echo "<h3>Uploaded file validated.</h3><br>
-	<h4>MCID column heading found in Column &apos;$colalpha&apos; of 1st spreadsheet in file &apos;" . $_FILES["file"]["name"] . "&apos;.<br>
+	<h4>Column named &apos;MCID&apos; or &apos;ForeignKey&apos; heading found in Column &apos;$colalpha&apos; of 1st spreadsheet in file &apos;" . $_FILES["file"]["name"] . "&apos;.<br>
 	Corresondence Type to be applied to all MCIDs: $corrtype<br>
 	Date to be applied to all corrrespondence records: $datesent<br><br>
 	Click CONTINUE to apply updates or CANCEL to change parameters.</h4><br>

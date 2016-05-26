@@ -40,14 +40,15 @@ try	{
 //		echo $Key.': ';
 		if ($Row)	{
 //			echo '<pre row: >'; print_r($Row[$colidx]); echo '</pre>';
-			if ($Row[$colidx] != 'MCID') {
-				if ($Row[$colidx] == '') break;
-//				echo '<pre row: >'; print_r($Row[$colidx]); echo '</pre>';
-				$mcidarray[$Row[$colidx]] += 1;				
+			if ($Row[$colidx] == 'MCID') continue;
+			if ($Row[$colidx] == 'ForeignKey') continue;
+			if ($Row[$colidx] == '') break;
+//			echo '<pre row: >'; print_r($Row[$colidx]); echo '</pre>';
+			$mcidarray[$Row[$colidx]] += 1;				
 			}
 		}
 	}
-}
+
 catch (Exception $E)	{
 	echo $E -> getMessage();
 }
@@ -62,7 +63,7 @@ foreach ($mcidarray as $mcid => $cnt) {
 	$updarray[DateSent] = $datesent;
 	$updarray[Notes] = stripslashes($notes) . ' - added as bulk update';
 //	echo '***TEST MODE ON***<pre updarray: >'; print_r($updarray); echo '</pre>';
-	sqlinsert('correspondence', $updarray);
+//	sqlinsert('correspondence', $updarray);
 	$rc++;
 }
 
