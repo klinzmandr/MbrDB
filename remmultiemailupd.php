@@ -58,6 +58,10 @@ foreach ($emarrayin as $v) {		// unpack the mcid and email address values into d
 $subject = $_REQUEST['Topic'];
 $message = $_REQUEST['Letter'];
 
+$trans = array("\\" => ' ', "\n" => ' ', "\t"=>' ', "\r"=>' '); // remove tabs, cr, lf and double \
+$subject = strtr($subject, $trans);
+$message  = strtr($message, $trans);    // subject and message should be good to go now
+
 echo "<div class=\"container\">
 <h3>Send Email Confirmation&nbsp;&nbsp;<a href=\"remmultiduesnotices.php\" class=\"btn btn-primary\">RETURN</a></h3>";
 
