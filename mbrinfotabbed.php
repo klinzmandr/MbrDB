@@ -590,8 +590,8 @@ if (count($tothrs) != 0) {
 	foreach ($tothrs as $k => $v) echo "&nbsp;&nbsp;&nbsp;$k: $v<br />";
 	}
 echo "<b>Detail Records</b><br />";
-echo '<table class="table-condensed">';
-echo '<tr><th>Date</th><th>Vol Time</th><th>Mileage</th><th>Category</th><th>Notes</th></tr>';
+echo '<table class="table table-condensed">';
+echo '<tr><th width="15%">Date</th><th>Vol Time</th><th>Mileage</th><th>Category</th><th>Notes</th></tr>';
 if (count($trows) != 0) foreach ($trows as $l) { echo $l; }
 echo '</table>---- End of Report ----<br>';	
 }
