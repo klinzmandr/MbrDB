@@ -137,7 +137,7 @@ echo "<p>There are $rowcount ACTIVE member, volunteer or donor records that have
 echo '</table>----- END OF LIST -----<br>';
 
 $sql = "SELECT `members`.`MCID`, `members`.`MemStatus`,  `members`.`MCtype`, `members`.`MemDate`, `members`.`Inactive`, `members`.`FName`, `members`.`LName` 
-FROM { OJ `pwcmbrdb`.`members` AS `members` LEFT OUTER JOIN `pwcmbrdb`.`donations` AS `donations` 
+FROM { OJ `members` AS `members` LEFT OUTER JOIN `donations` AS `donations` 
 ON `members`.`MCID` = `donations`.`MCID` } 
 WHERE `donations`.`MCID` IS NULL 
 	AND `members`.`Inactive` = FALSE 
@@ -152,6 +152,7 @@ echo "<p>There are $rowcount active supporters that have NO funding records asso
 	echo '<table class="table-condensed">
 	<tr><th>MCID</th><th>FName</th><th>LName</th><th>MCType</th><th>MemDate</th><th>Inactive</th></tr>';
 	while ($r = $res->fetch_assoc()) {
+	  if ($r['Inactive'] == 'TRUE') continue;
 		echo "<tr><td>$r[MCID]</td><td>$r[FName]</td><td>$r[LName]</td><td>$r[MCtype]</td><td>$r[MemDate]</td><td>$r[Inactive]</td></tr>";
 		}
 	}
