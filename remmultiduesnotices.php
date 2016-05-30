@@ -56,10 +56,13 @@ else
 $expdate = calcexpirationdate();									// this is the expiration period
 //echo "expdate: $expdate<br>";
 
+$sql = "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
+//echo "sql: $sql<br>";
+$status = doSQLsubmitted($sql);
+//echo "status: $status<br>";
+
 $sql = "SELECT `donations`.`MCID`, `donations`.`Purpose`, `donations`.`DonationDate`, 
-	`donations`.`TotalAmount`, 
-  MAX( `donations`.`DonationDate` ) as MaxDate, 
-  `members`.*
+	`donations`.`TotalAmount`, MAX( `donations`.`DonationDate` ) as MaxDate, `members`.*
 FROM `donations`, `members` 
 WHERE `donations`.`MCID` = `members`.`MCID` 
 	AND `members`.`Inactive` = 'FALSE' 
@@ -68,7 +71,7 @@ GROUP BY `donations`.`MCID`, `donations`.`Purpose`
  HAVING ( $rpthaving );";
 
 //echo "rptmemstatus: $rptmemstatus<br />";
-// echo "sql: $sql<br>";
+//echo "sql: $sql<br>";
 $results = doSQLsubmitted($sql);
 
 // parse out those rows to just show the latest payment made
