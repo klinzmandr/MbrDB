@@ -384,12 +384,11 @@ function validatezipcode(fld) {
 
 <form name="mcform" id="mcform" class="form-horizontal" role="form" onsubmit="return validateForm(this)">
 <div style="text-align: center"><button type="submit" form='mcform' class="btn btn-primary">Update Member</button></div>
-
 <!-- Tab definition header  -->
 <ul id="myTab" class="nav nav-tabs">
   <li class="active"><a href="#home" data-toggle="tab">Main</a></li>
-  <li class=""><a href="mbrdonations.php" onclick="return chkchg()">Funding</a></li>
-  <li class=""><a href="mbrcorrespondence.php" onclick="return chkchg()">Correspondence</a></li>
+  <li class=""><a href="#funding" data-toggle="tab">Funding</a></li>
+  <li class=""><a href="#corr" data-toggle="tab">Correspondence</a></li>
 
 pagePart1;
 // show lists tab if member is a volunteer
@@ -532,12 +531,101 @@ function chkvalidmail(fld) {
 </div>  <!-- well -->
 </div> <!-- tab 1 pane -->
 
-<!-- tabs 2 & 3 are new pages -->
-
 pagePart3;
 
-echo '<!-- Tab 5 Vol Lists -->
-<!-- Tab ? Email lists (hidden unless memstatus == 2) -->
+// ============= Tab 2 Funding List ======================
+// always read db for all MCID donation records including new one if just added
+$sql = "SELECT * FROM `donations` WHERE `MCID` = '$mcid' ORDER BY `DonationDate` DESC";
+$results = doSQLsubmitted($sql);
+$rc = $results -> num_rows;
+$rowcount = 10;
+if ($rc <= 10) $rowcount = $rc;
+echo '
+<div class="tab-pane fade" id="funding">
+<div class="well">
+<b>Funding Records (latest '.$rowcount.' of '.$rc.')</b>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs" href="mbrdonations.php">&nbsp;&nbsp;&nbsp;List&nbsp;All&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs" href="mbrdonations.php?action=add">Add new record</a>';
+
+// multiple rows returned, list donation records
+$results->data_seek(0);
+print <<<listHdr
+<script>
+function confirmDel() {
+	var r=confirm("This will change this Dues payment record.\\n\\nConfirm by clicking OK.");	
+	if (r == true) { return true; }
+	return false;
+	}
+</script>
+
+<table class="table">
+<tr><th>Edit</th><th>RecNo</th><th>Purpose</th><th>Program</th><th>Campaign</th><th>DonDate</th><th>ChkNbr</th><th>Amount</th><th>Donated For</th><th>Notes</th></tr>
+listHdr;
+$totdonations = 0; $counter = 0;
+while ($row = $results->fetch_assoc()) {
+  $counter += 1;
+	$donid=$row['DonationID'];$mcid=$row['MCID'];$purpose=$row['Purpose'];
+	$program=$row['Program']; $campaign = $row['Campaign'];
+	$dondate=$row['DonationDate'];$chknbr=$row['CheckNumber'];
+	$totamt=$row['TotalAmount'];$mbrdonatedfor=$row['MembershipDonatedFor'];
+	$note=$row['Note'];
+	$totdonations += $totamt;
+	if ($purpose == "**NewRec**") $purpose = "";
+	$frm = "<tr>";
+	if ($purpose == "Dues") {
+		$frm .= "<td><a onclick=\"return confirmDel()\" href=\"mbrdonations.php?action=delete&id=$donid&date=$dondate\"><img src=\"config/b_edit.png\" width=\"16\" height=\"16\" alt=\"DELETE\" longdesc=\"DELETE\" /></a></td>"; 
+		}
+	else {
+  $frm .= "<td><a onclick=\"return chkchg()\" href=\"mbrdonations.php?action=edit&id=$donid\">
+<img src=\"config/b_edit.png\" width=\"16\" height=\"16\" alt=\"EDIT\" longdesc=\"EDIT\" /></a></td>";
+		}
+  $frm .= "<td>$donid</td><td>$purpose</td><td>$program</td><td>$campaign</td><td>$dondate</td><td>$chknbr</td><td>$totamt</td><td>$mbrdonatedfor</td><td>$note</td></tr>";
+  if ($counter < 11) echo $frm;
+	}
+echo "</table>";
+$totdonations = number_format($totdonations,2);
+echo "<h3>Total of all donations: $$totdonations</h3>";
+echo '</div>  <!-- well -->
+</div>  <!-- tab pane -->';
+// ======== Tab 3 Correspondence =============
+$sql = "SELECT * FROM `correspondence` WHERE `MCID` = '$mcid' ORDER BY `DateSent` DESC";
+$results = doSQLsubmitted($sql);
+$rc = $results -> num_rows;
+$rowcount = 10;
+if ($rc <= 10) $rowcount = $rc;
+
+echo '
+<div class="tab-pane fade" id="corr">
+<div class="well">
+<b>Funding Records (latest '.$rowcount.' of '.$rc.')</b>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs" href="mbrcorrespondence.php">&nbsp;&nbsp;&nbsp;List&nbsp;All&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs" href="mbrcorrespondence.php?action=add">Add new record</a>';
+
+// multiple rows returned, list correspondence records
+$results->data_seek(0);
+echo '<table class="table">
+<tr><th>Edit</th><th>Corr. ID</th><th>Corr. Type</th><th>Date Sent</th><th>Source</th><th>Notes</th></tr>';
+$counter = 0;
+while ($row = $results->fetch_assoc()) {
+  $counter += 1;
+	$corrid=$row['CORID'];$mcid=$row['MCID'];$corrtype=$row['CorrespondenceType'];$datesent=$row['DateSent'];$source=$row['SourceofInquiry'];$notes=$row['Notes'];
+	if ($corrtype == "**NewRec**") { $corrtype = ""; }
+	$imagelink = "<img src=\"config/b_edit.png\" width=\"16\" height=\"16\" alt=\"EDIT\" longdesc=\"EDIT\" />";
+	if (stripos($corrtype,"renewalpaid") !== FALSE) {
+		$imagelink = "";
+		}
+	if ($counter <= 10) {
+	print <<<bulletForm
+<tr><td>
+<a onclick="return chkchg()" href="mbrcorrespondence.php?action=edit&id=$corrid">
+$imagelink</a></td>
+<td>$corrid</td>
+<td>$corrtype</td><td>$datesent</td><td>$source</td><td>$notes</td></tr>
+bulletForm;
+  }
+}
+
+echo '</table></div>  <!-- well -->
+</div>  <!-- tab pane -->';
+
+// ========== Tab 4 Vol Lists ================
+echo '
 <div class="tab-pane fade" id="lists">
 <div class="well">
 <h4>Volunteer Email Lists</h4>';
@@ -560,7 +648,7 @@ echo '</div>  <!-- well -->
 </div>  <!-- tab pane -->';
 
 echo '
-<!-- Tab 6 Vol Time -->
+<!-- Tab 5 Vol Time -->
 <div class="tab-pane fade" id="time">
 <div class="well">
 <h4>Volunteer Time</h4>';
@@ -602,8 +690,7 @@ else {
 echo '</div>  <!-- well -->
 </div>  <!-- tab pane -->';
 
-
-echo '<!-- Tab 7 Summary of member dues/correspondence -->';
+// =========== Tab 6 Summary of member dues/correspondence ===========
 echo '<div class="tab-pane fade" id="summary">
 <div class="well">';
 //echo '<p>this will be a pane with the summary of the members donations, correspondence volunteer time and a link to the email send page.</p>';
