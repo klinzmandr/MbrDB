@@ -6,7 +6,7 @@
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
-<body onLoad="initForm(this)" onChange="flagChange()">
+<body onLoad="initForm(this)">
 <script src="Incls/datevalidation.js"></script>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -63,6 +63,27 @@ if (($action == "") AND ($mcid == "")) {
 if ($action == "update") {
 	$uri = $_SERVER['QUERY_STRING'];
 	parse_str($uri, $vararray);
+	// echo '<pre> input uri '; print_r($vararray); echo '</pre>';
+  // adding saftey check to make sure MCID from input page is same as ActiveMCID
+  // MCIDx is from the input form of the update page.
+	if ($_REQUEST['MCIDx'] != $_SESSION['ActiveMCID']) {
+	  echo 'MCIDx: '.$_REQUEST['MCIDx']. ', ActiveMCID: '.$_SESION['ActiveMCID'].'<br>'; 
+	  echo "<h2 style=\"color: red; \">ERROR: MCID mismatch!!!</h2>
+	  <b>If this error occurs please note the actions being taken immediately prior to
+	  seeing this message and notify dave.klinzman@yahoo.com immediately. Please  
+	  provide this information and any other notes along with the MCID's involved.</b><br>";
+	  $log = 'XUpdate Error. MCIDx: '. $_REQUEST['MCIDx'] . ', ActiveMCID: '. $_SESSION['ActiveMCID'].'<br>';
+	  addlogentry($log);                       // log the error
+	  $log = 'SESSION ' . var_export($_SESSION, TRUE);
+	  addlogentry($log);
+	  $log = 'REQUEST ' . var_export($_REQUEST, TRUE);
+	  addlogentry($log);	                         // log the sesssion variables
+	  unset($_SESSION['ActiveMCID']);       // force new lookup for MCID
+	  echo '<script src="jquery.js"></script>';
+	  echo '<script src="js/bootstrap.min.js"></script>';
+	  exit;
+    }
+
 	if (array_key_exists('mlist',$vararray)) {
 		$listarray = $vararray[mlist];						// get list array
 		$liststring = implode(",",$listarray);		// create list string
@@ -71,16 +92,26 @@ if ($action == "update") {
 		}
 	else $vararray[Lists] = '';									// if none are checked -----
 	unset($vararray[action]);										// unset page action indicator
+	unset($vararray[MCIDx]);                     // unset MCID field 
+  //  echo '<pre> input after uri '; echo "mcid: $mcid, "; print_r($vararray); echo '</pre>';
+
 	$vararray[Notes] = stripslashes($vararray[Notes]);
 	$vararray[LName] = stripslashes($vararray[LName]);
 	$vararray[NameLabel1stline] = stripslashes($vararray[NameLabel1stline]);
 	$vararray[Organization] = stripslashes($vararray[Organization]);
-	$where = "`MCID`='" . $mcid . "'";
-	sqlupdate('members',$vararray, $where);	
+  $where = "`MCID`='" . $mcid . "'";
+	sqlupdate('members',$vararray, $where);
+  echo '	
+<script>
+$(document).ready(function() {
+  $("#X").fadeOut(2000);
+});
+</script>
+<h3 style="color: red; " id="X">Update Completed.</h3>';
+	
 	}
 
 // get member record from ActiveMCID and display the info in update form
-
 $sql = "SELECT * FROM `members` WHERE MCID = '$mcid'";
 $res = doSQLsubmitted($sql);
 //$res = readMCIDrow($mcid);
@@ -88,6 +119,7 @@ if ($res->num_rows == 0) {
 	echo "<h3>No MCID record found.  Please retry.</h3><br /><br />";
 	echo "<a class=\"btn btn-large btn-primary\" href=\"mbrsearchlist.php\" name=\"filter\" value=\"--none--\">General Search</a><br /><br />";
 	echo "<a class=\"btn btn-large btn-primary\" href=\"index.php\">CANCEL AND RETURN</a><br /><br />";
+	unset($_SESSION['ActiveMCID']);    // invalid MCID
 	exit;
 	} 
 // get row data from result
@@ -407,6 +439,7 @@ print <<<pagePart2
 <div class="tab-pane fade active in" id="home">
 <div class="well">
 <h4>Contact Information</h4>
+<input type="hidden" name="MCIDx" value="$mcid">
 <div class="row">
 <div class="col-sm-4">First: <input placeholder="First Name" autofocus type="text" name="FName" value="$fname" onchange="setflds(document.mcform)"></div>
 <div class="col-sm-4">Last: <input placeholder="Last Name" type="text" name="LName" value="$lname" onchange="setflds(document.mcform)"></div>
