@@ -14,14 +14,14 @@ unset($_SESSION['ActiveMCID']);
 include 'Incls/seccheck.inc.php';
 include "Incls/datautils.inc.php";
 //include "Incls/vardump.inc.php";
-if ($_SESSION['SecLevel'] == 'readonly') include 'Incls/romenu.inc.php';
-else include 'Incls/mainmenu.inc.php';
+//if ($_SESSION['SecLevel'] == 'readonly') include 'Incls/romenu.inc.php';
+//else include 'Incls/mainmenu.inc.php';
 
 $filter = (isset($_REQUEST['filter'])) ? $_REQUEST['filter'] : "";
 
 print <<<searchForm1
 <div class="container">
-<h1>Member Search</h1>
+<h1>Member Search&nbsp;&nbsp;&nbsp;<a href="index.php" class="btn btn-danger">CANCEL</a></h1>
 <form action="mbrsearchlist.php" method="post"  name="searchform" class="form-inline">
 <input type="text" name="filter" class="form-control" style="width: 200px; "  placeholder="Search String" autofocus value=$filter>
 <input type="submit" class="btn btn-default" name="submit" value="Apply">
