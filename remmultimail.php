@@ -34,8 +34,15 @@ if ($tname == "") {
 	$sql = "SELECT * FROM `templates` WHERE `Type` = 'mail';";
 	$res = doSQLsubmitted($sql);
 	print <<<tempForm1
+<script>
+function canit() {
+//  alert("canit entered");
+  if (confirm("Do you REALLY want to CANCEL this action?\\n\\nCLICK OK to CANCEL this form and RETURN to reminders list.")) { return true; }
+  return false;
+}
+</script>
 <div class="container"><h3>Membership Mail Notice</h3> 
-<h4>Send Mail Reminders&nbsp;&nbsp;<a class="btn btn-primary btn-xs" href="remmultiduesnotices.php">RETURN</a></h4>
+<h4>Send Mail Reminders&nbsp;&nbsp;<a onclick="return canit()" class="btn btn-primary" href="remmultiduesnotices.php">CANCEL & RETURN</a></h4>
 Select a letter template from the selection list:<br>
 <form action="remmultimail.php" method="post">
 tempForm1;
