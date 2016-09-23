@@ -7,7 +7,11 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
-<body onLoad="initForm(this)" onChange="flagChange()">
+<body onLoad="initForm(this)">
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+
 <?php
 session_start();
 include 'Incls/seccheck.inc.php';
@@ -304,7 +308,14 @@ if ($action == "apply") {
 		}
 	//echo "before update call - recno: $recno, mcid: $mcid<br>";
 	sqlupdate('donations', $vararray, "`DonationID`='$recno'");
-	}
+		echo '	
+<script>
+$(document).ready(function() {
+  $("#X").fadeOut(2000);
+});
+</script>
+<h3 style="color: red; " id="X">Update Completed.</h3>';
+  }
 
 
 // always read db for all MCID donation records including new one if just added
@@ -351,10 +362,6 @@ echo "<h3>Total of all donations: $$totdonations</h3>";
 echo "</div>";  // container
 
 ?>
-
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
 
 </body>
 </html>

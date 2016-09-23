@@ -7,7 +7,10 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
-<body onLoad="initForm(this)" onChange="flagChange()">
+<body onLoad="initForm(this)">
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
 <?php
 session_start();
 include 'Incls/seccheck.inc.php';
@@ -187,6 +190,13 @@ if ($_REQUEST['action'] == "apply") {
 	$memflds[LastCorrDate] = $vararray[DateSent];
 	$memflds[LastCorrType] = $vararray[CorrespondenceType];
 	sqlupdate('members', $memflds, "`MCID` = '$mcid'");
+	echo '	
+<script>
+$(document).ready(function() {
+  $("#X").fadeOut(2000);
+});
+</script>
+<h3 style="color: red; " id="X">Update Completed.</h3>';
 	}
 
 // read db for all MCID donation records
@@ -219,10 +229,6 @@ echo "</table>";
 echo "</div>";  // container
 
 ?>
-
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
 
 </body>
 </html>

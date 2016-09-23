@@ -7,7 +7,12 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
-<body onLoad="initForm(this)" onChange="flagChange()">
+<body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+
+
 <?php
 session_start();
 //include 'Incls/vardump.inc.php';
@@ -36,6 +41,13 @@ if ($_REQUEST['action'] == "apply") {
 	$memflds[LastCorrType] = $vararray[CorrespondenceType];
 	sqlupdate('members', $memflds, "`MCID` = '$mcid'");
 	$_REQUEST['action'] = "edit";
+	echo '	
+<script>
+$(document).ready(function() {
+  $("#X").fadeOut(2000);
+});
+</script>
+<h3 style="color: red; " id="X">Update Completed.</h3>';
 	}
 
 //add new record
@@ -77,11 +89,11 @@ bkLib.onDomLoaded(function() {
 	'bgcolor','link','unlink']}).panelInstance('area1');
 });
 </script>
-<h3>Add Follow Up Note for MCID: <a onclick="return chkchg()" href="mbrinfotabbed.php">$mcid</a></h3>
+<h3>Add Correspondence Note for MCID: <a onclick="return chkchg()" href="mbrinfotabbed.php">$mcid</a></h3>
 <p>Please initial all updates made. Click in text area to begin.</p>
 <form action="mbrfollowup.php" method="get"  name="mcform" id="mcform" >
 <div class="row">
-<div class="col-sm-6">New Correspondence Note: 
+<div class="col-sm-6">New Note: 
 <textarea id="area1" name="Notes" rows="15" cols="80">$note</textarea></div>
 </div>  <!-- row -->
 <div class="row"><div class="col-sm-2">
@@ -98,10 +110,6 @@ formPart1;
 echo "</div>";  // container
 
 ?>
-
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
 
 </body>
 </html>
