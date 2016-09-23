@@ -36,17 +36,6 @@ try	{
 	$Sheets = $Spreadsheet -> Sheets();
 	$Index = 0;			// first (only?) sheet tab
 	$Spreadsheet -> ChangeSheet($Sheets[$Index]);
-	foreach ($Spreadsheet as $Key => $Row) {
-//		echo $Key.': ';
-		if ($Row)	{
-//			echo '<pre row: >'; print_r($Row[$colidx]); echo '</pre>';
-			if ($Row[$colidx] == 'MCID') continue;
-			if ($Row[$colidx] == 'ForeignKey') continue;
-			if ($Row[$colidx] == '') break;
-//			echo '<pre row: >'; print_r($Row[$colidx]); echo '</pre>';
-			$mcidarray[$Row[$colidx]] += 1;				
-			}
-		}
 	}
 
 catch (Exception $E)	{
