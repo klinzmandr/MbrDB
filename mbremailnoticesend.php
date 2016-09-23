@@ -60,6 +60,9 @@ sort($emarrayin);
 file_put_contents($listname, implode("\n", $emarrayin));
 file_put_contents($msgname, implode("\n", $msgarray));
 
+$log = "MbrNotice to $mcid with subject: $subject";
+addlogentry($log);
+
 echo 'server: ' . $_SERVER['SERVER_NAME'] .'<br>';
 echo 'Message written to the send queue.<br>';
 if ($_SERVER['SERVER_NAME'] != 'localhost') {

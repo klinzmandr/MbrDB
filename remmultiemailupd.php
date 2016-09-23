@@ -116,6 +116,10 @@ sort($emarrayin);
 file_put_contents($listname, implode("\n", $emarrayin));
 file_put_contents($msgname, implode("\n", $msgarray));
 
+$log = "Reminders sent to $tce volunteers with subject: $subject";
+addlogentry($log);
+
+
 // finally we note each email in correspondence log for each mcid
 foreach ($mcidarray as $mcid) {
   $corrarray = array();									// add to correspondence log
