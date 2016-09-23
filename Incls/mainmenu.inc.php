@@ -139,15 +139,19 @@ function setupmcid(theForm)  {
 var chgFlag = 0;
 function chkchg() {
 	if (chgFlag <= 0) { return true; }
-	var r=confirm("All changes made (" + chgFlag + ") will be LOST.\\n\\nConfirm by clicking OK.");	
+	var r=confirm("WARNING: All changes made will be LOST.\\n\\nConfirm leaving page by clicking OK.");	
 	if (r == true) { chgFlag = 0; return true; }
 		return false;
 	}
 
-function flagChange() {
-	chgFlag += 1;
-	return true;
-	}
+$(document).ready(function(){
+  $("input").change(function(){
+    chgFlag += 1; });
+  $("textarea").change(function(){
+    chgFlag += 1; });
+  $("select").change(function(){
+    chgFlag += 1; });
+}); 
 
 <!-- ignore any change to the filter input field -->
 function ignorefilter() {
