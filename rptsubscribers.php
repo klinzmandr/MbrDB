@@ -69,7 +69,7 @@ if ($action == 'report') {
 // 'p' array now contains all funding records that are dues payments but NOT subscribing dues   		
 //	echo '<pre>non-subscribing dues payments '; print_r($p); echo '</pre>';
 
-	$instr = implode("','", $inarray);
+	$instr = implode("', '", $inarray);
 	$sqlstr = "SELECT * FROM `members` 
 	WHERE `MCID` IN ('" . $instr . "')
 		AND `Inactive` = 'FALSE'
@@ -114,7 +114,7 @@ if ($action == 'report') {
 		$inarray[] = $r[MCID];
 		$p[$r[MCID]] = $r;
 		}
-	$instr = implode("','", $inarray);
+	$instr = implode("', '", $inarray);
 	$sqlstr = "SELECT * FROM `members` 
 	WHERE `MCID` IN ('" . $instr . "')
 		AND `MCtype` NOT LIKE '%subscr%'
