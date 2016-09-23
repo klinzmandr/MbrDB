@@ -56,9 +56,10 @@ else
 $expdate = calcexpirationdate();									// this is the expiration period
 //echo "expdate: $expdate<br>";
 
-$sql = "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
+// must be uncommented for DW server version, 
+//$sql = "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
 //echo "sql: $sql<br>";
-$status = doSQLsubmitted($sql);
+//$status = doSQLsubmitted($sql);
 //echo "status: $status<br>";
 
 $sql = "SELECT `donations`.`MCID`, `donations`.`Purpose`, `donations`.`DonationDate`, 
