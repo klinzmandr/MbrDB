@@ -8,6 +8,11 @@
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
+
 <?php
 session_start();
 
@@ -40,10 +45,6 @@ To:<input type="text" name="ed" id="ed" value="$oldest">
 <option value="Campaign">Campaign</option>
 </select>
 </form>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </div>
 </body>
 </html>
@@ -101,8 +102,9 @@ foreach ($nc as $k => $v) {
 echo "</select>";
 echo "</form>";
 
+// display initial listing of funding records
 if ($listitem == "") {
-  echo "<div class=\"well\">";
+  echo "<div class=\"container\">";
 	echo "<table border=\"0\" class=\"table-condensed\">";
 	echo "<tr><th>Name</th><th>Rec.Count</th><th>Total Funds</th><th>Earliest Start</th><th>Latest End</th></tr>";
 
@@ -121,16 +123,57 @@ if ($listitem == "") {
 	echo "</table>
 	Total $name&apos;s: ". count($nc).", Rec's: $catcount out of $totreccount, Total Value:&nbsp;$". 	$grtot ."<br>";
 	echo "</table>";
-	echo "</div> <!-- well -->";
-	print <<<secForm
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
+	$str = '';
+  if (count($nt) > 0) {
+    foreach ($nt as $k => $v) {
+      $str .= "['$k', $v],";
+      }
+  $chartdata = rtrim($str,',');
+  }
+// echo "chartdata: $chartdata<br>";
+
+?>
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
+
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+function drawChart() {
+
+  // Create the data table.
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Fund');
+  data.addColumn('number', 'Total');
+  data.addRows([<?=$chartdata?>]);
+  //[['one',1],['two',2],['three',3]]);
+
+  // Set chart options
+  var options = {'title':'Funding Type Distribution',
+                 'width':600,
+                 'height':400};
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+</script>
+
+<!--Div that will hold the pie chart-->
+<div id="chart_div"></div>
+
+<?php
+	echo '</div> <!-- well -->
 </div>
 </body>
-</html>
-secForm;
+</html>';
 	exit;
 	}
 
@@ -170,10 +213,6 @@ echo "----- END OF LIST -----<br>";
 ?>
 <a href="rptfundingdrilldown.php?name="">START OVER</a>
 </div>  <!-- container -->
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 </div>
 </body>
