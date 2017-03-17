@@ -79,8 +79,6 @@ if ($action == "update") {
 	  $log = 'REQUEST ' . var_export($_REQUEST, TRUE);
 	  addlogentry($log);	                         // log the sesssion variables
 	  unset($_SESSION['ActiveMCID']);       // force new lookup for MCID
-	  echo '<script src="jquery.js"></script>';
-	  echo '<script src="js/bootstrap.min.js"></script>';
 	  exit;
     }
 
@@ -619,7 +617,7 @@ echo "<h3>Total of all donations: $$totdonations</h3>";
 echo '</div>  <!-- well -->
 </div>  <!-- tab pane -->';
 // ======== Tab 3 Correspondence =============
-$sql = "SELECT * FROM `correspondence` WHERE `MCID` = '$mcid' ORDER BY `DateSent` DESC";
+$sql = "SELECT * FROM `correspondence` WHERE `MCID` = '$mcid' ORDER BY `DateSent` DESC, `CORID` DESC";
 $results = doSQLsubmitted($sql);
 $rc = $results -> num_rows;
 $rowcount = 10;
@@ -749,12 +747,13 @@ echo "<div style=\"text-align: center\">
 echo '<table border=0 class="table"><tr>';
 
 //Funding column
-echo "<td><b>Funding</b><br />
+echo "<td><b>Dues Funding</b><br />
 &nbsp;&nbsp;&nbsp;&nbsp;Last Dues Date:  $lastduesdate<br />
 &nbsp;&nbsp;&nbsp;&nbsp;Last Dues Amount: $$lastduesamount<br /><br>
-&nbsp;&nbsp;&nbsp;&nbsp;Last Non-dues Purpose: $lastdonpurpose<br /> 
-&nbsp;&nbsp;&nbsp;&nbsp;Last Non-Dues Date: $lastdondate<br />
-&nbsp;&nbsp;&nbsp;&nbsp;Last Non-Dues Amount: $$lastdonamount<br /><br />";
+<b>Last Non-Dues Funding:</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;Purpose: $lastdonpurpose<br /> 
+&nbsp;&nbsp;&nbsp;&nbsp;Date: $lastdondate<br />
+&nbsp;&nbsp;&nbsp;&nbsp;Amount: $$lastdonamount<br /><br />";
 
 //Correspondence column
 echo "<td><b>Correspondence</b><br />

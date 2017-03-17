@@ -31,7 +31,13 @@ addlogentry('Page Load');
 //echo "Initial Connection Info: ".$mysqli->host_info . "<br><br>";
 echo "<script>
 var EmailAddr = \"$EmailFROM\";
-</script>";
+<!-- set check box size larger -->
+</script>
+<style>
+input[type=checkbox] {
+  transform: scale(1.5);
+</style> 
+";
 // ------------------ submit sql statement provided by calling script ----------
 // submit sql statement provided in call
 function doSQLsubmitted($sql) { 

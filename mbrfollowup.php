@@ -39,7 +39,7 @@ if ($_REQUEST['action'] == "apply") {
 	// now update member record with latest info
 	$memflds[LastCorrDate] = date('Y-m-d');
 	$memflds[LastCorrType] = $vararray[CorrespondenceType];
-	sqlupdate('members', $memflds, "`MCID` = '$mcid'");
+	sqlupdate('members', $memflds, "`MCID` = '$mcid';");
 	$_REQUEST['action'] = "edit";
 	echo '	
 <script>
@@ -52,12 +52,15 @@ $(document).ready(function() {
 
 //add new record
 if ($_REQUEST['action'] == "") {
-	$sql = "SELECT * FROM `correspondence` WHERE `CorrespondenceType` = '**NewRec**';";
+	$sql = "SELECT * FROM `correspondence` 
+	WHERE `CorrespondenceType` = '**NewRec**'
+	  AND `MCID` = '$mcid';";
 	$res = doSQLsubmitted($sql);
 	$nbr_rows = $res->num_rows;												
 	if ($nbr_rows == 0) {															// add a new record unless one already exists
 		$flds[CorrespondenceType] = '**NewRec**';				// corresondence type flag for new add
 		$flds[DateSent] = date('Y-m-d'); 
+		$flds[MCID] = $mcid;
 		//$flds[MCID] = $_SESSION['ActiveMCID'];
 		sqlinsert('correspondence', $flds);
 		}
@@ -66,14 +69,16 @@ if ($_REQUEST['action'] == "") {
 
 // edit record
 if ($_REQUEST['action'] == "edit") {
-$sql = "SELECT * FROM `correspondence` WHERE `CorrespondenceType` = '**NewRec**';";
-$res = doSQLsubmitted($sql);
-$nbr_rows = $res->num_rows;
-if ($nbr_rows == 0) {
-	$recno = $_REQUEST['id'];
-	$sql = "SELECT * FROM `correspondence` where `CORID`='$recno'";
-	$res = doSQLsubmitted($sql);
-	}
+  $sql = "SELECT * FROM `correspondence` 
+    WHERE `CorrespondenceType` = '**NewRec**'
+    AND `MCID` = '$mcid';";
+  $res = doSQLsubmitted($sql);
+  $nbr_rows = $res->num_rows;
+  if ($nbr_rows == 0) {
+	 $recno = $_REQUEST['id'];
+	 $sql = "SELECT * FROM `correspondence` where `CORID`='$recno'";
+	 $res = doSQLsubmitted($sql);
+	 }
 $row = $res->fetch_assoc();
 $corrtype=$row['CorrespondenceType'];$datesent=$row['DateSent'];$note=$row['Notes'];$source=$row['SourceofInquiry'];
 	}

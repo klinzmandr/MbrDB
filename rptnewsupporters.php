@@ -72,8 +72,8 @@ if ($action == 'continue') {
 //  echo '<pre> MTypes '; print_r($mtarray); echo '</pre>';
   $typelist = implode("','", $mtarray);
 	$sql= "SELECT `members`.*, `members`.`MemDate`, `members`.`MCID`, `donations`.`MCID` AS `MCID-Funding`, `donations`.`DonationDate`, `donations`.`TotalAmount`, `donations`.`Purpose`, `members`.`MemDate` 
-	FROM `pacwilic_mbrdb`.`donations` AS `donations`, 
-		`pacwilic_mbrdb`.`members` AS `members` 
+	FROM `donations` AS `donations`, 
+		   `members` AS `members` 
 	WHERE (`donations`.`MCID` = `members`.`MCID` 
 	AND `members`.`MemDate` BETWEEN '$sd' AND '$ed' 
 	AND `donations`.`DonationDate` BETWEEN '$sd' AND '$ed' 

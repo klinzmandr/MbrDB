@@ -54,7 +54,7 @@ if ($action == 'search') {
 	//$sdts = UNIX_TIMESTAMP($sd); $edts = strtotime($ed);
 	//echo "log search action input: $search<br />";
 	//$sql = "SELECT * FROM `log` WHERE ( `DateTime` >= '$sd' AND `DateTime` <= '$ed' ) AND ( `User` LIKE '$search' OR `SQL` LIKE '$search' OR `Page` LIKE '$search' );";	
-	$sql = "SELECT * FROM `log` WHERE ( `DateTime` BETWEEN '$sd' AND '$ed' ) AND ( `User` LIKE '$search' OR `SQL` LIKE '$search' OR `Page` LIKE '$search' );";
+	$sql = "SELECT * FROM `log` WHERE ( `DateTime` BETWEEN '$sd' AND '$ed' ) AND ( `User` LIKE '$search' OR `Text` LIKE '$search' OR `Page` LIKE '$search' );";
 	//echo "sql: $sql<br />";
 	$res = doSQLsubmitted($sql);
 	$rowcount = $res->num_rows;
@@ -65,7 +65,7 @@ if ($action == 'search') {
 		//echo '<pre> Log record'; print_r($r); echo '</pre>';
 		$seclevel = $r[SecLevel];
 		//echo "seclevel: $seclevel<br />";
-		echo "<tr><td>$r[LogID]</td><td>$r[DateTime]</td><td>$r[User]</td><td>$seclevel</td><td>$r[Page]</td><td>$r[SQL]</td></tr>";
+		echo "<tr><td>$r[LogID]</td><td>$r[DateTime]</td><td>$r[User]</td><td>$seclevel</td><td>$r[Page]</td><td>$r[Text]</td></tr>";
 		}
 	echo '</table>';
 	

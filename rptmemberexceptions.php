@@ -42,7 +42,8 @@ $sql = "SELECT *
 	FROM `members` 
 	WHERE `Inactive` = 'FALSE' 
 		AND `MemStatus` = '0' 
-		AND ( `LastDuesDate` >= '$expdate' OR `LastDonDate` >= '$expdate' ) 
+		AND ( `LastDuesDate` >= '$expdate' 
+		 OR `LastDonDate` >= '$expdate' ) 
 	ORDER BY `MCID` ASC;"; 
 $res = doSQLsubmitted($sql);
 $rowcnt = $res->num_rows;
@@ -59,11 +60,10 @@ echo "<p>There were $rowcnt records classified as &apos;0-Contacts&apos; that ma
 	while ($r = $res->fetch_assoc()) {
 		//echo'<pre> contacts '; print_r($r); echo '</pre>';
 		echo "<tr><td>$r[MCID]</td><td>$r[MCtype]</td><td>$r[NameLabel1stline]</td><td>$r[LastDuesDate]</td><td>$r[LastDuesAmount]</td><td>$r[LastDonDate]</td><td>$r[LastDonAmount]</td></tr>";
-
 		}
-	echo '</table>----- END OF LIST -----<br />';
 	}
-
+echo '</table>----- END OF LIST -----<br />';
+	
 $sql = "SELECT * 
 	FROM `members` 
 	WHERE `Inactive` = 'FALSE' 
@@ -90,23 +90,25 @@ echo "</table>----- END OF LIST -----<br />";
 $sql = "SELECT * 
 	FROM `members` 
 	WHERE `Inactive` = 'FALSE' 
-		AND ( `MemStatus` = '3' ) 
-		AND ( `LastDonDate` IS NOT NULL 
-		AND `LastDuesDate` >= '$expdate' ) 
+		AND `MemStatus` = '3' 
+		AND `LastDonDate` IS NOT NULL 
+		AND `LastDonDate` <= '$expdate'
+		AND `LastDonAmount` >= 0
 	ORDER BY `MCID` ASC;";
 $res = doSQLsubmitted($sql);
 $rowcount = $res->num_rows;
 //echo "SQL: $sql<br />";
 //echo "rowcount: $rowcount<br />";
-echo "<h4>3-Donors with NO Donations</a></h4>";
+
+echo "<h4>3-Donors <b>without</b> Non-Dues Funding</a></h4>";
 if ($rowcount > 0) {
 echo "<p>There were $rowcount records classified as &apos;3-Donor&apos; that have NO non-Dues payment logged within the expriation period.  These member records should be reviewed and reclassified if warranted.</p>
 
 <p>The expiration date used is $expdate</p>";
 	echo '<table border="0" class="table table-condensed">
-<tr><th>MCID</th><th>Name</th><th>MCtype</th><th>Last Don. Date</th><th>Last Don. Amount</th></tr>';
+<tr><th>MCID</th><th>Name</th><th>MCtype</th><th>Non-Dues Purpose</th><th>Date</th><th>Amount</th></tr>';
 	while ($r = $res->fetch_assoc()) {			
-		echo "<tr><td>$r[MCID]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[LastDonDate]</td><td>$r[LastDonAmount]</td></tr>";
+		echo "<tr><td>$r[MCID]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[LastDonPurpose]</td><td>$r[LastDonDate]</td><td>$r[LastDonAmount]</td></tr>";
 		}
 	}
 echo "</table>----- END OF LIST -----<br />";

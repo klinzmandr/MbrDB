@@ -7,6 +7,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body onload="initAllFields(MemStat)">
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <?php
 // ====================================
 //
@@ -57,9 +60,9 @@ $expdate = calcexpirationdate();									// this is the expiration period
 //echo "expdate: $expdate<br>";
 
 // must be uncommented for DW server version, 
-//$sql = "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
+$sql = "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
 //echo "sql: $sql<br>";
-//$status = doSQLsubmitted($sql);
+$status = doSQLsubmitted($sql);
 //echo "status: $status<br>";
 
 $sql = "SELECT `donations`.`MCID`, `donations`.`Purpose`, `donations`.`DonationDate`, 
@@ -104,7 +107,6 @@ To be included in this list the MCID must:
 	<li>a payment marked as &apos;Dues&apos; has not been entered in the last 11 months, and</li>
 	<li>the last notice has not been sent within the last 10 days.</li>
 </ol>
-<script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
 </div></body></html>
 noExp;
 	exit;
@@ -168,13 +170,14 @@ while ($r = $results->fetch_assoc()) {
 // correspondence type for each MCID.  The array key for each is the MCID
 
 // now prepare the output page 
-print <<<formPart1
+?>
+
 <script>
 function initAllFields(form) {
 // Initialize all form controls
   with (form) {
-		initSelect(rptmemstatus,"$rptmemstatus");
-		initSelect(rnseq,"$rnseq");
+		initSelect(rptmemstatus,"<?=$rptmemstatus?>");
+		initSelect(rnseq,"<?=$rnseq?>");
   	}
 	}
 	
@@ -207,11 +210,11 @@ function initSelect(control,value) {
 </form>
 
 <script>
-function redirector(button) {
-	var btn = button.value;
+function redirector(inp) {
+	var btn = inp.value;
 	//alert("redirect button action: " + btn);
 	if (btn == "SendEmail") {
-		var l = EmailAddr.length;
+		var l = EmailAddr.length;   // defined in Incls/datautils.inc.php 
 		if (l == 0) {
 			alert("No FROM email address configured.\\nContact the system administrator.");
 			return false;
@@ -223,9 +226,53 @@ function redirector(button) {
 	return true;
 	}
 </script>
+<script>
+<!-- Register events to handle clearing of unwanted checkboxes -->
+$(document).ready(function(){
+  $("#butem").click(function() {
+    // alert("The button was clicked."); });
+    $("[id=rm]").prop("checked", false);
+    $("[id=ia]").prop("checked", false);
+    return redirector("SendEmail");
+    });
+  $("#butrm").click(function() {
+    // alert("The button was clicked."); });
+    $("[id=em]").prop("checked", false);
+    $("[id=ia]").prop("checked", false);
+    return redirector("SendMail");
+    });
+  $("#butia").click(function() {
+    // alert("The button was clicked."); });
+    $("[id=rm]").prop("checked", false);
+    $("[id=em]").prop("checked", false);
+    return redirector("MakeInactive");
+    });
+});
+</script>
+<script>
+<!-- Set/clear individual checkbox groups -->
+function chk(fld) {
+  // alert("checkboxes");
+  var f = fld.id;         // get element id attribute from object
+  var c = fld.checked;
+  var anyem = $("[id=em]").prop("checked");
+  if (f == 'chkem') {
+    if (c === false) $("[id=em]").prop("checked", false);
+    else             $("[id=em]").prop("checked", true);
+    }
+  if (f == 'chkrm') {
+    if (c === false) $("[id=rm]").prop("checked", false);
+    else             $("[id=rm]").prop("checked", true);
+    }
+  if (f == 'chkia') {
+    if (c === false) $("[id=ia]").prop("checked", false);
+    else             $("[id=ia]").prop("checked", true);
+    }
+  return true;
+  }
+</script>
 
-formPart1;
-
+<?php
 // create array to use to sort
 //echo "resarray count before sort: " . count($resarray) . '<br>';
 foreach ($resarray as $row) {
@@ -247,7 +294,7 @@ $delay = "today -$listingthreshold days +24 hours";
 $notedate = strtotime($delay);
 
 // NOTE: form action set based on button selection
-echo "<form name=\"boxform\" action=\"\" method=\"post\">";
+echo '<form name="boxform" action="" method="post">';
 
 // array $dondate is expired MCIDs sorted by date+mcid
 // array $dr is the date of the last dues payment
@@ -278,7 +325,6 @@ To be included in this list the MCID must:
 	<li>a payment marked as &apos;Dues&apos; has not been entered since $expdate,</li>
 	<li>the last reminder has not been sent within the last $listingthreshold days.</li>
 </ol>
-<script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
 </div></body></html>
 emptyList;
 	exit;
@@ -291,8 +337,14 @@ elseif ($rptmemstatus == 3) $rpttitle = "List of $rowcount Donors without recent
 elseif ($rptmemstatus == 0) $rpttitle = "List of $rowcount Contacts without recent funding support";
 echo "<font size=\"+3\">$rpttitle</font><br />";
 echo "Expiration date being used: $expdate. Notices sent since " . date('Y-m-d',$notedate) .' not listed.<br />';
-echo "<table border=\"0\" class=\"table table-condensed\">
-<tr><th>MCID</th><th>Name</th><th align=\"center\">EMail?</th><th align=\"center\">Mail?</th><th>Last Paid</th><th>Amount</th><th>Purpose</th><th align=\"center\">Inactive?</th><th>Rem Cnt.</th><th>LastReminder</th><th>RemType</th></tr>";
+echo '<table border="0" class="table table-condensed">
+<tr><th>MCID</th><th>Name</th><th align="center">EMail?</th><th align="center">Mail?</th><th>Last Paid</th><th>Amount</th><th>Purpose</th><th align="center">Inactive?</th><th>Rem Cnt.</th><th>LastReminder</th><th>RemType</th></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td>
+    <td align="center">All:&nbsp;<input onclick="return chk(this)" type="checkbox" id="chkem" ></td>
+    <td align="center">All:&nbsp;<input onclick="return chk(this)" type="checkbox" id="chkrm" ></td>
+    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+    <td align="center">All:&nbsp;<input onclick="return chk(this)" type="checkbox" id="chkia" ></td>
+    <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
 
 foreach ($finalarray as $key=>$row) {
 	$mcid=rtrim($row['MCID']); $dondate=$key; 
@@ -307,19 +359,17 @@ foreach ($finalarray as $key=>$row) {
 	if ($remcnt > 0) $remtype = $row[LastCorrType];
 	$emcode = $mcid . ':' . $emailaddr;
 
-	//$mok = "<input type=\"checkbox\" name=\"mail[]\" value=\"$emcode\" disabled>";
 	$mok = '';
 	if ($row[Mail] == 'TRUE') {
-		$mok = "<input type=\"checkbox\" name=\"mail[]\" value=\"$emcode\">";
+		$mok = '<input id="rm" type="checkbox" name="mail[]" value="'.$emcode.'">';
 		}
 
-	//$emok = "<input type=\"checkbox\" name=\"email[]\" value=\"$emcode\" disabled>";
 	$emok = '';
 	if ($row[E_Mail] == 'TRUE') {
-		$emok = "<input type=\"checkbox\" name=\"email[]\" value=\"$emcode\">";
+		$emok = '<input id="em" type="checkbox" name="email[]" value="'.$emcode.'">';
 		}
 		
-	$inact = "<input type=\"checkbox\" name=\"inact[]\" value=\"$emcode\">";
+	$inact = '<input id="ia" type="checkbox" name="inact[]" value="'.$emcode.'">';
 	if ($purpose == 'Dues') $amt = $lastduesamount;
 	else $amt = $lastdonamount;
 print <<<bulletForm
@@ -328,20 +378,18 @@ print <<<bulletForm
 bulletForm;
 	}
 }
-
-// now we add an extra row with the buttons
-echo "<tr><td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><input type=\"submit\" value=\"SendEmail\" onclick=\"return redirector(this)\"></td>
-<td><input type=\"submit\" name=\"submit\" value=\"SendMail\" onclick=\"return redirector(this)\"></td>
-<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
-<td><input type=\"submit\" name=\"submit\" value=\"MakeInactive\" onclick=\"return redirector(this)\"></td>
-<td>&nbsp;</td><td>&nbsp;</td>
-</tr></form></table></div>  <!-- container -->";
-
 ?>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+<!-- now we add an extra row with the buttons -->
+<tr><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><input id="butem" type="submit" value="SendEmail" onclick="return redirector(this)"></td>
+<td><input id="butrm" type="submit" name="submit" value="SendMail" onclick="return redirector(this)"></td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+<td><input id="butia" type="submit" name="submit" value="MakeInactive" onclick="return redirector(this)"></td>
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></form></table></div>  <!-- container -->
+
+
 </div>
 </body>
 </html>
