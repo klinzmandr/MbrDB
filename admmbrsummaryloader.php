@@ -89,7 +89,7 @@ $clrrc = sqlupdate('members',$UPDarray, '1');
 			$duesamtarray[$r[MCID]] = $r[TotalAmount];
 			$duesdatearray[$r[MCID]] = $r[DonationDate];	
 			}
-		else {
+    else {
 			$purarray[$r[MCID]] = $r[Purpose];
 			$donamtarray[$r[MCID]] = $r[TotalAmount];			
 			$dondatearray[$r[MCID]] = $r[DonationDate];
@@ -122,7 +122,7 @@ $clrrc = sqlupdate('members',$UPDarray, '1');
 		if (isset($corrdatearray[$k])) $flds[LastCorrDate] = $corrdatearray[$k];
 		if (isset($corrtypearray[$k])) $flds[LastCorrType] = $corrtypearray[$k];
 		//echo "<pre>$k update "; print_r($flds); echo '</pre>';
-		if ($k != '') {
+		if (($k != '' AND (count($flds) > 0))) {
 			sqlupdate('members', $flds, "`MCID` = '$k'");
 			$mbrcnt++;
 			}
