@@ -93,6 +93,7 @@ print <<<menupart3
 	<!-- <li><a onclick="return chkchg()" href="remnotice.php">Send Letter Notice to MCID</a></li> -->
 	<li><a onclick="return chkchg()" href="remlabelsandletters.php">Print Labels and Letters</a></li>
 	<li><a href="reminprogressreminderlist.php" target="_blank">In-Progress Reminders</a></li>
+	<li><a href="remconversions.php" target="_blank">Reminder Conversion Report</a></li>
 	<li><a onclick="return chkchg()" href="remindersexplained.php">Reminders Explained</a></li>
 	<!-- <li><a href="#">?</a></li> -->
 </ul>
@@ -103,6 +104,7 @@ print <<<menupart3
 <ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
 	<li><a href="rptFundingPaidbytype.php" target="_blank">Funding Paid Report by Mbr Type</a></li>
 	<li><a href="rptFundingPaidbyfund.php" target="_blank">Funding Paid Report by Funding Type</a></li>
+	<li><a href="rptFundingPaidbycampaign.php" target="_blank">Funding Paid Report by Campaign</a></li>
 	<li><a href="rptprintlabelsbytype.php" target="_blank">Print Labels on Criteria by Mbr Type</a></li>
 	<li><a href="rptmembersummary.php" target="_blank">Membership Drill Down</a></li>
 	<li><a href="rptfundingdrilldown.php" target="_blank">Funding Drill Down</a></li>
@@ -117,6 +119,7 @@ print <<<menupart3
 	<li><a href="rptsybunty.php" target="_blank">SYBUNTY Report</a></li>
 	<li><a href="rptmonthlyreport.php" target="_blank">Monthly Report</a></li>
 	<li><a href="rptfollowups.php" target="_blank">Follow Up Forms</a></li>
+	<li><a href="../charts" target="_blank">Database Charts</a></li>
 	<li><a href="#myModal" data-toggle="modal" data-keyboard="true">About MbrDB</a></li>
 </ul>
 </li>  <!-- class="dropdown" -->

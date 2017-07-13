@@ -80,6 +80,7 @@ function adminchk() {
 	<li><a href="rptmembersbytype.php" target="_blank">List All Members by Type</a></li>
 	<li><a href="rpttransactionsummary.php" target="_blank">Transactions Summary Report</a></li>
 		<li><a href="rptdbsummary.php" target="_blank">DB Summary Report</a></li>
+		<li><a href="rptremconversions.php" target="_blank">Reminder Conversions Report</a></li>
   	</ul>  <!-- dropdown-menu -->
   </li>  <!-- dropdown -->
 

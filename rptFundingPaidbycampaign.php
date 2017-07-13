@@ -3,7 +3,7 @@
 <head>
 <title>Funding Paid Report</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="all">
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
 <body>
@@ -21,36 +21,17 @@ include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 
-$systemlists = readdblist('Programs');
-$progtypes = formatdbrec($systemlists);
 $campaignlists = readdblist('Campaigns');
 $camptypes = formatdbrec($campaignlists);
-// echo '<pre> progtypes '; print_r($progtypes); echo '</pre>';
 // echo '<pre> camptypes '; print_r($camptypes); echo '</pre>';
-
-// load program arrays for creating checkboxes
-foreach ($progtypes as $k => $v) {
-  if ($k == ' ') continue;
-	list($val,$desc) = explode('-',$k);
-	switch ($val) {
-		case 'Dues': $dues[$desc] = $k; break;
-		case 'Don': $don[$desc] = $k; break;
-		case 'Dir': $dir[$desc] = $k; break;
-		case 'Ink': $ink[$desc] = $k; break;
-		case 'Gra': $gra[$desc] = $k; break;
-		case 'Fun': $fun[$desc] = $k; break;
-		case 'Prg': $prg[$desc] = $k; break;
-		default : $other[$desc] = $k; break;
-		}
-	}
 
 //echo "action: $action<br>";
 if ($action == '') {
 	//include 'Incls/vardump.inc.php';
 	print <<<pagePart1
-<h3>Funding Paid Report <a href="javascript:self.close();" class="btn btn-primary"><strong>(CLOSE)</strong></a></h3>
-<p>This report lists the total funding provided for each MCID based on the funding type selected.  The output is sorted by Total amount in descending sequence.</p>
-<h4>Select one or more of the following criteria:</h4>
+<h3>Campaign Funding Report <a href="javascript:self.close();" class="btn btn-primary"><strong>(CLOSE)</strong></a></h3>
+<p>This report lists the total funding provided for each MCID based on the Campaign selected.  The output is sorted by Total amount in descending sequence.</p>
+<h4>Select one or more from the following list:</h4>
 
 <script>
 $(document).ready(function () {
@@ -70,9 +51,8 @@ function chkvals(form) {
 	//alert("check values entered");
 	var errmsg = ""; var chks = 0; var chkcnt = 0;
 	var chks = $('[id="cpg"]:checked').length;         // count checked campaigns
-	chks = chks + $('[name="cbox[]"]:checked').length; // count checked programs
 	if (chks == 0) {
-		errmsg += "No Funding/Campaign Type(s) have been selected\\n";
+		errmsg += "No Campaign(s) have been selected\\n";
 		chkcnt += 1;
 		}
 
@@ -110,83 +90,32 @@ function chkvals(form) {
 
 </script>
 
-<form action="rptFundingPaidbyfund.php" method="post"  class="form" onsubmit="return chkvals(this)">
+<form action="rptFundingPaidbycampaign.php" method="post"  class="form" onsubmit="return chkvals(this)">
 <ul>
 
 pagePart1;
 
-echo '<b>Funding Type(s)</b><br>
-<table width="95%" class="table-condensed" border=1>
-<tr><td valign=top><input type=checkbox id="cb0main"> Dues:<ul>';
-foreach ($dues as $k => $v) {
-//	echo "fund type key: $k, value:$v<br>";
-	echo "
-<input type=checkbox id=\"cb0\" name=cbox[] value=\"$v\"> - $v<br>
-";
-	}
-echo '</ul></td><td valign=top><input type=checkbox id="cb1main"> Donations:<ul>
-';
-foreach ($don as $k => $v) {
-//	echo "mctype key: $k, value:$v<br>";
-	echo "
-<input type=checkbox id=\"cb1\" name=cbox[] value=\"$v\"> - $v<br>
-";
-	}
-echo '</ul></td><td valign=top><input type=checkbox id="cb2main"> Directed Donations:<ul>';
-foreach ($dir as $k => $v) {
-//	echo "mctype key: $k, value:$v<br>";
-	echo "
-<input type=checkbox id=\"cb2\" name=cbox[] value=\"$v\"> - $v<br>
-";
-	}
-echo '</ul></td><td valign=top><input type=checkbox id="cb3main"> In-kind Donations:<ul>';
-foreach ($ink as $k => $v) {
-//	echo "mctype key: $k, value:$v<br>";
-	echo "
-<input type=checkbox id=\"cb3\" name=cbox[] value=\"$v\"> - $v<br>
-";
-	}
-echo '</ul></td></tr><tr><td valign=top><input type=checkbox id="cb4main"> Grants:<ul>';
-foreach ($gra as $k => $v) {
-//	echo "mctype key: $k, value:$v<br>";
-	echo "
-<input type=checkbox id=\"cb4\" name=cbox[] value=\"$v\"> - $v<br>
-";
-	}
-echo '</ul></td><td valign=top><input type=checkbox id="cb5main"> Fund Raising & Events:<ul>';
-foreach ($fun as $k => $v) {
-//	echo "mctype key: $k, value:$v<br>";
-	echo "
-<input type=checkbox id=\"cb5\" name=cbox[] value=\"$v\"> - $v<br>
-";
-	}
-echo '</ul></td><td valign=top><input type=checkbox id="cb6main"> Prog. Income:<ul>';
-foreach ($prg as $k => $v) {
-//	echo "type key: $k, value:$v<br>";
-	echo "
-<input type=checkbox id=\"cb6\"  name=cbox[] value=\"$v\"> - $v<br>
-";
-	}
+echo '
+<table width="95%" class="table-condensed" border=0>';
 // echo '<pre> camptypes '; print_r($camptypes); echo '</pre>';	
-if (count($camptypes) > 0) {
-  echo '</ul></td><td valign=top><input type=checkbox id="cpgmain"> <b>Campaigns</b>:<ul>';
+echo '</ul></td><td valign=top><input type=checkbox id="cpgmain">&nbsp;&nbsp;<b>All Active Campaigns</b>:<ul>';
   foreach ($camptypes as $k => $v) {
     if ($v == '') continue;
   // echo "type key: $k, value:$v<br>";
 	echo "  
-  <input id=\"cpg\" type=checkbox name=cpg[] value=\"$k\"> - $v<br>
+  <input id=\"cpg\" type=checkbox name=cpg[] value=\"$k\">&nbsp;&nbsp;$v<br>
   ";
 	}
-}
 
-echo '</ul></td></tr></table>';
+echo '</td></tr></table></ul>';
 
 // <input type="checkbox" name="mstat0" value="0" /> - 0-Contacts, or<br />
 
 print <<<pagePart2
-<b>AND</b><br />
+<ul><b>AND</b></ul>
+<ul><ul>
 <input type="checkbox" name="noemail" value="noemail"> - Exclude those with email addresses<br>
-<input type="checkbox" name="daterangechk" value="daterange" size="1"> - Funding Date Range is from:
+<input type="checkbox" name="daterangechk" value="daterange" size="0"> - Funding Date Range is from:
 <input type="text" name="sd" id="sd" value=""> and/or before: 
 <input type="text" name="ed" id="ed" value=""><br />
 <input type="checkbox" name="valrangechk" value="valrange" size="1"> - Total Funding Range :
@@ -195,7 +124,7 @@ print <<<pagePart2
 <input type="hidden" name="action" value="search"><br />
 <input type="submit" name="submit" value="submit">
 </form>
-</ul>
+</ul></ul>
 pagePart2;
 
 	}
@@ -205,7 +134,6 @@ else {
 // use input parameters to select records
 // include 'Incls/vardump.inc.php';
 if ($action == 'search') {
-	$cbox = isset($_REQUEST['cbox']) ? $_REQUEST['cbox'] : array();
 	$cpgbox = isset($_REQUEST['cpg']) ? $_REQUEST['cpg'] : array();
 
 	$drangelo = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : '';
@@ -215,14 +143,11 @@ if ($action == 'search') {
 	$noemail = isset($_REQUEST['noemail']) ? $_REQUEST['noemail'] : '';
 
 // echo '<pre> cbox'; print_r($cbox); echo '</pre>';
-	if (count($cbox) > 0) $cblist = "('" . implode("','",$cbox) . "')";
 	if (count($cpgbox) > 0) $cpglist = "('" . implode("','",$cpgbox) . "')";
   // echo "cblist: $cblist<br>";
   // echo "cpglist: $cpglist<br>";
   
   $cpgwhere = "`donations`.`Campaign` IN $cpglist";
-	$mbrwhere = "`donations`.`Program` in $cblist ";
-	$rptmbr = 'In list: '. $cblist;
 	$rptcpg = 'In campaign: '.$cpglist;
 //	echo "$rptmbr<br />";
 	
@@ -259,7 +184,6 @@ if ($action == 'search') {
 		//echo "Value: $having<br />";
 		}
 	
-	if (count($cbox) > 0) $where = " $mbrwhere AND";
 	if (count($cpgbox) > 0) $where .= "$cpgwhere AND"; 
 	if ($extwhere != '') $where .= "( $extwhere ) AND";
 	$where = rtrim($where,' AND');
@@ -358,7 +282,7 @@ echo "Criteria: $rptmbr $rptcpg $rptdate $rptrng<br />";
 $grandtotal = number_format($grandtotal);
 echo "Rows extracted: $nbr_rows, No mail: $nomail, Missing address: $noaddr, Email Excluded: $withemail, Records selected: " . count($results) . ", Grand Total: $" . $grandtotal . '<br>';
 
-echo "<a href=\"downloads/FundingPaidByFund.csv\" download=\"FundingPaidByType.csv\">DOWNLOAD CSV FILE</a>";
+echo "<a href=\"downloads/FundingPaidByCampaign.csv\" download=\"FundingPaidByType.csv\">DOWNLOAD CSV FILE</a>";
 echo "<button type=\"button\" class=\"btn btn-xs btn-default\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Fields separated by semicolon(;)\nText fields are quoted.\"><span class=\"glyphicon glyphicon-info-sign\" style=\"color: blue; font-size: 20px\"></span></button>";
 if (count($results) > 0) {
 $csv[] =
@@ -376,7 +300,7 @@ foreach ($results as $k => $r) {
 	//echo "<pre>"; echo "key: $k "; print_r($r); echo "</pre>";	
 	}
 echo "</table>";
-file_put_contents('downloads/FundingPaidByFund.csv',$csv);
+file_put_contents('downloads/FundingPaidByCampaign.csv',$csv);
 	}
 echo '----- END OF LISTING -----<br />';
 }
