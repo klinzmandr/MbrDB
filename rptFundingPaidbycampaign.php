@@ -121,7 +121,7 @@ echo '</td></tr></table></ul>';
 print <<<pagePart2
 <ul><b>AND</b></ul>
 <ul><ul>
-<input type="checkbox" name="noemail" value="noemail"> - Exclude those with email addresses<br>
+<!-- <input type="checkbox" name="noemail" value="noemail"> - Exclude those with email addresses<br> -->
 <input type="checkbox" name="daterangechk" value="daterange" size="0"> - Funding Date Range is from:
 <input type="text" name="sd" id="sd" value="" autocomplete="off"> and/or before: 
 <input type="text" name="ed" id="ed" value="" autocomplete="off"><br />
