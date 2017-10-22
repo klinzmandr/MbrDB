@@ -23,17 +23,8 @@ $yr = isset($_REQUEST['yr']) ? $_REQUEST['yr'] : date('Y', strtotime("now"));
 echo '<h3><font color="red">L</font>ast <font color="red">Y</font>ear <font color="red">BU</font>t <font color="red">N</font>ot <font color="red">T</font>his <font color="red">Y</font>ear(LYBUNTY) Report&nbsp;&nbsp;<a class="btn btn-sm btn-primary" href="javascript:self.close();">(CLOSE)</a></h3>';
 
 if ($action == 'rpt') {
-	$sql = "SELECT `donations`.`MCID`, 
-		SUM( `donations`.`TotalAmount` ) AS `YrlyDon`, 
-		YEAR( `donations`.`DonationDate` ) AS `DonYr`, 
-		`members`.`NameLabel1stline`, `MemStatus`,`FName`, `LName`, 
-		`Organization`,`AddressLine`,`City`,`State`,`ZipCode`,`PrimaryPhone`,
-		`EmailAddress`, `E_Mail`, `LastDonAmount`,`LastDonDate`,`LastDuesAmount`,`LastDuesDate`
-	FROM `donations`, `members` 
-	WHERE `donations`.`MCID` = `members`.`MCID` 
-	GROUP BY `donations`.`MCID`, YEAR( `donations`.`DonationDate` ) 
-	ORDER BY `donations`.`MCID` ASC, `DonYr` ASC";
-	$res = doSQLsubmitted($sql);
+	$sql = "CALL YBUNTYqry()";
+	$res = $mysqli->query($sql);
 	$rc = $res->num_rows;
 	$YRarray = array(); $ADRarray = array(); $CSVarray = array(); $csv = array();
 	$grtot = 0;
@@ -43,7 +34,7 @@ if ($action == 'rpt') {
 	echo '<table class="table table-condensed">
 	<tr><th>MCID</th><th>'.$pyr.'Tot</th><th>LastGift</th><th>LastGiftDate</h><th>MemSt</th><th>Label Name</th><th>First</th><th>Last</th><th>Organization</th><th>Address</th><th>City</th><th>
 St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
-	$csv[] =  'MCID;'.$pyr."Tot;LastGiftAmt;LastGiftDate;MemSt;Label Name;First;Last;Organization;Address;City;St;Zip;Phone;Email\n";
+	$csv[] =  'MCID;CummTot;LastGiftAmt;LastGiftDate;MemSt;Label Name;First;Last;Organization;Address;City;St;Zip;Phone;Email\n';
 	while ($r = $res->fetch_assoc()) {
 //		echo '<pre> year '; print_r($r); echo '</pre>';
 		if ($r[DonYr] >= $yr) {		// ignore MCID if donated for given year
@@ -51,7 +42,14 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 			unset($ADRarray[$r[MCID]]);
 			continue;
 			}
-		if ($r[YrlyDon] == 0) {		// ignore MCID if nothing giv
+		// ignore MCID if nothing given or less than 100
+		if (($r[YrlyDon] == 0) OR ($r[YrlyDon] < 100)) {
+			unset($YRarray[$r[MCID]]);
+			unset($ADRarray[$r[MCID]]);
+			continue;
+			}
+		// ignore MCID if Inactive
+		if ($r[Inactive] == 'TRUE') {		
 			unset($YRarray[$r[MCID]]);
 			unset($ADRarray[$r[MCID]]);
 			continue;
@@ -67,6 +65,12 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 				$lgamt = $r[LastDuesAmount];
 				$lgdate = $r[LastDuesDate];
 				}
+			// ignore MCID if yearly funding less than or equal to last dues or donation amt
+  		if (($r[YrlyDon] <= $lgamt)) {
+  			unset($YRarray[$r[MCID]]);
+  			unset($ADRarray[$r[MCID]]);
+  			continue;
+  			}
 			$flgamt = number_format($lgamt,0);
 //		echo "lgdate: $lgdate, lgamt: $lgamt<br>";
 			$ADRarray[$r[MCID]] = "<td align=right>$$flgamt</td><td>$lgdate</td><td>$r[MemStatus]</td><td>$r[NameLabel1stline]</td><td>$r[FName]</td><td>$r[LName]</td><td>$r[Organization]</td><td>$r[AddressLine]</td><td>$r[City]</td><td>$r[State]</td><td>$r[ZipCode]</td><td>$r[PrimaryPhone]</td><td>$em</td>";
@@ -74,7 +78,7 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 			}		
 		}
 	$fgrtot = number_format($grtot);
-	echo "Supporters for $pyr with NO funding for $yr: ".count($YRarray)." for a total of $$fgrtot.&nbsp;&nbsp;";
+	echo "Supporters for $pyr with $100 or more funding and no funding for $yr. Count: ".count($YRarray).'&nbsp;&nbsp;';
 //	echo '<pre> YR '; print_r($YRarray); echo '</pre>';
 //	echo '<pre> ADR '; print_r($ADRarray); echo '</pre>';
 	echo "<a href=\"downloads/lybunty.csv\" download=\"lybunty.csv\">DOWNLOAD CSV FILE</a>";
@@ -97,26 +101,45 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 
 if ($action == '') {
 print <<<pagePart1
-
-<p>This report lists all member ids that have provided financial support for the previous year but have not provided <b>ANY</b> financial support for the given year.</p>
+<div class="container">
+<p>This report lists all member ids that have provided financial support for the previous year but have not provided <b>ANY</b> financial support for the selected year.</p>
 <br>
 Select the Year: <br>
 <form action="rptlybunty.php">
 <input type="hidden" name="action" value="rpt">
-<select name=yr>
-<option value=2020>2020</option>
-<option value=2019>2019</option>
-<option value=2018>2018</option>
-<option value=2017>2017</option>
-<option value=2016 selected>2016</option>
-<option value=2015>2015</option>
-<option value=2014>2014</option>
-<option value=2013>2013</option>
-<option value=2012>2012</option>
+<select name=yr onchange="javascript: this.form.submit();">
+<option value=""></option>
 <option value=2011>2011</option>
+<option value=2012>2012</option>
+<option value=2013>2013</option>
+<option value=2014>2014</option>
+<option value=2015>2015</option>
+<option value=2016>2016</option>
+<option value=2017>2017</option>
+<option value=2018>2018</option>
+<option value=2019>2019</option>
+<option value=2020>2020</option>
 </select>
-<input type="submit" name="submit" value="CONTINUE">
 </form>
+<h3>Report Explaination</h3>
+<ol>
+	<li>Selection of a year from the drop down list will indicate the 'target' year.</li>
+	<li>All funding from January 1 to December 31 of the PRIOR year is included in the report.</li>
+	<li>All funding for dates after January 1 of the target year are ignored.</li>
+	<li>All accumulated funding less than $100 is ignored.</li>
+  <li>The count indicates the number of unique MCIDs included in the report</li>
+  <li>In the report:
+  <ol>
+    <li>The 'CummTot' column indicates the total accumulated value of all funding (dues, donations, etc.) paid by that supporter.</li>
+    <li>The LastGiftAmt column indicates the amount of the last funding provided by the supporter.</li>
+    <li>The LastGiftDate column is the date of the previous column.</li>
+    </ol>
+  <li>The download spreadsheet has the same column names and definitions.</li>  
+  </li>
+</ol>
+</p>
+
+</div>
 pagePart1;
 
 }
