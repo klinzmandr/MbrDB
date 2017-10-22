@@ -165,7 +165,8 @@ echo '</ul></td></tr></table>';
 
 print <<<pagePart2
 AND<br />
-<!-- <input type="checkbox" name="noemail" value="noemail"> - Exclude those with email addresses<br> -->
+<input type="checkbox" name="noemail" value="noemail"> - Exclude those with email addresses<br>
+<input type="checkbox" name="yesemail" value="yesemail"> - Exclude those WiTHOUT email addresses<br>
 <input type="checkbox" id=sdchk name="daterangechk" value="daterange" size="1"> - Funding Date Range is from:
 <input type="text" name="sd" id="sd" value="" autocomplete="off"> and/or before: 
 <input type="text" name="ed" id="ed" value="" autocomplete="off"><br />
@@ -217,6 +218,7 @@ $drangehi = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : '';
 $vrangelo = isset($_REQUEST['vrangelo']) ? $_REQUEST['vrangelo'] : '';
 $vrangehi	= isset($_REQUEST['vrangehi']) ? $_REQUEST['vrangehi'] : '';
 $noemail  = isset($_REQUEST['noemail']) ? $_REQUEST['noemail'] : '';
+$yesemail  = isset($_REQUEST['yesemail']) ? $_REQUEST['yesemail'] : '';
 
 if ($drangelo == '') $drangelo = '2001-01-01';
 if ($drangehi == '') $drangehi = date('Y-m-d',strtotime("now"));
@@ -271,15 +273,23 @@ if ($mysqli->errno != 0) {
 
 // check result rows for value check
 //echo "values - vrangehlo: $vrangelo, vrangehi: $vrangehi<br />";
+$withemail = 0; $withoutemail = 0;
 while ($row = $res->fetch_assoc()) {  // read results and do value range check
 	$mcid = $row[MCID];
-	if ($mcid == 'OTD00') continue; 
-//	echo '<pre> row returned '; print_r($row); echo '</pre>';
+	if ($mcid == 'OTD00') {
+	  $mcidcnt++;
+	  continue;
+    } 
 	if ($row[Inactive] == 'TRUE') {    // ignore if record marked inactive
     $inactcnt += 1;
     continue;
     }
   if (($noemail == 'noemail') && ($row[E_Mail] == 'TRUE')) {
+    $withoutemail++;
+    continue;
+    }  
+
+  if (($yesemail == 'yesemail') && ($row[E_Mail] == 'FALSE')) {
     $withemail++;
     continue;
     }  
@@ -292,6 +302,7 @@ while ($row = $res->fetch_assoc()) {  // read results and do value range check
   $mcidtotcnt[$key] += 1;
   }
 
+
 // delete any TOTAL mcid/campaign amounts not in the value range
 //  echo "vrangelo: $vrangelo, val: $mcidtot[$key], vrangehi: $vrangehi<br>";
 foreach ($mcidtot as $key => $tot) {
@@ -303,9 +314,10 @@ foreach ($mcidtot as $key => $tot) {
     $mcidtotcnt[$key] -= 1;    
     }
   }
-$withoutemail = count($results);
+// $withoutemail = count($results);
 
 //echo "rows: $nbr_rows, unique MCIDs: " . count($mcidtot) . '<br>';
+//echo "inactcnt: $inactcnt, withoutemail: $withoutemail, withemail: $withemail<br>";
 //echo '<pre> mcidtotcnt '; print_r($mcidtotcnt); echo '</pre>';
 //echo '<pre> mcidtot '; print_r($mcidtot); echo '</pre>';
 
@@ -330,8 +342,7 @@ $cnt = count($results);
 if ($blanks > 0) $blanks -= 1;
 echo "<div class=\"label\">";
 echo "
-Labels to Prt: $cnt<br />
-Excl w/wo Eml: $withemail/$withoutemail<br>
+<br>Labels to Prt: $cnt<br />
 ";
 echo '<a href="javascript:self.close();" >CLOSE</a>/
 <a href="rptprintlabelscorradder.php?count=' . $cnt . '">CONTINUE</a>
