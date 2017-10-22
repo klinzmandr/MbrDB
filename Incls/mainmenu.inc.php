@@ -25,8 +25,9 @@ body { padding-top: 50px; }      <!-- add padding to top of each page for fixed 
       <li><a onclick="return chkchg()" href="mbrinfotabbed.php">Mbr Info</a></li>
 menupart1;
 
+$sessionlevel = isset($_SESSION['SecLevel']) ? $_SESSION['SecLevel'] : '';
 // include EDI and Solicit menu options for special users
-if (($_SESSION['SecLevel'] == "devuser") OR ($_SESSION['SecLevel'] == "admin")) {
+if (($sessionlevel == "devuser") OR ($sessionlevel == "admin")) {
 print<<<menupart2
 <script>
 function confirmAdd() {
@@ -106,7 +107,9 @@ print <<<menupart3
 	<li><a href="rptFundingPaidbyfund.php" target="_blank">Funding Paid Report by Funding Type</a></li>
 	<li><a href="rptFundingPaidbycampaign.php" target="_blank">Funding Paid Report by Campaign</a></li>
 	<li><a href="rptprintlabelsbytype.php" target="_blank">Print Labels on Criteria by Mbr Type</a></li>
+	<li><a href="rptlastpaymentreport.php" target="_blank">Last Payment Report</a></li>
 	<li><a href="rptmembersummary.php" target="_blank">Membership Drill Down</a></li>
+	<li><a href="rptlastvoltimereport.php" target="_blank">Last Volunteer Time Report</a></li>
 	<li><a href="rptfundingdrilldown.php" target="_blank">Funding Drill Down</a></li>
 	<li><a href="rptnewsupporters.php" target="_blank">New Supporters by Date Range</a></li>
 	<li><a href="rptmemberexceptions.php" target="_blank">Membership Exception Report</a></li>
