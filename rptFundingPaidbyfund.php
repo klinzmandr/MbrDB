@@ -345,9 +345,9 @@ echo "<button type=\"button\" class=\"btn btn-xs btn-default\" data-toggle=\"too
 
 if (count($results) > 0) {
 $csv[] =
-"MCID;MemType;Program;Total;Cnt;Fname;Lname;Label1stLine;Salutation;Phone;EMail?;Email;Mail?;Address;City;St;Zip;Notes\n";
+"MCID;MemType;Total;Cnt;Fname;Lname;Label1stLine;Salutation;Phone;EMail?;Email;Mail?;Address;City;St;Zip;Notes\n";
 echo "<table class=\"table-condensed\">
-<tr><th>MCID</th><th>MemType</th><th>Program</th><th>Total(Cnt)</th><th>Name</th><th>Phone</th>
+<tr><th>MCID</th><th>MemType</th><th>Total(Cnt)</th><th>Name</th><th>Phone</th>
 <th>EMail?<th>Email</th><th>Mail?</th><th>Address</th><th>City/St/Zip</th><th>Notes</th></tr>";
 $translate = array("\\" => ' ', "\n" => ' ', "\t"=>' ', "\r"=>' ', "\"" =>'');
 foreach ($results as $k => $r) {
@@ -355,8 +355,8 @@ foreach ($results as $k => $r) {
 	if ($r[E_Mail] == 'TRUE') $r[E_Mail] = 'Yes'; else $r[E_Mail] = 'No';
 	if ($r[Mail] == 'TRUE') $r[Mail] = 'Yes'; else $r[Mail] = 'No'; 
 	$mcid = $r[MCID]; $key = $r[MCID].$r[Campaign]; $cmpcnt = $mcidtotcnt[$key];
-	$csv[] = "\"$mcid\";$r[MCtype];\"$r[Program]\";$mcidtot[$key];\"$cmpcnt\";\"$r[FName]\";\"$r[LName]\";\"$r[NameLabel1stline]\";\"$r[CorrSal]\";$r[PrimaryPhone];$r[E_Mail];$r[EmailAddress];$r[Mail];\"$r[AddressLine]\";$r[City];$r[State];$r[ZipCode];\"$note\"\n";
-	echo "<tr><td>$mcid</td><td>$r[MCtype]</td><td>$r[Program]</td><td>$$mcidtot[$key](x$cmpcnt)</td><td>$r[NameLabel1stline]</td><td>$r[PrimaryPhone]</td><td>$r[E_Mail]</td><td>$r[EmailAddress]</td><td>$r[Mail]</td><td>$r[AddressLine]</td><td>$r[City], $r[State], $r[ZipCode]</td><td>$note</td></tr>";
+	$csv[] = "\"$mcid\";$r[MCtype];$mcidtot[$key];\"$cmpcnt\";\"$r[FName]\";\"$r[LName]\";\"$r[NameLabel1stline]\";\"$r[CorrSal]\";$r[PrimaryPhone];$r[E_Mail];$r[EmailAddress];$r[Mail];\"$r[AddressLine]\";$r[City];$r[State];$r[ZipCode];\"$note\"\n";
+	echo "<tr><td>$mcid</td><td>$r[MCtype]</td><td>$$mcidtot[$key](x$cmpcnt)</td><td>$r[NameLabel1stline]</td><td>$r[PrimaryPhone]</td><td>$r[E_Mail]</td><td>$r[EmailAddress]</td><td>$r[Mail]</td><td>$r[AddressLine]</td><td>$r[City], $r[State], $r[ZipCode]</td><td>$note</td></tr>";
 	//echo "<pre>"; echo "key: $k "; print_r($r); echo "</pre>";	
 	}
 echo "</table>";
