@@ -32,6 +32,7 @@ print <<<pagePart1
 	<li><a class="btn btn-primary btn-xs" href="admreassignfunding.php">Reassign Funding Record(s)</a><br />Re-assign the existing MCID for a one or more funding record(s) by replacing it with a new one.</li>
 	<li><a class="btn btn-primary btn-xs" href="admreassigncorr.php">Reassign Correspondence Record(s)</a><br />Re-assign the existing MCID for a one or more correspondence record(s) by replacing it with a new one.</li>
 	<li><a class="btn btn-primary btn-xs" href="admreassignMCIDs.php">Batch Reassignment of MICDs</a><br />Re-assignment of ALL the funding, correspondence and vol time records assoicated with an MCID to a different, existing MCID.  Usually the &apos;OLD&apos; MCID record is deleted after this action has been performed by using the 'Delete Records' function to complete the process.</li>
+	<li><a class="btn btn-primary btn-xs" href="admDBDeleteMCID.php">Delete Individual MCID</a><br />Complete removal of a single MCID from the database including the archival of the funding and vol time records and the deletion of correspondence and EDI records.</li>
 </ul>
 <p>These actions are seperate actions that must be indiviually selected in this utility.</p>
 <br />
