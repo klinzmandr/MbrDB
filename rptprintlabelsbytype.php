@@ -343,6 +343,7 @@ if ($blanks > 0) $blanks -= 1;
 echo "<div class=\"label\">";
 echo "
 <br>Labels to Prt: $cnt<br />
+Inact. recs dropped: $inactcnt<br>
 ";
 echo '<a href="javascript:self.close();" >CLOSE</a>/
 <a href="rptprintlabelscorradder.php?count=' . $cnt . '">CONTINUE</a>

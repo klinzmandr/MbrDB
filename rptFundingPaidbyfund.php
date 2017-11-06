@@ -242,7 +242,7 @@ if ($vrangehi == '') $vrangehi = 1000000;
 
 if (count($cbox) > 0) 
   $proglist = '"\'' . implode("','",$cbox) . '\'"';
-//echo "proglist: $proglist<br>";
+// echo "proglen: ". strlen($proglist) . ", proglist: $proglist<br>";
 
 $rptprogs = 'Program(s): '.$proglist;
 //	echo "$rptmbr<br />";
@@ -263,7 +263,7 @@ if (isset($_REQUEST['valrangechk'])) {
   
 // now ready to do db search for list by criteria using the sp
 $sql = "CALL SummarizePrograms('$drangelo','$drangehi', $proglist)";
-//echo "SQL: $sql<br>";
+// echo "SQL: $sql<br>";
 
 $res = $mysqli->query($sql);
 $nbr_rows = $res->num_rows;
@@ -337,7 +337,7 @@ echo '<h3>Program Funding Report Results&nbsp;&nbsp;';
 echo " <a href=\"javascript:self.close();\" class=\"btn btn-primary btn-xs\">CLOSE</a><br></h3>";
 echo "Criteria: $rptmbr $rptcpg $rptdate $rptrng<br />";
 $grandtotal = number_format($grandtotal);
-echo "Rows extracted: $nbr_rows, Unique MCIDs: " . count($mcidtot);
+echo "Funding rows extracted: $nbr_rows, Inactive recs dropped: $inactcnt, Unique MCIDs: " . count($mcidtot);
 echo " - Grand total for program(s): $" . $grandtotal . '<br>';
 
 echo "<a href=\"downloads/FundingPaidByProgram.csv\" download=\"FundingPaidByProgram.csv\">DOWNLOAD CSV FILE</a>";

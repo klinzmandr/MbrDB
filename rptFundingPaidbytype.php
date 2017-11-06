@@ -292,7 +292,7 @@ echo '<h3>Member Type Funding Report&nbsp;&nbsp;';
 echo " <a href=\"javascript:self.close();\" class=\"btn btn-primary btn-xs\">CLOSE</a><br></h3>";
 echo "Criteria: $rptmbr $rptcpg $rptdate $rptrng<br />";
 $grandtotal = number_format($grandtotal);
-echo "Rows extracted: $nbr_rows, Unique MCIDs: " . count($mcidtot);
+echo "Funding rows extracted: $nbr_rows, Inactive recs dropped: $inactcnt, Unique MCIDs: " . count($mcidtot);
 echo " - Grand total for member type(s): $" . $grandtotal . '<br>';
 
 echo "<a href=\"downloads/FundingPaidByMbrType.csv\" download=\"FundingPaidByMbrType.csv\">DOWNLOAD CSV FILE</a>";
