@@ -36,6 +36,7 @@ $fromMCID = $r['MCID'];
 
 $trans = array("\\" => ' ', "\n" => ' ', "\t"=>' ', "\r"=>' ');
 $subject = strtr($subject, $trans);
+$corrtypesub = $subject;       // use this as the corr type for tax receipts
 $message  = strtr($body, $trans);
 
 echo '<div class="container">
@@ -73,13 +74,14 @@ if ($_SERVER['SERVER_NAME'] != 'localhost') {
   $cmd = '/home/pacwilica/bin/mailsender';
   exec($cmd . " > /home/pacwilica/public_html_apps/mailsenderlog.txt &");
   }
-
 // finally add new correspondence record noting send of this email
 $fields[CorrespondenceType] = 'EmailNotice';
+if (preg_match("/tax/i", $corrtypesub))   // create special corr type for tax receipt
+  $fields[CorrespondenceType] = 'EOYTaxRcp';
 $fields[DateSent] = date('Y-m-d');
 $fields[MCID] = $mcid;
 $fields[Reminders] = 'EMailNotice';
-$fields[Notes] = "Subject: $subject";
+$fields[Notes] = "Email: $subject";
 sqlinsert('correspondence', $fields);
 
 // update member summary info

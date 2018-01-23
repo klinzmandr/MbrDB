@@ -40,10 +40,12 @@ $res = sqlinsert('labelsandletters', $vararray);
 
 // add entry to correspondence table about this action
 $fields[CorrespondenceType] = 'MailNotice';
+if (preg_match("/tax/i", $notes))     // create special corr type for tax receipt
+  $fields[CorrespondenceType] = 'EOYTaxRcp';
 $fields[DateSent] = date('Y-m-d');
 $fields[MCID] = $mcid;
 $fields[Reminders] = 'MailReminder';
-$fields[Notes] = "Subject: $notes";
+$fields[Notes] = "Mail: $notes";
 sqlinsert('correspondence', $fields);
 
 // update member summary info

@@ -8,6 +8,22 @@
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
+<script>
+$(document).ready(function () { 
+  $("#help").hide();
+  $("#catsbtn").click(function() { $("#cats").toggle(); });
+  $("#helpbtn").click ( function() {
+    $("#help").toggle();
+    });
+	$("#yr").val("$yr");
+	});
+
+</script>
+
 <?php
 session_start();
 
@@ -19,35 +35,26 @@ $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
 $sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-m-01', strtotime("today"));
 $ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-d', strtotime("tomorrow -1 second"));
 $today = date("Y-m-d",strtotime(now));
-
-echo "<div class=\"container\">
-<h3>Correspondence Summary Drilldown&nbsp;&nbsp;<a href=\"javascript:self.close();\" class=\"btn btn-primary\"><b>CLOSE</b></a></h3>";
-
-// get date range
-print <<<pagePart2
+?>
+<div class="container">
+<h3>Correspondence Summary Drilldown&nbsp;&nbsp;<a href="javascript:self.close();" class="btn btn-primary hidden-print"><b>CLOSE</b></a>
+</h3>
+<button class="hidden-print" id="helpbtn">More Info</button>
 <form action="rptcorrdrilldown.php" method="post">
-<input type="text" name="sd" value="$sd" size="8" id="sd"  placeholder="Start Date">
-&nbsp;&nbsp;<input type="text" name="ed" value="$ed" size="8" id="ed"  placeholder="End Date">
+<input type="text" name="sd" value="<?=$sd?>" size="8" id="sd"  placeholder="Start Date">
+&nbsp;&nbsp;<input type="text" name="ed" value="<?=$ed?>" size="8" id="ed"  placeholder="End Date">
 <input type="hidden" name="action" value="continue">
-&nbsp;&nbsp;<input type="submit" name= "submit" value="Submit">
+&nbsp;&nbsp;<input class="hidden-print" type="submit" name= "submit" value="Submit">
 </form>
 
-pagePart2;
+<div id="help">
+<p>This report provides the ability to list and detail the various correspondence categories that are currently in the correspondence log of the database.  An entry is recorded into the correspondence log when a form of communications is initiated, usually an email or mail.  Some entries are automatic.  Others like bulk mailings, for example, require other need additional steps be done to keep the correspondence log up to date. </p>
+<p>The various categories are defined by the administrator as &quot;correspondence categories&quot; in the &quot;Admin&quot; list maintenance functions.  Each category should specify a type of correspondence used to communicate with the member.</p>
+<p>Some category values are historical and have been retained from prior systems and may be seen depending on the date range defined.</p>
+<p>To use this report choose one of the categories to examine.  A list of all detail records in that category will be listed for the date range specified that can be optionally displayed or hidden.</p>
+</div>
 
-// explain report first time through
-if ($action == "") {
-print <<<pagePart1
-<p>This report provides the ability to list and detail the various correspondence categories that are currently in the correspondence log of the database.  The categories are configured in by the administrator as corresondence categories.  Each category should specify a type of corresondence used to communicate with the member.  Some category values are historical and have been retained from prior systems and may be seen depending on the date range defined.</p>
-<p>First, choose one of the categories to examine.  A list of all detail records in that category will be listed for the date range specified.</p>
-</script><script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
-</body></html>
-
-pagePart1;
-exit;
-}
-
+<?php
 // first all correspondence classes are listed with counts, get items from db to count and summarize
 
 $sql = "SELECT * 
@@ -61,19 +68,28 @@ $rowcnt = $res->num_rows;
 $ctypearray = array(); $ctypecountarray = array();
 while ($r = $res->fetch_assoc()) {
 	if ($r[MCID] == 'PWC99') continue;
+	if ($r[CorrespondenceType] == '**NewRec**') continue;
+	if ($r[CorrespondenceType] == 'RenewalPaid') continue;
 	$ctypearray[$r[CorrespondenceType]] += 1;
-	//echo '<pre> RenewalTY '; print_r($r); echo '</pre><br />';
+	// echo '<pre> corr '; print_r($r); echo '</pre><br />';
 	}
-echo "<div class=\"hidden-print\">Categories in Range (Total sent $rowcnt):<ul>";
-//echo "<pre>CTYPES "; print_r($ctypearray); echo "</pre>";
+$catcount = count($ctypearray);
+echo "
+<div class=\"hidden-print\">
+<button id=\"catsbtn\">Show/Hide $catcount categories in date range</button>
+<ul>";
+// echo "<pre>CTYPES "; print_r($ctypearray); echo "</pre>";
+echo '<div id="cats">';
 foreach ($ctypearray as $k => $v) {
 	echo "<a href=\"rptcorrdrilldown.php?action=report&sd=$sd&ed=$ed&cname=$k\">$k ($v)</a><br />";
 	}
-echo "</ul></div>";
-if ($cname == '') {
-	echo '</script><script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></body></html><script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
+echo '
+</ul>
+</div>   <!-- cats -->
+</div>   <!-- hidden-print -->
 ';
+if ($cname == '') {
+	echo '</body></html>';
 	exit;
 	}
 
@@ -101,11 +117,6 @@ echo "----- END OF LIST -----<br>";
 ?>
 
 </div>  <!-- container -->
-
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 </div>
 </body>

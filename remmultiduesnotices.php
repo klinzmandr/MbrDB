@@ -13,15 +13,14 @@
 <?php
 // ====================================
 //
-//This page is a rework of the reminders system to list those needing reminders with 
-// checkboxes.  The intention is to allow selection of one or more needing a mail or email
+//This pagen is to allow selection of one or more supporters needing a mail or email
 // reminder sent and send them at the same time as well as set one or more members inactive 
 // when multiple reminders have had no response.
 //
 // Associated pages are:
-//   remmultiemail.php -> remmultiemailupd.php   	to send email message
-//   remmultimail.php -> remmultimailupd.php			to print mail message
-//	 remmultimakeinactive.php											to set members inactive
+//   remmultiemail.php -> remmultiemailupd.php    to send email message
+//   remmultimail.php -> remmultimailupd.php      to print mail message
+//   remmultimakeinactive.php                     to set members inactive
 //
 //These pages all have to work in sync to make this work out.
 //
@@ -60,10 +59,10 @@ $expdate = calcexpirationdate();									// this is the expiration period
 //echo "expdate: $expdate<br>";
 
 // must be uncommented for DW server version, 
-$sql = "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
-//echo "sql: $sql<br>";
-$status = doSQLsubmitted($sql);
-//echo "status: $status<br>";
+// $sql = "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
+// echo "sql: $sql<br>";
+// $status = doSQLsubmitted($sql);
+// echo "status: $status<br>";
 
 $sql = "SELECT `donations`.`MCID`, `donations`.`Purpose`, `donations`.`DonationDate`, 
 	`donations`.`TotalAmount`, MAX( `donations`.`DonationDate` ) as MaxDate, `members`.*

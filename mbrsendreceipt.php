@@ -51,6 +51,10 @@ print <<<scriptsPart
 <script type="text/javascript">
 // sets select list to pre-selected year value
 $(document).ready(function () { 
+  $("#help").hide();
+  $("#helpbtn").click ( function() {
+    $("#help").toggle();
+    });
 	$("#yr").val("$yr");
 	});
 </script>
@@ -64,11 +68,22 @@ function chkitems() {
 	return true;
 	}
 </script>
+<button id="helpbtn">Receipts Explained</button>
+<div id="help">
+<h3>Receipts Explained</h3>
+<p>Receipts are created from a listing of the funding records for a specific year plus a template designed for the specific receipt purpose.</p>
+<p>Receipt templates are created and/or editted in the &quot;Admin -&gt; Reminder Templates&quot;, one for email use and the other for printing.  Templates can contain special &quot;shortcode&quot; values that will allow customization of each message (like the total of the funding records, for example). These are explained in the page used for editting or creating the template</p>
+<p>The process assumes that an appropriate template has previously been created.  However, the template&apos;s message can me changed on a case by case basis during the sending process.</p>
+<p>Creation of a receipt begins with by selection of the year (the current year is assumed by default).  A listing of all funding records for that year are listed and some or all may be selected to include in the TOTAL for the receipt. A detailed listing of the funding records is NOT carried into the receipt.</p>
+<p>After selection of the appropriate funding records has been done and the submitted a choice between emailed or hard copy receipt must be made.  After selection of the receipt type, the available templates for that receipt type is presented.  Choose the appropriate template to continue.</p>
+<p>Selection of the appropriate template will result in the template being displayed in an &quot;edit&quot; form with all the custom fields filled out.  Add any final customizatons into the editable message and click the &quot;SEND&quot; button at the bottom to either immediately send it (for an email) or queue it for printing (for a hard copy receipt.)</p>
+<p>If a hard copy receipt is selected the final step is to print it using the &quot;Remiders -&gt; Print Letters &amp; Labels&quot; function.</p>
+<p>In either case, a correspondence record is automatically created and recorded.</p>
+<p><b>NOTE: if the title of the template contains the word &quot;tax&quot; then the &quot;Correspondence Type&quot; set to &quot;EOYTaxRcp&quot; and &quot;email&quot; or &quot;mail&quot; prepended to the Notes field of the record.  </p>
 
-scriptsPart;
+</div>  <!-- help -->
 
-echo '<form action="mbrsendreceipt.php" method="post"  name="selectform";>';
-echo '
+<form action="mbrsendreceipt.php" method="post"  name="selectform";>
 <h3>Send Funding Receipt</h3>Select Year:<br>
 <select name="yr" id="yr" onchange="this.form.submit()">
 <option value="2014">2014</option>
@@ -80,7 +95,7 @@ echo '
 <option value="2020">2020</option>
 </select>
 </form>
-';
+scriptsPart;
 
 if ($donrowcnt == 0) { exit(0); }		// no funding for this year - need to choose again
 
