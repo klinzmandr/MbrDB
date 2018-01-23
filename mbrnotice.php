@@ -6,8 +6,18 @@
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
-<body onchange="flagChange()">
+<body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+$("document").ready( function() {
+  $("#info").hide();
+  $("#infobtn").click( function() {
+    $("#info").toggle();
+    });
+  });
 
+</script>
 <?php
 session_start();
 //include 'Incls/vardump.inc.php';
@@ -25,21 +35,19 @@ $mcid = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : $_SESSION['ActiveMCID
 $_SESSION['ActiveMCID'] = $mcid;
 
 $templatedir = 'templates/letters';
+?>
 
-// set up default page if no MCID is given
-if ($mcid == "") { 
-	$mcinfo = "<div class=container>";
-	$mcinfo .= "<h3>Membership Notices</h3>"; 
-	$mcinfo .= "<p>This page will assist in the development of printing a label and/or letter notice to mail to the member whose membership has expired. Usually, this page is used after selection of an MCID from the \"Display Expired\" or the \"List In-Progress Reminders\" listing.</p>
-	<p>It should be noted that a this notification process can NOT be initiated to send a notice to a member that does not have an expired membership. It should also be noted that an automatic entry to the members correspondence records is done as a part of completing this process that will record that the notice has been sent.</p>";
-	$mcinfo .= "<p>The templates listed allow different messages to be accessed before being sent to the member.  Usually these message are sent in relation to an expired membership.  The selected letter template plus other mailing information is placed in the \"labelsandletters\" table with the current date.</p>
-<p>Labels and letters are selected by creation date, editted and printed using LibreOffice using the appropriate label and/or letter templates accessed from the \"labelsandletters\" table of the database.</p>
-<p>It should be noted that information in the \"labelsandletters\" table of the database and must be printed and sent as a separate action.  This facility will automatically add a note in the members correspondence log that this action has taken place as of this date.</p></div>";
-	$mcinfo .= "<script src=\"jquery.js\"></script> <script src=\"js/bootstrap.min.js\"></script></body></html>";
-	echo $mcinfo;
-	exit;
-	}
-
+<div class=container>
+<div id="info">
+	<h3>Membership Notices</h3> 
+	<p>This page will assist in the development of printing a label and/or letter notice to mail to the member whose membership has expired. Usually, this page is used after selection of an MCID from the &quot;Display Expired&quot; or the &quot;List In-Progress Reminders&quot; listing.</p>
+	<p>It should be noted that a this notification process can NOT be initiated to send a notice to a member that does not have an expired membership. It should also be noted that an automatic entry to the members correspondence records is done as a part of completing this process that will record that the notice has been sent.</p>
+	<p>The templates listed allow different messages to be accessed before being sent to the member.  Usually these message are sent in relation to an expired membership.  The selected letter template plus other mailing information is placed in the &quot;labelsandletters&quot; table with the current date.</p>
+<p>Labels and letters are selected by creation date, editted and printed using LibreOffice using the appropriate label and/or letter templates accessed from the &quot;labelsandletters&quot; table of the database.</p>
+<p>It should be noted that information in the &quot;labelsandletters&quot; table of the database and must be printed and sent as a separate action.  This facility will automatically add a note in the members correspondence log that this action has taken place as of this date.</p>
+</div> <!-- info -->
+</div>
+<?php
 // first let's make sure that the member is not expired
 	$date = calcexpirationdate();																				// exp period: 11 months
 	$sql = "SELECT * from `donations` WHERE `MCID` = '$mcid' AND `Purpose` = 'dues' AND `DonationDate` > '$date'";
@@ -57,8 +65,6 @@ if ($mcid == "") {
 			print <<<expNotice
 <h3>MCID <a href="mbrinfotabbed.php">$mcid</a> does NOT have an expired membership</h3>
 <!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </div>
 </body>
 </html>
@@ -76,7 +82,7 @@ $row = $res->fetch_assoc();
 if ($row[Inactive] == 'TRUE') {
 	echo "<h3>Member <a href=\"mbrinfotabbed.php\">$mcid</a> marked as inactive</h3>
 	<p>Please update the record before proceeding.</p>
-	<script src=\"jquery.js\"></script><script src=\"js/bootstrap.min.js\"></script></div></body></html>";
+	</div></body></html>";
 	exit;
 	}
 
@@ -86,7 +92,7 @@ if ($row['Mail'] == 'FALSE') {
 print <<<noNotice
 <h3>Member <a href="mbrinfotabbed.php">$mcid</a> does not want to receive any correspondence from PWC.</h3><br>
 <!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="$mcid">CANCEL AND RETURN</a> -->
-<script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
+</div></body></html>
 noNotice;
 	exit;
 	}
@@ -95,8 +101,7 @@ noNotice;
 if ((strlen($row['NameLabel1stline']) == 0) OR (strlen($row['AddressLine']) == 0) OR (strlen($row['City']) == 0) OR (strlen($row['State']) == 0) OR (strlen($row['ZipCode']) == 0)) {
 	echo "<h3>Mailing informamtion for member <a href=\"mbrinfotabbed.php\">$mcid</a> is incomplete.  Please correct this before proceeding.</h3>.<br />";
 	//echo "<pre>dump of mbr info "; print_r($row); echo "</pre>";
-	echo '<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
+	echo '
 </div>
 </body>
 </html>';
@@ -110,7 +115,9 @@ if ($tname == "") {
 $sql = "SELECT * FROM `templates` WHERE `Type` = 'mail';";
 $res = doSQLsubmitted($sql);
 print <<<tempForm1
-<div class="container"><h3>Membership Mail Notice</h3> 
+<div class="container">
+<button id="infobtn">More Info</button>
+<h3>Membership Mail Notice</h3> 
 <h4>Send a mail reminder to: <a href="mbrinfotabbed.php">$mcid</a></h4>
 Select an Letter template from the selection list:<br>
 <form action="mbrnotice.php" method="post">
@@ -130,7 +137,7 @@ print <<<tempForm2
 <input type="hidden" name="type" value="receipt">
 </form><br /><br />
 </div>	
-<script src="jquery.js"></script><script src="js/bootstrap.min.js"></script></div></body></html>
+</div></body></html>
 tempForm2;
 	exit();
 	}
@@ -138,7 +145,7 @@ tempForm2;
 // we are good, read the template and prep edit form
 // template name given so read it and set up for edit form
 //echo "read template and create edit form<br />"
-echo "<div class=\"container\"><h3>Edit and Send the Message to ".$_SESSION['ActiveMCID']."</h3>";
+echo "<div class=\"container\"><h3>Edit and Print the Message to ".$_SESSION['ActiveMCID']."</h3>";
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$tname';";
 $tres = doSQLsubmitted($sql);
 $t = $tres->fetch_assoc();
@@ -197,8 +204,6 @@ Template Name: $templatename<br />
 editForm;
 
 ?>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </div>
 </body>
 </html>
