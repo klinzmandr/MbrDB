@@ -7,6 +7,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <?php
 session_start();
 
@@ -24,8 +27,6 @@ if ($action == 'view') {
     echo $l . '<br>';
     }
   echo '</div>
-  <script src="jquery.js"></script>
-  <script src="js/bootstrap.min.js"></script>
   </body>
   </html>';
 	exit;
@@ -72,7 +73,6 @@ if ($action == 'del') {
 		echo '<h2>Invalid Security Level</h2>
 		<h4>You do not have the correct authorization to maintain these lists.</h4>
 		<p>Your user id is registered with the security level of &apos;voluser&apos;.  It must be upgraded 			to &apos;voladmin&apos; in order to modify any lists.</p>
-		<script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
 		</body></html>';
 		exit;
 		}
@@ -82,8 +82,6 @@ if ($action == 'del') {
 	echo "Deleted record: $recno&nbsp;&nbsp;";
 	echo '<a class="btn btn-success" href="rptmaillogviewer.php">CONTINUE</a>'; 
 	echo '</td></tr></table></div>  <!-- container -->
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>';
 	exit;
@@ -106,8 +104,6 @@ print <<<recOut
 	Mail Text:<br />
 	$mailtext
 	</div>  <!-- container -->
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 
@@ -156,7 +152,5 @@ The following is a list of the subject line of messages either being sent or are
 ?>
 </td></tr></table>
 </div>  <!-- container -->
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

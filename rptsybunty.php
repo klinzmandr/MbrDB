@@ -62,8 +62,8 @@ if ($action == 'rpt') {
 			$lgamt = $r[LastDuesAmount];
 			$lgdate = $r[LastDuesDate];
 			}
-		// ignore MCID if yearly funding less than or equal to last dues or donation amt
-		if (($r[YrlyDon] <= $lgamt)) {
+		// ignore MCID if yearly funding less than last dues or donation amt
+		if (($r[YrlyDon] < $lgamt)) {
 			unset($YRarray[$r[MCID]]);
 			unset($ADRarray[$r[MCID]]);
 			continue;

@@ -36,14 +36,15 @@ if ($action == 'rpt') {
 St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 	$csv[] =  'MCID;CummTot;LastGiftAmt;LastGiftDate;MemSt;Label Name;First;Last;Organization;Address;City;St;Zip;Phone;Email\n';
 	while ($r = $res->fetch_assoc()) {
-//		echo '<pre> year '; print_r($r); echo '</pre>';
+  	//	echo '<pre> year '; print_r($r); echo '</pre>';
 		if ($r[DonYr] >= $yr) {		// ignore MCID if donated for given year
 			unset($YRarray[$r[MCID]]);
 			unset($ADRarray[$r[MCID]]);
+			if ($r[MCID] == 'COL00') echo "COL00 removed from YRarray<br>";
 			continue;
 			}
 		// ignore MCID if nothing given or less than 100
-		if (($r[YrlyDon] == 0) OR ($r[YrlyDon] < 100)) {
+		if ($r[YrlyDon] <= 100) {
 			unset($YRarray[$r[MCID]]);
 			unset($ADRarray[$r[MCID]]);
 			continue;
@@ -65,11 +66,11 @@ St</th><th>Zip</th><th>Phone</th><th>Email</th></tr>';
 				$lgamt = $r[LastDuesAmount];
 				$lgdate = $r[LastDuesDate];
 				}
-			// ignore MCID if yearly funding less than or equal to last dues or donation amt
-  		if (($r[YrlyDon] <= $lgamt)) {
+			// ignore MCID if yearly funding less than last dues or donation amt
+  		if (($r[YrlyDon] < $lgamt)) {
   			unset($YRarray[$r[MCID]]);
   			unset($ADRarray[$r[MCID]]);
-  			continue;
+			  continue;
   			}
 			$flgamt = number_format($lgamt,0);
 //		echo "lgdate: $lgdate, lgamt: $lgamt<br>";

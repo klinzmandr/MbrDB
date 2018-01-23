@@ -30,15 +30,25 @@ $ed = date('Y-m-t', strtotime($sd));
 <!-- <form action="rptmonthlyreport.php" method="post"  name="sd"> -->
 <form class="hidden-print" action="rptmonthlyreport.php" method="post"  name="sd">
 Report Date: &nbsp;&nbsp;
-<select id="startyr" name="startyr" onchange="this.form.submit();" >
-<option value="2016">2016</option> <option value="2017">2017</option> <option value="2018">2018</option> <option value="2019">2019</option> <option value="2020">2020</option>
+<select id="startyr" name="startyr" >
+<option value="2016">2016</option> 
+<option value="2017">2017</option> 
+<option value="2018" selected>2018</option> 
+<option value="2019">2019</option> 
+<option value="2020">2020</option>
 </select>
 <select id="startmo" name="startmo" onchange="this.form.submit();" >
-<option value="01">01</option> <option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option>
+<option value="">Select Month</option> 
+<option value="01">01</option> 
+<option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option>
 </select>
 </form>
 
 <?php
+if (!isset($_REQUEST['startmo'])) {
+  echo '<h3>Select target year and month</h3>';
+  exit;
+  }
 if (strtotime($sd) > strtotime(now)) {
   echo '<h3>FUTURE date entered.</h3>';
   exit;
@@ -160,17 +170,17 @@ function tog(f) {
 	
 	<li><b>Supporter Summary</b></li>
   	<ul>
-  	<li><b>Mbrs/Vols current & paid</b> - total number of supporter records having a funding payment marked as &apos;Dues&apos; within the last 12 months</li>
-  	<li><b>Donors current & paid</b> - total number of donor records having a donation payment dated within the last 12 months</li>
-  	<li><b>Marked as Active</b> - total number of ALL supporter records that are marked  as &apos;Active&apos;.</li>
+  	<li><b>Mbrs/Vols current & paid</b> - total number of supporter records having a funding payment marked as &apos;Dues&apos; within the last 12 months.</li>
+  	<li><b>Donors current & paid</b> - total number of donor records having a donation payment dated within the last 12 months.</li>
+  	<li><b>Marked as Active</b> - total number of ALL supporter records that are marked  as &apos;Active&apos; regardless of funding activity.</li>
   	<li><b>Subscribing members</b> - total number of supporter records marked as subscribing monthly contributors.</li>
   	<li><b>Mbr records with NO funding activity</b> - the total number of supporter records that are marked as &apos;Active&apos; but have no associated funding records.</li>
   	</ul>
 
-	<li><b>Supporters Added(YTD)</b> - the total number of supporter records that have been added during the current calendar year.</li>
-	<li><b>Supported Added(YTD) by status:</b> - the total number of new supporter records entered for the current calendar year grouped by supporter type.</li>
-	<li><b>New Mbrs and Vols in <i>month</i>, <i>year</i></b> - the total number of new supporter records identified as members or volunteers entered for the month and year grouped by the amount that was paid.</li>
-	<li><b>YTD Mbrs and Vols by month</b> - the total number of new supporter records identified as members or volunteers entered for the calendar year grouped by the month entered.</li>
+	<li><b>Supporters Added(YTD)</b> - the total number of supporter records that have been added during the selected year.</li>
+	<li><b>Supported Added(YTD) by status:</b> - the total number of new supporter records entered for the selected year grouped by supporter type.</li>
+	<li><b>New Mbrs and Vols in <i>month</i>, <i>year</i></b> - the total number of new supporter records identified as members or volunteers entered for the selected month and year grouped by the amount that was paid.</li>
+	<li><b>YTD Mbrs and Vols by month</b> - the total number of new supporter records identified as members or volunteers entered for the selected calendar year grouped by the month entered.</li>
 </ol>
 </p>
 </div>
@@ -232,16 +242,16 @@ print <<<sumPart2
 </span>
 </h4>
 <div id="sum-2">
-<p>The funding section of this report summarizes all of the funding records on the database. A funding record is created each time funds are received and an entry registered for the supporter. An explantion of each item follows.
+<p>The funding section of this report summarizes all of the funding records on the database. A funding record is created each time funding is received. An explantion of each report item follows.
 <ol>
-	<li><b>Total Funding Records</b> - the total number of funding records on the database.</li>
-	<!-- <li><b>Current paid-up members</b> - the total number of supporters marked as &apos;members&apos; that have made a payment marked as &apos;Dues&apos; after the Current Ageing Date.</li> -->
-	<li><b>YTD Funding Rec Count</b> - the total number of funding records entered for the current calendar year.</li>
-	<li><b>Current Ageing Date</b> - the date used to determine the age of a funding payment.  This date is 11 months prior to the year and month entered for this report&apos;s year/month.  Any member whose LAST dues payment made prior to this date is considered as an expired member.  Any dues payment made after this date means that the member is considered current and active.</li>
+	<li><b>Total Funding Records</b> - the total count of all funding records on the database.</li>
+	<!-- <li><b>Current paid-up members</b> - the total number of supporters marked as &apos;members&apos; that have made a payment marked as &apos;Dues&apos; AFTER the Current Ageing Date.</li> -->
+	<li><b>YTD Funding Rec Count</b> - the total number of funding records entered for the selected year.</li>
+	<li><b>Current Ageing Date</b> - the date used to determine the age of a funding payment.  This date is 11 months prior to the year and month selected for this report&apos;s year/month.  Any member whose LAST dues payment made before this date is considered as an expired member.  Any dues payment made after this date means that the member is considered current and active.</li>
 	<li><b>Member expiration distribution</b> - these counts are based on the last payment marked as &apos;Dues&apos; PLUS 11 months to determine when an annual member will be considered expired.</li>
-	<li><b>&apos;<i>year</i>&apos; YTD Purpose Distribution</b> - the total amount and (count) for the each funding &apos;Purpose&apos; entered during the current calendar year.</li>
-	<li><b>&apos;<i>month</i>&apos; Purpose Distribution</b> - the total amount and (count) for the each funding &apos;Purpose&apos; entered during the current calendar year AND reporting month .</li>
-	<li><b>YTD Total funding - All Purposes</b> - the total amount of funding entered during the current calendar year.</li>
+	<li><b>&apos;<i>year</i>&apos; YTD Purpose Distribution</b> - the total amount and (count) for the each funding &apos;Purpose&apos; entered during the selected year.</li>
+	<li><b>&apos;<i>month</i>&apos; Purpose Distribution</b> - the total amount and (count) for the each funding &apos;Purpose&apos; entered during the selected year AND month .</li>
+	<li><b>YTD Total funding - All Purposes</b> - the total amount of funding entered during the selected year.</li>
 </ol>
 </p>
 </div>
@@ -404,10 +414,10 @@ print <<<sumPart3
 <p>The correspondence section of this report summarizes all of the correspondence records on the database. A correspondence record is created when some form of communication with the supporter is undertaken.  Some actions are automatic (i.e. reminders) and some have to be manually initiated (i.e. sending a newsletter).  An explanation of each report item follows.
 <ol>
 	<li><b>Total Correspondence Rec Count</b> - the total number of correspondence records contained in the entire database.</li>
-	<li><b><i>year</i> YTD Correspondence records</b> - total number of correspondence records entered during the current calendar year.</li>
-	<li><b>YTD Correspondence by type</b> - total count of each different category of correspondence record entered.</li>
-	<li><b>Correspondence sent in <i>month</i></b> - total number of correspondence records entered during the reports year/month.</li>
-	<li><b>Monthly correspondence by type</b> - total count of each different category of correspondence record entered during the reports year/month.</li>
+	<li><b><i>year</i> YTD Correspondence records</b> - total number of correspondence records entered during the selected year.</li>
+	<li><b>YTD Correspondence by type</b> - total count of each different category of correspondence record entered for the selected year.</li>
+	<li><b>Correspondence sent in <i>month</i></b> - total number of correspondence records entered during the selected year and month.</li>
+	<li><b>Monthly correspondence by type</b> - total count of each different category of correspondence record entered during the selected year and month.</li>
 </ol>
 </p>
 </div>
@@ -468,13 +478,13 @@ print <<<sumPart4
 </span>
 </h4>
 <div id="sum-4">
-<p>The Volunteer section of this report summarizes all of the volunteer time records recorded on the database. A volunteer time record is created when entered from the sign-in sheets.  An explanation of each report item follows</p>
+<p>The Volunteer section of this report summarizes all of the volunteer time records recorded on the database. A volunteer time record is created when entered from the sign-in sheets.  An explanation of each report item follows.</p>
 <ol>
-	<li><b>Total Vol Time Rec&apos;s in DB</b> - the total number of volunteer time records contained in the entire database.</li>
+	<li><b>Total Vol Time Rec&apos;s in DB</b> - the total count of volunteer time records contained in the entire database.</li>
 	<li><b>Registered Volunteers in DB</b> - the total number of supporters identified as volunteers in the membership database.</li>
 	<li><b>Active Volunteers</b> - the number of volunteers that have logged at least 1 time entry in the last 12 months.</li>
-	<li><b>YTD Vol Time by category</b> - a summary of the number of total volunteer hours followed by the (count) of the different volunteers that contributed to that time category. Totals for hours, mileage driven and volunteers for the calendar year follow.</li>
-	<li><b><i>month</i> and <i>year</i> Vol Time by category</b> - a summary of the total volunteer hours followed by the (count) of the diffferent volunteers that contributed to each category for the report month. Totals for hours, mileage driven and different volunteers for the reporting month follow.</li>
+	<li><b>YTD Vol Time by category</b> - a summary of the number of total volunteer hours followed by the (count) of the different volunteers that contributed to that time category. Following are totals for hours, mileage driven and volunteers for the selected year.</li>
+	<li><b><i>month</i> and <i>year</i> Vol Time by category</b> - a summary of the total volunteer hours followed by the (count) of the different volunteers that contributed to each category for the report month. Totals are for hours, mileage driven and different volunteers for the selected month.</li>
 </ol>
 </div>
 

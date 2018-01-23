@@ -307,7 +307,7 @@ while ($row = $res->fetch_assoc()) {  // read results and do value range check
 //  echo "vrangelo: $vrangelo, val: $mcidtot[$key], vrangehi: $vrangehi<br>";
 foreach ($mcidtot as $key => $tot) {
   if (($vrangelo > $tot) OR ($tot > $vrangehi)) {
-    echo "removing $key<br>";
+    // echo "removing $key<br>";
     $grandtotal -= $tot;
     unset($mcidtot[$key]);
     unset($results[$key]);
