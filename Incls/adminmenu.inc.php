@@ -40,7 +40,7 @@ function adminchk() {
 <!-- Menu -->
 	<li><a href="index.php">Home Page</a></li>
 	<li><a href="admaddnewuser.php">Admin Users</a></li>
-	<li><a href="admcorrbulkloader.php">CorrBulkUpd</a></li>
+	<li><a href="../listutils/dbcorradder.php">Add Corr Recs</a></li>
 <!-- Maintain Lists dropdown -->
   <li class="dropdown">
   <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Maint. Lists<b class="caret"></b></a>
