@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +16,6 @@
 <script src="js/bootstrap-datepicker.js"></script>
 
 <?php
-session_start();
 include 'Incls/seccheck.inc.php';
 // include 'Incls/vardump.inc.php';
 include 'Incls/mainmenu.inc.php';
@@ -22,9 +24,10 @@ include 'Incls/datautils.inc.php';
 $mcid =   isset($_SESSION['ActiveMCID']) ? $_SESSION['ActiveMCID'] : '';
 $mcidmemstatus =   isset($_SESSION['MemStatus']) ? $_SESSION['MemStatus'] : '';
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
-echo "<div class=container>";
-if ($mcid == "") {
-	print <<<fundingInfo
+?>
+
+<div class=container>
+<div id="help">
 <h3>Funding Log</h3> 
 <p>Funding log enteries provide a historical way to track financial activity for an organization.  This facility is used to provide an ongoing log of all financial contributions, regardless of type, and their sources.  Entries are made based on the currentl active MCID.  The MCID used is the &quot;active&quot; MCID selected by using the MCID entered or selected via the search function.  An MCID will remain &quot;active&quot; until another is selected using the filter or search page.</p>
 <p>Over a period of time, this log will enhance the ability of the organization to know and understand their sources of income.</p>  
@@ -32,10 +35,9 @@ if ($mcid == "") {
 <p>There is a relationship between the Funding and Correspondence logs used to provide dues expiration reminders notices to MCID entities.  Reminder notices are created when a membership has lapsed.  This means that no membership payment noted as &apos;dues&apos; has been made within the annual membership period (the system default is 11 months).  When a payment is entered and designated to be for membership &apos;dues&apos;, an automatic entry is written to the correspondence log.  This will provide the system a notice the dues for that member has been paid and that the reminder for that specific MCID is no longer necessary.</p>
 <p>Also, please note that any funding payment will cause the Inactive flag of the members record to be set to &apos;NO&apos; and set the Inactivedate to NULL.</p>
 <script src="jquery.js"></script> <script src="js/bootstrap.min.js"></script></body></html>
-fundingInfo;
-exit();
-	}
+</div>    <!-- help -->
 
+<?php
 // delete existing donation record and, if for 'dues', its assoicated correspondence record
 if ($action == "delete") {
 	$recnbr = $_REQUEST['id']; $date = $_REQUEST['date'];
@@ -105,9 +107,9 @@ if ($_REQUEST['action'] == "edit") {
 	$dondate=$row['DonationDate'];$chknbr=$row['CheckNumber'];
 	$totamt=$row['TotalAmount'];$mbrdonatedfor=$row['MembershipDonatedFor'];
 	$note=$row['Note'];
-print <<<formPart1
-<script>
+?>
 
+<script>
 function anchorconfirm() {
 	var r=confirm("Confirm this action by clicking OK."); 
 	if (r==true) { return true; }
@@ -217,56 +219,49 @@ function validateprog(fld) {
 </script>
 
 <div class="well">
-<h4>RecNo: $donid  MCID: $mcid</h4>
+<h4>RecNo: <?=$donid?>  MCID: <?=$mcid?></h4>
 <form action="mbrdonations.php" method="get"  name="mcform" id="mcform" class="form-inline" onsubmit="return validateForm(this)">
 <div class="row">
 <div class="col-sm-3">
 Purpose: <select name="Purpose" size="1">
 <option value=""></option>
 <option value="Dues">Dues</option>
-formPart1;
-
+<?php
 loaddbselect('Purposes');
-
-print <<<formPart2
+?>
 </select>
 </div>  <!-- col-sm-3 -->
 <div class="col-sm-5">
 Program: <select name="Program" size="1" onchange="validateprog(this)">
 <option value=""></option>
-formPart2;
-
+<?php
 loaddbselect('Programs');
-
-print <<<formPart3
+?>
 </select>
 </div>  <!-- col-sm-5 -->
 <div class="col-sm-4">
 Campaign: <select name="Campaign" size="1">
-formPart3;
-
+<?php
 loaddbselect('Campaigns');
-
-print <<<formPart4
+?>
 </select>
 </div>  <!-- col-sm-4 -->
 </div>  <!-- row -->
-
 <div class="row">
 <div class="col-sm-3">Don. Date:<br> 
-<input type="text" name="DonationDate" value="$dondate" data-provide="datepicker" id="dp1" data-date-format="yyyy-mm-dd" data-date-autoclose="true"/></div>
-<div class="col-sm-3">ChkNbr:<br><input style="width: 100px; " placeholder="Check Number" type="text" name="CheckNumber" value="$chknbr"></div>
-<div class="col-sm-3">Amount:<br><input style="width: 100px; " placeholder="Amount" type="text" name="TotalAmount" value="$totamt"></div>
-<div class="col-sm-3">Donated For:<br><input placeholder="Donated For" type="text" name="MembershipDonatedFor" value="$mbrdonatedfor"></div>
-<div class="col-sm-6">Note:<br><textarea id="NOTE" name="Note" rows="3" cols="80">$note</textarea></div>
+<input type="text" name="DonationDate" value="<?=$dondate?>" data-provide="datepicker" id="dp1" data-date-format="yyyy-mm-dd" data-date-autoclose="true"/></div>
+<div class="col-sm-3">ChkNbr:<br><input style="width: 100px; " placeholder="Check Number" type="text" name="CheckNumber" value="<?=$chknbr?>"></div>
+<div class="col-sm-3">Amount:<br><input style="width: 100px; " placeholder="Amount" type="text" name="TotalAmount" value="<?=$totamt?>"></div>
+<div class="col-sm-3">Donated For:<br><input placeholder="Donated For" type="text" name="MembershipDonatedFor" value="<?=$mbrdonatedfor?>"></div>
+<div class="col-sm-6">Note:<br><textarea id="NOTE" name="Note" rows="3" cols="80"><?=$note?></textarea></div>
 </div>  <!-- row -->
 <div style="text-align: center">
 <input type="hidden" name="action" value="apply">
-<input type="hidden" name="id" value="$donid">
-<button type="submit" form='mcform' class="btn-larg btn-primary">Update Record</button></div>
+<input type="hidden" name="id" value="<?=$donid?>">
+<button type="submit" form='mcform' class="updb btn-larg btn-primary">Update Record</button></div>
 </form>
 </div>  <!-- well -->
-formPart4;
+<?php
 	}
 
 // apply changes
@@ -308,12 +303,7 @@ if ($action == "apply") {
 		}
 	//echo "before update call - recno: $recno, mcid: $mcid<br>";
 	sqlupdate('donations', $vararray, "`DonationID`='$recno'");
-		echo '	
-<script>
-$(document).ready(function() {
-  $("#X").fadeOut(2000);
-});
-</script>
+		echo '
 <h3 style="color: red; " id="X">Update Completed.</h3>';
   }
 
@@ -324,7 +314,8 @@ $results = doSQLsubmitted($sql);
 
 // multiple rows returned, list donation records
 $results->data_seek(0);
-print <<<listHdr
+?>
+
 <script>
 function confirmDel() {
 	var r=confirm("This will change this Dues payment record.\\n\\nConfirm by clicking OK.");	
@@ -332,10 +323,12 @@ function confirmDel() {
 	return false;
 	}
 </script>
-<h3>Funding Log for <a href="mbrinfotabbed.php" onclick="return (validateForm(mcform)&&chkchg())">$mcid</a>&nbsp;&nbsp;<a  class="btn btn-primary" href="mbrdonations.php?action=add" onclick="return anchorconfirm()">Add new record</a></h3>
-<table class="table">
+<h3>Funding Log for <a href="mbrinfotabbed.php" onclick="return (validateForm(mcform)&&chkchg())"><?=$mcid?></a>&nbsp;&nbsp;<a  class="btn btn-primary" href="mbrdonations.php?action=add" onclick="return anchorconfirm()">Add new record</a>&nbsp;&nbsp;
+<span id="helpbtn" title="Help" class="glyphicon glyphicon-question-sign" style="color: blue; font-size: 20px"></span></h3>
+<table class="table">  
 <tr><th>Edit</th><th>RecNo</th><th>Purpose</th><th>Program</th><th>Campaign</th><th>DonDate</th><th>ChkNbr</th><th>Amount</th><th>Donated For</th><th>Notes</th></tr>
-listHdr;
+
+<?php
 $totdonations = 0;
 while ($row = $results->fetch_assoc()) {
 	$donid=$row['DonationID'];$mcid=$row['MCID'];$purpose=$row['Purpose'];

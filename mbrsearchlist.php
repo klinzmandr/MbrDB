@@ -7,43 +7,40 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <?php
 session_start();
 unset($_SESSION['ActiveMCID']);
 
+//include "Incls/vardump.inc.php";
 include 'Incls/seccheck.inc.php';
 include "Incls/datautils.inc.php";
-//include "Incls/vardump.inc.php";
-//if ($_SESSION['SecLevel'] == 'readonly') include 'Incls/romenu.inc.php';
-//else include 'Incls/mainmenu.inc.php';
+include 'Incls/mainmenu.inc.php';
 
 $filter = (isset($_REQUEST['filter'])) ? $_REQUEST['filter'] : "";
+?>
 
-print <<<searchForm1
 <div class="container">
-<h1>Member Search&nbsp;&nbsp;&nbsp;<a href="index.php" class="btn btn-danger">CANCEL</a></h1>
+<h1>Member Search&nbsp;&nbsp;
+<span id="helpbtn" title="Help" class="glyphicon glyphicon-question-sign" style="color: blue; font-size: 20px"></span></h1>
 <form action="mbrsearchlist.php" method="post"  name="searchform" class="form-inline">
-<input type="text" name="filter" class="form-control" style="width: 200px; "  placeholder="Search String" autofocus value=$filter>
+<input type="text" name="filter" class="form-control" style="width: 200px; "  placeholder="Search String" autofocus value=<?=$filter?>>
 <input type="submit" class="btn btn-default" name="submit" value="Apply">
 </form>
-searchForm1;
-if ($filter == "") {
-	print <<<searchForm2
 <br />
+<div id="help">
 <p><b>Tips for a General Search</b></p>
 <p>Any character string may be entered,  The string provided is compared to the first name, last name, label name, address, city and email adress fields of every record in the database.</p><p>All records containing the string will be listed on the results page with a bullet preceeding it.  Click the specific bullet assoicated with the MCID to access that members information along with all its assoicated correspondence and funding records.</p>
 <p>Try and keep the string entered to 4-6 characters even though many more may be entered.  Entering a longer string may result in no records being returned.</p>
 <p>NOTE: A percent sign (%) may be used to list all member records of currently on the database.</p><br><br>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-<!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="">CANCEL AND RETURN</a> -->
+</div>    <!-- help -->
 
-searchForm2;
-	exit;
-	}
-
+<?php
+if (strlen($filter) == 0) exit;
 // search db for filter value
 $sql = "SELECT * FROM `members` WHERE `MCID` LIKE '%".$filter."%' OR `FName` LIKE '%".$filter."%' OR `LName` LIKE '%".$filter."%' OR `NameLabel1stline` LIKE '%".$filter."%' OR `Organization` LIKE '%".$filter."%' OR `AddressLine` LIKE '%".$filter."%' OR `EmailAddress` LIKE '%".$filter."%' OR `EmailAddress2` LIKE '%".$filter."%' OR `City` LIKE '%".$filter."%' OR `ZipCode` LIKE '%".$filter."%'OR `Notes` LIKE '%".$filter."%' ORDER BY `MCID`";
 $results = doSQLsubmitted($sql);
@@ -54,9 +51,6 @@ $nbrofrows = $results->num_rows;
 if ($nbrofrows == 0) {
 	echo "<h2>No members found with the search string provided</h2>";
 	echo "<p>Enter a string to search for in first name, last name, email address, address or city</p><br /><br />";
-	echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\">CANCEL AND RETURN</a></div>";
-	echo '<script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
-</body></html>';
 	exit();
 	}
 // only 1 found so pass it to mbrinfotabbed page
@@ -94,7 +88,5 @@ echo '</td></tr>';
 echo "</fieldset></table>";
 ?>
 
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

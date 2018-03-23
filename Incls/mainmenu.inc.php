@@ -1,34 +1,72 @@
 <?php
 $filter = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : "";
-print <<<menupart1
+?>
 <style>
-body { padding-top: 50px; }      <!-- add padding to top of each page for fixed navbar -->
+body { padding-top: 50px; }
 </style>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<!-- <div class="container"> -->
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
+<style>
+input[type=checkbox] { transform: scale(1.5); }
+</style> 
 
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-  </div>
+<script>
+<!-- Form change variable must be global -->
+var chgFlag = 0;
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li><a onclick="return chkchg()" href="index.php"><b>Home</b></a></li>
-      <li><a onclick="return chkchg()" href="mbraddition.php">Add New Mbr</a></li>
-      <li><a onclick="return chkchg()" href="mbrinfotabbed.php">Mbr Info</a></li>
-menupart1;
+$(document).ready(function() {
+  $('.updb').prop('disabled', true);
+  $("#X").fadeOut(2000);
+  $("#help").hide();
+  
+$("#helpbtn").click(function() {
+  $("#help").toggle();
+  });
+  
+$("input").change(function(){
+  if (this.id == "filter") return;  // ignore filter input
+  chgFlag += 1; 
+  $(".updb").css({"background-color": "red", "color":"black"});
+  $('.updb').prop('disabled', false);    
+  // setInterval(blink_text, 1000);
+  });
+$("textarea").change(function(){
+  chgFlag += 1; 
+  $(".updb").css({"background-color": "red", "color":"black"});
+  $('.updb').prop('disabled', false);    
+  // setInterval(blink_text, 1000);
+  });
+$("select").change(function(){
+  chgFlag += 1; 
+  $(".updb").css({"background-color": "red", "color":"black"});
+  $('.updb').prop('disabled', false);    
+  // setInterval(blink_text, 1000);
+  });
+  
+$(".dropdown").click(function(event) {
+	if (chgFlag <= 0) { return true; }
+	var r=confirm("All changes made will be lost.\n\nConfirm abandoning changes and leaving page by clicking OK.");	
+	if (r == true) { 
+    chgFlag = 0; 
+    return true; 
+	  }
+  event.preventDefault();
+  return false;
+  });
 
-$sessionlevel = isset($_SESSION['SecLevel']) ? $_SESSION['SecLevel'] : '';
-// include EDI and Solicit menu options for special users
-if (($sessionlevel == "devuser") OR ($sessionlevel == "admin")) {
-print<<<menupart2
+});
+
+function blink_text() {     // blink field
+    $('.updb').fadeOut(500);
+    $('.updb').fadeIn(500);
+  }
+
+function chkchg() {
+	if (chgFlag <= 0) { return true; }
+	var r=confirm("All changes made will be lost.\n\nConfirm leaving page by clicking OK.\nCANCEL to return.");	
+	if (r == true) { chgFlag = 0; return true; }
+		return false;
+  }
+</script>
+
 <script>
 function confirmAdd() {
 	var r=confirm("This action will add a new EDI Record for Active MCID.\\n\\nConfirm by clicking OK.");	
@@ -50,6 +88,31 @@ function adminchk() {
 	}
 </script>
 
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<!-- <div class="container"> -->
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><a class="dropdown" href="index.php"><b>Home</b></a></li>
+      <li><a class="dropdown" href="mbraddition.php">Add New Mbr</a></li>
+      <li><a class="dropdown" href="mbrinfotabbed.php">Mbr Info</a></li>
+
+<?php
+$sessionlevel = isset($_SESSION['SecLevel']) ? $_SESSION['SecLevel'] : '';
+// include EDI and Solicit menu options for special users
+if (($sessionlevel == "devuser") OR ($sessionlevel == "admin")) {
+?>
 <!-- Menu dropdown for Extended Donor Info pages -->	
   <li class="dropdown">
   <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">EDInfo<b class="caret"></b></a>
@@ -64,26 +127,14 @@ function adminchk() {
 
 <!-- Menu for Solictation Functions pages -->  
   <li><a onclick="return chkchg()" href="devscripts.php" target='_blank'>Solict</a></li>
-menupart2;
+<?php
 }
-/*
-<!-- Menu dropdown for Solictation Functions pages -->	
-  <li class="dropdown">
-  <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Solicit<b class="caret"></b></a>
-  	<ul class="dropdown-menu" aria-labelledby="drop2" role="menu">
-  		<li><a onclick="return chkchg()" href="devscripts.php" target="_blank">Calling Scripts</a></li>
-  		<li><a onclick="return chkchg()" href="devcreditcardpayment.php">Credit Card Payment</a></li>
-  		<li><a onclick="return chkchg()" href="devpaypalpayment.php">PayPal Payment</a></li>
-  		<li><a onclick="return chkchg()" href="devpaymentconfirmation.php">Payment Confirmation</a></li>
-  		<!-- <li><a onclick="return chkchg()" href="#">Mark MCID as Paid</a></li> -->
-  	</ul>   <!-- ul dropdown-menu -->
-  </li>  <!-- li dropdown --> 
-*/
-print <<<menupart3
-  <!-- <li><a href="mbrdonations.php" onclick="return chkchg()">Funding</a></li> -->
-  <!-- <li><a href="mbrcorrespondence.php" onclick="return chkchg()">Corr.</a></li> -->
 
-<!-- <li class="dropdown open">  example: to have open on load -->
+$sessionlevel = isset($_SESSION['SecLevel']) ? $_SESSION['SecLevel'] : '';
+// include reminders menu options only for admin users
+if ($sessionlevel == "admin") {
+?>
+
 <li class="dropdown">
 <a id="drop1" class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Reminders<b class="caret"></b></a>
 <ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
@@ -94,11 +145,15 @@ print <<<menupart3
 	<!-- <li><a onclick="return chkchg()" href="remnotice.php">Send Letter Notice to MCID</a></li> -->
 	<li><a onclick="return chkchg()" href="remlabelsandletters.php">Print Labels and Letters</a></li>
 	<li><a href="reminprogressreminderlist.php" target="_blank">In-Progress Reminders</a></li>
-	<li><a href="remconversions.php" target="_blank">Reminder Conversion Report</a></li>
+	<li><a href="remconversions.php">Reminder Conversion Report</a></li>
 	<li><a onclick="return chkchg()" href="remindersexplained.php">Reminders Explained</a></li>
 	<!-- <li><a href="#">?</a></li> -->
 </ul>
 </li>  <!-- class="dropdown" -->
+<?php
+}
+?>
+
 <!-- <li class="dropdown open">  example: to have open on load -->
 <li class="dropdown">
 <a id="drop1" class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Reports<b class="caret"></b></a>
@@ -141,48 +196,19 @@ function setupmcid(theForm)  {
 	return true;
 	}
 
-<!-- Form change variable must be global -->
-var chgFlag = 0;
-function chkchg() {
-	if (chgFlag <= 0) { return true; }
-	var r=confirm("WARNING: All changes made will be LOST.\\n\\nConfirm leaving page by clicking OK.");	
-	if (r == true) { chgFlag = 0; return true; }
-		return false;
-	}
-
-$(document).ready(function(){
-  $("input").change(function(){
-    chgFlag += 1; });
-  $("textarea").change(function(){
-    chgFlag += 1; });
-  $("select").change(function(){
-    chgFlag += 1; });
-}); 
-
-<!-- ignore any change to the filter input field -->
-function ignorefilter() {
-	chgFlag -= 1;
-	return true;
-	}
-	
 </script>
 <!-- lookup input field -->
 <form name="filter" action="mbrfilterlist.php" method="post" class="navbar-form pull-left" onsubmit="return setupmcid(this)">&nbsp;&nbsp;&nbsp;
-  <input autofocus autocomplete="off" type="text" class="form-control" style="width: 100px;" value="$filter" name="filter" onChange="ignorefilter()" placeholder="MCID">
+  <input autofocus autocomplete="off" type="text" class="form-control" style="width: 100px;" value="<?=$filter?>" id="filter" name="filter" placeholder="MCID">
   <input type="submit" name="submit" value="Lookup" class="btn btn-default" onClick="return chkchg()">
 </form>
-menupart3;
 
-print <<<theRest
 </ul>		<!-- nav navbar-nav  *the menu bar* -->
 </div>  <!--/.nav-collapse -->
 <!-- </div>  container -->
 </nav>  <!-- class = "navbar" -->
 <!-- End mainmenu.inc -->
 
-theRest;
-
-print <<<theModal
  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -210,5 +236,3 @@ print <<<theModal
 </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- end of modal -->
-theModal;
-?>

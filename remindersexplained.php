@@ -13,11 +13,11 @@
 session_start();
 
 include 'Incls/seccheck.inc.php';
-//include 'Incls/mainmenu.inc.php';
+include 'Incls/mainmenu.inc.php';
 
 ?>
 <a name="top"></a><div class="container">
-<h2>Reminders Explained&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="remmultiduesnotices.php">RETURN</a></h2>
+<h2>Reminders Explained</h2>
 <a href="#workflow">Recommended Workfow</a><br>
 <a href="http://youtu.be/v0463JH3ojQ" target="_blank">Instructional Video (19:14)</a>
 <h3>Overview</h3>
@@ -37,8 +37,8 @@ include 'Incls/seccheck.inc.php';
 <p>A final check box column labelled 'Inactive?' is included and is active for all member's to whom reminders have been sent.  This check box is to provide the ability to set one or more of these members as 'Inactive' using today's date. This option is used when the 'final' notice has been sent to the member and it is determined that it is appropriate to drop the member from the database entirely.  By checking one or more check boxes in the 'Inactive?' column and clicking the corresponding button at the bottom of the report will result in all those member records being marked as 'Inactive' using today's date.</p>
 <p>Setting a member 'Inactive' does not,in and of itself, drop the members record.  The date that the 'Inactive' status has been set is used to determine a time period of 90 days, after which the DB Janitor process will permanently delete those 'expired' ember records and all their associated funding,correspondence, and volunteer time entries (if any.)  Any payment or donation made during that 90 day period will automatically set the member record to 'Inactive: NO' thus making the record 'active' once again.</p>
 </p>
-<br />
-<a name=workflow></a>
+<div id="workflow"></div>
+<br><br>
 <div class="page-break"></div>
 <H4>Recommended Reminders Work Flow</H4>
 <P>To maximize the time required to maintain expired memberships the

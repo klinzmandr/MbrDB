@@ -6,7 +6,10 @@
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
-<body onChange="flagChange(); setUpd();">
+<body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <script>
 function setUpd() {
 	document.getElementById("hdr3").style.color="Red";
@@ -63,7 +66,7 @@ Last Updated: $dlu<br> -->
 <input type="hidden" name="field" value="$field">
 <input type="hidden" name="namelabel1stline" value="$namelabel1stline">
 <input type="hidden" name="doe" value="$doe">
-<input class="btn btn-danger" type="submit" name="action" value="APPLY">
+<input class="updb btn btn-danger" type="submit" name="action" value="APPLY">
 </form>
 <br /><br />
 <a class="btn btn-primary" href="ediaddupdate.php" onclick="return chkchg()">RETURN</a>
@@ -72,7 +75,5 @@ pagePart1;
 
 ?>
 
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

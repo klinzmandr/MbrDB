@@ -31,14 +31,9 @@ addlogentry('Page Load');
 //echo "Initial Connection Info: ".$mysqli->host_info . "<br><br>";
 echo "<script>
 var EmailAddr = \"$EmailFROM\";
-<!-- set check box size larger -->
 </script>
-<style>
-input[type=checkbox] {
-  transform: scale(1.5);
-</style> 
 ";
-// ------------------ submit sql statement provided by calling script ----------
+// --- submit sql statement provided by calling script ---
 // submit sql statement provided in call
 function doSQLsubmitted($sql) { 
 global $mysqli;
@@ -305,7 +300,6 @@ function checkcredentials($userid, $password) {
 		}
 	if (($r[UserID] == $userid) && ($r[Password] == $password)) {
 		//echo "found match - user: $uid, pw: $pw<br>";
-		$_SESSION['SessionTimer'] = time() + $_SESSION['SessionLength'];
 		$_SESSION['SecLevel'] = $r[Role];
 		$_SESSION['SessionUser'] = $userid;
 		return(true);

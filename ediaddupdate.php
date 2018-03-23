@@ -179,7 +179,7 @@ print <<<updPage1
 
 <div class="tab-pane fade" id="personal">
 Info about Spouse, children, parents, siblings, other sig. Relationships
-<a class="btn btn-primary btn-mini" href="edidbupdate.php?field=personal">Update</a>
+<a class="updb btn btn-primary btn-mini" href="edidbupdate.php?field=personal">Update</a>
 <div class="well">
 <pre>
 $personal
@@ -188,7 +188,7 @@ $personal
 </div>  <!-- tab-pane -->
 <div class="tab-pane fade" id="education">
 Info about College, Advanced Degrees, Honorary Degrees
-<a class="btn btn-primary btn-mini" href="edidbupdate.php?field=education">Update</a>
+<a class="updb btn btn-primary btn-mini" href="edidbupdate.php?field=education">Update</a>
 <div class="well">
 <pre>
 $education
@@ -197,7 +197,7 @@ $education
 </div>
 <div class="tab-pane fade" id="business">
 Info about Address, position, description, private or public, phone, email
-<a class="btn btn-primary btn-mini" href="edidbupdate.php?field=business">Update</a>
+<a class="updb btn btn-primary btn-mini" href="edidbupdate.php?field=business">Update</a>
 <div class="well">
 <pre>
 $business
@@ -206,7 +206,7 @@ $business
 </div>
 <div class="tab-pane fade" id="other">
 Info about Board memberships, nonprofits, political, religious, social groups
-<a class="btn btn-primary btn-mini" href="edidbupdate.php?field=other">Update</a>
+<a class="updb btn btn-primary btn-mini" href="edidbupdate.php?field=other">Update</a>
 <div class="well">
 <pre>
 $other
@@ -215,7 +215,7 @@ $other
 </div>  <!-- tab-pane -->
 <div class="tab-pane fade" id="wealth">
 Info about Salary/annual income, Stock holdings, Real property, Personal Property, Foundations, Company ownership
-<a class="btn btn-primary btn-mini" href="edidbupdate.php?field=wealth">Update</a>
+<a class="updb btn btn-primary btn-mini" href="edidbupdate.php?field=wealth">Update</a>
 <div class="well">
 <pre>
 $wealth
@@ -268,7 +268,7 @@ echo '</div>  <!-- tab-pane -->';
 print <<<updPage2
 <div class="tab-pane fade" id="research">
 Prepared for, Requested by, Date, Researchers comments
-<a class="btn btn-primary btn-mini" href="edidbupdate.php?field=research">Update</a>
+<a class="updb btn btn-primary btn-mini" href="edidbupdate.php?field=research">Update</a>
 <div class="well">
 <pre>
 $research

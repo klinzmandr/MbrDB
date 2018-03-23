@@ -6,7 +6,7 @@
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
-<body onLoad="initForm(this)">
+<body>
 <script src="Incls/datevalidation.js"></script>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -35,30 +35,6 @@ echo "<div class=container>";
 $mcid = $_SESSION['ActiveMCID'];
 $seclevel = $_SESSION['SecLevel'];
 $action = $_REQUEST['action'];
-if ($filterflag == "--none--") { 
-	$m = "<p><b>Use of the MCID field</b></p><p>The MCID field is used to access and update member/contact informaton.  No MCID entered will provide access to a page to do a general search of the entire database.</p>
-	<p>Click the <a href=\"mbrsearchlist.php\">general search</a> button and enter any string of characters to search the all or part of the first name, last name, label name, address, or email addresses of the entire database.  This will produce a listing of ALL records that contain the target string entered.</p>
-	<p>When a target list of records is displayed, click the bullet at the left of the associated MCID to access the specific member's record./p>
-	<p>Once a single member record has been accessed, its correspondence and fund information records will be available by clicking on the main menu at the top of the page.  That MCID will remain the 'active' until a new MCID is selected or you click the \"Home\" menu choice.</p>";
-	echo "<h2>No MCID entered.</h2>";
-	echo "<br />";
-	echo "$m";
-	echo "<h4><a class=\"btn btn-large btn-primary\" href=\"mbrsearchlist.php\" name=\"filter\" value=\"--none--\">General Search</a></h4></div>";
-	exit;
-	}
-
-if (($action == "") AND ($mcid == "")) {
-	$mcinfo = "<h3>Member/Contact Informaton</h3>"; 
-	$mcinfo .= "<p>This page will display all information of the Member/Contact Id (MCID) selected using the MCID entered or selected via the &apos;Lookup&apos; function.  The MCID displayed will be used for the display of all correspondence and donations information as well.  It will remain \"active\" until another is selected by either returning to the Home page or by using the &apos;Lookup&apos; to select a new one.</p>";
-	$mcinfo .= "<p><b>Use of the MCID field</b></p><p>The MCID field is used to access and update member/contact informaton.  No MCID entered will provide access to a page to do a general search of the entire database using the character string provided in the search input field.</p>
-	<p>Enter any string of characters to search the all or part of the first name, last name, label name, address, or email addresses of the entire database.  This will produce a listing of ALL records that contain the target string entered.</p>
-	<p>When a target list of records is displayed, click the MCID link to access the specific member's record.</p>
-	<p>Once a single member record has been accessed all correspondence and funding information records will be available by clicking on the tab menu in the member information page.  That MCID will remain the 'active' until a new MCID is selected using the Lookup or Search functions or you click the \"Home\" menu choice.</p>";
-
-	echo $mcinfo;
-	exit;
-	}
-
 // if action is to update, get all fields supplied and write them to the database before reading
 if ($action == "update") {
 	$uri = $_SERVER['QUERY_STRING'];
@@ -100,12 +76,7 @@ if ($action == "update") {
   $where = "`MCID`='" . $mcid . "'";
 	sqlupdate('members',$vararray, $where);
   echo '	
-<script>
-$(document).ready(function() {
-  $("#X").fadeOut(2000);
-});
-</script>
-<h3 style="color: red; " id="X">Update Completed.</h3>';
+  <h3 style="color: red; " id="X">Update Completed.</h3>';
 	
 	}
 
@@ -114,9 +85,8 @@ $sql = "SELECT * FROM `members` WHERE MCID = '$mcid'";
 $res = doSQLsubmitted($sql);
 //$res = readMCIDrow($mcid);
 if ($res->num_rows == 0) {
-	echo "<h3>No MCID record found.  Please retry.</h3><br /><br />";
+	echo "<h3>No MCID record is currently active.</h3><br /><br />";
 	echo "<a class=\"btn btn-large btn-primary\" href=\"mbrsearchlist.php\" name=\"filter\" value=\"--none--\">General Search</a><br /><br />";
-	echo "<a class=\"btn btn-large btn-primary\" href=\"index.php\">CANCEL AND RETURN</a><br /><br />";
 	unset($_SESSION['ActiveMCID']);    // invalid MCID
 	exit;
 	} 
@@ -140,8 +110,24 @@ $lastdondate = $row[LastDonDate]; $lastdonpurpose = $row[LastDonPurpose];
 $lastdonamount = $row[LastDonAmount];
 $lastcorrdate = $row[LastCorrDate]; $lastcorrtype = $row[LastCorrType];
 $citieslist = createddown();
-echo "<h3>Member Information for ". $lab1line . '('.$mcid.')</h3>';
-print <<<pagePart1
+?>
+
+<h3>Member Information for <?=$lab1line?> (<?=$mcid?>)
+&nbsp;&nbsp;
+<span id="helpbtn" title="Help" class="glyphicon glyphicon-question-sign" style="color: blue; font-size: 20px"></span></h3>
+<div id="help">
+	<p><b>Use of the MCID field</b></p><p>The MCID field is used to access and update member/contact informaton.  No MCID entered will provide access to a page to do a general search of the entire database.</p>
+	<p>Click the <a href="mbrsearchlist.php">general search</a> button and enter any string of characters to search the all or part of the first name, last name, label name, address, or email addresses of the entire database.  This will produce a listing of ALL records that contain the target string entered.</p>
+	<p>When a target list of records is displayed, click the bullet at the left of the associated MCID to access the specific member's record.</p>
+	<p>Once a single member record has been accessed, its correspondence and fund information records will be available by clicking on the main menu at the top of the page.  That MCID will remain the 'active' until a new MCID is selected or you click the &quot;Home&quot; menu choice.</p>
+<h3>Member/Contact Informaton</h3>
+<p>This page will display all information of the Member/Contact Id (MCID) selected using the MCID entered or selected via the &apos;Lookup&apos; function.  The MCID displayed will be used for the display of all correspondence and donations information as well.  It will remain \"active\" until another is selected by either returning to the Home page or by using the &apos;Lookup&apos; to select a new one.</p>
+<p><b>Use of the MCID field</b></p><p>The MCID field is used to access and update member/contact informaton.  No MCID entered will provide access to a page to do a general search of the entire database using the character string provided in the search input field.</p>
+	<p>Enter any string of characters to search the all or part of the first name, last name, label name, address, or email addresses of the entire database.  This will produce a listing of ALL records that contain the target string entered.</p>
+	<p>When a target list of records is displayed, click the MCID link to access the specific member's record.</p>
+	<p>Once a single member record has been accessed all correspondence and funding information records will be available by clicking on the tab menu in the member information page.  That MCID will remain the 'active' until a new MCID is selected using the Lookup or Search functions or you click the &quot;Home&quot; menu choice.</p>
+</div>   <!-- help -->
+
 <script>
 var reason = "";
 // validate entire form before submission to database
@@ -167,8 +153,8 @@ function validateForm(theForm) {
 	//reason += validateEmpty(theForm.from);
 	//reason += validateLists();    
 	if (reason != "") {
-		var r=confirm("Highlighted fields need attention.\\n\\nClick Cancel to correct.\\n\\nClick OK to Continue.");	
-		if (r == true) { return true; }
+		var r=confirm("Highlighted fields need attention.\n\nClick OK to correct.\n\nClick CANCEL to update without corrections.");	
+		if (!r == true) { return true; }
 		return false;
   	}
 	}
@@ -212,7 +198,7 @@ function validateEmpty(fld) {
   if (fld.value.length == 0) {
   	fld.style.background = '#F7645E';
   	if (reason == "") {
-    	error = "Required field(s) have not been filled in.\\n" }
+    	error = "Required field(s) have not been filled in.\n" }
     	} 
     else {
     	fld.style.background = 'White';
@@ -228,29 +214,16 @@ function stopRKey(evt) {
 	}
 
 <!-- Does not allow use of Enter key when filling out a form -->
-<!-- document.onkeypress = stopRKey; -->
+document.onkeypress = stopRKey;
 
-function initForm(theDoc) {
-	clearFilter(theDoc.filter);
-	initAllFields(theDoc.mcform);
-	return true;
-	}
+$(document).ready(function() {
+  $("#filter").val('');
+  $("#MCT").val("<?=$mctype?>");      // init drop down
+  $("[name=MemStatus]").val(["<?=$memstatus?>"]); // init all radios
+	$("[name=E_mail]").val(["<?=$e_mail?>"]);
+	$("[name=Mail]").val(["<?=$mail?>"]);
+	$("[name=Inactive]").val(["<?=$inact?>"]);
 
-function clearFilter(theForm) {
-	theForm.filter.value = "";
-	return true;
-	}
-	
-function initAllFields(form) {
-// Initialize all form controls
-  with (form) {
-//		initRadio(ttaken,"$ttaken");
-		initRadio(MemStatus,"$memstatus");
-		initSelect(MCtype,"$mctype");
-		initRadio(E_mail,"$e_mail");
-		initRadio(Mail,"$mail");
-		initRadio(Inactive,"$inact");
-  	}
 	// if no email address defined
 	if (document.getElementById("EMA").value == "") {
 		document.getElementById("EMR1").checked = false;
@@ -264,7 +237,7 @@ function initAllFields(form) {
 	if (document.getElementById("NL1").value == "") {
 		chgFlag += 1;						// flag that a update is needed on the form
 		}
-	}
+});
 
 // if email address defined assume it is ok to send email
 function setupemailok() {
@@ -293,36 +266,10 @@ function setupaddrok() {
 		}
 	}
 
-function initSelect(control,value) {
-// Initialize a selection list (single valued)
-// alert("initSelect: control: " + control.length + ", value: " + value);
-	if (value == "") return;
-	for (var i = 0; i < control.length; i++) {
-		if (control.options[i].value == value) {
-			control.options[i].selected = true;
-			break;
-			}
-		}
-	}
-
-function initRadio(control,value) {
-//alert("initRadio");
-// Initialize a radio button
-	for (var i = 0; i < control.length; i++) { 
-		if (control[i].value == value) {
-			control[i].checked = true;
-			break;
-		}
-	}
-}
-
 function setflds(theForm) {
-	//alert("entered");
-	var ffld = theForm.FName.value;
-	var lfld = theForm.LName.value;
-	//alert("ffld: "+ffld+", lfld: "+lfld);
-	theForm.NameLabel1stline.value = ffld + " " + lfld;
-	theForm.CorrSal.value = ffld;
+	var labline = $("#FN").val() + " " + $("#LN").val();
+	$("#NL1").val(labline.substring(0,24));
+	$("[name=CorrSal]").val($("#FN").val());
 	return;
 	}
 
@@ -413,20 +360,14 @@ function validatezipcode(fld) {
 </script>
 
 <form name="mcform" id="mcform" class="form-horizontal" role="form" onsubmit="return validateForm(this)">
-<div style="text-align: center"><button type="submit" form='mcform' class="btn btn-primary">Update Member</button></div>
+<div style="text-align: center"><button type="submit" form='mcform' class="updb btn btn-primary">Update Member</button></div>
 <!-- Tab definition header  -->
 <ul id="myTab" class="nav nav-tabs">
   <li class="active"><a href="#home" data-toggle="tab">Main</a></li>
   <li class=""><a href="#funding" data-toggle="tab">Funding</a></li>
   <li class=""><a href="#corr" data-toggle="tab">Correspondence</a></li>
 
-pagePart1;
-// show lists tab if member is a volunteer
-// or an admin because admins can see everything!
-//if (($memstatus == 2) OR ($seclevel == 'admin')) 
-//	echo '<li class=""><a href="#lists" data-toggle="tab">Lists</a></li>';
 
-print <<<pagePart2
  	<li class=""><a href="#lists" data-toggle="tab">VolLists</a></li>
  	<li class=""><a href="#time" data-toggle="tab">VolTime</a></li>
 	<li class=""><a href="#summary" data-toggle="tab">Summary</a></li>
@@ -437,24 +378,25 @@ print <<<pagePart2
 <div class="tab-pane fade active in" id="home">
 <div class="well">
 <h4>Contact Information</h4>
-<input type="hidden" name="MCIDx" value="$mcid">
+<input type="hidden" name="MCIDx" value="<?=$mcid?>">
 <div class="row">
-<div class="col-sm-4">First: <input placeholder="First Name" autofocus type="text" name="FName" value="$fname" onchange="setflds(document.mcform)"></div>
-<div class="col-sm-4">Last: <input placeholder="Last Name" type="text" name="LName" value="$lname" onchange="setflds(document.mcform)"></div>
+<div class="col-sm-4">First: <input placeholder="First Name" autofocus type="text" id="FN" name="FName" value="<?=$fname?>" onchange="setflds(document.mcform)"></div>
+<div class="col-sm-4">Last: <input placeholder="Last Name" type="text" id="LN" name="LName" value="<?=$lname?>" onchange="setflds(document.mcform)"></div>
 </div>
 
 <div class="row">
-<div class="col-sm-4">Label Line: <input id="NL1" placeholder="Label Line" name="NameLabel1stline" value="$lab1line"></div>
-<div class="col-sm-5">Corr. Sal:<input placeholder="Correspondence Salutation" name="CorrSal" value="$corrsal"></div>
+<div class="col-sm-4">Label Line: 
+<input id="NL1" placeholder="Label Line" name="NameLabel1stline" maxlength="24" value="<?=$lab1line?>"></div>
+<div class="col-sm-5">Corr. Sal:<input placeholder="Correspondence Salutation" name="CorrSal" value="<?=$corrsal?>"></div>
 </div>
 <div class="row">
-<div class="col-sm-4">Org: <input placeholder="Organization" name="Organization" value="$org"></div>
-<div class="col-sm-4">Addr Line: <input id="ALN" placeholder="Address Line" name="AddressLine" value="$addr" onchange="setupaddrok()"></div>
+<div class="col-sm-4">Org: <input placeholder="Organization" name="Organization" value="<?=$org?>"></div>
+<div class="col-sm-4">Addr Line: <input id="ALN" placeholder="Address Line" name="AddressLine" value="<?=$addr?>" onchange="setupaddrok()"></div>
 </div>
 <div class="row">
-<div class="col-sm-4">City: <input id="CI" placeholder="City" name="City" value="$city" onblur="loadcity()"  autocomplete="off" ></div>
-<div class="col-sm-2">State: <input id="ST" placeholder="State	" type="text" name="State" value="$state" style="width: 50px; " /></div>
-<div class="col-sm-3">Zip: <input id="ZI" type="text" name="ZipCode" value="$zip" size="10" maxlength="10" style="width: 100px;" placeholder="Zip" onchange="validatezipcode(this)"/></div>
+<div class="col-sm-4">City: <input id="CI" placeholder="City" name="City" value="<?=$city?>" onblur="loadcity()"  autocomplete="off" ></div>
+<div class="col-sm-2">State: <input id="ST" placeholder="State	" type="text" name="State" value="<?=$state?>" style="width: 50px; " /></div>
+<div class="col-sm-3">Zip: <input id="ZI" type="text" name="ZipCode" value="<?=$zip?>" size="10" maxlength="10" style="width: 100px;" placeholder="Zip" onchange="validatezipcode(this)"/></div>
 </div>
 <script src="js/bootstrap3-typeahead.js"></script>
 <script>
@@ -469,28 +411,28 @@ function loadcity() {
 </script>
 
 <script>
-var citylist = $citieslist;
+var citylist = <?=$citieslist?>;
 $('#CI').typeahead({source: citylist})
 
 </script>
 
 <div class="row">
-Phone: <input type="text" name="PrimaryPhone" value="$priphone" size="12" maxlength="12" style="width: 125px;" onchange="return ValidatePhone(this)"  placeholder="Primary Phone" />
+Phone: <input type="text" name="PrimaryPhone" value="<?=$priphone?>" size="12" maxlength="12" style="width: 125px;" onchange="return ValidatePhone(this)"  placeholder="Primary Phone" />
 &nbsp;
-Email: <input id="EMA" placeholder="Email" style="width: 200px;" name="EmailAddress" value="$eaddr" onchange="setupemailok()"></td></tr>
+Email: <input id="EMA" placeholder="Email" style="width: 200px;" name="EmailAddress" value="<?=$eaddr?>" onchange="setupemailok()"></td></tr>
 &nbsp;
-2nd Email: <input id="EMA2" placeholder="Alt Email" style="width: 200px;" name="EmailAddress2" value="$eaddr2"></td></tr>
+2nd Email: <input id="EMA2" placeholder="Alt Email" style="width: 200px;" name="EmailAddress2" value="<?=$eaddr2?>"></td></tr>
 </div>
 
 <div class="row">
-<div class="col-sm-12">Notes:<textarea name="Notes" rows="2" cols="60">$notes</textarea></div>
+<div class="col-sm-12">Notes:
+<textarea name="Notes" rows="2" cols="60"><?=$notes?></textarea></div>
 </div>  <!-- row -->
-</div>  <!-- well -->
+
 <!-- </div>  tab pane -->
 
 <!-- Tab 2 membership information -->
 <!-- <div class="tab-pane fade" id="detail"> -->
-<div class="well">
 <h4>Membership Detail</h4>
 <div class="row">
 <div class="col-sm-7">
@@ -505,9 +447,9 @@ Mbr Status:&nbsp;
 <div class="col-sm-5 col-sm-offset-1">
 Mbr Type:<select id="MCT" name="MCtype" size="1" onChange="checkmbr(this)">
 <option value=""></option>
-pagePart2;
+<?php
 loaddbselect('MCTypes');
-print <<<pagePart3
+?>
 </select>
 <!-- Mbr Type:<input placeholder="MC TYpe" name="MCtype" value="$mctype"> -->
 </div>  <!-- col-sm-5 -->
@@ -515,7 +457,7 @@ print <<<pagePart3
 <div class="row">
 <div class="col-sm-3">
 <!-- Date Joined:<input onchange="ValidateDate(this)" placeholder="YYYY-MM-DD" name="MemDate" value="$memdate" style="width: 100px;"> -->
-Date Joined: $memdate
+Date Joined: <?=$memdate?>
 </div>  <!-- col-sm-3 -->
 <script>
 function chkvalidemail(fld) {
@@ -557,13 +499,12 @@ function chkvalidmail(fld) {
 <input onclick="setInactiveDate()" type="radio" name="Inactive" value="TRUE" />Yes
 <input onclick="clearInactiveDate()" type="radio" name="Inactive" value="FALSE" />No
 </div>
-<div class="col-sm-4">Date Inactive: <input placeholder="Date Inactive" name="Inactivedate"  onchange="ValidateDate(this)" value="$inactdate"></div>
+<div class="col-sm-5">Date Inactive: <input placeholder="Date Inactive" name="Inactivedate"  onchange="ValidateDate(this)" value="<?=$inactdate?>"></div>
 </div>
 </div>  <!-- well -->
 </div> <!-- tab 1 pane -->
 
-pagePart3;
-
+<?php
 // ============= Tab 2 Funding List ======================
 // always read db for all MCID donation records including new one if just added
 $sql = "SELECT * FROM `donations` WHERE `MCID` = '$mcid' ORDER BY `DonationDate` DESC";

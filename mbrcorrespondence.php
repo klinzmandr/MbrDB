@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,26 +15,24 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
 <?php
-session_start();
 include 'Incls/seccheck.inc.php';
 //include 'Incls/vardump.inc.php';
 include 'Incls/mainmenu.inc.php';
 include 'Incls/datautils.inc.php';
 
 $mcid = $_SESSION['ActiveMCID'];
-echo "<div class=container>";
-if ($mcid == "") {
-	print <<<corrInfo
+?>
+<div class=container>
+
+<div id="help">
 <h3>Correspondence Log</h3> 
 <p>This page will display all information about correspondence to the member/contact.  The MCID used is the &quot;active&quot; MCID selected by using the MCID entered or selected via the MCID Lookup function of the main menu.  An MCID will remain &quot;active&quot; until another is selected using the Lookuup function or the Home page is selected.</p>
 	<h4>Special Note the Correspondence Log</h4>
 	<p>The Correspondence Log is used to note all contact with the each member. This will provide an historical record concerning the relationship between the funding entity and the organization.</p>
 	<p>Special entries are automatically created when an MCID is determined to have an expired membership and reminder notices are generated.  Additionally, a special entry is made when a &apos;dues&apos; payment has been entered.</p>
-<script src="jquery.js"></script> <script src="js/bootstrap.min.js"></script></body></html>
-corrInfo;
-exit();
-	}
+</div>    <!-- help -->
 
+<?php
 //add new record
 if ($_REQUEST['action'] == "add") {
 	$sql = "SELECT * FROM `correspondence` 
@@ -161,7 +162,7 @@ print <<<formPart2
 <input type="hidden" name="action" value="apply">
 <input type="hidden" name="MCID" value="$mcid">
 <input type="hidden" name="id" value="$recno">
-<button type="submit" form='mcform' class="btn-sm btn-primary">Update Record</button></div>
+<input type="submit" form='mcform' class="updb btn-sm btn-primary" value="Update Record"></div>
 </form>
 </div>  <!-- row -->
 </div>  <!-- well -->
@@ -191,11 +192,6 @@ if ($_REQUEST['action'] == "apply") {
 	$memflds[LastCorrType] = $vararray[CorrespondenceType];
 	sqlupdate('members', $memflds, "`MCID` = '$mcid'");
 	echo '	
-<script>
-$(document).ready(function() {
-  $("#X").fadeOut(2000);
-});
-</script>
 <h3 style="color: red; " id="X">Update Completed.</h3>';
 	}
 
@@ -208,7 +204,10 @@ $results = doSQLsubmitted($sql);
 
 // multiple rows returned, list correspondence records
 $results->data_seek(0);
-echo "<h3>Correspondence Log for <a href=\"mbrinfotabbed.php\">$mcid</a>&nbsp;&nbsp; <a  class=\"btn btn-primary\" href=\"mbrcorrespondence.php?action=add\" onclick=\"return anchorconfirm()\">(Add new record)</a></h3>";
+echo "<h3>Correspondence Log for <a href=\"mbrinfotabbed.php\">$mcid</a>&nbsp;&nbsp; <a  class=\"btn btn-primary\" href=\"mbrcorrespondence.php?action=add\" onclick=\"return anchorconfirm()\">(Add new record)</a>
+&nbsp;&nbsp;
+<span id=\"helpbtn\" title=\"Help\" class=\"glyphicon glyphicon-question-sign\" style=\"color: blue; font-size: 20px\"></span>
+</h3>";
 echo "<table class=\"table\">";
 echo "<tr><th>Edit</th><th>Corr. ID</th><th>Corr. Type</th><th>Date Sent</th><th>Source</th><th>Notes</th></tr>";
 while ($row = $results->fetch_assoc()) {
