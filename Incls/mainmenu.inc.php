@@ -21,26 +21,15 @@ $("#helpbtn").click(function() {
   $("#help").toggle();
   });
   
-$("input").change(function(){
-  if (this.id == "filter") return;  // ignore filter input
+$("form").change(function() {
+  var v = $("#filter").val();
+  if (v != "") return;  // ignore filter input
   chgFlag += 1; 
   $(".updb").css({"background-color": "red", "color":"black"});
   $('.updb').prop('disabled', false);    
   // setInterval(blink_text, 1000);
   });
-$("textarea").change(function(){
-  chgFlag += 1; 
-  $(".updb").css({"background-color": "red", "color":"black"});
-  $('.updb').prop('disabled', false);    
-  // setInterval(blink_text, 1000);
-  });
-$("select").change(function(){
-  chgFlag += 1; 
-  $(".updb").css({"background-color": "red", "color":"black"});
-  $('.updb').prop('disabled', false);    
-  // setInterval(blink_text, 1000);
-  });
-  
+
 $(".dropdown").click(function(event) {
 	if (chgFlag <= 0) { return true; }
 	var r=confirm("All changes made will be lost.\n\nConfirm abandoning changes and leaving page by clicking OK.");	
@@ -59,12 +48,6 @@ function blink_text() {     // blink field
     $('.updb').fadeIn(500);
   }
 
-function chkchg() {
-	if (chgFlag <= 0) { return true; }
-	var r=confirm("All changes made will be lost.\n\nConfirm leaving page by clicking OK.\nCANCEL to return.");	
-	if (r == true) { chgFlag = 0; return true; }
-		return false;
-  }
 </script>
 
 <script>
@@ -118,15 +101,15 @@ if (($sessionlevel == "devuser") OR ($sessionlevel == "admin")) {
   <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">EDInfo<b class="caret"></b></a>
   	<ul class="dropdown-menu" aria-labelledby="drop2" role="menu">
   	  <!-- <li><a href="mbrinfotabbed.php">Active MCID Info</a></li> -->
-  		<li><a onclick="return chkchg()" href="ediaddupdate.php">EDI for Active MCID</a></li>
+  		<li><a href="ediaddupdate.php">EDI for Active MCID</a></li>
   		<li><a onclick="return confirmAdd()" href="ediaddupdate.php?action=addnew">Add EDI for Active MCID</a></li>
   		<li><a onclick="return confirmDelete()" href="ediaddupdate.php?action=delete">Delete EDI for Active MCID</a></li>
-  		<li><a onclick="return chkchg()" href="edilistall.php">List All MCIDs with EDI</a></li>
+  		<li><a href="edilistall.php">List All MCIDs with EDI</a></li>
   	</ul>   <!-- ul dropdown-menu -->
   </li>  <!-- li dropdown -->
 
 <!-- Menu for Solictation Functions pages -->  
-  <li><a onclick="return chkchg()" href="devscripts.php" target='_blank'>Solict</a></li>
+  <li><a href="devscripts.php" target='_blank'>Solict</a></li>
 <?php
 }
 
@@ -138,15 +121,15 @@ if ($sessionlevel == "admin") {
 <li class="dropdown">
 <a id="drop1" class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Reminders<b class="caret"></b></a>
 <ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
-	<!-- <li><a onclick="return chkchg()" href="remduesowed.php">Display Expired</a></li> -->
-	<li><a  onclick="return chkchg()" href="remmultiduesnotices.php">Display Expired</a></li>
-	<!-- <li><a onclick="return chkchg()" href="remlists.php">List In-Progress Reminders</a></li> -->
-	<!-- <li><a onclick="return chkchg()" href="rememailnotice.php">Send Email Notice to MCID</a></li> -->
-	<!-- <li><a onclick="return chkchg()" href="remnotice.php">Send Letter Notice to MCID</a></li> -->
-	<li><a onclick="return chkchg()" href="remlabelsandletters.php">Print Labels and Letters</a></li>
+	<!-- <li><a href="remduesowed.php">Display Expired</a></li> -->
+	<li><a  href="remmultiduesnotices.php">Display Expired</a></li>
+	<!-- <li><a href="remlists.php">List In-Progress Reminders</a></li> -->
+	<!-- <li><a href="rememailnotice.php">Send Email Notice to MCID</a></li> -->
+	<!-- <li><a href="remnotice.php">Send Letter Notice to MCID</a></li> -->
+	<li><a href="remlabelsandletters.php">Print Labels and Letters</a></li>
 	<li><a href="reminprogressreminderlist.php" target="_blank">In-Progress Reminders</a></li>
 	<li><a href="remconversions.php">Reminder Conversion Report</a></li>
-	<li><a onclick="return chkchg()" href="remindersexplained.php">Reminders Explained</a></li>
+	<li><a href="remindersexplained.php">Reminders Explained</a></li>
 	<!-- <li><a href="#">?</a></li> -->
 </ul>
 </li>  <!-- class="dropdown" -->
@@ -200,7 +183,7 @@ function setupmcid(theForm)  {
 <!-- lookup input field -->
 <form name="filter" action="mbrfilterlist.php" method="post" class="navbar-form pull-left" onsubmit="return setupmcid(this)">&nbsp;&nbsp;&nbsp;
   <input autofocus autocomplete="off" type="text" class="form-control" style="width: 100px;" value="<?=$filter?>" id="filter" name="filter" placeholder="MCID">
-  <input type="submit" name="submit" value="Lookup" class="btn btn-default" onClick="return chkchg()">
+  <input type="submit" name="submit" value="Lookup" class="btn btn-default">
 </form>
 
 </ul>		<!-- nav navbar-nav  *the menu bar* -->

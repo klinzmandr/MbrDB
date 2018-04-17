@@ -188,7 +188,7 @@ function addmaillogentry($text) {
 	return($err);
 	}
 
-// ---------------------------- text file utils ---------------------------------------------
+// ------ text file utils -----------
 function loadlist($listname) {
 	$listitems = file("$listname");
 	foreach ($listitems as $p) {
@@ -214,7 +214,7 @@ function writemaintlist($filename,$content) {
 	file_put_contents("$filename", $content);
 	}
 
-// --------------------- db configtable utilities ----------------------------------------
+// --------- db configtable utilities ---------
 // 'configtable' column names: CFGId, CfgName, CfgText
 // read db table item
 function readdblist($listname) {
@@ -274,12 +274,12 @@ function loaddbselect($cfglist) {
 		}
 	return($listarray); 
 	}
-// ------------------- calc and return expiration date -----------------
+// ------- calc and return expiration date -----------------
 function calcexpirationdate() {
 	return(date('Y-m-01', strtotime('-11 months')));									// this is the expiration period
 	}
 
-// ------------------ check login credentials --------------------------
+// ------ check login credentials --------------------------
 function checkcredentials($userid, $password) {
 	$sql = "SELECT * FROM `adminusers` WHERE `UserID` = '$userid'";
 	$res = doSQLsubmitted($sql);

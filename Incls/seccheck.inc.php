@@ -11,6 +11,7 @@ $(document).ready(function() {
       redirAfter: 20*60*1000,
       countdownMessage: 'Time remaining:',
       countdownBar: true,
+      countdownSmart: true,
       showButtons: false
   });
 });

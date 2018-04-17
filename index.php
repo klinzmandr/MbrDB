@@ -52,8 +52,11 @@ if (isset($_SESSION['SessionUser'])) {
 	<h5>Security level: ' . $_SESSION['SecLevel'] . '</h5>
 	<form class="form-inline" action="indexsto.php?lo=lo" method="post"  id="xform">
   <h3>Home Page&nbsp  
-  <button  class="btn btn-large btn-primary" name="action" value="logout" type="submit" form="xform" class="btn">Logout</button>
-  </h3></form>';
+  <button  class="btn btn-large btn-primary" name="action" value="logout" type="submit" form="xform" class="btn">Logout</button>';
+  if ($_SESSION['SecLevel'] == 'admin') {
+    echo "&nbsp;&nbsp;&nbsp;<a class=\"btn btn-danger\" href=\"indexadmin.php\">Admim</a></h3>";
+    }
+  echo '</h3></form>';
  	}
 else {
 	echo '<form class="form-inline" action="index.php" method="post"  id="yform">
