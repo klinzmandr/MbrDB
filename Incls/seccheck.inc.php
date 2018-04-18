@@ -19,8 +19,13 @@ $(document).ready(function() {
 
 <?php
 // check if there is an active session
-if (isset($_SESSION['SessionUser'])) {
+if (isset($_SESSION['SessionActive'])) {
   return;
+  }
+// if url is a report exit
+if (preg_match("/.*\/rpt.*\.(php|html|htm)$/i",$_SERVER['SCRIPT_NAME'])) {
+  echo '<h3>SESSION NO LONGER ACTIVE</h3>';
+  exit;
   }
 
 // if not display login form
