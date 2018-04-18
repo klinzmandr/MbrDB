@@ -98,7 +98,7 @@ if (($sessionlevel == "devuser") OR ($sessionlevel == "admin")) {
 ?>
 <!-- Menu dropdown for Extended Donor Info pages -->	
   <li class="dropdown">
-  <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">EDInfo<b class="caret"></b></a>
+  <a class="dropdown-toggle" data-toggle="dropdown" role="button">EDInfo<b class="caret"></b></a>
   	<ul class="dropdown-menu" aria-labelledby="drop2" role="menu">
   	  <!-- <li><a href="mbrinfotabbed.php">Active MCID Info</a></li> -->
   		<li><a href="ediaddupdate.php">EDI for Active MCID</a></li>
