@@ -7,6 +7,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <?php
 session_start();
@@ -77,7 +79,7 @@ if ($_SERVER['SERVER_NAME'] != 'localhost') {
 // finally add new correspondence record noting send of this email
 $fields[CorrespondenceType] = 'EmailNotice';
 if (preg_match("/tax/i", $corrtypesub))   // create special corr type for tax receipt
-  $fields[CorrespondenceType] = 'EOYTaxRcp';
+  $fields[CorrespondenceType] = 'TaxReciept';
 $fields[DateSent] = date('Y-m-d');
 $fields[MCID] = $mcid;
 $fields[Reminders] = 'EMailNotice';
@@ -90,8 +92,6 @@ $mbrflds[LastCorrDate] = $fields[DateSent];
 sqlupdate('members', $mbrflds, "`MCID` = '$mcid';");
 
 ?>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </div>
 </body>
 </html>
