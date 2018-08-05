@@ -17,9 +17,9 @@ $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : "";
 $recno = isset($_REQUEST['recno']) ? $_REQUEST['recno'] : "";
 $userid = isset($_REQUEST['userid']) ? $_REQUEST['userid'] : "";
 $password = isset($_REQUEST['password']) ? $_REQUEST['password'] : "";
+$mcid = isset($_REQUEST['MCID']) ? $_REQUEST['MCID'] : "";
 $role = isset($_REQUEST['role']) ? $_REQUEST['role'] : "";
 $notes = isset($_REQUEST['notes']) ? $_REQUEST['notes'] : "";
-
 
 if ($action == "delete") {
 	//echo "Delete record number $recno<br>";
@@ -31,6 +31,7 @@ if ($action == "addnew") {
 	//echo "Add new record number for user: $userid, password: $password, role: $role<br>";
 	$flds[UserID] = $userid;
 	$flds[Password] = $password;
+	$flds[MCID] = $mcid;
 	$flds[Role] = $role;
 	$flds[Notes] = $notes;
 	$res = sqlinsert('adminusers', $flds);
@@ -79,6 +80,7 @@ function trim(s)
 <form class="form" name="addform" action="admaddnewuser.php" onsubmit="return checkflds(this)">
 New User ID: <input type="text" name="userid" placeholder="Email Address">
 Password: <input type="text" name="password" value="raptor">
+MCID: <input type=text name=MCID value='' title="MCID used in to identify return email address.">
 Role: <select name="role">
 <option value="">Select a role for the User</option>
 <option value="admin">MbrDB Admin</option>
@@ -101,7 +103,7 @@ pagePart1;
 $sql = "select * from adminusers";
 $res = doSQLsubmitted($sql);
 echo "<table class=\"table-condensed\">";
-echo "<tr><th>Delete</th><th>User ID</th><th>Password</th><th>Role</th><th>Notes</th></tr>";
+echo "<tr><th>Delete</th><th>User ID</th><th>Password</th><th>MCID</th><th>Role</th><th>Notes</th></tr>";
 while ($r = $res->fetch_assoc()) {
 	//echo "<pre>user: "; print_r($r); echo "</pre>";
 	echo "<tr>
@@ -110,6 +112,7 @@ while ($r = $res->fetch_assoc()) {
 	<img src=\"config/b_drop.png\" alt=\"DELETE\" /></a>	</td>
 	<td>$r[UserID]</td>
 	<td>$r[Password]</td>
+	<td>$r[MCID]</td>
 	<td>$r[Role]</td>
 	<td>$r[Notes]</td>
 	</tr>
