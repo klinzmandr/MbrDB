@@ -10,16 +10,16 @@ session_start();
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
-<body onLoad="initForm(this)">
+<body>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
 
 <?php
-include 'Incls/seccheck.inc.php';
 // include 'Incls/vardump.inc.php';
-include 'Incls/mainmenu.inc.php';
+include 'Incls/seccheck.inc.php';
 include 'Incls/datautils.inc.php';
+include 'Incls/mainmenu.inc.php';
 
 $mcid =   isset($_SESSION['ActiveMCID']) ? $_SESSION['ActiveMCID'] : '';
 $mcidmemstatus =   isset($_SESSION['MemStatus']) ? $_SESSION['MemStatus'] : '';
@@ -34,7 +34,7 @@ $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
 <h4>Special Note about the Funding Log</h4>
 <p>There is a relationship between the Funding and Correspondence logs used to provide dues expiration reminders notices to MCID entities.  Reminder notices are created when a membership has lapsed.  This means that no membership payment noted as &apos;dues&apos; has been made within the annual membership period (the system default is 11 months).  When a payment is entered and designated to be for membership &apos;dues&apos;, an automatic entry is written to the correspondence log.  This will provide the system a notice the dues for that member has been paid and that the reminder for that specific MCID is no longer necessary.</p>
 <p>Also, please note that any funding payment will cause the Inactive flag of the members record to be set to &apos;NO&apos; and set the Inactivedate to NULL.</p>
-<script src="jquery.js"></script> <script src="js/bootstrap.min.js"></script></body></html>
+
 </div>    <!-- help -->
 
 <?php
@@ -116,28 +116,17 @@ function anchorconfirm() {
 	return false;
 	}
 	
-function initForm(form) {
+$(function() {
 // Initialize all form controls
-  with (form.mcform) {
+//  with (form.mcform) {
 //		initRadio(ttaken,"$ttaken");
-		initSelect(Purpose,"$purpose");
-		initSelect(Program,"$program");
-		initSelect(Campaign,"$campaign");
-		if (Program.value == "") chgFlag += 1;
-		}
-	}
+    $("#PUR").val("<?=$purpose?>");
+    $("#PRO").val("<?=$program?>");
+    $("#CAM").val("<?=$campaign?>");
+		if ($("#PRO").value == "") chgFlag += 1;
+//		}
+	});
 	
-function initSelect(control,value) {
-// Initialize a selection list (single valued)
-// alert("initSelect: control: " + control.length + ", value: " + value);
-	if (value == "") return;
-	for (var i = 0; i < control.length; i++) {
-		if (control.options[i].value == value) {
-			control.options[i].selected = true;
-			break;
-			}
-		}
-	}
 </script>
 
 <script>	
@@ -145,12 +134,12 @@ var reason = "";
 // validate entire form before submission to database
 function validateForm(theForm) {
 	// validate that 'dues' payment is for a member or volunteer
-	var memstat = $mcidmemstatus;
-	var pur = theForm.Purpose.value;
+	var memstat = <?=$mcidmemstatus?>;
+	var pur = $("#PUR").val();
 	if (pur == "Dues" && ((memstat == 0) || (memstat == 3))) {
-		var r=confirm("A Dues payment is being entered for a supporter that is not a member or volunteer.\\n\\nEither the Purpose needs to be changed or the supporter record re-classified to be a 'Member' or 'Volunteer'. \\n\\nClick CANCEL and make corrections or OK to continue.");
+		var r=confirm("A Dues payment is being entered for a supporter that is not a member or volunteer.\n\nEither the Purpose needs to be changed or the supporter record re-classified to be a 'Member' or 'Volunteer'. \n\nClick CANCEL and make corrections or OK to continue.");
 		if (r==false) { return false; }
-		var rr = confirm("Do you REALLY want to post a DUES payment for a non-member/volunteer?\\n\\nCLICK OK to confirm");
+		var rr = confirm("Do you REALLY want to post a DUES payment for a non-member/volunteer?\n\nCLICK OK to confirm");
 		if (rr == false) return false;
 	}
 
@@ -180,12 +169,12 @@ function validateForm(theForm) {
 // if program has "Other" then the note field is necessary to be entered
 function validateNote(fld) {
 	//alert("enter note validation");
-	var progval = document.mcform.Program.value;
+	var progval = $("#PRO").val();
 	var pos = progval.search("Other");
 	var error = "";
 	if ((pos >= 0) && (fld.value.length == 0)) {
 		fld.style.background = '#F7645E';
-		error = "Addition notes are required for Program.//n";
+		error = "Addition notes are required for Program.\n";
 		return error;
 		}
 	fld.style.background = 'White';
@@ -196,7 +185,7 @@ function validateEmpty(fld) {
   var error = "";
   if (fld.value.length == 0) {
   	fld.style.background = '#F7645E';
-    error = "Required field(s) have not been filled in.\\n" 
+    error = "Required field(s) have not been filled in.\n" 
     return error;
     } 
 	else {
@@ -223,7 +212,7 @@ function validateprog(fld) {
 <form action="mbrdonations.php" method="get"  name="mcform" id="mcform" class="form-inline" onsubmit="return validateForm(this)">
 <div class="row">
 <div class="col-sm-3">
-Purpose: <select name="Purpose" size="1">
+Purpose: <select id=PUR name="Purpose" size="1">
 <option value=""></option>
 <option value="Dues">Dues</option>
 <?php
@@ -232,7 +221,7 @@ loaddbselect('Purposes');
 </select>
 </div>  <!-- col-sm-3 -->
 <div class="col-sm-5">
-Program: <select name="Program" size="1" onchange="validateprog(this)">
+Program: <select id=PRO name="Program" size="1" onchange="validateprog(this)">
 <option value=""></option>
 <?php
 loaddbselect('Programs');
@@ -240,7 +229,7 @@ loaddbselect('Programs');
 </select>
 </div>  <!-- col-sm-5 -->
 <div class="col-sm-4">
-Campaign: <select name="Campaign" size="1">
+Campaign: <select id=CAM name="Campaign" size="1">
 <?php
 loaddbselect('Campaigns');
 ?>

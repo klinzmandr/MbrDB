@@ -7,9 +7,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<script src="Incls/datevalidation.js"></script>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="Incls/datevalidation.js"></script>
 
 <?php
 session_start();
@@ -206,17 +206,14 @@ function validateEmpty(fld) {
     return error;  
 	}
 	
-<!-- Function to prevent user from using the 'Enter' key when cursor in a text field. -->
-function stopRKey(evt) {
-  var evt = (evt) ? evt : ((event) ? event : null);
-  var node = (evt.target)?evt.target:((evt.srcElement)?evt.srcElement:null);
-  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
-	}
-
-<!-- Does not allow use of Enter key when filling out a form -->
-document.onkeypress = stopRKey;
-
 $(document).ready(function() {
+//Turn off submit on "Enter" key for a mbr form
+$("#mcform").bind("keypress", function (e) {
+  if (e.keyCode == 13) {    // enter key
+    return false;
+    }
+  });
+
   $("#filter").val('');
   $("#MCT").val("<?=$mctype?>");      // init drop down
   $("[name=MemStatus]").val(["<?=$memstatus?>"]); // init all radios
@@ -241,6 +238,15 @@ $(document).ready(function() {
 
 // if email address defined assume it is ok to send email
 function setupemailok() {
+  var em = $("#EMA").val();
+  var emtest = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  if (!emtest.test(em)) {
+    $("#EMA").css("background", '#F7645E');
+    alert("Email address entered is invalid.\n");
+    return;
+    }
+  $("#EMA").css("background", 'white');
+
 	if (document.getElementById("EMA").value != "") {
 		document.getElementById("EMR1").checked = true;
 		document.getElementById("EMR2").checked = false;
@@ -371,7 +377,7 @@ function validatezipcode(fld) {
  	<li class=""><a href="#lists" data-toggle="tab">VolLists</a></li>
  	<li class=""><a href="#time" data-toggle="tab">VolTime</a></li>
 	<li class=""><a href="#summary" data-toggle="tab">Summary</a></li>
-	<li class=""><a href="mbrfollowup.php" onclick="return chkchg()">Follow Up</a></li>
+	<li class="lvr"><a href="mbrfollowup.php" onclick="return chkchg()">Follow Up</a></li>
 </ul>
 <!-- Tab 1 Demographic information -->
 <div id="myTabContent" class="tab-content">
@@ -419,7 +425,7 @@ $('#CI').typeahead({source: citylist})
 <div class="row">
 Phone: <input type="text" name="PrimaryPhone" value="<?=$priphone?>" size="12" maxlength="12" style="width: 125px;" onchange="return ValidatePhone(this)"  placeholder="Primary Phone" />
 &nbsp;
-Email: <input id="EMA" placeholder="Email" style="width: 200px;" name="EmailAddress" value="<?=$eaddr?>" onchange="setupemailok()"></td></tr>
+Email: <input id="EMA" placeholder="Email" style="width: 200px;" name="EmailAddress" value="<?=$eaddr?>" onblur="setupemailok()"></td></tr>
 &nbsp;
 2nd Email: <input id="EMA2" placeholder="Alt Email" style="width: 200px;" name="EmailAddress2" value="<?=$eaddr2?>"></td></tr>
 </div>
@@ -455,7 +461,7 @@ loaddbselect('MCTypes');
 </div>  <!-- col-sm-5 -->
 </div>  <!-- row -->
 <div class="row">
-<div class="col-sm-3">
+<div class="col-sm-4">
 <!-- Date Joined:<input onchange="ValidateDate(this)" placeholder="YYYY-MM-DD" name="MemDate" value="$memdate" style="width: 100px;"> -->
 Date Joined: <?=$memdate?>
 </div>  <!-- col-sm-3 -->
@@ -495,7 +501,7 @@ function chkvalidmail(fld) {
 </div>
 </div>  <!-- row -->
 <div class="row">
-<div class="col-sm-3">Mbr Inactive?: 
+<div class="col-sm-4">Mbr Inactive?: 
 <input onclick="setInactiveDate()" type="radio" name="Inactive" value="TRUE" />Yes
 <input onclick="clearInactiveDate()" type="radio" name="Inactive" value="FALSE" />No
 </div>
@@ -515,7 +521,7 @@ if ($rc <= 10) $rowcount = $rc;
 echo '
 <div class="tab-pane fade" id="funding">
 <div class="well">
-<b>Funding Records (latest '.$rowcount.' of '.$rc.')</b>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs" href="mbrdonations.php">&nbsp;&nbsp;&nbsp;List&nbsp;All&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs" href="mbrdonations.php?action=add">Add new record</a>';
+<b>Funding Records (latest '.$rowcount.' of '.$rc.')</b>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs lvr" href="mbrdonations.php">&nbsp;&nbsp;&nbsp;List&nbsp;All&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs lvr" href="mbrdonations.php?action=add">Add new record</a>';
 
 // multiple rows returned, list donation records
 $results->data_seek(0);
@@ -567,7 +573,7 @@ if ($rc <= 10) $rowcount = $rc;
 echo '
 <div class="tab-pane fade" id="corr">
 <div class="well">
-<b>Funding Records (latest '.$rowcount.' of '.$rc.')</b>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs" href="mbrcorrespondence.php">&nbsp;&nbsp;&nbsp;List&nbsp;All&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs" href="mbrcorrespondence.php?action=add">Add new record</a>';
+<b>Funding Records (latest '.$rowcount.' of '.$rc.')</b>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs lvr" href="mbrcorrespondence.php">&nbsp;&nbsp;&nbsp;List&nbsp;All&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;<a  class="btn btn-primary btn-xs lvr" href="mbrcorrespondence.php?action=add">Add new record</a>';
 
 // multiple rows returned, list correspondence records
 $results->data_seek(0);
@@ -679,10 +685,10 @@ return true;
 }
 </script>';
 echo "<div style=\"text-align: center\">
-<a class=\"btn btn-xs btn-primary\" onclick=\"return chkem()\" href=\"mbremail.php?tname=x\">SEND AN EMAIL</a> &nbsp;&nbsp;
-<a class=\"btn btn-xs btn-primary\" href=\"mbrsendreceipt.php\" onclick=\"return chkem()\">SEND A RECEIPT</a>&nbsp;&nbsp;
-<a class=\"btn btn-xs btn-primary\" onclick=\"return chkem()\" href=\"mbremailnotice.php\">SEND A REMINDER EMAIL</a>&nbsp;&nbsp;
-<a class=\"btn btn-xs btn-primary\" onclick=\"return chkem()\" href=\"mbrnotice.php\">PRINT A REMINDER LETTER</a>
+<a class=\"btn btn-xs btn-primary lvr\" onclick=\"return chkem()\" href=\"mbremail.php?tname=x\">SEND AN EMAIL</a> &nbsp;&nbsp;
+<a class=\"btn btn-xs btn-primary lvr\" href=\"mbrsendreceipt.php\" onclick=\"return chkem()\">SEND A RECEIPT</a>&nbsp;&nbsp;
+<a class=\"btn btn-xs btn-primary lvr\" onclick=\"return chkem()\" href=\"mbremailnotice.php\">SEND A REMINDER EMAIL</a>&nbsp;&nbsp;
+<a class=\"btn btn-xs btn-primary lvr\" onclick=\"return chkem()\" href=\"mbrnotice.php\">PRINT A REMINDER LETTER</a>
 </div>
 <br />";
 echo '<table border=0 class="table"><tr>';
@@ -717,7 +723,7 @@ else {
 	}
 	echo '</td></tr></table>';
 	echo "<div style=\"text-align: center\">
-	<a class=\"btn btn-xs btn-primary\" href=\"mbrprintmcid.php\">Print MCID Summary Report</a></div>
+	<a class=\"btn btn-xs btn-primary lvr\" href=\"mbrprintmcid.php\">Print MCID Summary Report</a></div>
 	</div>  <!-- well -->
 	</div>  <!-- tab-pane -->
 	<!-- end all tab definitions -->

@@ -215,6 +215,7 @@ $nbr_rows = $res->num_rows;
 // check result rows for value check
 //echo "values - vrangehlo: $vrangelo, vrangehi: $vrangehi<br />";
 $valcount = 0; $noaddr = 0; $nomail = 0; $withemail = 0;
+$mcidtot = array();
 while ($row = $res->fetch_assoc()) {
 	$mcid = $row[MCID];
 	if ($mcid == 'OTD00') continue; 
@@ -233,16 +234,17 @@ while ($row = $res->fetch_assoc()) {
   }
 // delete any TOTAL mcid/campaign amounts not in the value range
 //  echo "vrangelo: $vrangelo, val: $mcidtot[$key], vrangehi: $vrangehi<br>";
-foreach ($mcidtot as $key => $tot) {
-  if (($vrangelo > $tot) OR ($tot > $vrangehi)) {
-//    echo "removing $key<br>";
-    $grandtotal -= $tot;
-    unset($mcidtot[$key]);
-    unset($results[$key]);
-    $mcidtotcnt[$key] -= 1;    
+if (count($mcidtot) > 0) {
+  foreach ($mcidtot as $key => $tot) {
+    if (($vrangelo > $tot) OR ($tot > $vrangehi)) {
+  //    echo "removing $key<br>";
+      $grandtotal -= $tot;
+      unset($mcidtot[$key]);
+      unset($results[$key]);
+      $mcidtotcnt[$key] -= 1;    
+      }
     }
-  }
-  
+}  
 //echo "Inactive count: $inactcnt<br>";
 
 // action == search

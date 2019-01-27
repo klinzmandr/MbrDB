@@ -252,10 +252,10 @@ if (isset($_REQUEST['valrangechk'])) { // do form value range checks
   
 // now ready to do db search for list by criteria using the sp
 $sql = "CALL SummarizeMbrTypes('$drangelo','$drangehi', $typelist)";
-//echo "SQL: $sql<br>";
 
 $res = $mysqli->query($sql);
 $nbr_rows = $res->num_rows;
+// echo "SQL: $sql<br>";
 // echo "rows returned: $nbr_rows<br />";
 
 if ($mysqli->errno != 0) {
@@ -264,26 +264,27 @@ if ($mysqli->errno != 0) {
   exit;
 	}
 
-//$rc = 1;
-//while ($row = $res->fetch_assoc()) {
-//  echo "<pre> Row $rc "; print_r($row); echo '</pre>';
-//  $rc++;
-//  }
-//exit;
-
 // check result rows for value check
-//echo "values - vrangehlo: $vrangelo, vrangehi: $vrangehi<br />";
+// echo "values - vrangehlo: $vrangelo, vrangehi: $vrangehi<br />";
 $withemail = 0; $withoutemail = 0;
 while ($row = $res->fetch_assoc()) {  // read results and do value range check
+  // echo '<pre>'; print_r($row); echo '</pre>';
 	$mcid = $row[MCID];
 	if ($mcid == 'OTD00') {
 	  $mcidcnt++;
 	  continue;
     } 
+    
 	if ($row[Inactive] == 'TRUE') {    // ignore if record marked inactive
     $inactcnt += 1;
     continue;
     }
+
+	if ($row[Mail] == 'FALSE') {    // ignore if does not want mail
+    $inactcnt += 1;
+    continue;
+    }
+  
   if (($noemail == 'noemail') && ($row[E_Mail] == 'TRUE')) {
     $withoutemail++;
     continue;

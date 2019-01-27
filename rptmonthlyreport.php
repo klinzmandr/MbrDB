@@ -22,8 +22,8 @@ $startyr = isset($_REQUEST['startyr']) ? $_REQUEST['startyr'] : date("Y",strtoti
 $startmo = isset($_REQUEST['startmo']) ? $_REQUEST['startmo'] : date("m",strtotime("-1 month"));
 $sd = $startyr . '-' . $startmo;
 $ed = date('Y-m-t', strtotime($sd));
-//echo "sd: $sd<br>";
-//echo "ed: $ed<br>";
+// echo "sd: $sd<br>";
+// echo "ed: $ed<br>";
 
 ?>
 <div class="container">
@@ -33,14 +33,25 @@ Report Date: &nbsp;&nbsp;
 <select id="startyr" name="startyr" >
 <option value="2016">2016</option> 
 <option value="2017">2017</option> 
-<option value="2018" selected>2018</option> 
-<option value="2019">2019</option> 
+<option value="2018">2018</option> 
+<option value="2019" selected>2019</option> 
 <option value="2020">2020</option>
+<option value="2021">2021</option>
 </select>
 <select id="startmo" name="startmo" onchange="this.form.submit();" >
 <option value="">Select Month</option> 
-<option value="01">01</option> 
-<option value="02">02</option> <option value="03">03</option> <option value="04">04</option> <option value="05">05</option> <option value="06">06</option> <option value="07">07</option> <option value="08">08</option> <option value="09">09</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option>
+<option value="01">January</option> 
+<option value="02">Febrary</option> 
+<option value="03">March</option> 
+<option value="04">April</option> 
+<option value="05">May</option> 
+<option value="06">June</option> 
+<option value="07">July</option> 
+<option value="08">August</option> 
+<option value="09">September</option> 
+<option value="10">October</option> 
+<option value="11">November</option> 
+<option value="12">December</option>
 </select>
 </form>
 
@@ -57,7 +68,7 @@ if (strtotime($sd) > strtotime(now)) {
 	//echo "sd: $sd<br>";
 	//$nsd = date('Y-m',strtotime("$sd +1 month"));
 	//echo "nsd: $nsd<br>";
-// ----------------------------- members -----------------------------------
+// ----------------------------- members 
 // get nofunding count - where neither dues nor donation have been made
 $sql = "SELECT * 
 	FROM `members` 
@@ -126,8 +137,10 @@ while ($r = $res->fetch_assoc()) {
 //echo '<pre> this year count'; print_r($thisyrcount); echo '</pre>';
 $expdate = calcexpirationdate();
 //echo '<pre> mctypecount '; print_r($memstatuscountYTD); echo '</pre>';
-echo '<h2>Monthly Report&nbsp;&nbsp;<a href="javascript:self.close();" class="hidden-print btn btn-primary"><b>CLOSE</b></a></h2>';
-echo "<h3>for monrh of: " . date('F, Y',strtotime($sd)) . '</h3>';
+$closebtn = '';
+if (isset($_SESSION['SessionActive'])) $closebtn = '&nbsp;&nbsp;<a href="javascript:self.close();" class="hidden-print btn btn-primary"><b>CLOSE</b></a>';
+echo "<h2>Monthly Report $closebtn</h2>";
+echo "<h3>for month of: " . date('F, Y',strtotime($sd)) . '</h3>';
 echo "Report created: " . date('F d, Y',strtotime(now)) . '<br />';
 ksort($memstatuscountYTD);
 print <<<sumPart1
@@ -234,7 +247,7 @@ if (count($thisyrcount) > 0)
 
 echo "</table></div>  <!-- well -->";
 
-// ----------------------- funding ---------------------------
+// ----------------------- funding 
 echo '<div class="page-break"></div>
 <h4>Funding Summary';
 print <<<sumPart2
@@ -267,7 +280,8 @@ $res = doSQLsubmitted($sql);
 $numrows = $res->num_rows;
 //echo "funding thisyear: $thisyear<br>";
 $expdate = date('Y-m-01',strtotime(' -11 months'));
-$duesarray = array(); $mcidarray = array(); $exparray = array(); $moarray = array();
+$duesarray = array(); $mcidarray = array(); 
+$exparray = array(); $moarray = array();
 $amtarray = array();
 while ($r = $res->fetch_assoc()) {
 	$donyr = substr($r[DonationDate],0,4);
@@ -380,7 +394,7 @@ echo "<tr><td align=\"right\">$lmstr Total funding:</td><td>$$fmototal</td></tr>
 
 //echo '<pre> total amount '; print_r($purposesamt); echo '</pre>';
 
-// -------------------- correspondence ----------------------------------
+// -------------------- correspondence
 // correspondence table report
 
 $sql = "SELECT * 
@@ -483,8 +497,8 @@ print <<<sumPart4
 	<li><b>Total Vol Time Rec&apos;s in DB</b> - the total count of volunteer time records contained in the entire database.</li>
 	<li><b>Registered Volunteers in DB</b> - the total number of supporters identified as volunteers in the membership database.</li>
 	<li><b>Active Volunteers</b> - the number of volunteers that have logged at least 1 time entry in the last 12 months.</li>
-	<li><b>YTD Vol Time by category</b> - a summary of the number of total volunteer hours followed by the (count) of the different volunteers that contributed to that time category. Following are totals for hours, mileage driven and volunteers for the selected year.</li>
-	<li><b><i>month</i> and <i>year</i> Vol Time by category</b> - a summary of the total volunteer hours followed by the (count) of the different volunteers that contributed to each category for the report month. Totals are for hours, mileage driven and different volunteers for the selected month.</li>
+	<li><b>YTD Vol Time by category</b> - a summary of the number of total volunteer hours followed by the count of the different volunteers that contributed to that time category. Following are YTD totals for hours, mileage driven and volunteers for the selected year and up to and including the selected month.</li>
+	<li><b><i>month</i> and <i>year</i> Vol Time by category</b> - a summary of the total volunteer hours followed by the count of the different volunteers that contributed to each category for the report month. Totals are for hours, mileage driven and different volunteers for the selected month.</li>
 </ol>
 </div>
 
@@ -503,7 +517,9 @@ foreach ($volhrsYTD as $k => $v) {
   echo "$k: $v (". count($actvolYTD[$k]) . ")<br>";
   }
 echo '</td></tr>';
-echo '<tr><td align="right">YTD Total Vol Hours<br>Total Mileage<br>Volunteers</td><td>'.$volhrsTot.'<br>'.$volmilesTot.'<br>'.count($avYTD).'</td></tr>';
+echo '<tr>
+<td align="right">YTD Total Vol Hours<br>YTD Total Mileage<br>YTD Volunteers</td>
+<td>'.$volhrsTot.'<br>'.$volmilesTot.'<br>'.count($avYTD).'</td></tr>';
 echo "<tr><td valign=\"top\">$lmstr, $startyr Vol Time by category</td><td>";
 
 ksort($volhrsmo);

@@ -14,7 +14,7 @@
 session_start();
 
 include 'Incls/datautils.inc.php';
-//include 'Incls/vardump.inc.php';
+// include 'Incls/vardump.inc.php';
 
 $mcid = $_SESSION['ActiveMCID'];
 
@@ -22,6 +22,7 @@ $to = $_REQUEST['to'];
 $sender = $_REQUEST['from'];
 $subject = $_REQUEST['subject'];
 $body = $_REQUEST['body'];
+$type = $_REQUEST['type'];
 
 list($mcid, $emaddr) = explode(':',$to);
 //echo "emaddr: $emaddr<br>";
@@ -34,6 +35,9 @@ $sql = "SELECT `MCID` FROM `adminusers` WHERE `UserID` = '$sufrom'";
 $res = doSQLsubmitted($sql);
 $r = $res -> fetch_assoc();
 $fromMCID = $r['MCID'];
+
+if ($type == 'receipt') { $sender = $sufrom; $fromMCID = ''; }
+
 //$echo "sufrom: $sufrom, fromMCID: $fromMCID<br>";
 
 $trans = array("\\" => ' ', "\n" => ' ', "\t"=>' ', "\r"=>' ');
@@ -51,7 +55,7 @@ echo '<div class="container">
 
 // format email message and write to queue
 $tce = 1;
-$subject = $subject . '  (' . $fromMCID . ')';
+$subject = $subject . $fromMCID ;
 $prefix = date('YmdHis');
 $listname = "../MailQ/$prefix.$tce.LIST";
 $msgname  = "../MailQ/$prefix.$tce.MSG";
@@ -78,7 +82,7 @@ if ($_SERVER['SERVER_NAME'] != 'localhost') {
   }
 // finally add new correspondence record noting send of this email
 $fields[CorrespondenceType] = 'EmailNotice';
-if (preg_match("/tax/i", $corrtypesub))   // create special corr type for tax receipt
+if (preg_match("/tax|receipt/i", $corrtypesub))   // create special corr type for tax receipt
   $fields[CorrespondenceType] = 'TaxReciept';
 $fields[DateSent] = date('Y-m-d');
 $fields[MCID] = $mcid;

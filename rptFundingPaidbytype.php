@@ -235,12 +235,6 @@ if ($mysqli->errno != 0) {
   exit;
 	}
 
-//$rc = 1;
-//while ($row = $res->fetch_assoc()) {
-//  echo "<pre> Row $rc "; print_r($row); echo '</pre>';
-//  $rc++;
-//  }
-
 // check result rows for value check
 //echo "values - vrangehlo: $vrangelo, vrangehi: $vrangehi<br />";
 while ($row = $res->fetch_assoc()) {  // read results and do value range check

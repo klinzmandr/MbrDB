@@ -30,7 +30,7 @@ $sufrom = $_SESSION['SessionUser'];
 $sql = "SELECT `MCID` FROM `adminusers` WHERE `UserID` = '$sufrom'";
 $res = doSQLsubmitted($sql);
 $r = $res -> fetch_assoc();
-$fromMCID = $r['MCID'];
+$fromMCID = '  ('.$r['MCID'].')';
 //$echo "sufrom: $sufrom, fromMCID: $fromMCID<br>";
 
 $subject = $_REQUEST['subject'];
@@ -51,7 +51,7 @@ echo '<div class="container">
 
 // format email message and write to queue
 $tce = 1;
-$subject = $subject . '  (' . $fromMCID . ')';
+$subject = $subject . $fromMCID;
 $prefix = date('YmdHis');
 $listname = "../MailQ/$prefix.$tce.LIST";
 $msgname  = "../MailQ/$prefix.$tce.MSG";

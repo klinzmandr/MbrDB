@@ -54,7 +54,6 @@ function validateUserID(fld) {
     }
   return error;
 	}
-}
 
 function validatePassword(fld) {
   var error = "";

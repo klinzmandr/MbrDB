@@ -12,7 +12,7 @@
 <div class="container">
 <?php
 session_start();
-//include 'Incls/vardump.inc.php';
+// include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';
 include 'Incls/mainmenu.inc.php';
 include 'Incls/datautils.inc.php';
@@ -107,10 +107,10 @@ $progarray = formatdbrec($progblob);
 echo '<h3>Creating receipt for member <a href="mbrinfotabbed.php">' . $mcid . '</a></h3>
 Please select the funding item(s) to include on the receipt.';
 echo '<form action="mbrsendreceipt.php" method="post" name="selectform" onsubmit="return chkitems()">';
-echo '<table border=0 class="table-condensed">';
+echo '<table border=1 class="table-condensed">';
 echo '
-<tr><td></td><td><b>Payment Item</b></td><td><b>Date</b></td><td><b>Amount</b></td><td><b>Note</b></td></tr>
-<tr><td><input type="checkbox" id="chkr" name="chkr" value=""></td><td>Check All/None</td><td></td><td></td></tr>';
+<tr><th></th><th>Payment Item</th><th>Date</th><th>Amount</th><th>Note</th></tr>
+<tr><td><input type="checkbox" id="chkr" name="chkr" value=""></td><td colspan=4>Check All/None</td></tr>';
 
 foreach ($doninfo as $k=>$v) { 		// send the donaton rec number for each item selected
 	$pgm = $progarray[$v[Program]];
@@ -121,7 +121,8 @@ formPart2;
 	}
 echo '</table>
 <input type="hidden" name="action" value="create">
-<input type="hidden" name="total" id="total" value="0">';
+<input type="hidden" name="total" id="total" value="0">
+<input type="hidden" name="type" value="receipt">';
 echo "<input type=\"hidden\" name=\"yr\" value=\"$yr\">";
 echo '<input type="submit" name="submit" value="Select Checked">
 </form></div>

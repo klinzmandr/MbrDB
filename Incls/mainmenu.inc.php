@@ -12,25 +12,34 @@ input[type=checkbox] { transform: scale(1.5); }
 <!-- Form change variable must be global -->
 var chgFlag = 0;
 
-$(document).ready(function() {
+// set up and register form change functions
+$(function() {
   $('.updb').prop('disabled', true);
   $("#X").fadeOut(2000);
   $("#help").hide();
+  // detect and change on form on page load
+  var $form = $('form');
+  var origForm = $form.serialize();   // to save field values on initial load
   
 $("#helpbtn").click(function() {
   $("#help").toggle();
   });
   
-$("form").change(function() {
+// $("form").change(function() {
+$('form :input').on('change input', function() {
   var v = $("#filter").val();
   if (v != "") return;  // ignore filter input
-  chgFlag += 1; 
-  $(".updb").css({"background-color": "red", "color":"black"});
-  $('.updb').prop('disabled', false);    
+  if ($form.serialize() !== origForm) {   // check for any changes
+    chgFlag += 1; 
+    $(".updb").css({"background-color": "red", "color":"black"});
+    $('.updb').prop('disabled', false);
+    return;  
+    }  
   // setInterval(blink_text, 1000);
   });
 
-$(".dropdown").click(function(event) {
+// for buttons of dropdown or lvr classes check for form changes
+$(".dropdown, .lvr").click(function(event) {
 	if (chgFlag <= 0) { return true; }
 	var r=confirm("All changes made will be lost.\n\nConfirm abandoning changes and leaving page by clicking OK.");	
 	if (r == true) { 
@@ -40,7 +49,6 @@ $(".dropdown").click(function(event) {
   event.preventDefault();
   return false;
   });
-
 });
 
 function blink_text() {     // blink field
@@ -166,6 +174,11 @@ if ($sessionlevel == "admin") {
 </li>  <!-- class="dropdown" -->
 <script>
 function setupmcid(theForm)  {
+  if (chgFlag > 0) {
+    var r=confirm("All changes made will be lost.\n\nConfirm abandoning changes and leaving page by clicking OK.");	
+  	if (r == false) { return false;  }
+    }
+  chgFlag = 0;    // ignore any form changes
 	var fld = theForm.filter.value;
 	if (fld == "--none--") { theForm.filter.value = ""; return; }
 	//alert("Filter value:" + fld);
@@ -181,7 +194,7 @@ function setupmcid(theForm)  {
 
 </script>
 <!-- lookup input field -->
-<form name="filter" action="mbrfilterlist.php" method="post" class="navbar-form pull-left" onsubmit="return setupmcid(this)">&nbsp;&nbsp;&nbsp;
+<form id=FILTR name="filter" action="mbrfilterlist.php" method="post" class="navbar-form pull-left" onsubmit="return setupmcid(this)">&nbsp;&nbsp;&nbsp;
   <input autofocus autocomplete="off" type="text" class="form-control" style="width: 100px;" value="<?=$filter?>" id="filter" name="filter" placeholder="MCID">
   <input type="submit" name="submit" value="Lookup" class="btn btn-default">
 </form>

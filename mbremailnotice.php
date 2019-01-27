@@ -6,10 +6,12 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body onchange="flagChange()">
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <?php
 session_start();
-//include 'Incls/vardump.inc.php';
+// include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';
 include 'Incls/mainmenu.inc.php';
 include 'Incls/datautils.inc.php';
@@ -134,7 +136,8 @@ $em= $mcid . ':' . $row[FName] . " " . $row[LName] . " <" . $row[EmailAddress] .
 $emx= $row[FName] . " " . $row[LName] . " <" . $row[EmailAddress] . ">";
 $emx = htmlentities($emx);
 $fromaddr = $EmailFROM;			// defined in datautils.inc.php
-
+if ($type == 'receipt') $fromaddr = $_SESSION['SessionUser'];
+  
 // perform shortcode translations
 $regex = "/\[(.*?)\]/";
 preg_match_all($regex, $template, $matches);
@@ -181,6 +184,7 @@ Message:<br />
 <textarea id="area1" name="body" rows="8" cols="100">$template</textarea><br />
 <input type="hidden" name="to" value="$emaddr">
 <input type="hidden" name="from" value="$fromaddr">
+<input type="hidden" name="type" value="$type">
 <input type ="submit" name="Submit" value="Send"><br />
 <input type="reset" name="reset" value="Reset Form" />
 </form>
@@ -192,8 +196,6 @@ formPart1;
 ?>
 <!-- <a class="btn btn-primary" href="mbrinfotabbed.php" name="filter" value="--none--">CANCEL AND RETURN</a> -->
 </div>   <!-- containerx -->
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </div>
 </body>
 </html>
