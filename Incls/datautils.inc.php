@@ -225,13 +225,13 @@ function readdblist($listname) {
 	$rc = $res->num_rows;
 	//echo "rc: $rc<br>";
 	//echo "<pre> cfg "; print_r($r); echo '</pre>';
-	return($r[CfgText]);
+	return($r['CfgText']);
 	}
 
 // update db table item
 function updatedblist($listname,$text) {
 	$flds = array();
-	$flds[CfgText] = $text;
+	$flds['CfgText'] = $text;
 	//echo '<pre> upd '; print_r($flds); echo '</pre>';
 	$rows = sqlupdate('configtable', $flds, "`CfgName` = '$listname'");
 	return($rows);
@@ -240,8 +240,8 @@ function updatedblist($listname,$text) {
 // insert db configtable item
 function insertdblist($listname, $text) {
 	$flds = array();
-	$flds[CfgName] = $listname;
-	$flds[CfgText] = $text;
+	$flds['CfgName'] = $listname;
+	$flds['CfgText'] = $text;
 	$rows = sqlinsert('configtable',$flds);
 	return($rows);
 	}
@@ -293,14 +293,14 @@ function checkcredentials($userid, $password) {
 		$res->data_seek(0);
 		$r = $res->fetch_assoc();
 		}
-	if (substr($r[Role],0,3) == 'vol') {
+	if (substr($r['Role'],0,3) == 'vol') {
 		echo 'ERROR: User does not have authorization to use MbrDB<br />';
 		addlogentry('User not authorized');
 		return(false);
 		}
-	if (($r[UserID] == $userid) && ($r[Password] == $password)) {
+	if (($r['UserID'] == $userid) && ($r['Password'] == $password)) {
 		//echo "found match - user: $uid, pw: $pw<br>";
-		$_SESSION['SecLevel'] = $r[Role];
+		$_SESSION['SecLevel'] = $r['Role'];
 		$_SESSION['SessionUser'] = $userid;
 		return(true);
 		}

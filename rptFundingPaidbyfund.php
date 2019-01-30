@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,6 @@
 <body>
 
 <?php
-session_start();
 //include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';
 //include 'Incls/mainmenu.inc.php';

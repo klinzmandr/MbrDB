@@ -1,4 +1,7 @@
-<br><!DOCTYPE html>
+<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html>
 <head>
 <title>MCID Information</title>
@@ -17,8 +20,6 @@
 
 <!-- <p>Dump of all information for the 'ActiveMCID'</p> -->
 <?php
-session_start();
-
 //include 'Incls/vardump.inc.php';
 include 'Incls/datautils.inc.php';
 include 'Incls/seccheck.inc.php';

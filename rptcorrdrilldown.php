@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +28,6 @@ $(document).ready(function () {
 </script>
 
 <?php
-session_start();
-
 include 'Incls/datautils.inc.php';
 include 'Incls/seccheck.inc.php';
 

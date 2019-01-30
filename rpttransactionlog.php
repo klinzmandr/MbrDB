@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +15,6 @@
 <h3>Transaction Log <a href="javascript:self.close();" class="btn btn-xs btn-primary">(CLOSE)</a></h3>
 
 <?php
-session_start();
 include 'Incls/seccheck.inc.php';
 //include 'Incls/vardump.inc.php';
 include 'Incls/datautils.inc.php';

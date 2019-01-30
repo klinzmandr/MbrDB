@@ -1,4 +1,5 @@
 <script src="js/bootstrap-session-timeout.js"></script> 
+
 <script>
 $(document).ready(function() { 
   $.sessionTimeout({

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +17,6 @@
 <script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 
 <?php
-session_start();
-
 include 'Incls/datautils.inc.php';
 include 'Incls/seccheck.inc.php';
 

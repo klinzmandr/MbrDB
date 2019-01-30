@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +23,6 @@
 </div>
 
 <?php
-session_start();
-
 $mcid = $_SESSION['ActiveMCID'];
 //include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';

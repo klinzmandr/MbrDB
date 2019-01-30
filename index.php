@@ -1,3 +1,8 @@
+<?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+session_start();
+$userid = isset($_REQUEST['userid']) ? $_REQUEST['userid'] : '';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +16,7 @@
 <script src="js/bootstrap.min.js"></script>
 
 <?php
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-session_start();
-$userid = isset($_REQUEST['userid']) ? $_REQUEST['userid'] : '';
-
-// NOTE: (isset($var) && !empty($var)) will be equals to !empty($var)
+// NOTE: (isset($var) && !empty($var)) will be equal to !empty($var)
 // http://php.net/manual/en/types.comparisons.php
 
 //echo "show login fields"; include 'Incls/vardump.inc.php'; 

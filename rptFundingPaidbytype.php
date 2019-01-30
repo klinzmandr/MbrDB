@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +14,6 @@
 <body>
 
 <?php
-session_start();
 //include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';
 //include 'Incls/mainmenu.inc.php';
@@ -234,6 +236,12 @@ if ($mysqli->errno != 0) {
   echo "<br>Failing Query string: $sql <br><br>";
   exit;
 	}
+
+//$rc = 1;
+//while ($row = $res->fetch_assoc()) {
+//  echo "<pre> Row $rc "; print_r($row); echo '</pre>';
+//  $rc++;
+//  }
 
 // check result rows for value check
 //echo "values - vrangehlo: $vrangelo, vrangehi: $vrangehi<br />";

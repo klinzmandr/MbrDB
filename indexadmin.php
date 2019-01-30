@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +10,10 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
+
 <?php
-session_start();
 include 'Incls/seccheck.inc.php';
 include 'Incls/adminmenu.inc.php';
-
 
 print <<<pagePart1
 <div class="container">

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +11,6 @@
 </head>
 <body>
 <?php
-session_start();
 include 'Incls/seccheck.inc.php';
 include 'Incls/datautils.inc.php';
 

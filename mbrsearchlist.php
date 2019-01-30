@@ -1,3 +1,7 @@
+<?php
+session_start();
+unset($_SESSION['ActiveMCID']);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +15,6 @@
 <script src="js/bootstrap.min.js"></script>
 
 <?php
-session_start();
-unset($_SESSION['ActiveMCID']);
-
 //include "Incls/vardump.inc.php";
 include 'Incls/seccheck.inc.php';
 include "Incls/datautils.inc.php";

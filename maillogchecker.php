@@ -8,9 +8,7 @@
 </head>
 <body>
 
-
 <?php 
-
 echo "<html><head><title>Mail Log File</title></head>";
 $lfn = isset($_REQUEST['lfn']) ? $_REQUEST['lfn'] : "";
 //echo "log file name: " . $lfn . "<br>";

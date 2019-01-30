@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +29,6 @@ function flagChange() {
 </script>
 
 <?php
-session_start();
 include 'Incls/seccheck.inc.php';
 include 'Incls/adminmenu.inc.php';
 include 'Incls/datautils.inc.php';

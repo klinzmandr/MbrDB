@@ -1,3 +1,11 @@
+<?php
+/* NOTE TO SELF
+This version only goes two deep: Purpose by Program
+It does not use the 'Campaign' field
+Keep this in case someone wants this it.
+*/
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +20,6 @@
 <h3>Transaction Summary <a href="javascript:self.close();" class="btn btn-primary">(CLOSE)</a></h3>
 
 <?php
-/* NOTE TO SELF
-This version only goes two deep: Purpose by Program
-It does not use the 'Campaign' field
-Keep this in case someone wants this it.
-*/
-session_start();
 include 'Incls/seccheck.inc.php';
 //include 'Incls/vardump.inc.php';
 include 'Incls/datautils.inc.php';

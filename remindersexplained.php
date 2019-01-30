@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +13,10 @@
 <body>
 
 <?php
-session_start();
-
 include 'Incls/seccheck.inc.php';
 include 'Incls/mainmenu.inc.php';
-
 ?>
+
 <a name="top"></a><div class="container">
 <h2>Reminders Explained</h2>
 <a href="#workflow">Recommended Workfow</a><br>

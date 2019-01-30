@@ -1,3 +1,7 @@
+<?php
+// change to track in smartgit
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +12,8 @@
 <link href="css/datepicker3.css" rel="stylesheet">
 </head>
 <body onload="initSelect()">
+
 <?php
-// change to track in smartgit
-session_start();
 //include 'Incls/vardump.inc.php';
 //include 'Incls/seccheck.inc.php';
 // include 'Incls/mainmenu.inc.php';

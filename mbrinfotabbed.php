@@ -1,3 +1,7 @@
+<?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +16,6 @@
 <script src="Incls/datevalidation.js"></script>
 
 <?php
-session_start();
 //include "Incls/vardump.inc.php";
 include 'Incls/seccheck.inc.php';
 include 'Incls/datautils.inc.php';
@@ -95,7 +98,7 @@ $res->data_seek(0);
 $row = $res->fetch_assoc();
 //echo '<pre> MCID'; print_r($row); echo '</pre>';
 // get data values from sql query result
-$_SESSION['MemStatus'] = $row[MemStatus];		// set memstatus for mbrdonations check
+$_SESSION['MemStatus'] = $row['MemStatus'];		// set memstatus for mbrdonations check
 $mcid=$row['MCID'];  $fname=$row['FName']; $lname=$row['LName'];
 $org=$row['Organization']; $addr=$row['AddressLine']; 
 $lab1line=$row['NameLabel1stline']; $corrsal=$row['CorrSal']; 
@@ -104,11 +107,11 @@ $city=$row['City']; $state=$row['State'];
 $zip=$row['ZipCode']; $priphone=$row['PrimaryPhone'];
 $memstatus=$row['MemStatus'];$memdate=$row['MemDate'];
 $mctype=$row['MCtype'];$inact=$row['Inactive'];$inactdate=$row['Inactivedate'];
-$e_mail=$row['E_Mail'];$mail=$row['Mail']; $notes=$row['Notes'];$lists=$row[Lists];
-$lastduesdate = $row[LastDuesDate]; $lastduesamount = $row[LastDuesAmount];
-$lastdondate = $row[LastDonDate]; $lastdonpurpose = $row[LastDonPurpose]; 
-$lastdonamount = $row[LastDonAmount];
-$lastcorrdate = $row[LastCorrDate]; $lastcorrtype = $row[LastCorrType];
+$e_mail=$row['E_Mail'];$mail=$row['Mail']; $notes=$row['Notes'];$lists=$row['Lists'];
+$lastduesdate = $row['LastDuesDate']; $lastduesamount = $row['LastDuesAmount'];
+$lastdondate = $row['LastDonDate']; $lastdonpurpose = $row['LastDonPurpose']; 
+$lastdonamount = $row['LastDonAmount'];
+$lastcorrdate = $row['LastCorrDate']; $lastcorrtype = $row['LastCorrType'];
 $citieslist = createddown();
 ?>
 
@@ -608,9 +611,9 @@ echo '
 <div class="well">
 <h4>Volunteer Email Lists</h4>';
 $text = readdblist('EmailLists');
-$listkeys[AUL] = 'Active/Unlisted';
+$listkeys['AUL'] = 'Active/Unlisted';
 $listkeys += formatdbrec($text);
-$listkeys[VolInactive] = 'Vol Inactive';
+$listkeys['VolInactive'] = 'Vol Inactive';
 
 foreach ($listkeys as $k => $v) {
 	//echo "key: $k, value: $v<br />";
@@ -644,10 +647,10 @@ echo "<b>Period Entry Count:</b> $rowcnt<br />";
 while ($r = $res->fetch_assoc()) {
 $trows[] = "<tr><td>$r[VolDate]</td><td>$r[VolTime]</td><td>$r[VolMileage]</td><td>$r[VolCategory]</td><td>$r[VolNotes]</td></tr>";
 $vc = 'Uncategorized';
-if (strlen($r[VolCategory]) > 0) $vc = $r[VolCategory];
-$totalvolhrs += $r[VolTime];
-$tothrs[$vc] += $r[VolTime];
-$totmiles += $r[VolMileage];
+if (strlen($r['VolCategory']) > 0) $vc = $r['VolCategory'];
+$totalvolhrs += $r['VolTime'];
+$tothrs[$vc] += $r['VolTime'];
+$totmiles += $r['VolMileage'];
 	}
 echo "<b>Total Miles Driven:</b> $totmiles,&nbsp;";
 echo "<b>Total Volunteer Hours:</b> $totalvolhrs<br />";

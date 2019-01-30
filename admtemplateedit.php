@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +13,8 @@
 <div class="container">
 <h3>Template Editor</h3>
 <a class="btn btn-primary" href="admtemplatemaint.php">CANCEL AND RETURN</a><br /><br />
+
 <?php
-session_start();
 //include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';
 include 'Incls/datautils.inc.php';

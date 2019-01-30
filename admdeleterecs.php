@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +29,6 @@ function flagChange() {
 
 </script>
 <?php
-session_start();
 //include 'Incls/vardump.inc.php';
 
 //NOTE: should also add delete of assoc EDI record when deleting and MCID record!!!!

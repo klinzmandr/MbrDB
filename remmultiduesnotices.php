@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +28,6 @@
 //These pages all have to work in sync to make this work out.
 //
 //=====================================
-session_start();
 																// To allow dues paid for by another and low end donors all who
 																// need to get newsletters as members do.
 $duesthreshold = 0;						  // NOTE: this is the threshold for sending a reminder

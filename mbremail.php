@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Email Notification</title>
@@ -8,7 +12,6 @@
 <body onchange="flagChange()">
 
 <?php
-session_start();
 //include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';
 include 'Incls/mainmenu.inc.php';

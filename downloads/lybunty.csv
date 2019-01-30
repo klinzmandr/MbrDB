@@ -1,374 +1,74 @@
-MCID;2013Tot;LastGiftAmt;LastGiftDate;MemSt;Label Name;First;Last;Organization;Address;City;St;Zip;Phone;Email
-SHA66;$4060;$1560.00;2013-07-26;1;"Laleh Shaban M.D., Inc";"Laleh";"Shaban";"";"665 Main St.";Morro Bay;CA;93442;805-771-8324;
-JAN23;$2000;$2000.00;2013-12-31;3;"Marcia Slagel";"Marcia";"Slagel";"Executive Janitorial";"233 Granada Dr Ste D";San Luis Obispo;CA;93401;805-541-5266;execjan1@att.net
-JEF16;$1800;$300.00;2013-12-31;1;"Marlene Jefferson";"Marlene";"Jefferson";"";"1650 Buggywhip Ln";Paso Robles;CA;93446;;
-PEC28;$1300;$100.00;2013-10-31;3;"Anthony Peckham & Hillary Saner";"Anthony";"Peckham";"";"2860 Atascadero Rd.";Morro Bay;CA;93442;805-772-7229;tonypeckham@sbcglobal.net
-SCO85;$1000;$1000.00;2013-08-14;3;"Warren Scoville";"Warren";"Scoville";"Honey Girl Reward Fund";"P.O. Box 859";Waialua;HI;96791;;
-SAR13;$900;$150.00;2013-12-01;3;" Saroni Company";"";"";"Saroni Co.";"1301 26th St.";Oakland;CA;94607;;
-HOL22;$600;$200.00;2013-08-21;3;"Holland Consulting";"Holland";"Consulting";"";"22817 Ventura Blvd. Ste 829";Woodland Hills;CA;91364;;
-LAN99A;$580;$580.00;2013-08-28;3;"Craig Lane Masonry";"Craig";"Lane Masonry";"";"P.O. Box 997";Paso Robles;CA;93447;;
-MAG21;$500;$500.00;2013-06-30;3;"Sharan Lea Magnuson";"Sharan Lea";"Magnuson";"";"2119 Lopez Dr.";Arroyo Grande;CA;93420-5157;805-481-4010;sharanrap@aol.com
-BEN40;$500;$475.00;2013-12-18;0;"Gary & Joyce Benedetti";"Gary";"Benedetti";"";"408 Wilson Dr.";Santa Maria;CA;93455;805-937-3087;
-LIN19A;$500;$25.00;2009-09-27;1;"Kim Lindbery";"Kim";"Lindbery";"";"1960 Niderer Rd.";Paso Robles;CA;93446;805-453-5086;krlindbery@aol.com
-BEV68;$500;$500.00;2013-09-22;3;"Pacific Beverage";"Pacific";"Beverage";"";"P.O. Box 6803";Santa Barbara;CA;93160;;
-KEL15;$500;$500.00;2013-04-24;3;"A Live Wire Electric";"Richard";"Kelley";"";"1570 22nd St.";Oceano;CA;93445;;
-MON21;$500;$500.00;2013-03-25;3;"Patt Highfill & Jule Mondello";"Jule";"Mondello";"";"2164 El Dorado";Los Osos;CA;93402;;
-CRA13;$500;$500.00;2013-11-20;1;"Jason Crawford";"Jason";"Crawford";"";"1311 Chestnut St.";Paso Robles;CA;93446;805-237-1269;
-CLA52;$500;$450.00;2013-12-15;1;"Sean Clayton";"Sean";"Clayton";"";"5267 Derby Hill Pt.";San Diego;CA;92130;858-663-1155;
-CAY13;$500;$500.00;2013-10-17;3;"Cayucos Senior Citizens Club, Inc.";"Seniors Club";"Cayucos";"";"P.O. Box 134";Cayucos;CA;93430;805-995-3543;
-SHO83;$425;$100.00;2013-09-05;1;"Jane Short";"Jane";"Short";"";"832 Farnsworth Drive";Arroyo Grande;CA;93420;805-481-3662;
-SOC40;$400;$250.00;2013-12-12;1;"Monterey Zoological Society Inc.";"Monterey Zoological";"Society";"";"400 River Rd.";Salinas;CA;93908;;
-NUN00;$390;$390.00;2013-10-20;3;"Guillermo Nunez";"Guillermo";"Nunez";"";"";;CA;Note:;;
-AND22;$325;$125.00;2013-12-30;1;"Ms. Gail Andrews";"Gail";"Andrews";"";"2287 Emerald Circle";Morro Bay;CA;93442-1589;805-772-1716;budabubble@hotmail.com
-HER54A;$325;$100.00;2013-12-20;1;"Gail Hermreck";"Gail";"Hermreck";"";"P.O. Box 543";Nipomo;CA;93444-0543;805-929-5454;Migail@aol.com
-HEN26;$325;$200.00;2013-12-21;0;"Ted Henson";"Ted";"Henson";"";"268 Robles Road";Arroyo Grande;CA;93420;123-456-1234;robinhood91107@yahoo.com
-ZIR13;$323;$60.00;2013-10-20;3;"Pamela Zirion";"Pamela";"Zirion";"";"1307 Ironbark St.";San Luis Obispo;CA;93401;;kpzirion@charter.net
-STB68;$302.2;$252.20;2013-10-17;1;"St. Benedict's Episcopal Church";"St. Benedict's";"Episcopal Church";"";"P.O. Box 6877";Los Osos;CA;93412;;
-BER46;$290;$15.00;2013-12-12;1;"Ms. Phoebe Berry";"Phoebe";"Berry";"";"460 Weymouth";Cambria;CA;93428-2334;805-927-1424;plberry@charter.net
-GOO11;$285.75;$285.75;2013-11-20;3;"Network for Good";"Network";"for Good";"";"1140 Connecticut Ave. NW #700";Washington;DC;20036;;
-STO98;$250;$200.00;2013-12-11;1;"Wendy Stormes";"Wendy";"Stormes";"";"985 Niderer Rd.";Paso Robles;CA;93446;;
-LAN11A;$250;$250.00;2013-05-23;1;"Karen & Chad Landers";"Karen & Chad";"Landers";"";"11066 Wrightwood Place";Studio City;CA;91604;818-508-8851;chadland@pacbell.net
-GUY64;$250;$200.00;2013-12-12;3;"Alberta & Al Guy";"Alberta";"Guy";"";"6420 Buckley Dr.";Cambria;CA;93428-2004;805-927-1456;alguy45@msn.com
-ENO97;$250;$250.00;2013-02-07;1;"Diane Enos Business Services";"Diane";"Enos";"";"P.O. Box 15952";San Luis Obispo;CA;93406-5952;805-543-1997;
-WAA74;$250;$50.00;2013-12-22;1;"Ken & Marigrace C. Waage";"Marigrace";"Waage";"";"7450 Balboa Road";Atascadero;CA;93422-1114;805-466-1950;phoenixlife5@hotmail.com
-MAD20;$250;$250.00;2013-12-14;1;"Mrs. Phyllis Madonna";"Phyllis";"Madonna";"";"2082 San Luis Dr.";San Luis Obispo;CA;93401;805-543-3000;
-WAL54;$250;$25.00;2013-10-26;1;"John & Jennifer Wallner";"John";"Wallner";"";"3715 Floramar Terr";New Port Richey;FL;34652;805-286-4563;whitepelican@charter.net
-BLA61A;$250;$250.00;2013-02-07;1;"Richard Blake & Arleen Blake";"Richard";"Blake";"";"6171 Alta Mira Ln";San Luis Obispo;CA;93401;805-878-5875;
-MAR37;$250;$100.00;2013-10-17;3;"Lonnie & Grant Marcum";"Lonnie";"Marcum";"";"1004 Vine Street";Paso Robles;CA;93446;805-238-7014;
-YOU40;$250;$250.00;2013-06-26;1;"David Young";"David";"Young";"";"4045 Peachy Canyon Rd.";Paso Robles;CA;93446;805-215-4416;
-HEA24A;$250;$250.00;2013-11-27;1;"Susan Hearst";"Susan";"Hearst";"";"2425 Golden Hill Rd #106-300";Paso Robles;CA;93446-8328;805-459-8300;
-VAL28;$245;$50.00;2013-10-16;1;"Jennifer Valeri & Anne Young";"Jennifer";"Valeri";"";"2800 Birch Ave.";Morro Bay;CA;93442;805-772-4182;jen@valeriart.com
-NHM52;$240;$40.00;2013-03-02;0;"Nat. History Museum Corp.";"Natural";"History Museum";"Nat. History Museum";"P.O. Box 5254";Santa Maria;CA;93456;805-614-0806;
-HAU20A;$225;$50.00;2013-11-06;1;"Linda & Quin Hauss";"Linda & Quin";"Hauss";"";"2088 Royal Way";San Luis Obispo;CA;93405;805-545-0937;lindahauss@yahoo.com
-HAR21;$225;$100.00;2013-09-08;0;"Jo Dea & Lee Harry";"Jo Dea";"Harry";"";"2148 Fresno Street";Los Osos;CA;93402;520-603-6477;Jlharry41@gmail.com
-ATT10;$225;$200.00;2013-10-28;1;"Wayne Attoe";"Wayne";"Attoe";"";"P.O. Box 1031";Cambria;CA;93428;;
-BLU21;$220;$100.00;2013-09-05;1;"Ms. Gail Blue";"Gail";"Blue";"";"P.O. Box 2116";Avila Beach;CA;93424-2116;805-627-1840;
-SEN11;$210;$210.00;2013-10-01;3;"Nancy Sena";"Nancy";"Sena";"";"1183 Vista Del Lago";San Luis Obispo;CA;93405;;nlsena@gmail.com
-PEN96A;$200;$100.00;2013-08-12;1;"Janine & John Penaflor";"Janine";"Penaflor";"";"960 Waypoint Dr.";Nipomo;CA;93444-9313;;john_p_93444@yahoo.com
-ARE61;$200;$200.00;2013-07-25;3;"AR & Co PR & Marketing";"AR & Co.";"PR & Marketing";"";"612 12th St.";Paso Robles;CA;93446;;
-FOT80;$200;$200.00;2013-09-07;3;"Friends of SC Library";"Friends";"of SC Library";"";"800 W Branch";Arroyo Grande;CA;93420;;
-REN45;$200;$250.00;2012-11-29;3;"Toni LeGras";"Toni";"LeGras";"Beachside Rentals, Inc.";"P.O. Box 455";Cayucos;CA;93430;;tlegras@digitalputty.com
-ELD11;$200;$100.00;2013-07-11;3;"Elderhostel, Inc.";"";"Elderhostel Inc.";"";"11 Avenue de Lafayette";Boston;MA;02111-1746;;
-MAL22A;$200;$200.00;2013-08-08;1;"Richard Malaise";"Richard";"Malaise";"";"2250 Lake Ysabel Rd.";Templeton;CA;93465;703-627-6340;rmalaise10@gmail.com
-HAN29;$200;$200.00;2013-09-19;3;"Deborah Hansen";"Deborah";"Hansen";"Central Coast Pug";"P.O. Box 2902";Pismo Beach;CA;93448;805-458-8866;deby@centralcoastpugrescue.com
-INN10;$200;$200.00;2013-03-07;3;"Madonna Inn";"Madonna";"Inn";"";"100 Madonna Rd.";San Luis Obispo;CA;93405;;
-BON17;$190;$50.00;2013-09-05;1;"Deborah & David Bonnheim";"Deborah & David";"Bonnheim";"";"1751 Corbett Canyon Rd";Arroyo Grande;CA;93420;805-541-6738;
-BEC61;$180;$180.00;2013-02-21;0;"Deborah Hannula Bechtel";"Deborah H.";"Bechtel";"";"P.O. Box 6165";Los Osos;CA;93412;805-528-2947;
-PGE13;$175;$175.00;2013-09-25;3;"PG&E -Los Padres Chapter";"Pacific Gas Service";"Employees Assn.";"";"1390 Willow Pass Rd. #240";Concord;CA;94520-7904;;
-CAL85;$164.04;$164.04;2013-02-26;3;" NAIC";"";"";"Nonprofits' Insurance Alliance";"PO Box 8507";Santa Cruz;CA;95061-8507;;
-LEW84;$160;$115.00;2013-07-25;1;"McKaila, Kris & Marc Lewis";"McKaila";"Lewis";"";"849 Virginia Dr.";Arroyo Grande;CA;93420-4220;;
-FUZ71;$155;$120.00;2013-10-11;3;"Sharon Harvey";"Sharon";"Harvey";"Flying Fuzzies";"719 Main St.";Cambria;CA;93428;;
-MAN35;$150;$150.00;2013-01-17;3;"Roxane Mancini";"Roxane";"Mancini";"";"350 Tulare Ave.";Morro Bay;CA;93442-2821;;
-MUR87;$150;$150.00;2013-08-02;3;"Leopold & Murphy";"Leopold &";"Murphy";"";"878 Walnut St.";San Luis Obispo;CA;93401;;
-HOM72;$150;$150.00;2013-03-14;3;"Home Arts";"Home";"Arts";"";"727 Main St.";Cambria;CA;93428;805-927-2781;unstuffy@home-arts.com
-PER44;$150;$150.00;2013-03-07;3;"Leslie Breeze";"Leslie";"Breeze";"Performance Athletics";"4484 Broad St.";San Luis Obispo;CA;93401;;breezeleslie@yahoo.com
-GYM21;$150;$150.00;2013-08-22;3;"Central Coast Gymnastics";"Central Coast";"Gymnastics";"";"21 Zaca Ln. #100";San Luis Obispo;CA;93401;;
-MCC15A;$148;$75.00;2013-12-05;0;"Ericka McCann";"Ericka";"McCann";"";"1555 Strawberry Ave.";Arroyo Grande;CA;93420-6174;805-748-5217;slou4ea1303@charter.net
-SHE32;$135;$135.00;2013-10-15;3;"Carolyn & James Shepherd";"Carolyn";"Shepherd";"";"325 Emmons Rd.";Cambria;CA;93428;;
-REN23;$135;$15.00;2013-08-30;0;"Kimberly Renshaw";"Kimberly";"Renshaw";"";"P.O. Box 2383";Nipomo;CA;93444;805-440-9134;kimrenshawhomes@gmail.com
-BUC55;$132.98;$52.98;2013-05-21;0;"Debbie & Kurt Buckheim";"Debbie";"Buckheim";"";"5555 Valentina Ave";Atascadero;CA;93422;805-462-2608;kdgbuck@gmail.com
-HUR12;$130;$130.00;2013-10-28;3;"Dene & Emily Hurlbert";"Dene & Emily";"Hurlbert";"";"126 Indio Dr.";Pismo Beach;CA;93449-1512;;
-SUT18;$125;$25.00;2013-12-26;1;"Ron & Barbara Sutton";"Ron";"Sutton";"";"1879 Pine Cove Dr";San Luis Obispo;CA;93405;805-547-0214;
-WAG26;$125;$25.00;2013-07-25;1;"Caryl V. Wagner Trust";"Caryl V.";"Wagner";"";"2650 Maple Ave.";Morro Bay;CA;93442-1726;805-771-8642;
-OPP23;$120;$120.00;2013-09-25;3;"The Place";"Kathy";"Oppel";"The Place";"2336A Main St.";Cambria;CA;93428;;
-DIN52;$120;$120.00;2013-10-12;3;"Dolores DiNovo";"Dolores";"DiNovo";"";"5210 Ashford Rd.";Dublin;OH;43017;614-595-6652;
-NOR70;$120;$120.00;2013-10-14;3;"Margaret Northrup";"Margaret";"Northrup";"";"7055 N. Fresno St. #202";Fresno;CA;93720;;
-RIT97;$120;$120.00;2013-06-20;3;"Riteway Charity Services, Inc.";"Riteway";"Charity Services";"";"9723 Glenoaks Blvd.";Sun Valley;CA;91352;;
-TEJ62;$115;$40.00;2013-10-03;3;"James F. Tejani";"James";"Tejani";"";"623-B Paseo Bella Montana";San Luis Obispo;CA;93405-1186;805-546-8674;jtejani@gmail.com
-OLS32;$115;$25.00;2013-05-19;1;"Sharon Olson";"Sharon";"Olson";"";"321 Trinidad";Morro Bay;CA;93442-2955;805-459-9178;
-LOW77;$110;$85.00;2013-10-20;1;"Stacey Lowman";"Stacey";"Lowman";"";"7700 Marchant";Atascadero;CA;93422;805-431-4565;eslowman@att.net
-HER92;$105;$15.00;2013-07-20;1;"Renn Herrera";"Renn";"Herrera";"";"9211 Huer Huero";Creston;CA;93432;559-381-7952;arthead100@gmail.com
-GAR69;$105;$15.00;2013-07-21;1;"Patricia Garrett";"Patricia";"Garrett";"";"P.O. Box 698";Morro Bay;CA;93443;805-440-8556;pattigarrett@hotmail.com
-BRO57;$105;$105.00;2013-10-20;3;"Cheri Brown";"Cheri";"Brown";"";"570 Wadsworth Ave.";Pismo Beach;CA;93449;805-773-1949;cheribrown48@yahoo.com
-BAR11B;$105;$105.00;2013-10-13;3;"Patti & James Barrett";"Patti";"Barrett";"";"1139 Cannell Way";Bakersfield;CA;93308-9128;;
-MEN24;$100.01;$12.50;2013-12-31;1;"Sarah Mendes";"Sarah";"Mendes";"";"2414 E. Floyd Court";Fowler;CA;93625;559-393-1987;sarahrose1987@yahoo.com
-GAR89;$100;$100.00;2013-10-02;3;"Villages at Garden Creek";"Villages";"at Garden Creek";"Village at Garden Creek";"895 Aeorvista Pl .Ste100";San Luis Obispo;CA;93405;;
-SKI51;$100;$100.00;2013-12-12;3;"Christopher & Laura Skiff";"Christopher";"Skiff";"";"51 19th St.";Cayucos;CA;93430;805-995-1941;
-KEA51;$100;$100.00;2013-07-10;1;"Cheryl & Brent Keast";"Brent & Cheryl";"Keast";"";"5105 Llano Rd.";Atascadero;CA;93422;805-460-0495;bkeast1@earthlink.net
-PYL41;$100;$100.00;2013-03-14;1;"Patricia Pyle";"Patricia";"Pyle";"";"418 Panay St";Morro Bay;CA;93442;805-489-5368;patpyle48@yahoo.com
-LOM52;$100;$100.00;2013-12-05;1;"Steve Lombardi";"Steve";"Lombardi";"Lombardi & Assoc.";"520 Higuera Street";San Luis Obispo;CA;93401;;steve@slaslo.com
-RED12;$100;$100.00;2013-05-16;1;"Jennifer Myers Redman";"Jennifer";"Redman";"";"1251 Berwick St.";Morro Bay;CA;93442-1807;;jennifer.redman@edwardjones.com
-LAW13;$100;$100.00;2013-11-14;1;"David Lawrence & Ann Lawrence";"David";"Lawrence";"";"1330 Red Brome Pl.";Arroyo Grande;CA;93420;805-459-1709;dmlawrence@mac.com
-MAT89;$100;$100.00;2013-09-19;3;"Joan Matthews & Robert Bruce";"Joan";"Matthews";"";"89 Vereda Cordillera";Santa Barbara;CA;93117;805-562-3502;joan614@cox.net
-MCP84;$100;$50.00;2013-10-03;1;"Marlys McPherson & Glenn Silloway";"Marlys";"McPherson";"";"840 Luisita St.";Morro Bay;CA;93442;805-772-1452;marlys.mcpherson@charter.net
-MUI60;$100;$100.00;2013-12-12;1;"Joan S. Muir";"Joan S.";"Muir";"";"6070 Hog Canyon Rd.";San Miguel;CA;93451-9571;805-467-3030;joan@lemondell.com
-MUL26A;$100;$100.00;2013-04-04;1;"Vern Mullikin";"Vernon";"Mullikin";"";"268 Bowie Dr.";Los Osos;CA;93402;805-534-1607;vernmullikin@att.net
-POS45;$100;$100.00;2013-03-14;1;"Kris & Bud Postil";"Bud & Kris";"Postil";"";"45 - 20th St.";Cayucos;CA;93430;805-995-1179;kpostil@verizon.net
-PUR11;$100;$100.00;2013-04-13;1;"Lisa & Ray Purcell";"Lisa & Ray";"Purcell";"";"11412 Clarion River Dr.";Bakersfield;CA;93311;661-664-5872;
-LAW00;$100;$100.00;2013-12-27;1;"Terry Lawless Band";"Terry";"Lawless";"";"";;;;;tlawless@aol.com
-LAM85;$100;$100.00;2013-07-13;1;"Amanda Lambert";"Amanda";"Lambert";"";"850 Virginia Dr.";Arroyo Grande;CA;93420;805-489-2106;
-SAG74;$100;$75.00;2013-11-20;1;"Cheryl Sage";"Cheryl";"Sage";"";"743 - 24th Place Apt. 1";Hermosa Beach;CA;90254-2205;310-372-1535;
-SAI16;$100;$100.00;2013-09-15;0;"Frank Sainburg";"Frank";"Sainburg";"";"PO Box 1621";Atascadero;CA;93423;;
-SAN31;$100;$100.00;2013-03-29;1;"Chris & David Sands";"Chris";"Sands";"";"3110 Nacimiento Lake Dr.";Paso Robles;CA;93446;805-238-1518;
-SCH11C;$100;$75.00;2013-09-05;1;"Kelli Jo Schonher";"Kelli";"Schonher";"";"1101 Ella Street";San Luis Obispo;CA;93401;805-215-2369;kschonher@yahoo.com
-JOH11B;$100;$100.00;2013-07-18;1;"Lee & Christine Johnson";"Lee";"Johnson";"";"117 Mindoro St.";Morro Bay;CA;93442;805-305-3759;christinemjohnson@mac.com
-JOH93;$100;$100.00;2013-05-29;1;"Sabrina Johnson";"Sabrina";"Johnson";"";"9342 Carmel Rd.";Atascadero;CA;93422;805-440-7915;
-LAB15;$100;$100.00;2013-06-13;1;"Ted & Peg Labrenz";"Ted & Peg";"Labrenz";"";"P.O. Box 1504";Morro Bay;CA;93443;805-771-9679;plabrenz@att.net
-RIC10A;$100;$100.00;2013-07-20;1;"Joanne Richards";"Joanne";"Richards";"";"1000 Mary Ave";Cayucos;CA;93430;805-459-8205;jr.rich@hotmail.com
-PET14;$100;$100.00;2013-12-26;1;"Janice Petko";"Janice";"Petko";"";"1455 Whittier St. NE";Canton;OH;44721-1946;330-494-0006;jpetko41@att.net
-JUD30;$100;$100.00;2013-09-19;3;"Judson Terrace Residents Assoc.";"";"";" Assoc";"3000 Augusta St.";San Luis Obispo;CA;93401;;
-HOC54;$100;$100.00;2013-01-03;1;"Joan & Warren Hockenbary";"Warren";"Hockenbary";"";"545 Sombrillo";Arroyo Grande;CA;93420;805-474-4347;
-HAL91;$100;$75.00;2013-09-05;1;"Janice Halverson";"Janice";"Halverson";"";"P.O. Box 913";Cambria;CA;93428-0913;805-927-3936;
-DEM82;$100;$100.00;2013-06-20;1;"Scott & Nicole DeMatteo";"Scott";"DeMatteo";"";"825 Virginia Dr.";Arroyo Grande;CA;93420;805-748-8757;nikisuenscott@yahoo.com
-BIR49;$100;$100.00;2013-08-11;1;"Daniel Birkbeck";"Daniel";"Birkbeck";"";"49 Sea Breeze Ct.";Napa;CA;94559;707-299-7563;
-EAG71A;$100;$15.00;2013-06-13;1;"Tyler Eagan";"Tyler";"Eagan";"";"710 N. Trigo Ln";Paso Robles;CA;93446;805-835-6770;goshawk14@msn.com
-BET13;$100;$100.00;2013-01-17;0;"Cathy & Jim Bettencourt";"James & Catherine";"Bettencourt";"";"1323 Hidden Hills Rd.";Arroyo Grande;CA;93420;805-481-3307;bettenjet@gmail.com
-BER54;$100;$100.00;2013-07-08;1;"Muriel Bernstein";"Muriel";"Bernstein";"";"5455 La Uva Ln.";Atascadero;CA;93422;805-459-1877;wendy719@hotmail.com
-BER55;$100;$100.00;2013-06-03;1;"Jeryl Berry";"Jeryl";"Berry";"";"5525 Play Doe Ln.";Paso Robles;CA;93446-8385;;
-AND36;$100;$100.00;2013-10-03;1;"Joel Anderson";"Joel";"Anderson";"";"P.O. Box 365";Grover Beach;CA;93483-0365;805-489-8045;
-ALL19;$100;$75.00;2013-10-03;1;"John & Denise Allen";"Denise & John";"Allen";"";"1945 Pippin Lane";San Luis Obispo;CA;93405;805-595-7692;
-BRA32;$100;$100.00;2013-10-07;3;"Monterey Bravinder";"Monterey";"Bravinder";"";"P.O. Box 3226";Ventura;CA;93006;;
-CAR14B;$100;$100.00;2013-07-18;1;"Mr. Ziyad Naccasha";"Ziyad";"Naccasha";"Carmel & Naccasha LLP";"1410 Marsh St.";San Luis Obispo;CA;93401;805-546-8785;accounting@carnaclaw.com
-BRA15;$100;$100.00;2013-10-16;1;"Cheryl & Bob Brantley";"Bob & Cheryl";"Brantley";"";"1517 Hollister Ln.";Los Osos;CA;93402;;cherbrantley@gmail.com
-CHA10;$100;$100.00;2013-07-22;1;"Robin Chapman";"Robin";"Chapman";"";"1037 Turtle Creek Rd.";Paso Robles;CA;93446;;
-BLA11;$100;$100.00;2013-05-09;1;"Kara Blakeslee";"Kara";"Blakeslee";"";"1163 Pismo St.";San Luis Obispo;CA;93401;805-440-6650;karaslo@charter.net
-EWI13;$100;$100.00;2013-06-06;1;"Roger Ewing";"Roger";"Ewing";"";"P.O. Box 1323";Morro Bay;CA;93443-1323;;rogerewing@mac.com
-YOU15;$100;$100.00;2013-07-10;1;"Hilary & Donald Young";"Hilary";"Young";"";"1550 4th St.";Los Osos;CA;93402;;coalinga1958@yahoo.com
-VAN99;$100;$100.00;2013-08-22;3;"Dena Van Norman";"Dena";"Van Norman";"";"991 Taft St.l";Pismo Beach;CA;93449;;
-BEL27A;$100;$100.00;2013-11-20;3;"Bella Vista";"Bella";"Vista";"";"27101 Puerta Real, #450";Mission Viejo;CA;92691;;
-DEG34;$100;$100.00;2013-12-20;3;"Maryanne DeGoede";"Maryanne";"DeGoede";"";"P.O. Box 46626";Seattle;WA;98146;206-883-3721;mfd123@hotmail.com
-SPA25;$100;$100.00;2013-05-13;3;"Virginia Spadoni";"Virginia";"Spadoni";"";"2504 18th Avenue";Olympia;WA;98501;;
-WIL30;$100;$100.00;2013-05-21;1;"Chris & Charlotte Wilbert";"Chris";"Wilbert";"";"P.O. Box 3064";Pismo Beach;CA;93448;805-710-2443;cwilbert1@sbcglobal.net
-DEE28;$100;$100.00;2013-02-21;1;"James & Patricia Dee";"James & Patricia";"Dee";"";"280 Almond St.";San Luis Obispo;CA;93405-2302;805-543-2232;pattydee1@aol.com
-STA11B;$100;$100.00;2013-10-19;3;"Exploration Station";"Exploration";"Station";"";"P.O. Box 1117";Grover Beach;CA;93483;;
-CLE84;$100;$100.00;2013-12-12;1;"Deep Steam Carpet Cleaning";"Deep Steam";"Carpet Cleaning";"Deep Steam Carpet Cleaners";"8415 Morro Rd.";Atascadero;CA;93422;805-466-5419;
-AGR64;$100;$100.00;2013-01-03;1;"Libbie Agran & Guy Fitzwater";"Libbie";"Agran";"";"P.O. Box 6429";Los Osos;CA;93412;805-528-2465;agranlibbie@yahoo.com
-PYE48;$90;$90.00;2013-10-14;3;"Carolyn Priestley Pye";"Carolyn";"Pye";"";"P.O. Box 489";Cambria;CA;93428;;
-SCH20A;$90;$90.00;2013-10-21;3;"Janice & Paul Schmidt";"Janice";"Schmidt";"";"2085 Richard Ave.";Cambria;CA;93428-5275;;
-STA44;$85;$60.00;2013-10-22;1;"Sharon Stachler";"Sharon";"Stachler";"";"440 Shasta Ave. # 3";Morro Bay;CA;93442;505-660-2333;sharon.stachler@gmail.com
-MCA14;$85;$35.00;2013-12-12;1;"Lana McAdams";"Lana";"McAdams";"";"P.O. Box 147";San Simeon;CA;93452-0147;805-927-2590;mcadams72@gmail.com
-HYF27;$85;$45.00;2013-02-07;0;"Patricia Hyfield";"Patricia";"Hyfield";"";"251 Dorset";Cambria;CA;93428;661-803-5531;hyfling@aol.com
-BEN12A;$80;$30.00;2013-09-13;1;"Ethan Benanav";"Ethan";"Benanav";"";"123 Hawthorn Way";San Rafael;CA;94903;415-244-5317;
-NEL30A;$75;$50.00;2013-12-09;2;"Jill Nelson";"Jill";"Nelson";"";"805 Boysen Ave. #15";San Luis Obispo;CA;93405;951-642-0188;jnelso15@gmail.com
-GIL39;$75;$75.00;2013-12-18;1;"Jennifer Gill";"Jennifer";"Gill";"";"399 Franklin Dr.";Pismo Beach;CA;93449-2223;;jgill@smbsd.net
-LON32;$75;$75.00;2013-08-11;1;"Gail, Ted & Bess Long";"Gail";"Long";"";"325 E. 72 St.";New York;NY;10021;212-744-8233;blacktabcat@hotmail.com
-EST64;$75;$75.00;2013-07-25;3;"Estero Bay Women's Club";"Estero Bay";"Women's Club";"";"P.O. Box 645";Morro Bay;CA;93442;;
-SLA17;$75;$75.00;2013-02-18;1;"Rosemary & David Slater";"Rosemary";"Slater";"";"10025 El Camino Real, Sp. 37";Atascadero;CA;93422;805-466-2146;davrozs@sbcglobal.net
-PAS00;$73.86;$73.86;2013-05-26;3;"Paso Robles Art Fest.";"Paso Robles";"Art Festival";"";"";;CA;Note:;;
-RHO60;$70;$20.00;2013-11-27;1;"Kellie Rhodes";"Kellie";"Rhodes";"";"6070 Joan Place";San Luis Obispo;CA;93401;805-471-6409;
-CAF18;$66.35;$66.35;2013-06-20;3;"Cafe Press";"Cafe";"Press";"Cafe Press, Inc.";"1850 Gateway Dr.";San Mateo;CA;94404;;
-DAN15;$65;$45.00;2013-08-18;1;"Diane & Thom Danifield";"Thom";"Danfield";"";"1581 4th Street";Los Osos;CA;93402-1607;805-528-7216;tdanfield2@netzero.net
-AUT87;$65;$65.00;2013-08-08;3;"Central Coast Autism Spectrum Ctr.";"Central Coast";"Autism Spectrum Ctr.";"";"75 Higuera St. Ste. 110";San Luis Obispo;CA;93401;;
-NAS21;$63;$13.00;2013-11-15;1;"Missy Naser";"Missy";"Naser";"";"2116 Bush Dr.";Los Osos;CA;93402;267-505-6187;misnaser@gmail.com
-ENS78;$60;$60.00;2013-10-20;3;"Julie Enstad";"Julie";"Enstad";"";"780 Center Ct.";Morro Bay;CA;93442;;
-SAN39;$60;$60.00;2013-10-20;3;"Reva Sandmeyer";"Reva";"Sandmeyer";"";"39935 Capland Dr.";Palmdale;CA;93551;661-609-7417;
-ASK00;$60;$60.00;2013-01-17;0;"Kathy Askin";"Kathy";"Askin";"";"";;CA;;;kaskin@earthlink.net
-HAR67A;$60;$60.00;2013-10-20;3;"Lisa Harper-Henderson";"Lisa";"Harper-Henderson";"";"675 San Joaquin ST.";Morro Bay;CA;93442-1470;805-772-8048;
-VOG32;$60;$60.00;2013-10-20;3;"Jim & Ramona Voge";"Ramona";"Voge";"";"3200 Bradford Circle";Cambria;CA;93428;;
-REI13;$60;$60.00;2013-10-22;3;"Ann & Ron Reisner";"Ann";"Reisner";"";"1315 Clarabelle Dr.";Morro Bay;CA;93442;805-772-8117;
-SUZ17;$55;$55.00;2013-04-22;3;"Kara Suzuki";"Kara";"Suzuki";"";"1719 14th St.";Los Osos;CA;93402;;
-FUR26;$50;$50.00;2013-01-24;1;"Sam & Feryl Furlin";"Sam and Feryl";"Furlin";"Sam Furlin Landscaping";"PO Box 266";Pismo Beach;CA;93448;805-709-1482;
-COL11;$50;$25.00;2013-11-14;1;"Bob & Linda Collins";"Linda";"Collins";"";"1168 Vista Del Lago";San Luis Obispo;CA;93405-4835;805-216-4345;marley2linda@gmail.com
-ABE11;$50;$50.00;2013-09-12;3;"Linda & William Abernathy";"Linda";"Abernathy";"";"1121 Longview Dr.";Pismo Beach;CA;93449;;
-KIP20;$50;$50.00;2013-09-15;1;"Linda Kipe";"Linda";"Kipe";"";"203 Wood Pl.";Arroyo Grande;CA;93420-3120;;
-KRE11;$50;$50.00;2013-09-05;3;"Michael Krebsbach";"Michael";"Krebsbach";"";"11905 Cenegal Rd.";Atascadero;CA;93422-1759;805-461-6709;krebsbachmichael@gmail.com
-REY77;$50;$50.00;2013-06-08;1;"Deborah Reynolds";"Deborah";"Reynolds";"";"4979 Davenport Creek Rd.";San Luis Obispo;CA;93401;;reynoldsrd@bellsouth.net
-KRE23;$50;$50.00;2013-06-15;1;"Marilyn Kretsinger";"Marilyn";"Kretsinger";"";"2318 Eagle's Nest Dr.";Lafayette;CO;80026;;
-LYO14;$50;$25.00;2013-09-05;1;"Marguerite Lyons";"Marguerite";"Lyons";"";"P.O. Box 14859";San Luis Obispo;CA;93406;;
-MER19;$50;$50.00;2013-02-14;1;"Lois R. Merritt Trust";"Lois";"Merritt";"";"1920 Prospect Ave.";Paso Robles;CA;93446;805-237-9021;LoisLRM2000@yahoo.com
-WES54;$50;$50.00;2013-03-07;1;"Greta West";"Greta";"West";"";"P.O. Box 54";Blythe;CA;92226;909-440-9266;gretageode395@yahoo.com
-WHI13;$50;$50.00;2013-02-18;1;"Georgia White";"Georgia";"White";"White's HVAC Services";"131 E. Knotts St.";Nipomo;CA;93444;;
-MIL12A;$50;$50.00;2013-10-20;1;"Vita Miller";"Vita";"Miller";"";"1205 Bay Oaks Dr.";Los Osos;CA;93402;805-528-5926;vmmil@charter.net
-MIL17A;$50;$50.00;2013-10-05;1;"Joe Miller & Family";"Joe";"Miller";"";"170 St. Mary Ave";Cayucos;CA;93430;805-995-1625;millerjeba@gmail.com
-BEN91;$50;$50.00;2013-12-31;1;"Margaret & Jim Bennett";"Margaret";"Bennett";"";"916 Phillips Rd.";Arroyo Grande;CA;93420;;mbennett200760@yahoo.com
-MCC14;$50;$50.00;2013-02-18;1;"Mr. and Mrs. M.R. McClenahan";"M.R. & Patricia";"McClenahan";"";"14900 Morro Road";Atascadero;CA;93422;805-466-7498;mccats@wildblue.net
-VOO66;$50;$25.00;2013-11-27;1;"Anne Voorhies";"Anne";"Voorhies";"";"6674 Sargent Ln";Ventura;CA;93003-7563;805-407-8794;
-WAT84A;$50;$50.00;2013-01-20;3;"Sylvia Waters";"Sylvia";"Waters";"";"8466 Lancaster Dr.";Rohnert Park;CA;94928;707-664-1440;
-BLI27;$50;$50.00;2013-12-30;1;"Susan Blifeld";"Susan";"Blifeld";"";"270 Quarterhorse Way";Arroyo Grande;CA;93420;805-473-0584;sbpc805@aol.com
-WEE25;$50;$50.00;2013-07-13;1;"Jonathan Weed";"Jonathan";"Weed";"";"2585 Lara Ln";Oceano;CA;93445;;
-CAS19;$50;$50.00;2013-08-24;0;"Suzie Castle";"Suzie";"Castle";"";"1973 Nevada Ct. #D";Los Osos;CA;93402;805-704-9615;suzannecastle@yahoo.com
-CRO102;$50;$50.00;2013-12-14;1;"Suze & Timothy Crowley";"Suze";"Crowley";"";"1041 Balboa St.";Morro Bay;CA;93442-2410;805-772-8775;
-HER21A;$50;$50.00;2013-07-07;3;"Debra Herring";"Debra";"Herring";"";"213 La Marina";Santa Barbara;CA;93109;805-460-3352;deb4nb@aol.com
-DRE24;$50;$50.00;2013-10-22;1;"Stefano Drei";"Stefano";"Drei";"";"2440 Paso Robles St.";Oceano;CA;93445;805-215-0864;stefanoDrei@gmail.com
-SWO14;$50;$25.00;2013-07-25;1;"Brian & Darlene Sword";"Brian";"Sword";"";"1468 Templeton Hills Rd";Templeton;CA;93465-9426;805-434-2513;iluv2bead@charter.net
-ENS10;$50;$50.00;2013-10-03;3;"Patricia Ensign";"Patricia";"Ensign";"";"1026A Senda Verde #A";Santa Barbara;CA;93105;;
-TAN85;$50;$25.00;2013-12-17;1;"Arlene Tan";"Arlene";"Tan";"";"8588 Villa La Jolla Dr. #350";La Jolla;CA;92037;;arlenejtan@hotmail.com
-TAY16;$50;$50.00;2013-05-09;1;"Amanda Taylor";"Amanda";"Taylor";"";"1645 Santillan Ave.";Santa Maria;CA;93458;913-384-0097;amandahipschman@hotmail.com
-OED15;$50;$50.00;2013-04-07;1;"Rosemarie Oeder";"Rosemarie";"Oeder";"";"1513 Fairway Dr.";Paso Robles;CA;93446-3406;;
-HIL56;$50;$50.00;2013-09-20;1;"Catherine Hillman";"Catherine";"Hillman";"";"5650 West Mall";Atascadero;CA;93422-7223;805-801-3942;
-HIG45;$50;$50.00;2013-06-22;3;"Robert Highfill";"Robert";"Highfill";"";"457 Obsidian Way";Clayton;CA;94517;925-212-4288;robert.highfill@jacobs.com
-HAR20;$50;$50.00;2013-07-13;1;"Beverly Harben";"Beverly";"Harben";"";"205 S. Rena St.";Arroyo Grande;CA;93420;;
-SEW39;$50;$25.00;2013-12-05;1;"Marjorie & George Sewell";"Marjorie R.";"Sewell";"";"392 Leighton St.";Cambria;CA;93428;805-927-8471;mrsewell@charter.net
-GAU62;$50;$50.00;2013-11-27;1;"John & Joy Gault";"John";"Gault";"";"620 Highland Dr.";Los Osos;CA;93402-3802;805-528-5835;
-GAG22;$50;$50.00;2013-02-22;1;"Carolyn Gagliardini";"Carolyn";"Gagliardini";"";"2258 Los Berros Rd.";Arroyo Grande;CA;93420-5360;805-481-4139;
-SNO13;$50;$50.00;2013-07-13;1;"Lynda Snodgrass";"Lynda";"Snodgrass";"";"1354 Charlotte Dr.";Santa Maria;CA;93454;805-925-5426;
-SMA26;$50;$50.00;2013-01-20;1;"Joanne Smalley";"Joanne";"Smalley";"";"260 Bowie Dr.";Los Osos;CA;93402;805-528-2525;
-SLO12;$50;$50.00;2013-05-16;0;"Gwen Schmidt";"Gwen";"Schmidt";"SLO Fresh Market";"";;;;;
-EVA20;$50;$50.00;2013-11-26;1;"Pete Evans";"Pete";"Evans";"";"2040 Rachel Street";San Luis Obispo;CA;93401;805-543-8853;riki77@gmail.com
-EVE26;$50;$20.00;2013-08-01;1;"Cheryl Everett";"Cheryl";"Everett";"";"P.O. Box 265";Creston;CA;93432;805-237-9523;
-FAI80;$50;$50.00;2013-07-18;1;"Larry Fairbanks";"Larry";"Fairbanks";"";"801 S. Halcyon #19";Arroyo Grande;CA;93420;805-474-5898;
-HOF15A;$50;$50.00;2013-12-04;1;"Barbara & Don Hofer";"Barbara";"Hofer";"";"1565 Kiler Canyon Rd.";Paso Robles;CA;93446;805-226-8528;bar2don@aol.com
-SCH45;$50;$50.00;2013-04-22;1;"Scott Schlotman";"Scott";"Schlotman";"";"4515 Yerba Av.";Atascadero;CA;93422;805-461-3727;scotts444@sbcglobal.net
-ALP86;$50;$50.00;2013-10-17;1;"Ira & Marsha Alpert";"Ira & Marsha";"Alpert";"";"860 Skyline Dr.";San Luis Obispo;CA;93405;;
-HUN90;$50;$50.00;2013-06-23;1;"Stan Hunter & Racine Barton";"Stan & Racine";"Hunter";"";"901 Eureka Ave.";Davis;CA;95616;;
-ING17;$50;$50.00;2013-09-05;1;"Michael Inglis";"Michael";"Inglis";"";"1748 Chesapeake Pl.";Arroyo Grande;CA;93420-5904;805-481-7489;minglis2@ix.netcom.com
-HOW24;$50;$50.00;2013-07-13;3;"Sandra Howe";"Sandra";"Howe";"";"2404 Wilcombe";Cambria;CA;93428;805-927-5470;
-BAL26;$50;$50.00;2013-12-14;1;"Teddi Ballor";"Teddi";"Ballor";"";"26058 Charonne Ct.";Valencia;CA;91355;;teddilynn@sbcglobal.net
-CUR44;$50;$50.00;2013-07-04;1;"Dorothy Curhan";"Dorothy";"Curhan";"";"4404 Sunflower Way";San Luis Obispo;CA;93401-7664;805-542-0334;dorothycurhan@gmail.com
-TIE38;$50;$50.00;2013-05-11;3;"Patricia Tierney";"Patricia";"Tierney";"";"";;;;;
-RUN38;$50;$50.00;2013-06-20;1;"Darrel & Linda Rundstrom";"Darrel";"Rundstrom";"";"388 El Portal";Pismo Beach;CA;93449;;
-HYP43;$45;$45.00;2013-10-20;3;"Peggy Hypse";"Peggy";"Hypse";"";"436 Stimson Ave. #1";Pismo Beach;CA;93449;623-326-1957;phypse57@gmail.com
-MOE21;$45;$45.00;2013-10-24;0;"Nancy Ann Moen";"Nancy Ann";"Moen";"";"2140 Caballeros Rd.";Norco;CA;92860;;nans.notes.2010@gmail.com
-PER87;$45;$45.00;2013-10-20;1;"Daniel Perez";"Daniel";"Perez";"";"873 Pearl Dr.";Arroyo Grande;CA;93420;805-550-8765;dp3stud1@yahoo.com
-ROY36;$40;$25.00;2013-05-30;1;"Skip Royston";"Steve";"Royston";"";"3600 S. Harbor Blvd. #170";Oxnard;CA;93035;805-202-9105;sroyston99@gmail.com
-DEN10B;$40;$25.00;2013-11-14;1;"William Denneen";"William";"Denneen";"";"1040 Cielo Ln";Nipomo;CA;93444-9039;805-929-3647;bdenneen25@gmail.com
-SIL33;$40;$20.00;2013-02-28;1;"Carolyn Silas";"Carolyn";"Silas";"";"208 Esparto";Shell Beach;CA;93449;805-773-1858;cj@thecjsilasshow.com
-JEF27;$40;$15.00;2013-10-10;1;"Fallon Jeffers";"Fallon";"Jeffers";"";"2729 Austin Ct.";Los Osos;CA;93402;805-534-9401;fallon.jeffers@gmail.com
-PRI16;$40;$40.00;2013-04-29;1;"Glenn & Lori Prichard";"Glenn";"Prichard";"Nature\'s Remedy";"1610 Lyle Lane";Paso Robles;CA;93446-9334;805-712-8609;
-JAN90;$40;$40.00;2013-04-23;1;"Vicki Janssen";"Vicki";"Janssen";"";"9095 San Diego Rd.";Atascadero;CA;93422;805-461-1719;
-MOO15;$40;$40.00;2013-12-22;3;"Dianne Moore";"Dianne";"Moore";"";"1593 - 15th St.";Los Osos;CA;93402;;
-JOH22;$40;$40.00;2013-05-16;1;"Kai & Liam Johnson";"Kai & Liam";"Johnson";"";"2255 Riviera";Reno;NV;89509;775-287-3869;lisaberryjohnson@hotmail.com
-LEI27A;$40;$40.00;2013-12-16;3;"Claudia Leighton";"Claudia";"Leighton";"";"2751 Ironwood";Morro Bay;CA;93442;;
-DIM10;$40;$40.00;2013-05-09;1;"Kerry DiMaggio";"Kerry";"DiMaggio";"";"838 Tarragon Ln.";San Luis Obispo;CA;93401;805-909-2064;keemail19@yahoo.com
-PET24;$40;$40.00;2013-05-08;3;"Eric Peterson";"Eric";"Peterson";"";"2426 Leimert Blvd.";Oakland;CA;94602;510-579-1277;espeter7@gmail.com
-THO84;$40;$20.00;2013-08-18;3;"Carol, Brad & Fred Thorpe";"Brad";"Thorpe";"";"846 N. 2nd Street";Grover Beach;CA;93433;805-481-2515;CLTPTL@att.net
-RIN143;$40;$15.00;2013-12-12;1;"Kay Rinaldi";"Kay";"Rinaldi";"";"14300 Morningside Dr.";Atascadero;CA;93422;805-438-5896;kayremmey@yahoo.com
-HAX21;$40;$18.00;2013-12-20;1;"Larry Hazen";"Larry";"Hazen";"";"216 Chorro St.";San Luis Obispo;CA;93405;805-542-9217;larryhazen@sbcglobal.net
-FRO41;$40;$20.00;2013-02-20;1;"Tracy Frost";"Tracy";"Frost";"";"410 Spanish Moss Ln.";Arroyo Grande;CA;93420;805-305-9441;frostt@charter.net
-MAS13;$35;$35.00;2013-11-27;3;"Diane M. Mason";"Diane";"Mason";"";"P.O. Box 1378";Morro Bay;CA;93443;805-771-9560;
-STE82;$30;$30.00;2013-07-13;1;"Nanci & Joel Stern";"Nanci & Joel";"Stern";"";"826 Virginia Dr.";Arroyo Grande;CA;93420;;
-BEY36;$30;$30.00;2013-04-11;3;"Christine Beyer";"Christine";"Beyer";"";"364 Windward Way";Shell Beach;CA;93449;;chris.beyer9@gmail.com
-COO83;$30;$15.00;2013-02-08;1;"Nick Coonrod";"Nick";"Coonrod";"";"835 Mission";San Luis Obispo;CA;93405;909-855-7607;
-DIE41;$30;$15.00;2013-07-22;1;"Carol Dietz-Walker";"Carol";"Dietz-Walker";"";"412 Rollingwood";Vacaville;CA;95688;;
-SEM80;$30;$0.00;2013-12-31;1;"B.J. Semmes";"B.J.";"Semmes";"";"8007 Toro Creek Rd.";Atascadero;CA;93422;805-466-8253;bjsemmes1@me.com
-CHA71;$30;$30.00;2013-04-12;1;"Jimmy Chavez";"Jimmy";"Chavez";"";"7150 Benton Rd.";Paso Robles;CA;93446;805-550-7624;
-VIN22;$28;$28.00;2013-10-04;1;"Shelly Vinatieri";"Shelly";"Vinatieri";"";"2260 San Marcos Pass Rd.";Santa Barbara;CA;93105;805-967-0847;shellyv7@gmail.com
-PLE15;$25;$25.00;2013-08-31;1;"Martha Plesche";"Martha";"Plesche";"";"1519 S. Curryer";Santa Maria;CA;93458;806-922-3257;
-WOL15;$25;$25.00;2013-02-08;0;"Kayla Wolfer";"Kayla";"Wolfer";"";"15285 Charter Oak Blvd.";Prunedale;CA;93907;831-676-7055;kayla.wolfer@gmail.com
-WRI70;$25;$25.00;2013-08-22;1;"June Wright";"June";"Wright";"";"P.O. Box 7016";Los Osos;CA;93412-7016;805-528-6525;jocean31@charter.net
-PIE50;$25;$25.00;2013-11-10;1;"Lynda Pierson";"Lynda";"Pierson";"";"5040 Alamo";Atascadero;CA;93422;805-460-9463;
-PER34;$25;$25.00;2013-10-08;1;"Briana Petty";"Briana";"Perry";"";"3463 Lanie Ct.";Roseville;CA;95747;916-300-7931;bperry03@calpoly.edu
-WOR16;$25;$25.00;2013-04-13;0;"Sophie Worthington";"Sophie";"Worthington";"";"1640 Mill St. #2";San Luis Obispo;CA;93401;510-847-2764;
-RIC46;$25;$25.00;2013-01-21;1;"Charles Richardson";"Charles";"Richardson";"";"4680 Yerba Ave.";Atascadero;CA;93422;805-460-9234;almostgone264@gmail.com
-THO31A;$25;$25.00;2013-08-24;1;"Cindy Thompson";"Cindy";"Thompson";"";"311 Morro Ave.";Shell Beach;CA;93449;404-606-1041;
-SAN21;$25;$25.00;2013-12-14;1;"Enrique Sanchez-Rivera";"Enrique";"Sanchez-Rivera";"";"2150 King St.";San Luis Obispo;CA;93401;805-455-5389;esr@laislabrand.com
-RUS41;$25;$25.00;2013-01-27;1;"Kabe Russell";"Kabe";"Russell";"";"4105 Lobos Ave.";Atascadero;CA;93422;805-461-1139;dadagallery@hotmail.com
-TOD17;$25;$25.00;2013-10-22;2;"Dr. Brandon Todd";"Brandon";"Todd";"";"1786 Fearn Avenue";Los Osos;CA;93402;775-762-0946;justemener@aol.com
-TAL42;$25;$25.00;2013-04-04;1;"Corinne & William Talkin";"Corinne";"Talkin";"";"425 Henrietta Ave.";Los Osos;CA;93402-2548;805-528-3145;ctalkin@charter.net
-SEP16A;$25;$25.00;2013-06-03;1;"Helen & Carl Sepulveda, Jr.";"Carl Jr.";"Sepulveda";"";"164 Bayshort Dr.";Morro Bay;CA;93442;805-772-7715;carlsepulveda@rocketmail.com
-SLE34;$25;$25.00;2013-03-19;1;"Alexa Slem";"Alexa";"Slem";"";"348 Lincoln St.";San Luis Obispo;CA;93405-2332;805-543-5604;
-SIN15;$25;$25.00;2013-03-03;1;"Myint Singh";"Myint";"Singh";"";"1545 Cumbre Rd.";Paso Robles;CA;93446;805-239-8767;
-SEX83;$25;$25.00;2013-11-20;1;"Fred A. Sexton";"Fred A.";"Sexton";"";"832 Tempus Cir";Arroyo Grande;CA;93420-2348;805-481-5031;
-ROE22;$25;$25.00;2013-04-01;1;"Cheri Roe";"Cheri";"Roe";"";"P.O. Box 22";Creston;CA;93432;805-227-4931;cheriroe@wildblue.net
-TYM13;$25;$25.00;2013-06-06;1;"Victoria Tyman";"Victoria";"Tyman";"";"1383 Avalon";San Luis Obispo;CA;93405;508-277-6757;info@themodernnanny.com
-WEN18;$25;$25.00;2013-08-26;2;"Carlye Wensley";"Carlye";"Wensley";"";"1881 Maple Ave.";Los Osos;CA;93402;661-331-7451;redenamal242@msn.com
-RAG15;$25;$25.00;2013-10-10;3;"Judith & Phillip Ragsdale";"Judith & Phillip";"Ragsdale";"";"1521 Gathe Dr.";San Luis Obispo;CA;93405;;
-POR28;$25;$25.00;2013-10-10;3;"Jeanne M. Porter";"Jeanne M.";"Porter";"";"2882 Los Feliz Ct.";San Luis Obispo;CA;93401;;
-RAS10;$25;$25.00;2013-06-08;1;"Codie Rash";"Codie";"Rash";"";"1009 Burro Verde";Paso Robles;CA;93446;805-550-4144;codieeelliott@aol.com
-REI50;$25;$25.00;2013-11-27;1;"Derek Reiners";"Derek";"Reiners";"";"500 E Foothill Blvd, #3";San Luis Obispo;CA;93405-1629;812-345-7977;dreiners1@gmail.com
-RIC50;$25;$25.00;2013-02-28;1;"Karola Ricketts";"Karola";"Ricketts";"";"500 Kings Ave.";Morro Bay;CA;93442;805-772-8855;
-VIS16;$25;$25.00;2013-11-09;1;"Jeannine Visbal";"Jeannine";"Visbal";"";"1665 Parkhill Rd.";Santa Margarita;CA;93453;925-640-5238;
-REV17;$25;$25.00;2013-01-19;1;"Bob Revel";"Bob";"Revel";"";"1761 6th St.";Los Osos;CA;93402;;robrev@sbcglobal.net
-WIL97;$25;$25.00;2013-01-14;0;"Jana & Timothy Wilcox";"Jana";"Wilcox";"";"978 Carmel St.";Morro Bay;CA;93442;805-772-7948;A2grdtcher@aol.com
-KAY93;$25;$25.00;2013-06-12;0;"Susan Kay";"Susan";"Kay";"";"935 Pacific";Morro Bay;CA;93442;999-999-9999;susanlennahkay@gmail.com
-FOC27;$25;$25.00;2013-07-08;0;"Jennifer Foca";"Jennifer";"Foca";"";"27795 Niguel Village Dr.";Laguna Nigel;CA;92677;949-690-8464;jmfoca@cox.net
-FOI53;$25;$25.00;2013-01-12;1;"Linda Foisy";"Linda";"Foisy";"";"5320 Las Pilitas";Santa Margarita;CA;93453;805-438-4272;doughuntinc@gmail.com
-FRO37;$25;$25.00;2013-10-17;1;"Kate Froman";"Kate";"Froman";"";"378 Chorro St.";San Luis Obispo;CA;93405;805-544-1476;katefroman@juno.com
-GEO28;$25;$25.00;2013-02-07;1;"Kathy George";"Kathleen";"George";"";"282 Tempus Circle";Arroyo Grande;CA;93420;805-474-9201;kgquilter@att.net
-FLY14;$25;$25.00;2013-06-02;0;"Barbara Flynn";"Barbara";"Flynn";"";"1439 6th St.";Los Osos;CA;93402;;flynbar@sbcglobal.net
-FER82;$25;$25.00;2013-05-03;1;"Rosa Fernandez";"Rosa";"Fernandez";"";"820 Sycamore Canyon Rd.";Paso Robles;CA;93446;805-239-2941;
-ELE41;$25;$25.00;2013-09-22;1;"Gary Elem";"Gary";"Elem";"";"P.O. Box 4133";San Luis Obispo;CA;93403-4133;805-544-7734;drmagic@charter.net
-FAG17;$25;$25.00;2013-06-16;1;"Ingrid Fagan";"Ingrid";"Fagan";"";"1795 Sage Ave";Los Osos;CA;93402;805-439-1605;ingridfagan@hotmail.com
-FEI11;$25;$25.00;2013-09-10;2;"John Feinblatt";"John";"Feinblatt";"";"1188 Morro Ave.";Morro Bay;CA;93442;805-772-1061;jffeinblatt@gmail.com
-GON27;$25;$25.00;2013-10-21;0;"Tracie Gonzales";"Tracie";"Gonzales";"";"2730 Dogwood Ave";Morro Bay;CA;93442;661-394-0724;
-GRO63;$25;$25.00;2013-05-14;1;"Cynthia Grove";"Cynthia";"Grove";"";"633 Ramona Ave. Sp. 151";Los Osos;CA;93402;;
-HAR46;$25;$25.00;2013-01-29;1;"GiNie Harris";"GiNie";"Harris";"";"460 Piney Way";Morro Bay;CA;93442;702-460-5436;ginieharris@gmail.com
-HAT15;$25;$25.00;2013-09-23;0;"Cynthia Hathaway";"Cynthia";"Hathaway";"";"P.O. Box 15911";San Luis Obispo;CA;93406;970-799-1990;doorways@aloha.net
-HEL16;$25;$25.00;2013-03-14;1;"Melissa A. & Lee Heller";"Melissa A.";"Heller";"";"165 Poppy Lane";Arroyo Grande;CA;93420;805-473-0865;
-HAN26A;$25;$25.00;2013-07-09;3;"Cynthia Hankins & Mike Logan";"Cynthia";"Hankins";"";"2699 Santa Barbara Ave.";Cayucos;CA;93430-1433;;
-HAN20A;$25;$25.00;2013-12-05;1;"Warren & Sharon Hanson";"Warren";"Hanson";"";"201 Five Cities Dr. #173";Pismo Beach;CA;93449;805-305-4909;
-PEK10;$25;$25.00;2013-12-28;1;"Evelin & Jim Pekin";"Jim & Evelin";"Pekin";"";"1025 Avenida Ladera";San Dimas;CA;91773-4308;909-599-8603;
-HAL29;$25;$25.00;2013-05-05;1;"Estelle Hall";"Estelle";"Hall";"";"2980 Elm Ave.";Morro Bay;CA;93442;805-704-5415;estellemh@att.net
-HAN19;$25;$25.00;2013-05-30;1;"Angela C. Hanglow";"Angela C.";"Hanglow";"";"1912 Cannes Dr.";Thousand Oaks;CA;91362-4841;;hanangela@roadrunner.com
-DUR20;$25;$25.00;2013-12-12;1;"Bill & Janet Durkee";"Bill";"Durkee";"";"201 Five Cities Dr. #141";Pismo Beach;CA;93449-4049;805-773-5329;
-DOW10;$25;$25.00;2013-12-02;1;"Wendi Dowling";"Wendi";"Dowling";"";"1044 Fair Oaks Ave.";Arroyo Grande;CA;93420;805-459-1571;wendi.mathews67@gmail.com
-BEL81;$25;$25.00;2013-12-14;1;"Dana Belben";"Dana";"Belben";"";"810 Crazy Horse Dr.";Paso Robles;CA;93446;818-383-2633;
-BET18;$25;$25.00;2013-04-29;1;"Joanne Bettencourt";"Joanne";"Bettencourt";"";"1829 Gathe Dr.";San Luis Obispo;CA;93405-6213;;
-BOB49;$25;$25.00;2013-07-11;0;"Christine Bobula";"Christine";"Bobula";"";"1178 Atascadero St.";San Luis Obispo;CA;93405;408-612-6457;christinebobula@gmail.com
-BRA22;$25;$25.00;2013-03-24;1;"David Bray";"David";"Bray";"";"2265 Del Norte St.";Los Osos;CA;93402;805-458-0902;
-BEC93;$25;$25.00;2013-12-14;1;"Kendra Beck";"Kendra";"Beck";"";"937 Bluebell Way";San Luis Obispo;CA;93401-7660;805-801-2188;kendrabeck@gmail.com
-AVI37;$25;$25.00;2013-02-14;1;"Daniel Avina";"Daniel";"Avina";"";"3761 Villa Terr. #4";San Diego;CA;92104;805-712-5074;illeatyourheartout@hotmail.com
-ACH24;$25;$25.00;2013-06-16;1;"Sheila Burke-Achterkirchen";"Sheila";"Achterkirchen";"";"2446 Reno Ct.";Morro Bay;CA;93442;805-403-7156;burke100@gmail.com
-AGU31;$25;$25.00;2013-06-13;1;"Aimee Aguilar";"Aimee";"Aguilar";"";"P.O. Box 312";San Luis Obispo;CA;93406;805-602-8076;aimeem.aguilar@gmail.com
-AHE22;$25;$25.00;2013-08-22;2;"Alan & Kathleen Aherne";"Alan";"Aherne";"";"227 Park Avenue";Pismo Beach;CA;93449;805-773-6082;aaherne1@earthlink.net
-BRI25A;$25;$25.00;2013-03-03;2;"Miranda Bridges";"Miranda";"Bridges";"";"3826 Painted Pony Road";Richmond;CA;94803;510-684-7298;mlbridge@calpoly.edu
-BRO16;$25;$25.00;2013-02-19;0;"Shaina Brown";"Shaina";"Brown";"";"";;CA;;303-501-7767;shay.brown11@gmail.com
-DES89;$25;$25.00;2013-04-13;1;"Kara DeShazo";"Kara";"DeShazo";"";"89 Rio Ct. # 202";Paso Robles;CA;93446;903-521-8057;karadeshazo@gmail.com
-DOM78;$25;$25.00;2013-05-15;1;"Joe & Monica Dominquez";"Joe";"Dominquez";"";"7800 Atascadero Ave";Atascadero;CA;93422;805-610-6482;
-DOR30;$25;$25.00;2013-05-19;0;"Shannon Dorsey";"Shannon";"Dorsey";"";"3030 Main St.";Morro Bay;CA;93442;949-291-5473;shannon.dorsey@gmail.com
-COS97;$25;$25.00;2013-07-04;1;"Mark & Kathleen Cosgrove";"Mark";"Cosgrove";"";"975 Sylvan Ridge Rd.";Arroyo Grande;CA;93420-7153;805-489-2012;
-COO64;$25;$25.00;2013-12-18;1;"Janet Cooper";"Janet";"Cooper";"";"6415 Kathryn Drive";Cambria;CA;93428-2011;805-927-2567;coopersound2@gmail.com
-CAR42;$25;$25.00;2013-02-16;0;"Nancy Cardoza";"Nancy";"Cardoza";"";"428 Greenwood Dr.";Arroyo Grande;CA;93420;805-473-2573;n.kaycardoza@gmail.com
-CHA18;$25;$25.00;2013-02-12;1;"Robert & Karen Chambers";"Karen";"Chambers";"";"1810 Mesa Rd.";Paso Robles;CA;93446;805-238-1987;
-COO15;$25;$25.00;2013-06-19;1;"Devra Cooper";"Devra";"Cooper";"";"1513 15th St.";Los Osos;CA;93402-1873;805-534-1620;minicooper93402@yahoo.com
-HOL88;$25;$25.00;2013-12-22;1;"Jordyn Holt";"Jordyn";"Holt";"";"880 Park Avenue";Cayucos;CA;93430;559-410-0700;jordymarie123@gmail.com
-HAJ12;$25;$25.00;2013-01-12;0;"Jennifer Hajdu";"Jennifer";"Hajdu";"";"1299 11th St.";Los Osos;CA;93402;805-440-7807;jenhajdu@gmail.com
-KAT16;$25;$25.00;2013-08-28;1;"Gary Katona";"Gary";"Katona";"";"1611 Eighth St.";Los Osos;CA;93402;805-439-0320;
-KAT16A;$25;$25.00;2013-08-26;0;"Nancy Katona";"Nancy";"Katona";"";"1611 Eighth St.";Los Osos;CA;93402;805-439-0320;nkatona@gmail.com
-NEI26;$25;$25.00;2013-09-21;1;"Danny & Dena Neill";"Danny";"Neil";"";"2640 Grell Ln.";Oceano;CA;93445;805-748-4530;
-KAK62;$25;$25.00;2013-04-16;1;"Jennifer Kakon";"Jennifer";"Kakon";"";"6255 Buckhorn Ridge Pl";San Miguel;CA;93451-9039;415-407-1734;
-MED55;$25;$25.00;2013-12-16;1;"Felicia Medrano";"Felicia";"Medrano";"";"550 Main St.";Morro Bay;CA;93442;619-808-3551;yomamasmoney@yahoo.com
-MCW20;$25;$25.00;2013-02-07;1;"Marilyn McWilliams";"Marilyn";"McWilliams";"";"P.O. Box 2033";Paso Robles;CA;93447;;
-KIM26;$25;$25.00;2013-06-13;0;"Mimi Kimball";"Marilyn (Mimi)";"Kimball";"";"2649 Ocean Blvd";Cayucos;CA;93430;805-995-5025;mimincayucos@gmail.com
-MAR94;$25;$25.00;2013-06-24;0;"Kat Marin";"Katelyn (Kat)";"Marin";"";"947 Pacific St.";Morro Bay;CA;93442;805-305-4717;katmarie417@gmail.com
-LOG19;$25;$25.00;2013-08-08;1;"Pam Logan-Calabrese";"Pam";"Logan";"";"1900 Willow Dr.";Los Osos;CA;93402;805-528-8949;pklogan@usa.net
-NEW71A;$25;$25.00;2013-06-13;1;"Allegra Newland";"Allegra";"Newland";"";"710 Rancho Dr.";San Luis Obispo;CA;93405;805-546-9156;ajnewland17@gmail.com
-NIC11;$25;$25.00;2013-10-10;1;"Jennifer Nicholson";"Jennifer";"Nicholson";"";"114 Mustang Dr. #104";San Luis Obispo;CA;93405;951-816-5247;jenny.nich@yahoo.com
-MAI23;$25;$25.00;2013-12-06;1;"Terri & Ray Maijala";"Terri";"Maijala";"";"2380 Madison";Cambria;CA;93428;805-927-8531;temaijala@sbcglobal.net
-KLI43;$25;$25.00;2013-02-20;1;"Melanie Kline";"Melanie";"Kline";"";"437 Kentucky St. #D";San Luis Obispo;CA;93405;949-874-1992;melk19@gmail.com
-MIL10;$25;$25.00;2013-06-04;0;"Jean Miller";"Jean";"Miller";"";"P.O. Box 102";Cambria;CA;93428;805-924-1067;cjattoe@att.net
-MCC19;$25;$25.00;2013-12-18;1;"Mr. Sean McCormick";"Sean";"McCormick";"";"1912 Rambouillet Rd.";Paso Robles;CA;93446-4843;805-835-3199;
-IVE61;$25;$25.00;2013-11-18;1;"Judith Iversen";"Judith";"Iversen";"";"612 Palomino Cir N";Paso Robles;CA;93446-2963;805-238-1377;
-HUS47;$25;$25.00;2013-06-12;0;"Lara Huskey";"Lara";"Huskey";"";"470 Solar Way #B";Pismo Beach;CA;93449;619-937-5054;larahertzog@msn.com
-HUN17;$25;$25.00;2013-01-12;1;"Doug Hunt & Linda Foisy";"Douglas";"Hunt";"";"5230 Las Pilitas";Santa Margarita;CA;93453;;
-HUN43;$25;$25.00;2013-08-01;2;"Piper & Bruce Hunter";"Piper";"Hunter";"";"435 Vista Del Robles";Arroyo Grande;CA;93420;805-481-8995;piperhunter@gmail.com
-NOA69;$25;$25.00;2013-10-09;1;"Tristan Noak";"Tristan";"Noack";"";"6922 Enders Ave.";San Diego;CA;92122;858-775-8193;noacktristan@gmail.com
-JAC47;$25;$25.00;2013-02-21;1;"S. Crystal Jack";"S. Crystal";"Jack";"";"475 S. Bay Blvd. Sp. 44";Morro Bay;CA;93442;805-503-9883;silverlarktoo@yahoo.com
-NYB12;$25;$25.00;2013-05-16;1;"Barbara Nyby";"Barbara";"Nyby";"";"1206 Aviator Ln.";Tustin;CA;92782;;florien89@hotmail.com
-NOR75;$25;$25.00;2013-04-04;1;"Valerie Norman";"Valerie";"Norman";"";"P.O. Box 755";Cambria;CA;93428;805-924-1200;
-HUD13;$25;$25.00;2013-04-14;0;"Amber Hudson";"Amber";"Hudson";"";"";;;;831-917-9192;
-MIL63;$25;$25.00;2013-05-14;1;"JoAnne Milburn";"JoAnne";"Milburn";"";"633 RamonaAve. #72";Los Osos;CA;93402;805-439-0566;
-FLE00;$21;$21.00;2013-08-01;1;"Jill Fletcher";"Jill";"Fletcher";"";"";;CA;;805-602-7515;tamaraJill@gmail.com
-WEL62;$20;$20.00;2013-08-08;1;"Wayne & Judith Welch";"Wayne & Judith";"Welch";"";"624 Estero Ave.";Morro Bay;CA;93442-2346;;
-DOL53;$20;$10.00;2013-02-22;1;"Rose Dolce-Skarphol";"Rose";"Dolce-Skarphol";"";"";;;;805-440-7448;rdolce1228@aol.com
-TEL22;$20;$20.00;2013-06-23;3;"Sarah Telles";"Sarah";"Telles";"";"2208 Caravaggio Dr.";Davis;CA;95618;916-204-1964;
-MUR80;$20;$20.00;2013-03-29;1;"Deborah Murphy";"Deborah";"Murphy";"";"805 Los Padres";Los Osos;CA;93402;805-748-2786;
-DAR55;$20;$20.00;2013-09-09;3;"Lisa Darington";"Lisa";"Darington";"";"P.O. Box 552";Avila Beach;CA;93424;805-441-0966;
-LEW51;$20;$20.00;2013-09-16;3;"Jamie Lewis";"Jamie";"Lewis";"";"512 Palm Court";Paso Robles;CA;93446-1801;805-237-2867;petguardian@earthlink.net
-CIA29;$20;$20.00;2013-08-18;0;"Joni Ciarletta";"Joni";"Ciaarletta";"";"2946 Gaviota Cir";Carlsbad;CA;92009;;jcjc9999@outlook.com
-MAR27A;$20;$20.00;2013-04-27;1;"Jackie Marcus";"Jackie";"Marcus";"";"2780 L.O. Valley Rd.";Los Osos;CA;93402;805-528-8492;
-BIK93;$20;$20.00;2013-05-05;3;"Kim Bikle";"Kim";"Bikle";"";"935 Torrey Pines";Paso Robles;CA;93446;805-440-6148;
-COC15;$20;$20.00;2013-05-20;3;"Jeannie Cochran";"Jeannie";"Cochran";"";"1599 Chilton St.";Arroyo Grande;CA;93420;;
-AND60;$20;$20.00;2013-11-22;3;"Patricia Anderson";"Patricia";"Anderson";"";"600 Morro Bay Blvd. # 106";Morro Bay;CA;93442-3108;;
-AND21;$20;$20.00;2013-05-26;3;"Donna Anderson";"Donna";"Anderson";"";"2143 Fargo St.";Los Angeles;CA;90039;;
-BEL10;$20;$20.00;2013-08-12;1;"Kelli Bell";"Kelli";"Bell";"";"1085 Camino Caballo";Nipomo;CA;93444;805-929-1580;
-GRE43;$20;$5.00;2013-08-18;3;"Jim Gregory";"Jim";"Gregory";"";"438 Beech Street";Arroyo Grande;CA;93420;805-202-4689;bogtrotters@charter.net
-GRI43;$20;$20.00;2013-12-17;1;"Emily & Daniel Griffin";"Emily";"Griffin";"";"43414 N. 12th St.";New River;AZ;85087-8659;;
-JEN74;$20;$20.00;2013-12-10;3;"Jack Jensen";"Jack";"Jensen";"";"7422 NE 145th St.";Kenmore;WA;98028;425-825-5771;jjensen554@msn.com
-ROS13;$20;$20.00;2013-06-08;1;"Stephanie Ross";"Stephanie";"Ross";"";"1320 Emeral Dr.";Santa Maria;CA;93454-3242;805-925-7714;
-STE24;$20;$10.00;2013-11-14;3;"Michelle Steinhauer";"Michelle";"Steinhauer";"";"2475 Juniper Ave.";Morro Bay;CA;93442;559-287-7865;michstei@att.net
-KAY88;$20;$10.00;2013-09-05;3;"Vera & Stan Kay";"Vera";"Kay";"";"880 Badger Hill Lane";Paso Robles;CA;93446-7408;805-237-9438;stan2vera@calinet.com
-BEA12;$20;$20.00;2013-08-04;3;"Richard Beatie";"Richard";"Beatie";"";"12480 E. American Ave.";Del Rey;CA;93616;559-999-4441;
-LEG28;$20;$20.00;2013-05-20;3;"Richard Legros";"Richard";"Legros";"";"2812 Rodman Drive";Los Osos;CA;93402;805-528-6594;
-STR99;$20;$20.00;2013-11-22;3;"Barbara Strassel";"Barbara";"Strassel";"";"995 Carmel St.";Morro Bay;CA;93442;;
-GRE28;$18;$18.00;2013-06-03;3;"Kelley Greene";"Kelley";"Greene";"";"2812 Rodman Dr.";Los Osos;CA;93402;;
-HEY16;$15;$15.00;2013-10-05;3;"Marilee Heyer";"Marilee";"Heyer";"";"1619 6th St.";Los Osos;CA;93402;805-528-0161;
-HOL68;$15;$15.00;2013-06-21;3;"Melanie Holland";"Melanie";"Holland";"";"687 Islay St. #3";San Luis Obispo;CA;93401;805-801-2454;
-HAL12A;$15;$15.00;2013-12-10;3;"Cecile Hall";"Cecile";"Hall";"";"1241 Johnson Ave. #257";San Luis Obispo;CA;93401;805-788-0632;
-LAV18;$15;$15.00;2013-03-07;1;"Julie Lavell";"Julie";"Lavell";"";"1870 Don Ave.";Los Osos;CA;93402-2506;805-909-0343;lowercreek@gmail.com
-TUR88;$15;$15.00;2013-06-30;3;"Lisa & E. Scott Turner";"Lisa";"Turner";"";"8860 Azucena Ave.";Atascadero;CA;93422;805-674-5385;
-FRY21;$15;$15.00;2013-06-26;3;"Julie Fry";"Julie";"Fry";"";"2198 Los Osos Valley Rd";Los Osos;CA;93402-3412;805-528-7032;
-PIS85;$15;$15.00;2013-09-05;3;"Pat at Pismodise";"Pat";"McCann";"Pismodise";"P.O. Box 85";Pismo Beach;CA;93448;;pismopat805@aol.com
-YOU37;$10;$10.00;2013-11-14;3;"Dr. Kac Young";"Kac";"Young";"";"P.O. Box 376";Cambria;CA;93428;;
-LEW12;$10;$10.00;2013-12-14;3;"Cheryl Lewis";"Cheryl";"Lewis";"";"1292 Sawleaf St.";San Luis Obispo;CA;93401;805-782-9125;
-HAL80;$10;$10.00;2013-10-17;3;"The Halley Family";"";"Halley";"";"802 Tanis Place";Nipomo;CA;93444;;
-HOW17;$10;$10.00;2013-11-20;3;"Susan Howe";"Susan";"Howe";"";"1718 Tierra Nueva Ln.";Oceano;CA;93445-9126;805-473-4697;radsenior@yahoo.com
-CLA22;$10;$10.00;2013-12-26;3;"J. Clark & M. Clark";"J. & M.";"Clark";"";"2217 Del Norte St.";Los Osos;CA;93402;805-534-0610;
-KOH57;$10;$10.00;2013-12-23;3;"Silvia Kohler";"Silvia";"Kohler";"";"573 Mar Vista Dr.";Los Osos;CA;93402;;
-REI34;$10;$10.00;2013-11-25;3;"Terry Ann McLean Reid";"Terry Ann";"Reid";"";"34 Terrace Hill Dr.";Paso Robles;CA;93446-2053;805-239-3119;
-DOV65;$10;$10.00;2013-12-21;3;"Mary Dove";"Mary";"Dove";"";"P.O. Box 6558";Los Osos;CA;93412;;
-SWE43;$10;$10.00;2013-08-06;3;"Sweet Offerings";"Sweet";"Offerings";"Jan Lewis";"430 Morro Bay Blvd.";Morro Bay;CA;93442;;
-LAN41;$9;$9.00;2013-05-11;3;"Dustin Lane";"Dustin";"Lane";"";"419 Trinidad";Morro Bay;CA;93442;805-952-5522;dustyklane@hotmail.com
-HOL44;$5;$5.00;2013-04-08;0;"Kat Holland";"Kat";"Holland";"";"446 N. 8th St. #A";Grover Beach;CA;93433;805-748-5480;poochesgracias@mail.com
-JOH38;$5;$5.00;2013-04-11;3;"Ellen Johnson";"Ellen";"Johnson";"";"3860 S. Higuera # D22";San Luis Obispo;CA;93401;805-458-9087;
-SCH79;$5;$5.00;2013-01-27;0;"Laura Schafer";"Laura";"Schafer";"";"793 E. Foothill Blvd. # A4";San Luis Obispo;CA;93405;805-268-4936;lausch1@gmail.com
+MCID;CummTot;LastGiftAmt;LastGiftDate;MemSt;Label Name;First;Last;Organization;Address;City;St;Zip;Phone;Email\nDES11;$2500;$2500.00;2017-06-20;3;"J.W. Des & Construction";"J.W. Design";"& Construction, Inc.";"";"P.O. Box 1154";San Luis Obispo;CA;93406;805-544-3130;
+EYE37;$2250;$2250.00;2017-12-05;3;"Pacific Eye Surgeons";"Pacific Eye";"Surgeons";"";"P.O. Box 3710";San Luis Obispo;CA;93403;805-545-8100;
+EXE23;$1800;$0.00;;1;" Marcia Slagle";" Marcia";"Slagle";"Executive Janitorial";"233 Granada Drive, Suite D";San Luis Obispo;CA;93401;805-541-5266;execjan1@att.net
+ROB68;$1500;$1500.00;2017-11-03;2;"Alice Robinson";"Alice";"Robinson";"";"1533 Hillcrest Dr.";Arroyo Grande;CA;93420-2214;650-714-8793;alicejrobinson@gmail.com
+TAV12;$1234;$1234.00;2017-07-20;3;"Mother's avern";"Mother's";"avern";"";"P.O. Box 1228";San Luis Obispo;CA;93406;805-594-1868;
+KOM53;$1227.34;$0.00;2017-07-31;3;"Komplete Kombucha";"Komplete";"Kombucha";"";"533 Pismo St. #6";San Luis Obispo;CA;93401-3926;;
+LEH49;$1000;$1000.00;2017-12-24;1;"Jeffrey Lehmer";"Jeffrey";"Lehmer";"";"495 Squire Canyon Rd.";San Luis Obispo;CA;93401;510-332-9423;
+ONS23;$1000;$1000.00;2017-04-08;1;"On Shore Foundation";"Elizabeth";"Luster";"";"23768 Malibu Rd.";Malibu;CA;90265-4603;;
+POE15;$600;$600.00;2017-06-30;1;"Lauren Poe";"Lauren";"Poe";"";"P.O. Box 2393";Avila Beach;CA;93424-2393;805-627-1744;
+MIL18;$550;$100.00;2018-11-23;1;"Lisa Miller";"Lisa";"Miller";"";"1895 Willow Drive";Los Osos;CA;93402;805-528-2544;lkmiller@mac.com
+ECK16;$500;$500.00;2017-07-09;3;"Jim and Carlen Eckford";"Jim";"Eckford";"";"1604 Tiffany Ranch Rd.";Arroyo Grande;CA;93420;805-570-6815;poody12345@gmail.com
+REA44;$500;$500.00;2017-08-10;3;"Patterson Realty";"Patterson";"Realty";"";"444 Higuera, 3rd Fl.";San Luis Obispo;CA;93401;805-544-7000;
+RAT27;$500;$500.00;2017-12-10;1;"Lawrence Ratner";"Lawrence";"Ratner";"";"P.O. Box 277";Avila Beach;CA;93424-0277;;
+FRA79;$500;$500.00;2017-07-14;1;"Jack Franklin";"Jack";"Franklin";"Franklin Real Estate & Rentals";"798 Morro Bay Blvd.";Morro Bay;CA;93442;805-772-4460;jack@thefranklinteam.com
+STE35;$500;$500.00;2017-12-28;1;"John & Leslie Steinbeck";"John";"Steinbeck";"";"356 Miramar Lane";Pismo Beach;CA;93449;805-773-0935;lesbeck55@gmail.com
+HAU64;$500;$500.00;2017-12-18;1;"William Haug";"William";"Haug";"";"6400 San Gabriel Rd.";Atascadero;CA;93422;808-729-3375;
+SAS53;$478.06;$117.00;2017-12-23;3;"Sasquatch  Coffee";"Sasquatch ";"Coffee";"";"5342 Honda";Atascadero;CA;93422;;
+REY73;$450;$50.00;2017-08-07;0;"John Reynoso";"John";"Reynoso";"";"731 Vista Pacifica Cir";Pismo Beach;CA;93449;602-615-6377;jreynos@aol.com
+MOO28;$450;$0.00;2017-12-24;3;"Ladies Moose Lodge 864";"Ladies of The Moose";"Lodge-Chptr 864";"";"P.O. Box 284";Pismo Beach;CA;93449;805-550-5832;2kelly89@sbcglobal.net
+FOU29;$441.34;$341.34;2017-11-06;3;"Avila Beach Comm Fndn";"Avila Beach";"Community Foundation";"";"P.O. Box 297";Avila Beach;CA;93424;;
+CEL32;$412.22;$25.00;2017-03-30;3;"Kim & Chuck Mulligan";"Harmony";"Cellars";"";"3255 Harmony Valley Rd.";Harmony;CA;93435;;
+WIN44;$411.68;$400.00;2017-03-22;3;"Hearst Ranch Winery";"Hearst";"Ranch Winery";"";"442 SLO San Simeon";San Simeon;CA;93452;;
+WAY14;$358.46;$27.11;2017-11-16;3;"United Way of SLO County";"United Way";"of SLO County";"";"P.O. Box 14309";San Luis Obispo;CA;93406;805-541-1234;
+CEL12;$356;$6.00;2017-02-26;3;"Cayucos Cellars";"Cayucos";"Cellars";"";"12530 Santa Rita Rd.";Cayucos;CA;93430;805-995-3036;
+VIN12;$307.31;$307.31;2017-11-28;3;"Anagha Vinayak";"Anagha";"Vinayak";"";"1269 Bond Street";San Luis Obispo;CA;93405;408-585-8014;anagha.9608@gmail.com
+CAN52;$300;$100.00;2017-12-05;1;"M. Cantu & C. Sindt";"Monica";"Cantu";"";"5250 Deer Creek Way";Paso Robles;CA;93446-9206;818-497-1132;
+CRO23;$300;$300.00;2017-12-13;1;"M. Crown & M. Simmons";"Mary ";"Crown";"";"2301 Winnell Ave.";Los Osos;CA;93402-4032;;
+FER33;$300;$300.00;2017-12-28;1;"J. A. & W Ferguson";"Jamie";"Ferguson";"";"3389 Ocean Blvd.";Cayucos;CA;93430-1853;805-540-0576;alan.evenson1@gmail.com
+CHA13;$300;$100.00;2017-12-12;1;"Adeline Chapman";"Adeline";"Chapman";"";"13705 Santa Lucia Rd.";Atascadero;CA;93422-1722;;
+MOO30;$300;$250.00;2016-12-13;1;"J. Moody & P. Schroeder";"Julie";"Moody";"";"3070 Avenida Del Sol";Atascadero;CA;93422-1516;805-460-6319;
+MOR33;$300;$300.00;2017-12-22;1;"Grant Morris";"Grant";"Morris";"";"3370 Beachcomber Drive";Morro Bay;CA;93442;805-772-0508;gmorris@sandiego.edu
+DAV49;$300;$300.00;2017-12-28;1;"Brock & Katherine Davis";"Brock";"Davis";"";"4935 Apricot Ct.";Castro Valley;CA;94546-2367;510-432-7794;katherine.davis2@gmail.com
+UNT00;$280;$0.00;2017-12-31;3;"Bernard Unterman";"Bernard";"Unterman";"";"declined";Santa Barbara;CA;93101;805-453-2434;
+SMA13;$250;$250.00;2017-12-21;1;"Ian Smalley";"Ian";"Smalley";"";"1364 Sweet Bay Lane";San Luis Obispo;CA;93401;805-458-0283;plian181@gmail.com
+CLU34;$250;$250.00;2017-10-12;3;"Morro Bay Lions Club";"Morro Bay";"Lions Club";"";"P.O. Box 343";Morro Bay;CA;93443;;
+BLA49;$250;$250.00;2017-07-24;1;"Michael Blaney";"Michael";"Blaney";"";"4915 Orcutt Road";San Luis Obispo;CA;93401;805-544-9080;mnblaney@paragonvineyard.com
+STE11;$250;$250.00;2017-08-07;3;"Kelly & Jon Stella";"Kelly";"Stella";"";"1150 St. Mary Ave.";Cayucos;CA;93430;805-441-1279;jojokel@aol.com
+MAR72;$250;$250.00;2017-08-03;1;"Benjamin Martin";"Benjamin";"Martin";"";"P.O. Box 721";Cayucos;CA;93430-0721;;
+LYT38;$250;$150.00;2017-11-05;0;"Suzanne Lytsell";"Suzanne";"Lytsell";"";"387 South Court St.";Los Osos;CA;93402;805-528-8651;lulusue2008@hotmail.com
+ROB70;$250;$250.00;2017-09-11;1;"Joe Robinson";"Joe";"Robinson";"";"703 Mustang Circle";Arroyo Grande;CA;93420;805-423-4772;gijoerobinson1@verizon.net
+WIN55;$238;$213.00;2017-02-27;3;"Lisa Miller";"Cutruzzola";"Winery";"";"555 Main St.";Cambria;CA;93428;805-927-2670;
+SIL35;$200;$200.00;2017-07-15;1;"Jerry & Roberta Silbert";"Roberta";"Silbert";"";"357 Zogata Way";Arroyo Grande;CA;93420-2367;805-481-2527;setbut2@gmail.com
+MOE21;$200;$200.00;2017-08-05;3;"Debra Moen";"Debra";"Moen";"";"2140 Caballeros Rd.";Norco;CA;92860-2503;310-386-8844;dmoen97@gmail.com
+HER23;$200;$200.00;2017-11-21;1;"Andrea Herron";"Andrea";"Herron";"";"1230 Marsh Street";San Luis Obispo;CA;93401;805-543-6988;aherron178@aol.com
+BEL14;$200;$200.00;2017-12-15;0;"Bellvue Santa Fe ";"";"Bellvue Santa Fe";"";"1401 San Luis Bay Dr.";San Luis Obispo;CA;93405;805-595-7169;
+LOV49;$200;$100.00;2017-08-07;1;"S.Lovejoy/J.Prostovich";"Sharon";"Lovejoy";"";"495 Buena Vista Ave.";San Luis Obispo;CA;93405-1206;805-594-1206;
+SCO45;$190;$75.00;2016-07-19;3;"Girl Scouts of Cen Coast";"Girl ";"Scouts";"";"P.O. Box 14534";San Luis Obispo;CA;93406;805-596-0280;
+MUR30;$190;$100.00;2017-08-05;3;"Beverly Murray";"Beverly";"Murray";"";"309 Woodland Dr.";Los Osos;CA;93402;;
+WRI39;$180;$0.00;2017-10-10;1;"Lela Wright";"Lela";"Wright";"";"391 Corralitos Rd Unit B";Arroyo Grande;CA;93420;805-481-3860;googlyeyesforyou@gmail.com
+BRO47;$180;$130.00;2017-11-06;1;"Melora Brooks";"Melora";"Brooks";"";"4720 Camp 8 Road";Paso Robles;CA;93446;805-305-7160;melora.nichols@hotmail.com
+BEN27;$179;$79.00;2017-07-26;1;"Karen Benipal";"Karen";"Benipal";"";"270 Foxen Bluff Ln";Arroyo Grande;CA;93420;805-264-4925;bubbley3@yahoo.com
+HOL75;$175;$0.00;2017-07-10;1;"Donald Holder";"Donald";"Holder";"";"1075 Holder Park Lane";Nipomo;CA;93444;805-929-5044;hpec@prodigy.net
+WAD60;$170;$0.00;2017-08-31;1;"W. Duane Waddell";"W. Duane";"Waddell";"";"6030 Hwy. One";Cayucos;CA;93430;805-995-1355;seaswallows32@yahoo.com
+WEL42;$150;$150.00;2017-05-19;3;"Becky Wells";"Becky";"Wells";"Monarch Grove Elem PTA";"424 Mar Vista Dr.";Los Osos;CA;93402-3724;;
+VEN15;$150;$150.00;2017-12-12;2;"Karen Venditti";"Karen";"Venditti";"";"1525 15th Street";Los Osos;CA;93402;209-262-5937;kjvenditti93402@gmail.com
+TOT00;$150;$150.00;2017-12-24;1;"Ethan Totten";"Ethan";"Totten";"";"";;;;;ethan.totten@gmail.com
+TUR97;$150;$150.00;2017-07-17;3;"Turkey Flat LLC";"Turkey";"Flat LLC";"Turkey Flat LLC";"PO Box 97";Cambria;CA;93428-0097;;
+LYO28;$150;$150.00;2017-11-25;1;"Judy Lyon";"Judy";"Lyon";"";"2896 Burton Cir";Cambria;CA;93428;805-927-8574;mjlyon@gmail.com
+DEV91;$150;$150.00;2017-12-01;1;"Thomas Devore";"Thomas";"Devore";"";"9115 Lake View Dr.";Atascadero;CA;93422;;
+COA16;$150;$150.00;2017-06-26;3;"Lifelong Learners ";"Lifelong Learners";"of the Central Coast";"";"P.O. Box 1606";Arroyo Grande;CA;93421;;
+CHU99;$150;$150.00;2017-10-25;3;"New Life Church";"New Life";"Church";"";"990 James Way";Pismo Beach;CA;93449-3284;;
+ARN21;$150;$50.00;2017-11-04;3;"Cam Arnold";"Cam";"Arnold";"";"2186 Chester Lane";Cambria;CA;93428;805-927-7709;Camarnold@yahoo.com
+EAR15;$150;$150.00;2017-06-28;1;"One Cool Earth";"One Cool";"Earth";"";"P.O. Box 150";San Luis Obispo;CA;93406;805-242-6301;action@onecoolearth.org
+GAR89;$150;$75.00;2017-11-17;3;"Villages at Garden Creek";"Villages";"at Garden Creek";"Village at Garden Creek";"895 Aeorvista Pl .Ste100";San Luis Obispo;CA;93405;805-546-8379;
+OLS53;$150;$100.00;2017-09-02;1;"Kimberley Olson";"Kimberley";"Olson";"";"1536 Little Morro Creek";Morro Bay;CA;93442-1877;805-440-0878;
+LIB62;$150;$150.00;2017-01-13;3;"Morro Bay FOTL";"Morro Bay Friends";"of the Library";"";"625 Harbor St.";Morro Bay;CA;93442;805-772-6394;
+SCH68;$150;$150.00;2017-06-22;1;"S. Schneider & J. Siegel";"Susan";"Schneider";"Phoenix Consulting";"681 Fresno Ave.";Morro Bay;CA;93442-2313;;
+SCO18;$145;$100.00;2017-07-15;1;"Paulette Scoville";"Paulette";"Scoville";"";"1875 Santa Rita Rd.";Templeton;CA;93465;805-434-9128;pscoville1@gmail.com
+COL32;$125;$125.00;2017-11-01;1;"Julie Samuelson-Coleman";"Julie";"Coleman";"";"322 Village Glen Dr.";Arroyo Grande;CA;93420;805-474-9755;
+LAI14;$125;$125.00;2017-10-22;1;"Jospehine Laing";"Jospehine";"Laing";"";"141 Cuesta Dr.";San Luis Obispo;CA;93405;805-549-8125;josephine@stepintomagic.com
+MIL86;$120;$60.00;2017-12-21;1;"Brigitte  Miller";"Brigitte ";"Miller";"";"6860 Vineyard Dr.";Paso Robles;CA;93446;805-226-2828;brigitteostertag@yahoo.com
+BEE12;$115;$115.00;2017-08-05;3;"Bruce Beery";"Bruce";"Beery";"B Beery & Assoc.";"P.O. Box 12";Cambria;CA;93428;805-927-7130;
+ANT29;$110;$110.00;2017-04-21;1;"The Anthonys";"Jim";"Anthony";"";"295 Harloe Ave.";Pismo Beach;CA;93449-2207;805-773-5283;
+DUN31;$105;$105.00;2017-07-20;1;"Gary Dunning";"Gary";"Dunning";"";"PO Box 31";Morro Bay;CA;93443;805-995-3105;dunninggl@yahoo.com

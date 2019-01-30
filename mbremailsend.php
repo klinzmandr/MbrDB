@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +12,6 @@
 <body>
 
 <?php
-session_start();
-
 include 'Incls/datautils.inc.php';
 //include 'Incls/vardump.inc.php';
 

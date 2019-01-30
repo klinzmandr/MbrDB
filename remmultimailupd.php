@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +15,6 @@
 <p>This confirms that all the request to add the members listed to the 'lablesandletters' table has been completed, individual entries made to each members correspondence logs and the member records update with these actions.  Use &apos;Reminders->Print Labels and Letters&apos; to print these items.</p><br />
 
 <?php
-session_start();
 $mcidarray = array();
 $mcidarray = $_REQUEST['mail'];
 $letter = $_REQUEST['Letter'];

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +11,8 @@
 <META http-equiv="refresh" content="5;URL=admlogtailer.php">
 </head>
 <body>
+
 <?php
-session_start();
 //include 'Incls/vardump.inc.php';
 include 'Incls/seccheck.inc.php';
 include 'Incls/datautils.inc.php';
