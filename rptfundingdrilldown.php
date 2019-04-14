@@ -6,25 +6,36 @@ session_start();
 <head>
 <title>Funding Summary</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="all">
 <link href="css/datepicker3.css" rel="stylesheet">
+<link href="css/bootstrap-sortable.css" rel="stylesheet" media="all">
 </head>
 <body>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="Incls/bootstrap-datepicker-range.inc.php"></script>
+<script src="js/bootstrap-sortable.js"></script>
+<!-- <style> .sortable th { color: red; } </style> -->
+<script>
+$(function() {
+// event triggered after a table has been sorted
+  $("#tab").on("sorted", function() {
+    var x = $(this).text();
+    // alert("Table sorted by column heading clicked");
+    });
+});
+</script>
 
 <?php
-include 'Incls/datautils.inc.php';
 include 'Incls/seccheck.inc.php';
+include 'Incls/datautils.inc.php';
 
 //$start = $_REQUEST['startdate'] : date('Y-m-d', strtotime("first day of previous month"));
 $name = isset($_REQUEST['name']) ? $_REQUEST['name'] : "";
 $listitem = isset($_REQUEST['listitem']) ? $_REQUEST['listitem'] : "";
 $earliest = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-m-01', strtotime("previous month"));
-$today = date("Y-m-d",strtotime(now));
+$today = date("Y-m-d",strtotime('now'));
 $oldest = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-t', strtotime("previous month"));
 
 if ($name == "") {
@@ -68,19 +79,19 @@ $res = doSQLsubmitted($sql);
 $startdate = array(); $enddate = array();
 while ($r = $res->fetch_assoc()) {
 //	echo "<pre>$name: "; print_r($r); echo "</pre>";
-	if ($r[Purpose] == '**NewRec**') continue;		// ignore empty records
+	if ($r['Purpose'] == '**NewRec**') continue;		// ignore empty records
 	$totreccount++;												// total record count from query
 	$fn = $r[$name];											// $name = Purpose, Program or Category now
-	$nt[$fn] += $r[TotalAmount];					// capture purpose, program or campaign name amount
+	$nt[$fn] += $r['TotalAmount'];					// capture purpose, program or campaign name amount
 	$nc[$fn] += 1;												// add up number of records
-	if ($r[DonationDate] == "") {					// get earliest and last dates of records
-		echo "Donation Date missing.  Rec Nbr: " . $r[DonationID] . ", MCID: ".$r[MCID]."<br>"; }
+	if ($r['DonationDate'] == "") {					// get earliest and last dates of records
+		echo "Donation Date missing.  Rec Nbr: " . $r['DonationID'] . ", MCID: ".$r['MCID']."<br>"; }
 	else {
 		if (!isset($startdate[$fn])) {
 			$startdate[$fn] = '2020-01-01';
 			}
-		if (strtotime($startdate[$fn]) > strtotime($r[DonationDate])) $startdate[$fn] = $r[DonationDate];
-		if (strtotime($enddate[$fn]) < strtotime($r[DonationDate])) $enddate[$fn] = $r[DonationDate];
+		if (strtotime($startdate[$fn]) > strtotime($r['DonationDate'])) $startdate[$fn] = $r['DonationDate'];
+		if (strtotime($enddate[$fn]) < strtotime($r['DonationDate'])) $enddate[$fn] = $r['DonationDate'];
 		}
 	}
 //echo "<pre>Count Summary "; print_r($nc); echo "</pre>";
@@ -105,9 +116,9 @@ echo "</form>";
 
 // display initial listing of funding records
 if ($listitem == "") {
-  echo "<div class=\"container\">";
-	echo "<table border=\"0\" class=\"table-condensed\">";
-	echo "<tr><th>Name</th><th>Rec.Count</th><th>Total Funds</th><th>Earliest Start</th><th>Latest End</th></tr>";
+  echo '<div class="container">
+	<table border="1" class="table-condensed">
+	<tr><th>Name</th><th>Rec.Count</th><th>Total Funds</th><th>Earliest Start</th><th>Latest End</th></tr>';
 
 	foreach ($nc as $k=>$v) {
 		if ($k == "") echo "<td>NONE:</td><td align=\"right\">$v</td>";
@@ -198,18 +209,19 @@ $rc = $res->num_rows;
 while ($r = $res->fetch_assoc()) {
 	//echo "<pre>$name: "; print_r($r); echo "</pre>";
 	$resarray[] = $r;
-	$detailtot += $r[TotalAmount];
+	$detailtot += $r['TotalAmount'];
 	$detailcnt += 1;
 	}
 echo "<div class=\"well\">";
 $detailtot = number_format($detailtot,2);
-echo "Count: $detailcnt&nbsp;&nbsp;&nbsp;&nbsp;Total: $$detailtot<br />";
-echo "<table class=\"table-condensed\">";
-echo "<tr><th>MCID</th><th>$name</th><th>DonationDate</th><th>Amount</th><th>Donor Name</th><th>Donation Note(s)</th></tr>";
+echo 'Count: '.$detailcnt.'&nbsp;&nbsp;&nbsp;&nbsp;Total: '.$$detailtot.'<br />
+<table id="tab" class="table table-condensed sortable"><thead>
+<tr><th>MCID</th><th>'.$name.'</th><th>DonationDate</th><th>Amount</th><th>Donor Name</th>
+<th data-defaultsort=disabled>Donation Note(s)</th></tr></thead><tbody>';
 foreach ($resarray as $r) {
 		echo "<tr><td>$r[MCID]</td><td>".$r[$name]."</td><td>$r[DonationDate]</td><td align=\"right\">$$r[TotalAmount]</td><td>$r[NameLabel1stline]</td><td>$r[Note]</td></tr>";
 	}	
-echo "</table>";
+echo "</tbody></table>";
 echo "----- END OF LIST -----<br>";
 ?>
 <a href="rptfundingdrilldown.php?name="">START OVER</a>

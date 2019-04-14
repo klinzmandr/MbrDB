@@ -78,7 +78,7 @@ function adminchk() {
 		return false;
 	}
 </script>
-
+<div class=hidden-print>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<!-- <div class="container"> -->
   <!-- Brand and toggle get grouped for better mobile display -->
@@ -203,6 +203,7 @@ function setupmcid(theForm)  {
 </div>  <!--/.nav-collapse -->
 <!-- </div>  container -->
 </nav>  <!-- class = "navbar" -->
+</div>    <!-- hidden-print -->
 <!-- End mainmenu.inc -->
 
  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

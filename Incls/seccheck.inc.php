@@ -1,5 +1,9 @@
-<script src="js/bootstrap-session-timeout.js"></script> 
-
+<?php
+// check if there is an active session
+if (isset($_SESSION['SessionActive'])) {
+echo "
+<div class='hidden-print'>
+<script src='js/bootstrap-session-timeout.js'></script> 
 <script>
 $(document).ready(function() { 
   $.sessionTimeout({
@@ -16,13 +20,9 @@ $(document).ready(function() {
       showButtons: false
   });
 });
-</script>
-
-<?php
-// check if there is an active session
-if (isset($_SESSION['SessionActive'])) {
-  return;
-  }
+</script></div>";
+return;
+}
 // if url is a report exit
 if (preg_match("/.*\/rpt.*\.(php|html|htm)$/i",$_SERVER['SCRIPT_NAME'])) {
   echo '<h3>SESSION NO LONGER ACTIVE</h3>';

@@ -70,7 +70,7 @@ if ($mysqli->errno != 0) {
 	}
 // memorize the results returned for repeated use.	
 while ($r = $res->fetch_assoc()) {  // read results and do value range check
-	$resarray[$r[MCID]] = $r;
+	$resarray[$r['MCID']] = $r;
   }
 //echo '<pre> row returned '; print_r($resarray); echo '</pre>';
 
@@ -86,8 +86,8 @@ $l = array();
 $l[] = '<table class="table">
 <tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 foreach($resarray as $k => $r) {
-  if (!preg_match("/dues/i", $r[Program])) continue;
-  if ((preg_match("/subscr/i", $r[MCtype])) AND (!preg_match("/subscr/i", $r[Program]))) {
+  if (!preg_match("/dues/i", $r['Program'])) continue;
+  if ((preg_match("/subscr/i", $r['MCtype'])) AND (!preg_match("/subscr/i", $r['Program']))) {
     $l[] = "<tr><td>$r[MCID]</td><td>$r[Program]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
     }
   }
@@ -108,9 +108,9 @@ $l[] = '<table class="table table-condensed">
 <tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 
 foreach($resarray as $k => $r) {
-  if ((strtotime($r[LastDate])) < (strtotime("now - 120 days"))) continue;
-  // if (!preg_match("/dues/i", $r[Program])) continue;
-  if ((!preg_match("/subscr/i", $r[MCtype])) AND (preg_match("/subscr/i", $r[Program]))) {
+  if ((strtotime($r['LastDate'])) < (strtotime("now - 120 days"))) continue;
+  // if (!preg_match("/dues/i", $r['Program'])) continue;
+  if ((!preg_match("/subscr/i", $r['MCtype'])) AND (preg_match("/subscr/i", $r['Program']))) {
     $l[] = "<tr><td>$r[MCID]</td><td>$r[Program]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
     }
   }
@@ -130,12 +130,12 @@ $l[] = '<table class="table table-condensed">
 <tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 
 foreach($resarray as $k => $r) {
-  $lpay = strtotime($r[LastDate]);
+  $lpay = strtotime($r['LastDate']);
   if ($lpay > $exp) { 
     //echo "lpay: $lpay, exp: $exp<br>"; 
     continue; 
     }
-  if (preg_match("/subscr/i", $r[MCtype])) {
+  if (preg_match("/subscr/i", $r['MCtype'])) {
     $l[] = "<tr><td>$r[MCID]</td><td>$r[Program]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
     }
   }
@@ -152,12 +152,12 @@ $l[] = '<table class="table table-condensed">
 <tr><th>MCID</th><th>Program</th><th>LastPay</th><th>Name</th><th>MemType</th><th>Notes</th></tr>';
 
 foreach($resarray as $k => $r) {
-  $lpay = strtotime($r[LastDate]);
+  $lpay = strtotime($r['LastDate']);
   if ($lpay < $exp) { 
     //echo "lpay: $lpay, exp: $exp<br>"; 
     continue; 
     }
-  if (preg_match("/subscr/i", $r[MCtype])) {
+  if (preg_match("/subscr/i", $r['MCtype'])) {
     $l[] = "<tr><td>$r[MCID]</td><td>$r[Program]</td><td>$r[LastDate]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Notes]</td></tr>";
     }
   }

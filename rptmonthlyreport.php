@@ -62,7 +62,7 @@ if (!isset($_REQUEST['startmo'])) {
   echo '<h3>Select target year and month</h3>';
   exit;
   }
-if (strtotime($sd) > strtotime(now)) {
+if (strtotime($sd) > strtotime('now')) {
   echo '<h3>FUTURE date entered.</h3>';
   exit;
   }
@@ -95,47 +95,48 @@ $memdatemissing = 0; $memdateYTD = 0; $memdateMo = 0; $memlastMo = array();
 $inactivetrue = 0; $inactivefalse = 0; $inactivemissing = 0; $inactive_expired = 0; $nomail = 0;
 $neither = 0; $state = 0; $noaddr = 0; $nocity = 0; $nostate = 0; $nozip = 0; $missingall = 0; $donpaidcurrent = 0; $volarray = array();
 while ($r = $res->fetch_assoc()) {
-	$memstatus=$r[MemStatus];
-	$mctype = $r[MCtype];
+	$memstatus=$r['MemStatus'];
+	$mctype = $r['MCtype'];
 	$memstatuscount[$memstatus] += 1;
 	if ($mctype == '') $mctype = 'NONE';	
 	$mctypecount[$mctype] += 1;
-	if ($mctype == 2) $volarray[$r[MCID]] += 1;
-	if ($r[E_Mail] == 'TRUE') $memstatusemailcount[$memstatus] += 1;
-	if ($r[MemStatus]==1) $memactive += 1;
-	if ($r[Inactive] == 'TRUE') $inactivetrue++;
-	$memdate=$r[MemDate];
+	if ($mctype == 2) $volarray[$r['MCID']] += 1;
+	if ($r['E_Mail'] == 'TRUE') $memstatusemailcount[$memstatus] += 1;
+	if ($r['MemStatus']==1) $memactive += 1;
+	if ($r['Inactive'] == 'TRUE') $inactivetrue++;
+	$memdate=$r['MemDate'];
 	$memdateyr=substr($memdate,0,4);
 	$memdateyrmo=substr($memdate,0,7);
 
- 	if (strtotime($r[LastDuesDate]) > (strtotime('-12 months')))
+ 	if (strtotime($r['LastDuesDate']) > (strtotime('-12 months')))
     $mempaidcurrent += 1;
-  if ($r[Inactive] == 'FALSE')  $memisactive += 1;
-  if (preg_match('/subscr/i', $r[MCtype])) $memsubscr += 1;
-  if (strtotime($r[LastDonDate]) > (strtotime('-12 months')))
+  if ($r['Inactive'] == 'FALSE')  $memisactive += 1;
+  if (preg_match('/subscr/i', $r['MCtype'])) $memsubscr += 1;
+  if (strtotime($r['LastDonDate']) > (strtotime('-12 months')))
     $donpaidcurrent += 1;
     
 	// to only look at this years records	
 	if ($thisyear == $memdateyr) {  						
 		$newrecordsYTD += 1;
-		$memstatuscountYTD[$r[MemStatus]] += 1;
-		if (($r[MemStatus] == 1) OR ($r[MemStatus] == 2)) {
+		$memstatuscountYTD[$r['MemStatus']] += 1;
+		if (($r['MemStatus'] == 1) OR ($r['MemStatus'] == 2)) {
 			$thisyrcount[$memdateyrmo] += 1;
 			}
 		//echo "year: $thisyear, record date: $memdateyr<br>";
-		if ($r[MemStatus] == 1)	$memdateYTD += 1;
-		if ($r[MemStatus] == 2)	$voldateYTD += 1;
+		if ($r['MemStatus'] == 1)	$memdateYTD += 1;
+		if ($r['MemStatus'] == 2)	$voldateYTD += 1;
 		
-		//echo "lastduesamount: $r[LastDuesAmount]<br />";
-		if (($r[MemStatus] == 1) OR ($r[MemStatus] == 2)) {
+		//echo "lastduesamount: $r['LastDuesAmount']<br />";
+		if (($r['MemStatus'] == 1) OR ($r['MemStatus'] == 2)) {
 			if ($memdateyrmo == $thisyrmo) 
-				$memlastMo[$r[LastDuesAmount]] += 1;
+				$memlastMo[$r['LastDuesAmount']] += 1;
 			}
 		//echo "memdatemo: $memdateyrmo, this month: $thisyrmo<br>";
-		if (($r[MemStatus] == 1) AND ($memdateyrmo == $thisyrmo)) 
+		if (($r['MemStatus'] == 1) AND ($memdateyrmo == $thisyrmo)) 
 			$memdateMo += 1;
   		}     
 	}
+$dbregisteredvols = count($volarray);
 //echo '<pre> this year count'; print_r($thisyrcount); echo '</pre>';
 $expdate = calcexpirationdate();
 //echo '<pre> mctypecount '; print_r($memstatuscountYTD); echo '</pre>';
@@ -143,7 +144,7 @@ $closebtn = '';
 if (isset($_SESSION['SessionActive'])) $closebtn = '&nbsp;&nbsp;<a href="javascript:self.close();" class="hidden-print btn btn-primary"><b>CLOSE</b></a>';
 echo "<h2>Monthly Report $closebtn</h2>";
 echo "<h3>for month of: " . date('F, Y',strtotime($sd)) . '</h3>';
-echo "Report created: " . date('F d, Y',strtotime(now)) . '<br />';
+echo "Report created: " . date('F d, Y',strtotime('now')) . '<br />';
 ksort($memstatuscountYTD);
 print <<<sumPart1
 <style>
@@ -284,44 +285,45 @@ $numrows = $res->num_rows;
 $expdate = date('Y-m-01',strtotime(' -11 months'));
 $duesarray = array(); $mcidarray = array(); 
 $exparray = array(); $moarray = array();
-$amtarray = array();
+$amtarray = array(); $campaigns = array();
 while ($r = $res->fetch_assoc()) {
-	$donyr = substr($r[DonationDate],0,4);
+	$donyr = substr($r['DonationDate'],0,4);
 	//echo "donyrmo: $donyrmo<br>";
 	if ($thisyear == $donyr) {  // look at this years records
 		$thisyrcnt += 1;
-    if (preg_match('/subscr/i', $r[Program])) {		
-		  $programsubytd += 1; $programsubamtytd += $r[TotalAmount]; 
-		  $purposes[$r[Program]] += 1; 
-	    $purtotal[$r[Program]] += $r[TotalAmount];
+    if (preg_match('/subscr/i', $r['Program'])) {		
+		  $programsubytd += 1; $programsubamtytd += $r['TotalAmount']; 
+		  $purposes[$r['Program']] += 1; 
+	    $purtotal[$r['Program']] += $r['TotalAmount'];
 	    }	
 		else {
-	   $purposes[$r[Purpose]] += 1; 
-	   $purtotal[$r[Purpose]] += $r[TotalAmount];
+	   $purposes[$r['Purpose']] += 1; 
+	   $purtotal[$r['Purpose']] += $r['TotalAmount'];
 	   }
-		$purposesamt += $r[TotalAmount];
-		$campaigns[$r[Campaign]] += 1; $campaignsamt += $r[TotalAmount];
+		$purposesamt += $r['TotalAmount'];
+		$campaigns[$r['Campaign']] += 1; $campaignsamt += $r['TotalAmount'];
+		$programs[$r['Program']] += 1; $programsamt[$r['Program']] += $r['TotalAmount'];
 		}
-	$amtarray[$r[TotalAmount]] += $r[TotalAmount];
+	$amtarray[$r['TotalAmount']] += $r['TotalAmount'];
 	
-	$thisrecyrmo = substr($r[DonationDate],0,7);
+	$thisrecyrmo = substr($r['DonationDate'],0,7);
   if ($thisyrmo == $thisrecyrmo) {  // look at this year-month records
-    if (preg_match('/subscr/i', $r[Program])) {		
-		  $lastmosubytd += 1; $lastmosubamtytd += $r[TotalAmount];
-		  $lastmopurcnt[$r[Program]] += 1; 
-		  $lastmopuramt[$r[Program]] += $r[TotalAmount];
+    if (preg_match('/subscr/i', $r['Program'])) {		
+		  $lastmosubytd += 1; $lastmosubamtytd += $r['TotalAmount'];
+		  $lastmopurcnt[$r['Program']] += 1; 
+		  $lastmopuramt[$r['Program']] += $r['TotalAmount'];
 		   
 		  }	
     else {
-		  $lastmopurcnt[$r[Purpose]] += 1; 
-		  $lastmopuramt[$r[Purpose]] += $r[TotalAmount];
+		  $lastmopurcnt[$r['Purpose']] += 1; 
+		  $lastmopuramt[$r['Purpose']] += $r['TotalAmount'];
 		  }
-		$lastmotot += $r[TotalAmount];
+		$lastmotot += $r['TotalAmount'];
 		}
 
-	if (($r[DonationDate] >= $expdate) AND ($r[Purpose] == 'Dues')) {
-		$donyrmo = substr($r[DonationDate],0,7);
-		$mcid = $r[MCID];
+	if (($r['DonationDate'] >= $expdate) AND ($r['Purpose'] == 'Dues')) {
+		$donyrmo = substr($r['DonationDate'],0,7);
+		$mcid = $r['MCID'];
 		$duesarray[$donyrmo]++;
 		$mcidarray[$mcid] = $donyrmo;
 		//$moarray[$donyrmo]++;
@@ -342,7 +344,9 @@ ksort($moarray);
 
 //echo '<pre>MCID'; print_r($mcidarray); echo '</pre>';
 //echo '<pre>Month'; print_r($moarray); echo '</pre>';
-$purcount = count($purposes); $progcount = count($programs); $campcount = count($campaigns);
+$purcount = count($purposes); 
+$progcount = count($programs); 
+$campcount = count($campaigns);
 $purposesamt = number_format($purposesamt,0);
 $programsubamtytd = number_format($programsubamtytd,0);
 $campaignsamt = number_format($campaignsamt,0);
@@ -406,16 +410,16 @@ $res = doSQLsubmitted($sql);
 //echo "sql: $sql<br>";
 $reccnt = $res->num_rows;
 while ($r = $res->fetch_assoc()) {
-	$corryr = substr($r[DateSent],0,4);  	// get year
-	$corryrmo = substr($r[DateSent],0,7);		// get year and month
-	if (($r[CorrespondenceType]) == '**NewRec**') continue;
+	$corryr = substr($r['DateSent'],0,4);  	// get year
+	$corryrmo = substr($r['DateSent'],0,7);		// get year and month
+	if (($r['CorrespondenceType']) == '**NewRec**') continue;
 	if ($corryrmo == $thisyrmo) {
-		$corrlastmo[$r[CorrespondenceType]] += 1;
+		$corrlastmo[$r['CorrespondenceType']] += 1;
 		$mocount++;
 		}
 	if (strtotime($thisyear) <= strtotime($corryr)) {  // only look at this years records 
 		$rec_count++;
-		$corrtype[$r[CorrespondenceType]] += 1;
+		$corrtype[$r['CorrespondenceType']] += 1;
 		}
 	}
 
@@ -461,35 +465,47 @@ foreach ($corrlastmo as $kk => $vv) {
 
 //echo '<pre> month '; print_r($corrlastmo); echo '</pre>';
 echo '</td></tr></table></div>  <!-- well -->';
+
+// start of vol time reporting by getting total rec count in db
+$sql = "SELECT count(MCID) AS 'cnt' from `voltime`;";
+$res = doSQLsubmitted($sql);
+$val = $res->fetch_assoc();
+$trcnt = $val['cnt'];
+// echo '<pre>'; print_r($trcnt); echo '</pre>';
+
+$sdx = date("Y-01-01", strtotime("-12 months"));
+// echo "start sql for time<br>";
 $sql = "SELECT * 
 FROM `voltime` 
-WHERE `VolDate` <= \"$ed\"";
+WHERE `VolDate` BETWEEN '$sdx' AND '$ed';";
 $res = doSQLsubmitted($sql);
-//echo "sql: $sql<br>";
-$trcnt = $res->num_rows;
+// echo "sql: $sql<br>";
+
 $actvol = array(); $avYTD = array();
 while ($r = $res->fetch_assoc()) {
-  if (strtotime($r[VolDate]) >= strtotime('-12 months')) $actvol[$r[MCID]] += 1;
-  if (strtotime($r[VolDate]) >= strtotime($startyr.'-01-01')) {
-    $avYTD[$r[MCID]] += 1;
-    $actvolYTD[$r[VolCategory]][$r[MCID]] += 1;
-    $volhrsYTD[$r[VolCategory]] += $r[VolTime];
-    $volhrsTot += $r[VolTime];
-    $volmilesTot += $r[VolMileage];
+  if (strtotime($r['VolDate']) >= strtotime('-12 months')) $actvol[$r['MCID']] += 1;
+  if (strtotime($r['VolDate']) >= strtotime($startyr.'-01-01')) {
+    $avYTD[$r['MCID']] += 1;
+    $actvolYTD[$r['VolCategory']][$r['MCID']] += 1;
+    $volhrsYTD[$r['VolCategory']] += $r['VolTime'];
+    $volhrsTot += $r['VolTime'];
+    $volmilesTot += $r['VolMileage'];
     }
-  if (substr($r[VolDate],0,7) == $sd) {
-    $movols[$r[MCID]] += 1;
-    $actvolmo[$r[VolCategory]][$r[MCID]] += 1;
-    $volhrsmo[$r[VolCategory]] += $r[VolTime];
-    $volhrsmoTot += $r[VolTime];
-    $volmilesmoTot += $r[VolMileage];
+  if (substr($r['VolDate'],0,7) == $sd) {
+    $movols[$r['MCID']] += 1;
+    $actvolmo[$r['VolCategory']][$r['MCID']] += 1;
+    $volhrsmo[$r['VolCategory']] += $r['VolTime'];
+    $volhrsmoTot += $r['VolTime'];
+    $volmilesmoTot += $r['VolMileage'];
     }
   }
-
-// volunteer time reported
-echo '<div class="page-break"></div>
-<h4>Volunteer Time Summary';
-print <<<sumPart4
+// echo 'volunteer time reported<br>';
+$av = count($actvol);
+$avytd = count($avYTD);
+// echo '<pre>'; print_r($avYTD); echo '</pre>';
+?>
+<div class="page-break"></div>
+<h4>Volunteer Time Summary
 <span onclick='tog("sum-4")'><span title="Help" class="hidden-print glyphicon glyphicon-question-sign" style="color: blue; font-size: 20px"></span>
 </span>
 </h4>
@@ -499,20 +515,20 @@ print <<<sumPart4
 	<li><b>Total Vol Time Rec&apos;s in DB</b> - the total count of volunteer time records contained in the entire database.</li>
 	<li><b>Registered Volunteers in DB</b> - the total number of supporters identified as volunteers in the membership database.</li>
 	<li><b>Active Volunteers</b> - the number of volunteers that have logged at least 1 time entry in the last 12 months.</li>
+	<li><b>YTD Volunteers</b> - the total number of unique volunteers that have logged at leasst 1 time entry in the current calendar year.</li>
 	<li><b>YTD Vol Time by category</b> - a summary of the number of total volunteer hours followed by the count of the different volunteers that contributed to that time category. Following are YTD totals for hours, mileage driven and volunteers for the selected year and up to and including the selected month.</li>
 	<li><b><i>month</i> and <i>year</i> Vol Time by category</b> - a summary of the total volunteer hours followed by the count of the different volunteers that contributed to each category for the report month. Totals are for hours, mileage driven and different volunteers for the selected month.</li>
 </ol>
 </div>
 
-sumPart4;
-echo '<div class="well">
-<table border=0 class="table-condensed">';
-echo "<td>Total Vol Time Rec Count</td><td>$trcnt</td</tr>";
-echo '<tr><td>Registered Volunteers in DB</td><td>'.count($volarray).'</td></tr>';
-echo '<tr><td>Active Volunteers</td><td>'.count($actvol).'</td></tr>';
-//echo '<tr><td>'.$lystr.' YTD Volunteers</td><td>'.count($avYTD).'</td></tr>';
-echo "<tr><td valign=\"top\">YTD Vol Time by category</td><td>";
-
+<div class="well">
+<table border=0 class="table-condensed">
+<td>Total Vol Time Rec Count</td><td><?=$trcnt?></td</tr>
+<tr><td>Registered Volunteers in DB</td><td><?=$dbregisteredvols?></td></tr>
+<tr><td>Active Volunteers</td><td><?=$av?></td></tr>
+<tr><td><?=$lystr?> YTD Volunteers</td><td><?=$avytd?></td></tr>
+<tr><td valign=top>YTD Vol Time by category</td><td>
+<?php
 ksort($volhrsYTD);
 foreach ($volhrsYTD as $k => $v) {
   if ($k == '') continue;
@@ -531,12 +547,10 @@ foreach ($volhrsmo as $k => $v) {
   }
 echo '</td></tr>';
 echo '<tr><td align="right"><b>'.$lmstr.'</b> Total Vol Hours<br>Total Mileage<br>Volunteers</td><td>'.$volhrsmoTot.'<br>'.$volmilesmoTot.'<br>'.count($movols).'</td></tr>';
- 
-echo '</table>';
-echo '</div> <!-- well -->';
-echo '----- END OF REPORT -----';
-
 ?>
+</table>
+----- END OF REPORT -----
+</div> <!-- well -->
 </div>  <!-- container -->
 </body>
 </html>

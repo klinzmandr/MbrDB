@@ -51,7 +51,7 @@ tempForm1;
 	echo "<select name=\"template\">";
 	echo '<option value=""></option>';
 	while ($t = $res->fetch_assoc()) {
-		$name = $t[Name]; $tid = $t[TID];
+		$name = $t['Name']; $tid = $t['TID'];
 		echo "<option value=\"$tid\">$name</option>";
 		}
 	echo '</select>';
@@ -77,8 +77,8 @@ tempForm1;
 $tid = $_REQUEST['template'];
 
 echo "<div class=\"container\"><h4>Send To List&nbsp;&nbsp;<a class=\"btn btn-danger btn-xs\" href=\"remmultiduesnotices.php\">CANCEL & RETURN</a></h4>";
-//echo '<pre> Template Name '; print_r($t[Name]); echo '</pre>';
-//echo '<pre> Template Body '; print_r($t[Body]); echo '</pre>';
+//echo '<pre> Template Name '; print_r($t['Name']); echo '</pre>';
+//echo '<pre> Template Body '; print_r($t['Body']); echo '</pre>';
 
 print <<<scrPart
 <script type="text/javascript" src="js/nicEdit.js"></script>
@@ -94,31 +94,31 @@ scrPart;
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$tid' AND `Type` = 'email';";
 $res = doSQLsubmitted($sql);
 $t = $res->fetch_assoc();
-$templatename = stripslashes($t[Name]);
-$templatebody = stripslashes($t[Body]);
-$temprecno = $t[TID];
+$templatename = stripslashes($t['Name']);
+$templatebody = stripslashes($t['Body']);
+$temprecno = $t['TID'];
 
 // perform shortcode translations
 $regex = "/\[(.*?)\]/";
 preg_match_all($regex, $templatebody, $matches);
 // echo "<pre>matches "; print_r($matches); echo "</pre>";
 // echo "<pre>row "; print_r($row); echo "</pre>";
-for ($i = 0; $i < count($matches[1]); $i++) {
-	$match = rtrim($matches[1][$i]);
-	if (strpos($match, 'EmailAddress') !== false) $newValue = $row[EmailAddress];
+for ($i = 0; $i < count($matches['1']); $i++) {
+	$match = rtrim($matches['1'][$i]);
+	if (strpos($match, 'EmailAddress') !== false) $newValue = $row['EmailAddress'];
 	if ($match == 'total') $newValue = $total;
 	if ($match == 'itemcount') $newValue = $itemcount; 
 	if ($match == 'date') $newValue = date("F d, Y",strtotime(now));
-	if ($match == 'CorrSal') $newValue = $row[CorrSal];
-	if ($match == 'NameLabel1stline') $newValue = $row[NameLabel1stline];
-	if ($match == 'FName') $newValue = $row[FName];
-	if ($match == 'LName') $newValue = $row[LName];
-	if ($match == 'AddressLine') $newValue = $row[AddressLine];
-	if ($match == 'City') $newValue = $row[City]; 
-	if ($match == 'State') $newValue = $row[State]; 
-	if ($match == 'ZipCode') $newValue = $row[ZipCode];
-	if ($match == 'Organization') $newValue = $row[Organization]; 
-	$templatebody = str_replace($matches[0][$i], $newValue, $templatebody);
+	if ($match == 'CorrSal') $newValue = $row['CorrSal'];
+	if ($match == 'NameLabel1stline') $newValue = $row['NameLabel1stline'];
+	if ($match == 'FName') $newValue = $row['FName'];
+	if ($match == 'LName') $newValue = $row['LName'];
+	if ($match == 'AddressLine') $newValue = $row['AddressLine'];
+	if ($match == 'City') $newValue = $row['City']; 
+	if ($match == 'State') $newValue = $row['State']; 
+	if ($match == 'ZipCode') $newValue = $row['ZipCode'];
+	if ($match == 'Organization') $newValue = $row['Organization']; 
+	$templatebody = str_replace($matches['0'][$i], $newValue, $templatebody);
 	//echo "templatebody: $templatebody<br>";
 	$newValue = '';
 	}
@@ -132,7 +132,7 @@ foreach ($mcidarray as $m) {
 	$sql = "SELECT * FROM `members` WHERE `MCID` = '$m';";
 	$mres = doSQLsubmitted($sql);
 	$row = $mres->fetch_assoc();
-	$emaddr = $row[MCID].":".$row[FName].' '.$row[LName].' <'.$row[EmailAddress].'>';
+	$emaddr = $row['MCID'].":".$row['FName'].' '.$row['LName'].' <'.$row['EmailAddress'].'>';
 	echo "<input type=\"checkbox\" name=\"email[]\" value=\"$emaddr\" checked>".htmlspecialchars($emaddr).'<br />';
 	}
 

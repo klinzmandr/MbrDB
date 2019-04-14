@@ -92,7 +92,7 @@ $from = $_SESSION['SessionUser'];
 $sql = "SELECT `MCID` FROM `adminusers` WHERE `UserID` = '$from'";
 $res = doSQLsubmitted($sql);
 $r = $res -> fetch_assoc();
-$fromMCID = $r[MCID];
+$fromMCID = $r['MCID'];
 if (strlen($fromMCID) == 0) {
   echo "SessionUser: $from, fromMCID: $r[MCID] length: " . strlen($fromMCID) . "<br>";
   echo '<h3 style="color: red; ">ERROR: Your user registration MUST have an MCID.</h3>
@@ -124,15 +124,15 @@ addlogentry($log);
 // finally we note each email in correspondence log for each mcid
 foreach ($mcidarray as $mcid) {
   $corrarray = array();									// add to correspondence log
-  $corrarray[MCID] = $mcid;
-  $corrarray[CorrespondenceType] = "EmailReminder";
-  $corrarray[DateSent] = date('Y-m-d', strtotime(now)); 
-  $corrarray[Notes] = "Email Reminder Subject: $subject";
-  $corrarray[Reminders] = 'EMailReminder';
+  $corrarray['MCID'] = $mcid;
+  $corrarray['CorrespondenceType'] = "EmailReminder";
+  $corrarray['DateSent'] = date('Y-m-d', strtotime('now')); 
+  $corrarray['Notes'] = "Email Reminder Subject: $subject";
+  $corrarray['Reminders'] = 'EMailReminder';
   sqlinsert('correspondence', $corrarray);
   $mbrarray = array();									// update member record summary info
-  $mbrarray[LastCorrDate] =  $corrarray[DateSent];
-  $mbrarray[LastCorrType] = 'EmailReminder';
+  $mbrarray['LastCorrDate'] =  $corrarray['DateSent'];
+  $mbrarray['LastCorrType'] = 'EmailReminder';
   sqlupdate('members', $mbrarray, "`MCID` = '$mcid';");
   }
 

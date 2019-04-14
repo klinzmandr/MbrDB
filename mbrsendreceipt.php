@@ -36,9 +36,9 @@ $resdon = doSQLsubmitted($sqldon);
 $donrowcnt = $resdon->num_rows;
 while ($rowdon = $resdon->fetch_assoc()) {
 	//echo '<pre> Donations '; print_r($rowdon); echo '</pre>';
-	$doninfo[$rowdon[DonationID]] = $rowdon;
-	$donsum[$rowdon[Program]]['count'] += 1;
-	$donsum[$rowdon[Program]]['total'] += $rowdon[TotalAmount];
+	$doninfo[$rowdon['DonationID']] = $rowdon;
+	$donsum[$rowdon['Program']]['count'] += 1;
+	$donsum[$rowdon['Program']]['total'] += $rowdon['TotalAmount'];
 	}
 // echo '<pre> Don Summary '; print_r($donsum); echo '</pre>';
 // echo '<pre> Don Info '; print_r($doninfo); echo '</pre>';
@@ -115,7 +115,7 @@ echo '
 <tr><td><input type="checkbox" id="chkr" name="chkr" value=""></td><td colspan=4>Check All/None</td></tr>';
 
 foreach ($doninfo as $k=>$v) { 		// send the donaton rec number for each item selected
-	$pgm = $progarray[$v[Program]];
+	$pgm = $progarray[$v['Program']];
 	print <<<formPart2
 <tr><td><input type="checkbox" name="items[]" id="items[]" value="$k"></td><td>$pgm</td><td>$v[DonationDate]</td><td align="right">$$v[TotalAmount]</td><td>$v[Note]</td></tr>
 
@@ -161,7 +161,7 @@ $donrowcnt = $resdon->num_rows;
 // echo "donrowcnt: $donrowcnt<br>";
 $total = 0;
 while ($rowdon = $resdon->fetch_assoc()) {
-	$total += $rowdon[TotalAmount];
+	$total += $rowdon['TotalAmount'];
 	}
 echo '<h2>Receipt data collection complete.</h2><h3>Click to <a class="btn btn-primary" href="mbrsendreceipt.php">RE-DO</a> the selection criteria.<br>';
 echo "<h3>A receipt for $donrowcnt item(s) totalling $$total for member $mcid is ready.</h3>

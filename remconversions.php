@@ -49,7 +49,7 @@ $nbr_subscribers = $res->num_rows;
 //echo "nbr_subscribers: $nbr_subscribers<br>";
 $subscribers = array();
 while ($r = $res->fetch_assoc()) {
-  $subscribers[] = $r[MCID];
+  $subscribers[] = $r['MCID'];
 }
 //echo '<pre> subscribers ';  print_r($subscribers); echo '</pre>';
 
@@ -62,29 +62,29 @@ $nbr_rows = $res->num_rows;
 //echo "nbr_rows: $nbr_rows<br>";
 $resarray = array();
 while ($r = $res->fetch_assoc()) {
-  if (in_array($r[MCID], $subscribers)) continue;  // ignore subscribers
-  if ($r[Reminders] == '') continue;               // ignore empty
+  if (in_array($r['MCID'], $subscribers)) continue;  // ignore subscribers
+  if ($r['Reminders'] == '') continue;               // ignore empty
 // returned rows are in date sent sequence
 // remember payments - but forget them if reminder sent after getting it
-  if ($r[Reminders] == 'RenewalPaid')   {
-    $resarray[$r[MCID]][paid] = $r[DateSent];
-    $resarray[$r[MCID]][paidcnt] += 1; 
+  if ($r['Reminders'] == 'RenewalPaid')   {
+    $resarray[$r['MCID']]['paid'] = $r['DateSent'];
+    $resarray[$r['MCID']]['paidcnt'] += 1; 
     continue; }
 // email sent after payment made noted
-  if (($r[Reminders] == 'EMailReminder') OR ($r[Reminders] == 'RenewalReminder')) {
-    $resarray[$r[MCID]][emsent] = $r[DateSent];
-    $resarray[$r[MCID]][emsentcnt] += 1;
-    unset($resarray[$r[MCID]][paid]);
-    unset($resarray[$r[MCID]][paidcnt]);
+  if (($r['Reminders'] == 'EMailReminder') OR ($r['Reminders'] == 'RenewalReminder')) {
+    $resarray[$r['MCID']]['emsent'] = $r['DateSent'];
+    $resarray[$r['MCID']]['emsentcnt'] += 1;
+    unset($resarray[$r['MCID']]['paid']);
+    unset($resarray[$r['MCID']]['paidcnt']);
     continue; }
 // mail sent after payment made noted
-  if ($r[Reminders] == 'MailReminder')  {
-    $resarray[$r[MCID]][msent] = $r[DateSent];
-    $resarray[$r[MCID]][msentcnt] += 1;
-    unset($resarray[$r[MCID]][paid]);
-    unset($resarray[$r[MCID]][paidcnt]);
+  if ($r['Reminders'] == 'MailReminder')  {
+    $resarray[$r['MCID']]['msent'] = $r['DateSent'];
+    $resarray[$r['MCID']]['msentcnt'] += 1;
+    unset($resarray[$r['MCID']]['paid']);
+    unset($resarray[$r['MCID']]['paidcnt']);
     continue; }
-  $somethingelse[$r[MCID]] = $r;
+  $somethingelse[$r['MCID']] = $r;
   }
 // echo "res array size: " . count($resarray) . '<br>';
 // echo '<pre> resarray ';  print_r($resarray); echo '</pre>';
@@ -98,21 +98,21 @@ while ($r = $res->fetch_assoc()) {
 $remdist = array(); $pddist = array();
 
 foreach ($resarray as $k => $v) {
-  if ((count($v) == 2) AND (isset($v[paid]))) {
+  if ((count($v) == 2) AND (isset($v['paid']))) {
     unset($resarray[$k]);       // this eliminates any paid with no reminder
     // echo '<pre> paid/no reminder '; print_r($v); echo '</pre>';
     }
   else {                        // otherwise create summary arrays
-    if (isset($v[emsent])) {
-      $yrmo = substr($v[emsent],0,7);
+    if (isset($v['emsent'])) {
+      $yrmo = substr($v['emsent'],0,7);
       $remdist[$yrmo] += 1;
       }
-    if (isset($v[msent])) {
-      $yrmo = substr($v[msent],0,7);
+    if (isset($v['msent'])) {
+      $yrmo = substr($v['msent'],0,7);
       $remdist[$yrmo] += 1;
       }
-    if (isset($v[paid])) {
-      $yrmo = substr($v[paid],0,7);
+    if (isset($v['paid'])) {
+      $yrmo = substr($v['paid'],0,7);
       $pddist[$yrmo] += 1;
       }
     }
@@ -122,11 +122,11 @@ foreach ($resarray as $k => $v) {
 
 // summarize the final results
 foreach ($resarray as $k => $v) {
-  if (isset($v[emsent])) $emcount += 1;
-  if (isset($v[emsent]) AND (isset($v[paid]))) $empcount += 1;
-  if (isset($v[msent])) $mcount += 1;
-  if (isset($v[msent]) AND (isset($v[paid]))) $mpcount += 1;
-  if (isset($v[paid])) $pdcount += 1;
+  if (isset($v['emsent'])) $emcount += 1;
+  if (isset($v['emsent']) AND (isset($v['paid']))) $empcount += 1;
+  if (isset($v['msent'])) $mcount += 1;
+  if (isset($v['msent']) AND (isset($v['paid']))) $mpcount += 1;
+  if (isset($v['paid'])) $pdcount += 1;
   }
 echo "<h4>Reminders sent/returned distribution by month: </h4>";
 ksort($remdist);

@@ -8,7 +8,7 @@ session_start();
 <title>Member Information</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="all">
 </head>
 <body>
 <script src="jquery.js"></script>
@@ -62,20 +62,20 @@ if ($action == "update") {
     }
 
 	if (array_key_exists('mlist',$vararray)) {
-		$listarray = $vararray[mlist];						// get list array
+		$listarray = $vararray['mlist'];						// get list array
 		$liststring = implode(",",$listarray);		// create list string
-		unset($vararray[mlist]);									// delete array
-		$vararray[Lists] = $liststring;						// add back the string
+		unset($vararray['mlist']);									// delete array
+		$vararray['Lists'] = $liststring;						// add back the string
 		}
-	else $vararray[Lists] = '';									// if none are checked -----
-	unset($vararray[action]);										// unset page action indicator
-	unset($vararray[MCIDx]);                     // unset MCID field 
+	else $vararray['Lists'] = '';									// if none are checked -----
+	unset($vararray['action']);										// unset page action indicator
+	unset($vararray['MCIDx']);                     // unset MCID field 
   //  echo '<pre> input after uri '; echo "mcid: $mcid, "; print_r($vararray); echo '</pre>';
 
-	$vararray[Notes] = stripslashes($vararray[Notes]);
-	$vararray[LName] = stripslashes($vararray[LName]);
-	$vararray[NameLabel1stline] = stripslashes($vararray[NameLabel1stline]);
-	$vararray[Organization] = stripslashes($vararray[Organization]);
+	$vararray['Notes'] = stripslashes($vararray['Notes']);
+	$vararray['LName'] = stripslashes($vararray['LName']);
+	$vararray['NameLabel1stline'] = stripslashes($vararray['NameLabel1stline']);
+	$vararray['Organization'] = stripslashes($vararray['Organization']);
   $where = "`MCID`='" . $mcid . "'";
 	sqlupdate('members',$vararray, $where);
   echo '	
@@ -658,10 +658,10 @@ echo "<b>Total Hours by Category:</b><br />";
 if (count($tothrs) != 0) {
 	foreach ($tothrs as $k => $v) echo "&nbsp;&nbsp;&nbsp;$k: $v<br />";
 	}
-echo "<b>Detail Records</b><br />";
+echo "<b>Last 50 Detail Records</b><br />";
 echo '<table class="table table-condensed">';
 echo '<tr><th width="15%">Date</th><th>Vol Time</th><th>Mileage</th><th>Category</th><th>Notes</th></tr>';
-if (count($trows) != 0) foreach ($trows as $l) { echo $l; }
+if (count($trows) != 0) for ($i=0; $i<50; $i++) { echo $trows[$i]; }
 echo '</table>---- End of Report ----<br>';	
 }
 else {

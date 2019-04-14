@@ -28,7 +28,7 @@ echo '<h3>Inactive MCID&apos;s&nbsp;&nbsp;<a class="btn btn-primary" href="javas
 
 while ($r = $res->fetch_assoc()) {
 	//echo '<pre>MCID'; print_r($r); echo '</pre>';
-	if ($r[Last] <= $expdate) {
+	if ($r['Last'] <= $expdate) {
 		//if ($r[Inactive] == 'TRUE') $ia = 'TRUE';
 		//else $ia = 'FALSE';
 		//echo "inactive db flag: $r[Inactive]<br />";

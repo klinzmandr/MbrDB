@@ -25,15 +25,15 @@ $action = $_REQUEST['action'];
 
 if ($action == "add") {
 	$mcid = $_REQUEST['mcid'];
-	$fields[MCID] = $_REQUEST['mcid'];
-	$fields[MemStatus] = 0;
-	$fields[Inactive] = 'FALSE';
-	$fields[MemDate] = date('Y-m-d');
-	$fields[Source] = 'MbrDB';
-	$fields[LastDonDate] = ''; $fields[LastDonPurpose] = ''; 
-	$fields[LastDonAmount] = '0.00'; 
-	$fields[LastDuesDate] = ''; $fields[LastDuesAmount] = '0.00'; 
-	$fields[LastCorrDate] = ''; $fields[LastCorrType] = '';
+	$fields['MCID'] = $_REQUEST['mcid'];
+	$fields['MemStatus'] = 0;
+	$fields['Inactive'] = 'FALSE';
+	$fields['MemDate'] = date('Y-m-d');
+	$fields['Source'] = 'MbrDB';
+	$fields['LastDonDate'] = ''; $fields['LastDonPurpose'] = ''; 
+	$fields['LastDonAmount'] = '0.00'; 
+	$fields['LastDuesDate'] = ''; $fields['LastDuesAmount'] = '0.00'; 
+	$fields['LastCorrDate'] = ''; $fields['LastCorrType'] = '';
 	$lead3 = substr($mcid,0,3);
 	$lead5 = substr($mcid,0,5);
 	$mcidwild = substr($mcid,0,5) . '%';
@@ -56,7 +56,7 @@ if ($action == "add") {
 		$res = doSQLsubmitted($sql);
 		while ($r = $res->fetch_assoc()) {		// read search results
 			//echo 'mcid from SELECT: '; print_r($r); echo '<br>';
-			unset($avail[$r[MCID]]);			// delete from possibilities if already used
+			unset($avail[$r['MCID']]);			// delete from possibilities if already used
 			}
 		//print_r($avail);
 		echo "<h3>MCID $lead3&apos;s available for use</h3>";
@@ -78,7 +78,7 @@ if ($action == "add") {
 		if ($res !== FALSE) {
 			//$_SESSION['ActiveMCID'] = $fields[MCID];
 			echo "<h2>Add of MCID $mcid has been completed.</h2>";
-			echo "<a href=\"mbrinfotabbed.php?filter=".$fields[MCID]."\"><h3>Click to Complete MCID Info Entry</h3></a>";
+			echo "<a href=\"mbrinfotabbed.php?filter=".$fields['MCID']."\"><h3>Click to Complete MCID Info Entry</h3></a>";
 			exit;
 			}
 		echo "<h2>Add unsuccessful!  Try another MCID.</h2>";

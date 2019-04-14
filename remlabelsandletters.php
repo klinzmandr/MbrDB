@@ -22,14 +22,14 @@ $ua = $_SERVER['HTTP_USER_AGENT'];
 if ($clicker == "Delete Checked") {
 	$cba = isset($_REQUEST['cba']) ? $_REQUEST['cba'] : 0;
 	if (!is_array($cba)) {
-		$cbab[dummy] = 'dummy';
+		$cbab['dummy'] = 'dummy';
 		$cbab[] = $cba;
 		}
 	else {
 		$cbab = $cba;
 		}
 	//echo "<pre>cbab: "; print_r($cbab); echo "</pre>";
-	//unset($cbab[dummy]);
+	//unset($cbab['dummy']);
 	foreach ($cbab as $v) {
 		if ($v == 'dummy') continue;
 	//echo "deleting records number: ".$v."<br />";
@@ -151,7 +151,7 @@ onchange='checkAll(document.chkform.chkr,document.chkform["cba[]"])'><b>&nbsp;&n
 formPart1;
 
 while ($r = $res->fetch_assoc()) {
-	$recno = $r[LLID];
+	$recno = $r['LLID'];
 	echo "<tr><td width=\"5%\">
 	<input type=\"checkbox\" name=\"cba[]\" value=\"$recno\"></td>
 	<td width=\"5%\">$recno</td><td width=\"20%\">$r[Date]</td><td>$r[MCID]</td><td>$r[NameLabel1stline]</td></tr>";

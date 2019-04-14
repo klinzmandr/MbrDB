@@ -70,7 +70,7 @@ echo '<tr><th>MCID</th><th>Last Name</th><th>First Name</th><th>Label Line 1</th
 while ($row = $results->fetch_assoc()) {
 	$mcid=$row['MCID'];  $fname=$row['FName']; $lname=$row['LName'];
 	$org=$row['Organization']; $addr=$row['AddressLine']; $lab1line=$row['NameLabel1stline']; 
-	$eaddr=$row['EmailAddress']; $priphone=$row[PrimaryPhone]; 
+	$eaddr=$row['EmailAddress']; $priphone=$row['PrimaryPhone']; 
 print <<<bulletForm
 <form action="mbrinfotabbed.php" method="post">
 <tr><td><a href="mbrinfotabbed.php?filter=$mcid">$mcid</a></td><td>$lname</td><td>$fname</td><td>$lab1line</td><td>$org</td><td>$eaddr</td><td>$priphone</td></tr>

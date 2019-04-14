@@ -82,7 +82,7 @@ if ($row['Inactive'] == 'TRUE') {
 
 //check if MCID is OK with email and has an email address
 $emaddr = $mcid.':'.$row['FName'].' '.$row['LName'].' <'.$row['EmailAddress'].'>'; 
-$emailok = $row[E_Mail];
+$emailok = $row['E_Mail'];
 if (($row['EmailAddress'] == "") OR ($emailok == 'FALSE')) {
 	echo "<h3>Member <a href=\"mbrinfotabbed.php\">$mcid</a> does not have any email addresses on file or does not wish to get email.</h3>.<br />";
 	//echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\" name=\"filter\" value=\"$mcid\">CANCEL AND RETURN</a>";
@@ -104,8 +104,8 @@ Select an email template from the selection list:<br>
 <option value=""></option>
 templForm1;
 	while ($t = $res->fetch_assoc()) {
-		$name = $t[Name];
-		$recno = $t[TID];
+		$name = $t['Name'];
+		$recno = $t['TID'];
 		//if (substr($t,0,1) == '.') continue;
 		echo "<option value=\"$recno\">$name</option>";
 		}
@@ -133,10 +133,10 @@ echo "<div class=\"container\"><h3>Edit and Send the Message to ".$_SESSION['Act
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$tname';";
 $res = doSQLsubmitted($sql);
 $t = $res->fetch_assoc();
-$template = stripslashes($t[Body]);
-$templatename = stripslashes($t[Name]);
-$em= $mcid . ':' . $row[FName] . " " . $row[LName] . " <" . $row[EmailAddress] . ">";
-$emx= $row[FName] . " " . $row[LName] . " <" . $row[EmailAddress] . ">";
+$template = stripslashes($t['Body']);
+$templatename = stripslashes($t['Name']);
+$em= $mcid . ':' . $row['FName'] . " " . $row['LName'] . " <" . $row['EmailAddress'] . ">";
+$emx= $row['FName'] . " " . $row['LName'] . " <" . $row['EmailAddress'] . ">";
 $emx = htmlentities($emx);
 $fromaddr = $EmailFROM;			// defined in datautils.inc.php
 if ($type == 'receipt') $fromaddr = $_SESSION['SessionUser'];
@@ -148,19 +148,19 @@ preg_match_all($regex, $template, $matches);
 // echo "<pre>row "; print_r($row); echo "</pre>";
 for ($i = 0; $i < count($matches[1]); $i++) {
 	$match = rtrim($matches[1][$i]);
-	if (strpos($match, 'EmailAddress') !== false) $newValue = $row[EmailAddress];
+	if (strpos($match, 'EmailAddress') !== false) $newValue = $row['EmailAddress'];
 	if ($match == 'total') $newValue = $total;
 	if ($match == 'itemcount') $newValue = $itemcount; 
 	if ($match == 'date') $newValue = date("F d, Y",strtotime(now));
-	if ($match == 'CorrSal') $newValue = $row[CorrSal];
-	if ($match == 'NameLabel1stline') $newValue = $row[NameLabel1stline];
-	if ($match == 'FName') $newValue = $row[FName];
-	if ($match == 'LName') $newValue = $row[LName];
-	if ($match == 'AddressLine') $newValue = $row[AddressLine];
-	if ($match == 'City') $newValue = $row[City]; 
-	if ($match == 'State') $newValue = $row[State]; 
-	if ($match == 'ZipCode') $newValue = $row[ZipCode];
-	if ($match == 'Organization') $newValue = $row[Organization]; 
+	if ($match == 'CorrSal') $newValue = $row['CorrSal'];
+	if ($match == 'NameLabel1stline') $newValue = $row['NameLabel1stline'];
+	if ($match == 'FName') $newValue = $row['FName'];
+	if ($match == 'LName') $newValue = $row['LName'];
+	if ($match == 'AddressLine') $newValue = $row['AddressLine'];
+	if ($match == 'City') $newValue = $row['City']; 
+	if ($match == 'State') $newValue = $row['State']; 
+	if ($match == 'ZipCode') $newValue = $row['ZipCode'];
+	if ($match == 'Organization') $newValue = $row['Organization']; 
 	$template = str_replace($matches[0][$i], $newValue, $template);
 	//echo "template: $template<br>";
 	$newValue = '';

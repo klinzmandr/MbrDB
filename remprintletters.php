@@ -39,7 +39,7 @@ labelPart1;
 // include css to print the letter
 include 'Incls/letter_print_css.inc.php';
 while ($r = $res->fetch_assoc()) {
-	$ltr = stripslashes($r[Letter]);
+	$ltr = stripslashes($r['Letter']);
 	
 	if (isset($_REQUEST['header'])) { 
 		$body = "<div class=\"hdr\"><img src=\"Incls/letterlogo.jpg\" width=\"100%\" height=\"130\" alt=\"PWC Logo\" /></div>";

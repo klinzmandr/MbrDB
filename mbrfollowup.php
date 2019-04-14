@@ -33,14 +33,14 @@ if ($_REQUEST['action'] == "apply") {
 	//echo "query string: $uri<br>";
 	parse_str($uri, $vararray);
 	//echo "<pre> vararray "; print_r($vararray); echo "</pre>";
-	unset($vararray[action]); unset($vararray[id]);
-	$vararray[Notes] = stripslashes($vararray[Notes]);
+	unset($vararray['action']); unset($vararray['id']);
+	$vararray['Notes'] = stripslashes($vararray['Notes']);
 	// echo "before update call - recno: $recno, mcid: $mcid<br>";
 	sqlupdate('correspondence', $vararray, "`CORID` = '$recno'");	
 	
 	// now update member record with latest info
-	$memflds[LastCorrDate] = date('Y-m-d');
-	$memflds[LastCorrType] = $vararray[CorrespondenceType];
+	$memflds['LastCorrDate'] = date('Y-m-d');
+	$memflds['LastCorrType'] = $vararray['CorrespondenceType'];
 	sqlupdate('members', $memflds, "`MCID` = '$mcid';");
 	$_REQUEST['action'] = "edit";
 	echo '	
@@ -60,10 +60,10 @@ if ($_REQUEST['action'] == "") {
 	$res = doSQLsubmitted($sql);
 	$nbr_rows = $res->num_rows;												
 	if ($nbr_rows == 0) {															// add a new record unless one already exists
-		$flds[CorrespondenceType] = '**NewRec**';				// corresondence type flag for new add
-		$flds[DateSent] = date('Y-m-d'); 
-		$flds[MCID] = $mcid;
-		//$flds[MCID] = $_SESSION['ActiveMCID'];
+		$flds['CorrespondenceType'] = '**NewRec**';				// corresondence type flag for new add
+		$flds['DateSent'] = date('Y-m-d'); 
+		$flds['MCID'] = $mcid;
+		//$flds['MCID'] = $_SESSION['ActiveMCID'];
 		sqlinsert('correspondence', $flds);
 		}
 	$_REQUEST['action'] = "edit";
@@ -84,7 +84,7 @@ if ($_REQUEST['action'] == "edit") {
 $row = $res->fetch_assoc();
 $corrtype=$row['CorrespondenceType'];$datesent=$row['DateSent'];$note=$row['Notes'];$source=$row['SourceofInquiry'];
 	}
-$recno = $row[CORID];
+$recno = $row['CORID'];
 //echo "sql: $sql<br>";
 //echo '<pre> record '; print_r($row); echo '</pre>';
 // show form

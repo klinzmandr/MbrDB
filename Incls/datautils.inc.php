@@ -3,7 +3,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // connect to the database for all pages
 date_default_timezone_set('America/Los_Angeles');
 
-// ====== Start Istallation Parameters =========
+// ====== Start Installation Parameters =========
 
 include "../.DBParamInfo";
 
@@ -26,7 +26,8 @@ if ($mysqli->connect_errno) {
     $_SESSION['DB_ERROR'] = $db;
     }
 $_SESSION['DB_InUse'] = $db;
-addlogentry('Page Load');
+$mcid = isset($_SESSION['ActiveMCID']) ? $_SESSION['ActiveMCID'] : '??';
+addlogentry("Page Load, Active MCID: $mcid");
 // auto returns to code following the 'include' statement
 //echo "Initial Connection Info: ".$mysqli->host_info . "<br><br>";
 echo "<script>
@@ -51,6 +52,7 @@ if (substr_compare($sql,"DELETE",0,6,TRUE) == 0) {
 // NOTE:  could do a check to see if DELETE or REPLACE was done and 
 //        return 'affected_rows' instead of select results 
 if (!$res) {
+    error_log("mySQL database had dramatic error in datautils!", 0);
     showError($res);
     addlogentry($res);
 		}

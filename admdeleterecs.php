@@ -76,15 +76,15 @@ if ($action == "delete") {
 		}	
 	
 // delete associated correspondence for a funding 'dues' record
-	if (($table == 'donations') AND ($rcd[Purpose] == 'Dues')) {
+	if (($table == 'donations') AND ($rcd['Purpose'] == 'Dues')) {
 		//echo "dues record found<br>";
-		$mcid = $rcd[MCID]; $date = $rcd[DonationDate];
+		$mcid = $rcd['MCID']; $date = $rcd['DonationDate'];
 		$qrysql = "SELECT * FROM `correspondence` WHERE `MCID` = '".$mcid."' AND `DateSent` = '".$date."' AND Reminders = 'RenewalPaid' limit 0,1;";		// use only the first occurance in case there were muliple for day
 		//echo "correspondence deletion sql: $qrysql<br>";
 		$corrdel = doSQLsubmitted($qrysql);
 		$corr_rec = $corrdel->fetch_assoc();
 		//echo "<pre>"; print_r($corr_rec); echo "</pre>";
-		$corr_recno = $corr_rec[CORID];		// get the rec nbr for single record delete
+		$corr_recno = $corr_rec['CORID'];		// get the rec nbr for single record delete
 		echo "<h4>Funding record nbr: $recnbr and assoicated correspondence rececord nbr: $corr_recno have been deleted.</h4>";
 		$delsql = "DELETE FROM `correspondence` WHERE CORID = '".$corr_recno."' AND `MCID` = '".$mcid."' AND `DateSent` = '".$date."' AND Reminders = 'RenewalPaid';";
 		doSQLsubmitted($delsql);		// delete the associated correspondence record

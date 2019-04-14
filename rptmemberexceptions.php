@@ -8,16 +8,17 @@ session_start();
 <title>Mbr Exceptions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="all">
 </head>
 <body>
 <script src="jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jsutils.js"></script>
 
-<div class="container"><h3>MbrDB Exception Report&nbsp;&nbsp;
+<div class="container">
+<h3>MbrDB Exception Report&nbsp;&nbsp;
+<span title="Help" id=helpbtn class="hidden-print glyphicon glyphicon-question-sign" style="color: blue; font-size: 20px"></span>&nbsp;&nbsp;
 <a class="btn btn-xs btn-primary" href="javascript:self.close();">(CLOSE)</a></h3>
-<h4><button id=helpbtn>Explaination of Report</button></h4>
 <div id="help">
 <p>The classifications of the records in Mbrdb are:</p>
 <ol>

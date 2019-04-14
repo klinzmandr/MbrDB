@@ -148,10 +148,10 @@ while ($r = $results->fetch_assoc()) {
 	// count the reminder notices sent, remember the latest date and corr type
 	if (stripos($r['Reminders'],"remind") !== FALSE) {  
 		$ar[$mcidid] += 1;
-		if (strtotime($dr[$mcidid]) <= strtotime($r[DateSent])) {
-//			echo "mcid: $r[MCID], dr[mcidid]: $dr[$mcidid], r[DateSent]: $r[DateSent]<br>";
-			$dr[$mcidid] = $r[DateSent];
-			$ct[$mcidid] = $r[CorrespondenceType];	// save last for final report output
+		if (strtotime($dr[$mcidid]) <= strtotime($r['DateSent'])) {
+//			echo "mcid: $r['MCID'], dr['mcidid']: $dr[$mcidid], r['DateSent']: $r['DateSent']<br>";
+			$dr[$mcidid] = $r['DateSent'];
+			$ct[$mcidid] = $r['CorrespondenceType'];	// save last for final report output
 //			echo 'mcid: '.$mcidid.', corr time: ' . $dr[$mcidid] . '<br />';
 			}
 		}
@@ -277,7 +277,7 @@ function chk(fld) {
 // create array to use to sort
 //echo "resarray count before sort: " . count($resarray) . '<br>';
 foreach ($resarray as $row) {
-	$key = $row['MaxDate'] . $row[MCID];			// to create a unique key
+	$key = $row['MaxDate'] . $row['MCID'];			// to create a unique key
 	$dondate[$key] = $row;										// sorting by donation date + MCID
 	//echo "<pre> key: $key "; print_r($row); echo "</pre>";
 	}
@@ -301,9 +301,9 @@ echo '<form name="boxform" action="" method="post">';
 // array $dr is the date of the last dues payment
 foreach ($dondate as $key => $row) {
 	//echo '<pre> resarray '; print_r($row); echo '</pre>';
-	if (stripos($row[MCtype], 'lifetime') !== FALSE) continue;	// NO REMINDER FOR LIFETIME MEMBERS
-	if ($row[TotalAmount] < $duesthreshold) continue;					// NO REMINDER IF < THAN THRESHOLD VALUE
-	if ($notedate <= strtotime($dr[$row[MCID]])) continue; 			// NO REMINDER IF < DELAY DAYS
+	if (stripos($row['MCtype'], 'lifetime') !== FALSE) continue;	// NO REMINDER FOR LIFETIME MEMBERS
+	if ($row['TotalAmount'] < $duesthreshold) continue;					// NO REMINDER IF < THAN THRESHOLD VALUE
+	if ($notedate <= strtotime($dr[$row['MCID']])) continue; 			// NO REMINDER IF < DELAY DAYS
 	$finalarray[$key] = $row;
 //	echo '<pre> final array '; print_r($row); echo '</pre>';
 	}
@@ -350,23 +350,23 @@ echo '<table border="0" class="table table-condensed">
 foreach ($finalarray as $key=>$row) {
 	$mcid=rtrim($row['MCID']); $dondate=$key; 
 	$amount=rtrim($row['TotalAmount']);	$labelname=rtrim($row['NameLabel1stline']); 
-	$purpose=$row['Purpose']; $email=$row[E_Mail]; $mail=$row[Mail];
-	$maxdate=$row[MaxDate]; $emailaddr = $row['EmailAddress'];
+	$purpose=$row['Purpose']; $email=$row['E_Mail']; $mail=$row['Mail'];
+	$maxdate=$row['MaxDate']; $emailaddr = $row['EmailAddress'];
 	$lastduesamount = $row['LastDuesAmount'];
 	$lastdonamount = $row['LastDonAmount'];
 	$remdate = $dr[$mcid];
 	$remcnt = $ar[$mcid];
 	$remtype = '';
-	if ($remcnt > 0) $remtype = $row[LastCorrType];
+	if ($remcnt > 0) $remtype = $row['LastCorrType'];
 	$emcode = $mcid . ':' . $emailaddr;
 
 	$mok = '';
-	if ($row[Mail] == 'TRUE') {
+	if ($row['Mail'] == 'TRUE') {
 		$mok = '<input id="rm" type="checkbox" name="mail[]" value="'.$emcode.'">';
 		}
 
 	$emok = '';
-	if ($row[E_Mail] == 'TRUE') {
+	if ($row['E_Mail'] == 'TRUE') {
 		$emok = '<input id="em" type="checkbox" name="email[]" value="'.$emcode.'">';
 		}
 		

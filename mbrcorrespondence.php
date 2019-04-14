@@ -41,9 +41,9 @@ if ($_REQUEST['action'] == "add") {
 	$res = doSQLsubmitted($sql);
 	$nbr_rows = $res->num_rows;
 	if ($nbr_rows == 0) {
-		$flds[CorrespondenceType] = '**NewRec**';				// corresondence type for new add
-		$flds[DateSent] = date('Y-m-d'); 
-		$flds[MCID] = $mcid;
+		$flds['CorrespondenceType'] = '**NewRec**';				// corresondence type for new add
+		$flds['DateSent'] = date('Y-m-d'); 
+		$flds['MCID'] = $mcid;
 		sqlinsert('correspondence', $flds);
 		//echo "action is add<br>";
 		}
@@ -177,8 +177,8 @@ if ($_REQUEST['action'] == "apply") {
 	//echo "query string: $uri<br>";
 	parse_str($uri, $vararray);
 	//echo "<pre>"; print_r($vararray); echo "</pre>";
-	unset($vararray[action]); unset($vararray[id]);
-	$vararray[Notes] = stripslashes($vararray[Notes]);
+	unset($vararray['action']); unset($vararray['id']);
+	$vararray['Notes'] = stripslashes($vararray['Notes']);
 	//echo "before update call - recno: $recno, mcid: $mcid<br>";
 	// default value for Reminder field is NULL unless --
 	$vararray['Reminders'] = '';
@@ -188,8 +188,8 @@ if ($_REQUEST['action'] == "apply") {
 	sqlupdate('correspondence', $vararray, "`CORID`='$recno'");
 	// now update member record with latest info
 	$mcid = $_REQUEST['MCID'];
-	$memflds[LastCorrDate] = $vararray[DateSent];
-	$memflds[LastCorrType] = $vararray[CorrespondenceType];
+	$memflds['LastCorrDate'] = $vararray['DateSent'];
+	$memflds['LastCorrType'] = $vararray['CorrespondenceType'];
 	sqlupdate('members', $memflds, "`MCID` = '$mcid'");
 	echo '	
 <h3 style="color: red; " id="X">Update Completed.</h3>';

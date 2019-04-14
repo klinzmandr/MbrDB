@@ -17,9 +17,9 @@ include 'Incls/seccheck.inc.php';
 //include 'Incls/mainmenu.inc.php';
 include 'Incls/datautils.inc.php';
 
-$action = isset($_REQUEST[action]) ? $_REQUEST[action] : '';
-$sd = isset($_REQUEST[sd]) ? $_REQUEST[sd] : '';
-$ed = isset($_REQUEST[ed]) ? $_REQUEST[ed] : '';
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+$sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : '';
+$ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : '';
 $blanks = isset($_REQUEST['blanklabels']) ? $_REQUEST['blanklabels'] : 0;	
 $mstat0 = isset($_REQUEST['mstat0']) ? $_REQUEST['mstat0'] : '';
 $mstat1 = isset($_REQUEST['mstat1']) ? $_REQUEST['mstat1'] : '';
@@ -34,7 +34,7 @@ $vrangehi	= isset($_REQUEST['vrangehi']) ? $_REQUEST['vrangehi'] : '';
 $subscr = isset($_REQUEST['subscr']) ? $_REQUEST['subscr'] : '';
 $noemail = isset($_REQUEST['noemail']) ? $_REQUEST['noemail'] : '';
 
-$memstat = isset($_REQUEST[memstat]) ? $_REQUEST[memstat] : '';
+$memstat = isset($_REQUEST['memstat']) ? $_REQUEST['memstat'] : '';
 $ua = $_SERVER['HTTP_USER_AGENT'];
 
 echo '
@@ -279,30 +279,30 @@ if ($action == 'search') {
 //echo "vrangelo: $vrangelo, vrangehi: $vrangehi<br />";
 	$valcount = 0; $noaddr = 0; $nomail = 0; $withemail = 0;
 	while ($row = $res->fetch_assoc()) {
-		$mcid = $row[MCID];
+		$mcid = $row['MCID'];
 		//echo '<pre> row returned '; print_r($row); echo '</pre>';
 		
-		if (($subscr != '') AND (stripos($row[MCtype], 'subscr') === false)) {
+		if (($subscr != '') AND (stripos($row['MCtype'], 'subscr') === false)) {
 			$rptsub = ", subscribers only"; 
 			continue;											// keep subscr rows only 
 			}
 	
-		if (($noemail != '') AND ($row[EmailAddress] != '')) { 
+		if (($noemail != '') AND ($row['EmailAddress'] != '')) { 
 			$withemail++;									// bypass those with email addresses
 			$rptemail = ", without email addresses"; 
 			continue; 
 			}
 	
-		if (($row[AddressLine] == "") AND ($row[Mail] == 'TRUE')) {
+		if (($row['AddressLine'] == "") AND ($row['Mail'] == 'TRUE')) {
 			$noaddr++;										// no address info
 			//continue;
 			} 
-		if ($row[Mail] == 'FALSE') {
+		if ($row['Mail'] == 'FALSE') {
 			$nomail++; 
 			//continue;											// member does not want mail
 			}
 		$results[$mcid] = $row;
-		$grandtotal += $row[Total];
+		$grandtotal += $row['Total'];
 		}
 	}		// action == search
 // --------------------- end -----------------------------
@@ -343,9 +343,9 @@ $grandtotal = number_format($grandtotal);
 $sheetcount = 0;	
 echo "<div class=\"page-break\"></div>";
 foreach ($results as $k => $r) {
-	$ld = "Last Dues Paid: $r[LastDuesDate]";
-	if ($r[MemStatus] == 3)
-		$ld = "Last Donation Made: $r[LastDonDate]";
+	$ld = "Last Dues Paid: $r['LastDuesDate']";
+	if ($r['MemStatus'] == 3)
+		$ld = "Last Donation Made: $r['LastDonDate']";
 echo "<div class=mbrsec>
 ";
 echo "<table width='100%' border=0>

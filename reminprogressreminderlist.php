@@ -8,8 +8,24 @@ session_start();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-sortable.css" rel="stylesheet" media="all">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-sortable.js"></script>
+<style> th { color: red; } </style>
+
+<script>
+$(function() {
+// event triggered when any column of table heading is clicked
+  $("#tab").on("sorted", function() {
+    var x = $(this).text();
+    // alert("Table sorted by column heading clicked");
+    
+    });
+});
+</script>
 
 <?php
 //include 'Incls/vardump.inc.php';
@@ -50,14 +66,14 @@ $dr = array(); $tr = array(); $pr = array();
 while ($r = $results->fetch_assoc()) {
 	$mcidid = $r['MCID'];
 	if (stripos($r['Reminders'],"remind") !== FALSE) {  // count the reminder notices sent since last renewal paid
-		//echo "reminder records: $r[CORID], mcid: $mcidid<br>";
+		//echo "reminder records: $r['CORID'], mcid: $mcidid<br>";
 		$ar[$mcidid] += 1;
-		$tr[$mcidid] = $r[DateSent]; 
-		if (strtotime($dr[$mcidid]) < strtotime($r[DateSent])) {
-			$dr[$mcidid] = $r[DateSent];
-			$mstat[$mcidid] = $r[MemStatus];
-			$labelname[$mcidid] = $r[NameLabel1stLine];
-			$corrtype[$mcidid] = $r[CorrespondenceType];
+		$tr[$mcidid] = $r['DateSent']; 
+		if (strtotime($dr[$mcidid]) < strtotime($r['DateSent'])) {
+			$dr[$mcidid] = $r['DateSent'];
+			$mstat[$mcidid] = $r['MemStatus'];
+			$labelname[$mcidid] = $r['NameLabel1stLine'];
+			$corrtype[$mcidid] = $r['CorrespondenceType'];
 			}
 		}
 	if (stripos($r['Reminders'],"RenewalPaid") !== FALSE) {		// forget it all since a renewal done
@@ -73,25 +89,16 @@ echo "<div class=\"container\">";
 echo '<h3>In-progress Reminders&nbsp;&nbsp;<a href="javascript:self.close();" class="btn btn-primary">CLOSE</a></h3>
 ';
 echo "<h4>Listing of $drcount MCIDs:</h4>
-<form>
-Sort by: <select name=sort onchange='this.form.submit()'>
-<option>Select sort order</option>
-<option>Count</option>
-<option>Last Sent</option>
-<option>MCID</option>
-</select>
-</form>
-
 	<p>The MCIDs listed are those members and volunteers that have been sent reminders.  The listing provides the sorted total count of reminders that have been sent as well as the date of the last one. An MCID will be removed from this list when one of the following occurs:</p>
 	<ol>
 	<li>A funding payment is received and entered as a &apos;Dues&apos; payment (or a donation for a 3-Donor),</li>
 	<li>The member record is marked as &apos;Inactive&apos; or</li>
 	<li>The status of the member record is marked as &apos;0-Contacts.</li>
-</ol>";
-if ($sort == 'MCID') echo '<h4>Sorted by ' . $sort . ' ascending</h4>';
-else echo '<h4>Sorted by ' . $sort . ' decending</h4>';
-echo "<table border=\"0\" class=\"table table-condensed\">";
-echo "<tr><th>MCID</th><th align=\"center\">Name</th><th>MemStatus</th><th align=\"center\">Count</th><th>Last Sent</th><th align=\"center\">Type Sent</th></tr>";
+</ol>
+<p>This table is <b><font color=red>SORTABLE</font></b>.  Click the column heading to sort the listing by the table column ascending or descending values.</p>";
+
+echo '<table id="tab" border=1 class="table table-condensed sortable">
+<thead><tr><th>MCID</th><th align="center">Name</th><th>MemStatus</th><th align="center">Count</th><th>Last Sent</th><th align="center">Type Sent</th></tr></thead><tbody>';
 
 // ksort($dr);					// sorted by MCID
 arsort($ar);							// sorted by reminder cound
@@ -110,20 +117,14 @@ foreach ($pr as $mcid => $value) {
 	$count = $ar[$mcid];
 print <<<bulletForm
 <tr>
-<!-- <td>
-<form action="mbrinformation.php" method="post">
-<input type="radio" name="filter" id="1" value="$mcid" onclick='this.form.submit()'></td></form>
-</td> -->
 <td>$mcid</td><td>$name</td><td align="center">$ms</td><td>$count</td><td>$ls</td><td>$ct</tr>
 
 </div>  <!-- container -->
 bulletForm;
 }
-echo "</table>";
+echo "</tbody></table>";
 
 ?>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </div>
 </body>
 </html>

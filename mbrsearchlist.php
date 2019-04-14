@@ -79,7 +79,7 @@ echo '<tr><th>MCID</th><th>Last Name</th><th>First Name</th><th>Address</th><th>
 while ($row = $results->fetch_assoc()) {
 	$mcid=$row['MCID'];  $fname=$row['FName']; $lname=$row['LName'];
 	$org=$row['Organization']; $addr=$row['AddressLine']; $lab1line=$row['NameLabel1stline']; 
-	$city = $row[City]; $eaddr=$row['EmailAddress']; $eaddr2=$row['EmailAddress2'];
+	$city = $row['City']; $eaddr=$row['EmailAddress']; $eaddr2=$row['EmailAddress2'];
 echo "
 <tr><td><a href=\"mbrinfotabbed.php?filter=$mcid\">$mcid</a></td><td>$lname</td><td>$fname</td><td>$addr</td><td>$city</td><td>$eaddr";
 if (strlen($eaddr2)>0) echo "<br>$eaddr2";

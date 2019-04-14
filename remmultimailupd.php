@@ -32,31 +32,31 @@ foreach ($mcidarray as $m) {
 	$mr = $res->fetch_assoc();
 	
 	// update letters and labels table with mailing and label info
-	$vararray[MCID] = $mr[MCID];
-	$vararray[Date] = date('Y-m-d');
-	$vararray[Organization] = $mr[Organization];
-	$vararray[NameLabel1stline] = $mr[NameLabel1stline];
-	$vararray[AddressLine] = $mr[AddressLine];
-	$vararray[City] = $mr[City];
-	$vararray[State] = $mr[State];
-	$vararray[ZipCode] = $mr[ZipCode];
-	$vararray[CorrSal] = $mr[CorrSal];
-	$vararray[Letter] = addslashes($letter);
+	$vararray['MCID'] = $mr['MCID'];
+	$vararray['Date'] = date('Y-m-d');
+	$vararray['Organization'] = $mr['Organization'];
+	$vararray['NameLabel1stline'] = $mr['NameLabel1stline'];
+	$vararray['AddressLine'] = $mr['AddressLine'];
+	$vararray['City'] = $mr['City'];
+	$vararray['State'] = $mr['State'];
+	$vararray['ZipCode'] = $mr['ZipCode'];
+	$vararray['CorrSal'] = $mr['CorrSal'];
+	$vararray['Letter'] = addslashes($letter);
 	sqlinsert('labelsandletters', $vararray);
 	//echo '<pre> lettersandlabels '; print_r($vararray); echo '</pre>';
 	
 	// add entry to correspondence table about this action
-	$fields[CorrespondenceType] = 'MailReminder';
-	$fields[DateSent] = date('Y-m-d');
-	$fields[MCID] = $mr[MCID];
-	$fields[Reminders] = 'MailReminder';
-	$fields[Notes] = "Mail reminder sent by reminder system";
+	$fields['CorrespondenceType'] = 'MailReminder';
+	$fields['DateSent'] = date('Y-m-d');
+	$fields['MCID'] = $mr['MCID'];
+	$fields['Reminders'] = 'MailReminder';
+	$fields['Notes'] = "Mail reminder sent by reminder system";
 	sqlinsert('correspondence', $fields);
 	//echo '<pre> correspondence '; print_r($fields); echo '</pre>';
 	
 	// update member summary info
-	$mbrflds[LastCorrType] = $fields[CorrespondenceType];  
-	$mbrflds[LastCorrDate] = $fields[DateSent];
+	$mbrflds['LastCorrType'] = $fields['CorrespondenceType'];  
+	$mbrflds['LastCorrDate'] = $fields['DateSent'];
 	sqlupdate('members', $mbrflds, "`MCID` = '$mcid';");
 	//echo '<pre> members '; print_r($mbrflds); echo '</pre>';
 	echo "$mr[MCID], ";

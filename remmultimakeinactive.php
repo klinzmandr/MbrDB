@@ -59,14 +59,14 @@ $mcids = $_REQUEST['inact'];
 $updarray = array();
 if (count($mcids) > 0) foreach ($mcids as $m) {
 	echo "$m, ";
-	$updarray[Inactive] = "TRUE";
-	$updarray[Inactivedate] = $today;
+	$updarray['Inactive'] = "TRUE";
+	$updarray['Inactivedate'] = $today;
 	sqlupdate('members',$updarray,"`MCID` = '$m'");				// set member fields
 	//echo '<pre> member update '; print_r($updarray); echo '</pre>';
-	$insarray[CorrespondenceType] = 'MbrInactive';
-	$insarray[DateSent] = $today;
-	$insarray[MCID] = $m;
-	$insarray[Notes] = 'Member set inactive by reminder system';
+	$insarray['CorrespondenceType'] = 'MbrInactive';
+	$insarray['DateSent'] = $today;
+	$insarray['MCID'] = $m;
+	$insarray['Notes'] = 'Member set inactive by reminder system';
 	sqlinsert('correspondence', $insarray); 
 	}
 else echo "<h3>No MCIDs were made inactive.</h3>";

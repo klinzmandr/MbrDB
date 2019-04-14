@@ -53,7 +53,7 @@ listForm;
   $csv[] = "MCID;Name;MCType;Organization;Email Address;Street Address;City;St;Zip;Notes\n";
   $translate = array("\\" => ' ', "\n" => ' ', "\t"=>' ', "\r"=>' ', "\"" =>'');
 	while ($r = $results->fetch_assoc()) {
-		$note = strtr($r[Notes], $translate);
+		$note = strtr($r['Notes'], $translate);
 		$csv[] = "\"$r[MCID]\";\"$r[NameLabel1stline]\";$r[MCtype];$r[Organization];$r[EmailAddress];\"$r[AddressLine]\";$r[City];$r[State];$r[ZipCode];\"$note\"\n";
 		echo "<tr><td>$r[MCID]</td><td>$r[NameLabel1stline]</td><td>$r[MCtype]</td><td>$r[Organization]</td><td>$r[EmailAddress]</td><td>$r[AddressLine]</td><td>$r[City]</td><td>$r[State]</td><td>$r[ZipCode]</td><td>$note</td></tr>";
 		}

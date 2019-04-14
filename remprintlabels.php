@@ -50,9 +50,9 @@ for ($i=0; $i<$blanks; $i++) {
 	$sheetcount += 1;
 	}
 while ($r = $res->fetch_assoc()) {
-	$mcid = $r[MCID]; $date = $r[Date]; $org = substr($r[Organization],0,24);	
-	$name = substr($r[NameLabel1stline],0,24); 
-	$addr = $r[AddressLine]; $city = $r[City]; $state = $r[State]; $zipcode = $r[ZipCode];
+	$mcid = $r['MCID']; $date = $r['Date']; $org = substr($r['Organization'],0,24);	
+	$name = substr($r['NameLabel1stline'],0,24); 
+	$addr = $r['AddressLine']; $city = $r['City']; $state = $r['State']; $zipcode = $r['ZipCode'];
 	if ($org == '') 
 		echo "<div class=\"label\">
 $name<br>
@@ -61,7 +61,7 @@ $city, $state  $zipcode
 <div style=\"text-align: right; \"><mcid>$mcid</mcid></div>
 </div>";
 	else {
-		$name = 'Attn: ' . substr($r[NameLabel1stline],0,19);		
+		$name = 'Attn: ' . substr($r['NameLabel1stline'],0,19);		
 		echo "<div class=\"label\">
 $org<br>
 $name<br>

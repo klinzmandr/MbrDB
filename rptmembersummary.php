@@ -60,7 +60,7 @@ $res = doSQLsubmitted($sql);
 $startdate = array(); $enddate = array();
 while ($r = $res->fetch_assoc()) {
 	//echo "<pre>$name: "; print_r($r); echo "</pre>";
-	$fn = $r[MCtype];											// $name = Purpose, Program or Category now
+	$fn = $r['MCtype'];											// $name = Purpose, Program or Category now
 	$nc[$fn] += 1;												// add up number of records per selection
 	$tot += 1;														// create overall total count
 	}

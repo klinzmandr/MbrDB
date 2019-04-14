@@ -17,9 +17,9 @@ session_start();
 include 'Incls/seccheck.inc.php';
 include 'Incls/datautils.inc.php';
 
-$action = isset($_REQUEST[action]) ? $_REQUEST[action] : '';
-$sd = isset($_REQUEST[sd]) ? $_REQUEST[sd] : date('Y-m-01', strtotime("previous month -2 months"));
-$ed = isset($_REQUEST[ed]) ? $_REQUEST[ed] : date('Y-m-t', strtotime("previous month"));
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+$sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-m-01', strtotime("previous month -2 months"));
+$ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-t', strtotime("previous month"));
 
 if (($sd == "") OR ($ed == "")) $action = '';
 
@@ -75,11 +75,11 @@ exit;
 $ra = array();		// array to capture results of query
 $tots = array(); 	// array for counts and totals
 while($r = $res->fetch_assoc()) {
-	if ((strtotime($r[MemDate]) <= strtotime($sd)) OR (strtotime($r[MemDate]) >= strtotime($ed)))
+	if ((strtotime($r['MemDate']) <= strtotime($sd)) OR (strtotime($r['MemDate']) >= strtotime($ed)))
 		continue; 
-	$ra[$r[MCID]] = $r;
-	$tots[$r[MCID]][count] += 1;
-	$tots[$r[MCID]][total] += $r[TotalAmount];
+	$ra[$r['MCID']] = $r;
+	$tots[$r['MCID']]['count'] += 1;
+	$tots[$r['MCID']]['total'] += $r['TotalAmount'];
 	}
 
 echo "Date range from $sd to $ed<br>";
@@ -92,9 +92,9 @@ echo '<tr><th>MCID</th><th>Cnt</th><th>TotAmt</th><th>MemType</th><th>Full Name<
 // NOTE: may want to do an 'array_multisort' to sort by MemDate (date joined)
 
 foreach ($ra as $r) {
-	$mcid = $r[MCID];
-	$total = $tots[$mcid][total];
-	$count = $tots[$mcid][count];
+	$mcid = $r['MCID'];
+	$total = $tots[$mcid]['total'];
+	$count = $tots[$mcid]['count'];
 	echo "<tr><td>$r[MCID]</td><td align='right'>$count</td><td align=\"right\">$$total</td><td>$r[MCtype]</td><td>$r[NameLabel1stline]</td><td>$r[MemDate]</td><td>$r[PrimaryPhone]</td><td>$r[EmailAddress]</td></tr>";
 	$csv[] = "$r[MCID];$count;$$total;$r[NameLabel1stline];$r[MemDate];$r[PrimaryPhone];$r[EmailAddress]\n";
 	}

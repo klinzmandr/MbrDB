@@ -82,18 +82,18 @@ if ($_SERVER['SERVER_NAME'] != 'localhost') {
   exec($cmd . " > /home/pacwilica/public_html_apps/mailsenderlog.txt &");
   }
 // finally add new correspondence record noting send of this email
-$fields[CorrespondenceType] = 'EmailNotice';
+$fields['CorrespondenceType'] = 'EmailNotice';
 if (preg_match("/tax|receipt/i", $corrtypesub))   // create special corr type for tax receipt
-  $fields[CorrespondenceType] = 'TaxReciept';
-$fields[DateSent] = date('Y-m-d');
-$fields[MCID] = $mcid;
-$fields[Reminders] = 'EMailNotice';
-$fields[Notes] = "Email: $subject";
+  $fields['CorrespondenceType'] = 'TaxReciept';
+$fields['DateSent'] = date('Y-m-d');
+$fields['MCID'] = $mcid;
+$fields['Reminders'] = 'EMailNotice';
+$fields['Notes'] = "Email: $subject";
 sqlinsert('correspondence', $fields);
 
 // update member summary info
-$mbrflds[LastCorrType] = $fields[CorrespondenceType];  // update member summary info
-$mbrflds[LastCorrDate] = $fields[DateSent];
+$mbrflds['LastCorrType'] = $fields['CorrespondenceType'];  // update member summary info
+$mbrflds['LastCorrDate'] = $fields['DateSent'];
 sqlupdate('members', $mbrflds, "`MCID` = '$mcid';");
 
 ?>

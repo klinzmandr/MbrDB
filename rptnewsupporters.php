@@ -21,9 +21,9 @@ session_start();
 include 'Incls/seccheck.inc.php';
 include 'Incls/datautils.inc.php';
 
-$action = isset($_REQUEST[action]) ? $_REQUEST[action] : '';
-$sd = isset($_REQUEST[sd]) ? $_REQUEST[sd] : date('Y-01-01', strtotime(now));
-$ed = isset($_REQUEST[ed]) ? $_REQUEST[ed] : date('Y-m-t', strtotime(now));
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+$sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-01-01', strtotime(now));
+$ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-t', strtotime(now));
 if (($sd == "") OR ($ed == "")) $action = '';
 
 $mtarray = $_REQUEST['mt'];
@@ -107,36 +107,36 @@ endPage;
 	$duestot = 0; $dontot = 0;
 	while ($r = $res->fetch_assoc()) {
 //		echo '<pre> New member '; print_r($r); echo '</pre>';
-		unset($r[MbrID]);
-		unset($r[TimeStamp]);
-		unset($r[Source]);
-		unset($r[Account]);
-		unset($r[Member]);
-		unset($r[E_Mail]);
-		unset($r[Inactive]);
-		unset($r[Inactivedate]);
-		unset($r[Mail]);
-		unset($r[PaidMemberYear]);
-		unset($r[MasterMemberID]);
-		unset($r[CorrSal]);
-		unset($r[Lists]);
-		unset($r[LastDonDate]);
-		unset($r[LastDonPurpose]);
-		unset($r[LastDonAmount]);
-		unset($r[LastDuesDate]);
-		unset($r[LastDuesAmount]);
-		unset($r[LastCorrDate]);
-		unset($r[LastCorrType]);
+		unset($r['MbrID']);
+		unset($r['TimeStamp']);
+		unset($r['Source']);
+		unset($r['Account']);
+		unset($r['Member']);
+		unset($r['E_Mail']);
+		unset($r['Inactive']);
+		unset($r['Inactivedate']);
+		unset($r['Mail']);
+		unset($r['PaidMemberYear']);
+		unset($r['MasterMemberID']);
+		unset($r['CorrSal']);
+		unset($r['Lists']);
+		unset($r['LastDonDate']);
+		unset($r['LastDonPurpose']);
+		unset($r['LastDonAmount']);
+		unset($r['LastDuesDate']);
+		unset($r['LastDuesAmount']);
+		unset($r['LastCorrDate']);
+		unset($r['LastCorrType']);
 		
-		$mcidarray[$r[MCID]] = $r;		// save for output
-		if ($r[Purpose] == 'Dues') {
-			$mcidcounts[$r[MCID]][duescount] += 1;
-			$mcidcounts[$r[MCID]][dues] += $r[TotalAmount]; 
-			$duestot += $r[TotalAmount]; }
+		$mcidarray[$r['MCID']] = $r;		// save for output
+		if ($r['Purpose'] == 'Dues') {
+			$mcidcounts[$r['MCID']]['duescount'] += 1;
+			$mcidcounts[$r['MCID']]['dues'] += $r['TotalAmount']; 
+			$duestot += $r['TotalAmount']; }
 		else {
-			$mcidcounts[$r[MCID]][doncount] += 1;
-			$mcidcounts[$r[MCID]][donations] += $r[TotalAmount]; 
-			$dontot += $r[TotalAmount]; }
+			$mcidcounts[$r['MCID']]['doncount'] += 1;
+			$mcidcounts[$r['MCID']]['donations'] += $r['TotalAmount']; 
+			$dontot += $r['TotalAmount']; }
 		
 		
 		}
@@ -162,25 +162,25 @@ endPage;
 echo '<table class="table">
 	<tr><th>MCID</th><th>MemStatus</th><th>MC Type</th><th>DateJoined</th><th>TotDues</th><th>TotDon</th><th>LabelLine1</th><th>Email Address</th><th>Phone</th><th>Notes</th>';
 foreach ($mcidarray as $k => $r) {
-		$r[Notes] = strtr($r[Notes], $translate);
+		$r['Notes'] = strtr($r['Notes'], $translate);
 		
-		$dues = number_format($mcidcounts[$k][dues]);
-		$duescsv = $mcidcounts[$k][dues];
+		$dues = number_format($mcidcounts[$k]['dues']);
+		$duescsv = $mcidcounts[$k]['dues'];
 		$duescsvct = '';
-		if (isset($mcidcounts[$k][duescount])) {
-			$duescsvct = $mcidcounts[$k][duescount];
-			$dues = '(' . number_format($mcidcounts[$k][duescount]) . ')$' . $dues; }
+		if (isset($mcidcounts[$k]['duescount'])) {
+			$duescsvct = $mcidcounts[$k]['duescount'];
+			$dues = '(' . number_format($mcidcounts[$k]['duescount']) . ')$' . $dues; }
 			
-		$dons = number_format($mcidcounts[$k][donations]);
-		$donscsv = $mcidcounts[$k][donations];
+		$dons = number_format($mcidcounts[$k]['donations']);
+		$donscsv = $mcidcounts[$k]['donations'];
 		$donscsvct = '';
-		if (isset($mcidcounts[$k][doncount])) {
-			$donscsvct = $mcidcounts[$k][doncount];
-			$dons = '(' . number_format($mcidcounts[$k][doncount]) . ')$' . $dons; }
+		if (isset($mcidcounts[$k]['doncount'])) {
+			$donscsvct = $mcidcounts[$k]['doncount'];
+			$dons = '(' . number_format($mcidcounts[$k]['doncount']) . ')$' . $dons; }
 		echo "<tr><td>$r[MCID]</td><td>$r[MemStatus]</td><td>$r[MCtype]</td><td>$r[MemDate]</td><td align=right>$dues</td><td align=right>$dons</td><td>$r[NameLabel1stline]</td><td>$r[EmailAddress]</td><td>$r[PrimaryPhone]</td><td>$r[Notes]</td></tr>";
-		$r[MCID] = "\"$r[MCID]\"";		// escape for csv output
-		$r[Notes] = "\"$r[Notes]\"";
-		$r[AddressLine] = "\"$r[AddressLine]\"";
+		$r['MCID'] = "\"$r[MCID]\"";		// escape for csv output
+		$r['Notes'] = "\"$r[Notes]\"";
+		$r['AddressLine'] = "\"$r[AddressLine]\"";
 		$fa[] = "$r[MCID];$r[MemStatus];$r[MemDate];$r[MCType];$r[LName];$r[FName];$r[NameLabel1stline];$r[Organization];$r[AddressLine];$r[City];$r[State];$r[ZipCode];$r[PrimaryPhone];$r[EmailAddress];$duescsvct;$duescsv;$donscsvct;$donscsv;$r[Notes]\n";
 //	echo '<pre> New member '; print_r($r); echo '</pre>';
 		}

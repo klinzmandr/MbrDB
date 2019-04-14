@@ -10,6 +10,8 @@ session_start();
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <?php
 include 'Incls/seccheck.inc.php';
@@ -47,27 +49,29 @@ unset($flds[0]);	// drop CORID
 foreach ($flds as $k=>$v) {
 	$hdr .= $v->name . ';';
 	}
-$csv[] = rtrim($hdr,";") . "\n";		// column names are 1st line
-//echo "header: $csv<br>";
+$fp = fopen('downloads/Correspondence.csv', "w");
+$csv = rtrim($hdr,";") . "\n";		// column names are 1st line
+fwrite($fp, $csv);
+// echo "header: $csv<br>";
 
 while ($r = $res->fetch_assoc()) {
 	// delete all columns not wanted from the return results array
-	unset($r[CORID]);
+	unset($r['CORID']);
 	
 	// cleanze and format text fields with double quotes to delimit them
-	$r[MCID] = '"' . strtr($r[MCID], $translate) . '"';
-	$r[Notes] = '"' . strtr($r[Notes], $translate) . '"';
+	$r['MCID'] = '"' . strtr($r['MCID'], $translate) . '"';
+	$r['Notes'] = '"' . strtr($r['Notes'], $translate) . '"';
 	$r[] = "\n";
 	
 	// now implode the array with commas to seperate the fields and 
 	// remove new lines, tabs, double quote marks and back slashes
-	$csv[] = implode(';',$r);
+	$csv = implode(';',$r);
+	fwrite($fp, $csv);
 }
-file_put_contents('downloads/Correspondence.csv',$csv);	// save into text file for download
+// file_put_contents('downloads/Correspondence.csv',$csv);	// save into text file for download
+fclose($fp);
 
 ?>
 <br><br><a class="btn btn-success" href="indexadmin.php">RETURN</a>
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

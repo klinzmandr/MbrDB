@@ -51,7 +51,7 @@ tempForm1;
 	echo "<select name=\"template\">";
 	echo '<option value=""></option>';
 	while ($t = $res->fetch_assoc()) {
-		$name = $t[Name]; $tid = $t[TID];
+		$name = $t['Name']; $tid = $t['TID'];
 		echo "<option value=\"$tid\">$name</option>";
 		}
 	echo '</select>';
@@ -77,8 +77,8 @@ tempForm1;
 $tid = $_REQUEST['template'];
 
 echo "<div class=\"container\"><h4>Send To List&nbsp;&nbsp;<a class=\"btn btn-primary btn-xs\" href=\"remmultiduesnotices.php\">RETURN</a></h4>";
-//echo '<pre> Template Name '; print_r($t[Name]); echo '</pre>';
-//echo '<pre> Template Body '; print_r($t[Body]); echo '</pre>';
+//echo '<pre> Template Name '; print_r($t['Name']); echo '</pre>';
+//echo '<pre> Template Body '; print_r($t['Body']); echo '</pre>';
 
 print <<<scrPart
 <script type="text/javascript" src="js/nicEdit.js"></script>
@@ -106,16 +106,16 @@ foreach ($mcidarray as $m) {
 		//echo "<pre>dump of mbr info "; print_r($row); echo "</pre>";
 		}
 	else 
-		echo "<input type=\"checkbox\" name=\"mail[]\" value=\"$row[MCID]\" checked>".$row[MCID].' '.$row[NameLabel1stline].'<br />';
+		echo "<input type=\"checkbox\" name=\"mail[]\" value=".$row['MCID']." checked>".$row['MCID'].' '.$row['NameLabel1stline'].'<br />';
 	}
 
 // read the template and prep edit form
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$tid' AND `Type` = 'mail';";
 $res = doSQLsubmitted($sql);
 $t = $res->fetch_assoc();
-$templatename = stripslashes($t[Name]);
-$templatebody = stripslashes($t[Body]);
-$temprecno = $t[TID];
+$templatename = stripslashes($t['Name']);
+$templatebody = stripslashes($t['Body']);
+$temprecno = $t['TID'];
 
 //$org = $row['Organization']; $name = $row['NameLabel1stline']; $addr = $row['AddressLine'];
 //$city = $row['City']; $state = $row['State']; $zip = $row['ZipCode']; $corrsal = $row['CorrSal'];
@@ -127,19 +127,19 @@ preg_match_all($regex, $templatebody, $matches);
 // echo "<pre>row "; print_r($row); echo "</pre>";
 for ($i = 0; $i < count($matches[1]); $i++) {
 	$match = rtrim($matches[1][$i]);
-	if (strpos($match, 'EmailAddress') !== false) $newValue = $row[EmailAddress];
+	if (strpos($match, 'EmailAddress') !== false) $newValue = $row['EmailAddress'];
 	if ($match == 'total') $newValue = $total;
 	if ($match == 'itemcount') $newValue = $itemcount; 
-	if ($match == 'date') $newValue = date("F d, Y",strtotime(now));
-	if ($match == 'CorrSal') $newValue = $row[CorrSal];
-	if ($match == 'NameLabel1stline') $newValue = $row[NameLabel1stline];
-	if ($match == 'FName') $newValue = $row[FName];
-	if ($match == 'LName') $newValue = $row[LName];
-	if ($match == 'AddressLine') $newValue = $row[AddressLine];
-	if ($match == 'City') $newValue = $row[City]; 
-	if ($match == 'State') $newValue = $row[State]; 
-	if ($match == 'ZipCode') $newValue = $row[ZipCode];
-	if ($match == 'Organization') $newValue = $row[Organization]; 
+	if ($match == 'date') $newValue = date("F d, Y",strtotime('now'));
+	if ($match == 'CorrSal') $newValue = $row['CorrSal'];
+	if ($match == 'NameLabel1stline') $newValue = $row['NameLabel1stline'];
+	if ($match == 'FName') $newValue = $row['FName'];
+	if ($match == 'LName') $newValue = $row['LName'];
+	if ($match == 'AddressLine') $newValue = $row['AddressLine'];
+	if ($match == 'City') $newValue = $row['City']; 
+	if ($match == 'State') $newValue = $row['State']; 
+	if ($match == 'ZipCode') $newValue = $row['ZipCode'];
+	if ($match == 'Organization') $newValue = $row['Organization']; 
 	$templatebody = str_replace($matches[0][$i], $newValue, $templatebody);
 	//echo "templatebody: $templatebody<br>";
 	$newValue = '';

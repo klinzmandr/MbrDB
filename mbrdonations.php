@@ -47,21 +47,15 @@ if ($action == "delete") {
 	$corrdel = doSQLsubmitted($qrysql);
 	$corr_rec = $corrdel->fetch_assoc();
 	//echo "<pre>"; print_r($corr_rec); echo "</pre>";
-	$corr_recno = $corr_rec[CORID];		// get the rec nbr for single record delete
+	$corr_recno = $corr_rec['CORID'];		// get the rec nbr for single record delete
 	//echo "<h4>Funding record nbr: $recnbr and assoicated correspondence rececord nbr: $corr_recno have been deleted.</h4>";
 	$delsql = "DELETE FROM `correspondence` WHERE CORID = '".$corr_recno."' AND `MCID` = '".$mcid."' AND `DateSent` = '".$date."' AND Reminders = 'RenewalPaid';";
 	doSQLsubmitted($delsql);		// delete the associated correspondence record
 	
 	// now modify the donantion record to make it look like a new one
-	$donarray[Purpose] = '**NewRec**';				// donation purpose for new add
-	$donarray[Program] = '';
-	//$donarray[Campaign] = '';
-	//$donarray[DonationDate] = date('Y-m-d');	// today's date
-	//$donarray[CheckNumber] = '';
-	//$donarray[TotalAmount] = '';
-	//$donarray[MembershipDonatedFor] = '';
-	//$donarray[Note] = '';
-	$donarray[MCID] = $mcid;
+	$donarray['Purpose'] = '**NewRec**';				// donation purpose for new add
+	$donarray['Program'] = '';
+	$donarray['MCID'] = $mcid;
 	sqlupdate('donations', $donarray, "`DonationID`='$recnbr'");
 	$action = "edit";
 	}
@@ -75,10 +69,10 @@ if ($action == "add") {		// add new, empty donation record unless an empty one e
 	$nbr_rows = $res->num_rows;
 	//echo "nbr_rows from search for new rec: $nbr_rows<br>";
 	if ($nbr_rows == 0) {
-		$flds[Purpose] = '**NewRec**';				// donation purpose for new add
-		$flds[Program] = '';
-		$flds[DonationDate] = date('Y-m-d');	// today's date
-		$flds[MCID] = $mcid;
+		$flds['Purpose'] = '**NewRec**';				// donation purpose for new add
+		$flds['Program'] = '';
+		$flds['DonationDate'] = date('Y-m-d');	// today's date
+		$flds['MCID'] = $mcid;
 		$rows = sqlinsert('donations', $flds);
 		//echo "affected row count: $rows<br>";
 		}
@@ -261,33 +255,32 @@ if ($action == "apply") {
 	//echo "query string: $uri<br>";
 	parse_str($uri, $vararray);
 	//echo "<pre>"; print_r($vararray); echo "</pre>";
-	$vararray[Note] = stripslashes($vararray[Note]);
-	unset($vararray[action]); unset($vararray[id]);
+	$vararray['Note'] = stripslashes($vararray['Note']);
+	unset($vararray['action']); unset($vararray['id']);
 	//echo "<pre>donation array"; print_r($vararray); echo "</pre>";
 	$memflds = array();								// array for updates to member record
-	$memflds[Inactive] = 'FALSE';				// make sure that member record is not inactive 
-	$memflds[Inactivedate] = '';
+	$memflds['Inactive'] = 'FALSE';				// make sure that member record is not inactive 
+	$memflds['Inactivedate'] = '';
 	if ($vararray['Purpose'] == "Dues") {			// if dues paid, auto-insert record into corresp.
-		$fields[CorrespondenceType] = 'RenewalPaid';
-		//$fields[DateSent] = date('Y-m-d');
-		$fields[DateSent] = $vararray[DonationDate];  // use date of donation record for matching searches
-		$fields[MCID] = $mcid;
-		$fields[Reminders] = 'RenewalPaid';
-		$fields[Notes] = "auto-added on payment of dues";
+		$fields['CorrespondenceType'] = 'RenewalPaid';
+		$fields['DateSent'] = $vararray['DonationDate'];  // use date of donation record for matching searches
+		$fields['MCID'] = $mcid;
+		$fields['Reminders'] = 'RenewalPaid';
+		$fields['Notes'] = "auto-added on payment of dues";
 		//echo "<pre>donations array"; print_r($vararray); echo "</pre>";
 		//echo "<pre>correspondence array"; print_r($fields); echo "</pre>";
 		sqlinsert('correspondence', $fields);
 		
 		// update fields of member row with date and amount of last dues paid		
-		$memflds[LastDuesDate] = $vararray[DonationDate];
-		$memflds[LastDuesAmount] = $vararray[TotalAmount];
+		$memflds['LastDuesDate'] = $vararray['DonationDate'];
+		$memflds['LastDuesAmount'] = $vararray['TotalAmount'];
 		sqlupdate('members', $memflds, "`MCID` = '$mcid'");
 		}
 	// or update fields of member record of mcid with date and amount of other payment type
 	else {
-		$memflds[LastDonDate] = $vararray[DonationDate];
-		$memflds[LastDonAmount] = $vararray[TotalAmount];
-		$memflds[LastDonPurpose] = $vararray[Purpose];
+		$memflds['LastDonDate'] = $vararray['DonationDate'];
+		$memflds['LastDonAmount'] = $vararray['TotalAmount'];
+		$memflds['LastDonPurpose'] = $vararray['Purpose'];
 		sqlupdate('members', $memflds, "`MCID` = '$mcid'");
 		}
 	//echo "before update call - recno: $recno, mcid: $mcid<br>";

@@ -269,37 +269,37 @@ if ($mysqli->errno != 0) {
 $withemail = 0; $withoutemail = 0;
 while ($row = $res->fetch_assoc()) {  // read results and do value range check
   // echo '<pre>'; print_r($row); echo '</pre>';
-	$mcid = $row[MCID];
+	$mcid = $row['MCID'];
 	if ($mcid == 'OTD00') {
 	  $mcidcnt++;
 	  continue;
     } 
     
-	if ($row[Inactive] == 'TRUE') {    // ignore if record marked inactive
+	if ($row['Inactive'] == 'TRUE') {    // ignore if record marked inactive
     $inactcnt += 1;
     continue;
     }
 
-	if ($row[Mail] == 'FALSE') {    // ignore if does not want mail
+	if ($row['Mail'] == 'FALSE') {    // ignore if does not want mail
     $inactcnt += 1;
     continue;
     }
   
-  if (($noemail == 'noemail') && ($row[E_Mail] == 'TRUE')) {
+  if (($noemail == 'noemail') && ($row['E_Mail'] == 'TRUE')) {
     $withoutemail++;
     continue;
     }  
 
-  if (($yesemail == 'yesemail') && ($row[E_Mail] == 'FALSE')) {
+  if (($yesemail == 'yesemail') && ($row['E_Mail'] == 'FALSE')) {
     $withemail++;
     continue;
     }  
 
 // add into results arrays
-  $key = $row[MCID] . $row[MCtype];
+  $key = $row['MCID'] . $row['MCtype'];
   $results[$key] = $row;
-  $grandtotal += $row[TotalAmount];
-  $mcidtot[$key] += $row[TotalAmount];
+  $grandtotal += $row['TotalAmount'];
+  $mcidtot[$key] += $row['TotalAmount'];
   $mcidtotcnt[$key] += 1;
   }
 
@@ -357,9 +357,9 @@ for ($i=0;$i<$blanks;$i++) {
 $corrarray = array(); $corrarray[] = "MCID,Name\n";
 if (count($results) != 0) {
 foreach ($results as $k => $r) {
-	$mcid = $r[MCID]; $zipcode = $r[ZipCode]; $org = substr($r[Organization],0,24);
-	$name = substr($r[NameLabel1stline],0,24); $addr = $r[AddressLine]; $city = $r[City]; $state = $r[State];
-	$corrarray[] = $r[MCID] . ',' .  $r[NameLabel1stline] . "\n";
+	$mcid = $r['MCID']; $zipcode = $r['ZipCode']; $org = substr($r['Organization'],0,24);
+	$name = substr($r['NameLabel1stline'],0,24); $addr = $r['AddressLine']; $city = $r['City']; $state = $r['State'];
+	$corrarray[] = $r['MCID'] . ',' .  $r['NameLabel1stline'] . "\n";
 	if ($org == '')
 		echo "<div class=\"label\">
 $name<br>

@@ -131,13 +131,13 @@ if ($action == 'apply') {
 	$oldmcid = $_REQUEST['oldmcid']; $newmcid = $_REQUEST['newmcid'];
 	$newmcid = strtoupper($newmcid);
 	//echo "oldmcid: $oldmcid, newmcid: $newmcid<br />";
-	$newfld[MCID] = $newmcid;
+	$newfld['MCID'] = $newmcid;
 	$where = "`MCID` = '$oldmcid'";
 	$donrows = 0; $corrows = 0; $vtrows = 0; $pvtrows = 0;
 	$donrows = sqlupdate('donations', $newfld, $where);
 	$corrows = sqlupdate('correspondence', $newfld, $where);
 	$vtrows = sqlupdate('voltime', $newfld, $where);
-	$newfldpvt[TMCID] = $newmcid;
+	$newfldpvt['TMCID'] = $newmcid;
 	$where = "`TMCID` = '$oldmcid'";	
 	$pvtrows = sqlupdate('voltimeprev', $newfldpvt, $where);
 	echo "<h4>Update completed successfully</h4>
