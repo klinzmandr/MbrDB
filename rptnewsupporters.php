@@ -22,8 +22,8 @@ include 'Incls/seccheck.inc.php';
 include 'Incls/datautils.inc.php';
 
 $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
-$sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-01-01', strtotime(now));
-$ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-t', strtotime(now));
+$sd = isset($_REQUEST['sd']) ? $_REQUEST['sd'] : date('Y-01-01', strtotime('now'));
+$ed = isset($_REQUEST['ed']) ? $_REQUEST['ed'] : date('Y-m-t', strtotime('now'));
 if (($sd == "") OR ($ed == "")) $action = '';
 
 $mtarray = $_REQUEST['mt'];
@@ -62,15 +62,16 @@ print <<<pagePart1
 <p>This report is a listing of new contacts, members, volunteers or donors that have <b>joined</b> within the following specific date range (default is THIS year to date).</p>
 <p>Listed supporters are selected by comparing the &apos;Date Joined&apos; of each supporter record to the specified date range. If the &apos;Date Joined&apos; is within the specified date range, it is included in this listing.  Funding records for each selected member are included in the totals if they are also within the specified date range and are marked as &apos;Dues&apos; or a &apos;Donation&apos;.</p>
 <p>The &apos;Date Joined&apos; of the supporter record is set on introduction of the supporter into the database.  It can not be changed once established.</p>
-<script src="jquery.js"></script><script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="Incls/bootstrap-datepicker-range.inc.php"></script>
 </body></html>
 
 pagePart1;
 exit;
 }
 if ($action == 'continue') {
+  if (count($mtarray) <=0) {
+    echo '<h3>No member types checked.</h3>';
+    exit;
+    }
 //  echo '<pre> MTypes '; print_r($mtarray); echo '</pre>';
   $typelist = implode("','", $mtarray);
 	$sql= "SELECT `members`.*, `members`.`MemDate`, `members`.`MCID`, `donations`.`MCID` AS `MCID-Funding`, `donations`.`DonationDate`, `donations`.`TotalAmount`, `donations`.`Purpose`, `members`.`MemDate` 

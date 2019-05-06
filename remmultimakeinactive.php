@@ -51,7 +51,7 @@ if ($action == '') {
 
 // apply updates to the list of MCIDs making all inactive
 if ($action == 'continue') {	
-$today = date('Y-m-d', strtotime(now));
+$today = date('Y-m-d', strtotime('now'));
 echo "<div class=\"container\">
 <h3>The following list of member id's have been made 'INACTIVE' as of $today</h3>";
 $mcids = array();
