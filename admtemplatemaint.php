@@ -74,7 +74,7 @@ echo "<form>";
 
 $recno = 0;
 while ($t = $res->fetch_assoc()) {
-	$recno = $t[TID];
+	$recno = $t['TID'];
 	$l = "<tr><td width=\"20\">
 	<a href=\"admtemplateedit.php?path=$recno\">
   <img src=\"config/b_edit.png\" width=\"16\" height=\"16\" alt=\"EDIT\">
@@ -108,7 +108,7 @@ echo "<form>";
 
 $recno = 0;
 while ($t = $res->fetch_assoc()) {
-	$recno = $t[TID];
+	$recno = $t['TID'];
 	$l = "<tr><td width=\"20\">
 	<a href=\"admtemplateedit.php?path=$recno\">
 	<img src=\"config/b_edit.png\" width=\"16\" height=\"16\" alt=\"EDIT\"></a></td>";

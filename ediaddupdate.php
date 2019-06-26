@@ -10,6 +10,8 @@ session_start();
 <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body onChange="flagChange()">
+<script src="jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <?php
 //include 'Incls/vardump.inc.php';
@@ -118,22 +120,22 @@ if (($mcid != "") AND ($action == "addnew")) {
 		exit;
 		}
 	$r = $res->fetch_assoc();
-	$namelabel1stline = $r[NameLabel1stline];
-	$today = date('Y-m-d', strtotime(now));
+	$namelabel1stline = $r['NameLabel1stline'];
+	$today = date('Y-m-d', strtotime('now'));
 	$lastupdater = $_SESSION['SessionUser'];
 	//$sql = "INSERT INTO `pwcmbrdb`.`extradonorinfo` ( `RecID`, `MCID`, `NameLabel1stline`, `personal`, `education`, `business`, `other`, `wealth`, `research`, `DateEntered`, `LastUpdated`, `LastUpdater` ) VALUES (NULL, '$mcid', '$namelabel1stline', '$personal', '$education', '$business', '$other', '$wealth', '$research', '$today', '$today', '$lastupdater')";
 	//$res = doSQLsubmitted($sql);
-	$flds[MCID] = $mcid;
-	$flds[NameLabel1stline] = $namelabel1stline;
-	$flds[personal] = $personal;
-	$flds[education] = $education;
-	$flds[business] = $business;
-	$flds[other] = $other;
-	$flds[wealth] = $wealth;
-	$flds[research] = $research;
-	$flds[DateEntered] = $today;
-	$flds[LastUpdated] = $today;
-	$flds[LastUpdater] = $lastupdater;
+	$flds['MCID'] = $mcid;
+	$flds['NameLabel1stline'] = $namelabel1stline;
+	$flds['personal'] = $personal;
+	$flds['education'] = $education;
+	$flds['business'] = $business;
+	$flds['other'] = $other;
+	$flds['wealth'] = $wealth;
+	$flds['research'] = $research;
+	$flds['DateEntered'] = $today;
+	$flds['LastUpdated'] = $today;
+	$flds['LastUpdater'] = $lastupdater;
 	$res = sqlinsert('extradonorinfo',$flds);
 	//echo "<h4>New EDI Record Added For: $mcid</h4><br />";
 	// allow the fall through to read/display record just added
@@ -155,8 +157,8 @@ nadaEDI;
 		exit;
 		}
 	$row = $res->fetch_assoc();
-	$personal = $row[personal]; $education = $row[education]; $business = $row[business];
-	$other = $row[other]; $wealth = $row[wealth]; $research = $row[research];
+	$personal = $row['personal']; $education = $row['education']; $business = $row['business'];
+	$other = $row['other']; $wealth = $row['wealth']; $research = $row['research'];
 	}
 print <<<updPage1
 <div class="container">
@@ -283,7 +285,5 @@ $research
 updPage2;
 ?>
 
-<script src="jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -3,8 +3,6 @@ $filter = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : "";
 ?>
 <style>
 body { padding-top: 50px; }
-</style>
-<style>
 input[type=checkbox] { transform: scale(1.5); }
 </style> 
 

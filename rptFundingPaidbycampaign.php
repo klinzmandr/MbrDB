@@ -160,7 +160,7 @@ $vrangehi	= isset($_REQUEST['vrangehi']) ? $_REQUEST['vrangehi'] : '';
 $noemail  = isset($_REQUEST['noemail']) ? $_REQUEST['noemail'] : '';
 
 if ($drangelo == '') $drangelo = '2001-01-01';
-if ($drangehi == '') $drangehi = date('Y-m-d',strtotime(now));
+if ($drangehi == '') $drangehi = date('Y-m-d',strtotime('now'));
 if ($vrangelo == '') $vrangelo = 0;
 if ($vrangehi == '') $vrangehi = 1000000;
 
@@ -218,19 +218,19 @@ $nbr_rows = $res->num_rows;
 $valcount = 0; $noaddr = 0; $nomail = 0; $withemail = 0;
 $mcidtot = array();
 while ($row = $res->fetch_assoc()) {
-	$mcid = $row[MCID];
+	$mcid = $row['MCID'];
 	if ($mcid == 'OTD00') continue; 
 //	echo '<pre> row returned '; print_r($row); echo '</pre>';
-	if ($row[Inactive] == 'TRUE') {    // ignore if record marked inactive
+	if ($row['Inactive'] == 'TRUE') {    // ignore if record marked inactive
     $inactcnt += 1;
     continue;
    }
 
 // add into results arrays
-  $key = $row[MCID] . $row[Campaign];
+  $key = $row['MCID'] . $row[Campaign];
   $results[$key] = $row;
-  $grandtotal += $row[TotalAmount];
-  $mcidtot[$key] += $row[TotalAmount];
+  $grandtotal += $row['TotalAmount'];
+  $mcidtot[$key] += $row['TotalAmount'];
   $mcidtotcnt[$key] += 1;
   }
 // delete any TOTAL mcid/campaign amounts not in the value range
