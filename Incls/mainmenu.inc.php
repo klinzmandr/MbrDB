@@ -123,6 +123,19 @@ $sessionlevel = isset($_SESSION['SecLevel']) ? $_SESSION['SecLevel'] : '';
 // include reminders menu options only for admin users
 if ($sessionlevel == "admin") {
 ?>
+<style>
+@media print {
+    /* on modal open bootstrap adds class "modal-open" to body, so you can handle that case and hide body so it doesn't print with modal*/
+    body.modal-open {
+        visibility: hidden;
+    }
+
+    body.modal-open .modal .modal-header,
+    body.modal-open .modal .modal-body {
+        visibility: visible; /* make visible modal body and header */
+    }
+}
+</style>
 
 <li class="dropdown">
 <a id="drop1" class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">Reminders<b class="caret"></b></a>
@@ -167,9 +180,19 @@ if ($sessionlevel == "admin") {
 	<li><a href="rptmonthlyreport.php" target="_blank">Monthly Report</a></li>
 	<li><a href="rptfollowups.php" target="_blank">Follow Up Forms</a></li>
 	<li><a href="../charts" target="_blank">Database Charts</a></li>
-	<li><a href="#myModal" data-toggle="modal" data-keyboard="true">About MbrDB</a></li>
+	<!-- <li><a href="#myModal" data-toggle="modal" data-keyboard="true">About MbrDB</a></li> -->
+	<li><a href="#" onclick="loadModal()">About MbrDB</a></li>
 </ul>
 </li>  <!-- class="dropdown" -->
+<script>
+// load 'About' info into modal on menu item click
+function loadModal() {
+  $("#myModalLabel").html('About MbrDB');
+  // be careful - the text used for the modal body may NOT have new lines embedded!!!!
+  $("#modal-body").html('<p>Copyright (C) 2013 by Pragmatic Computing, Morro Bay, CA</p><p>MbrDB is a membership management system designed for use by non-profit organizations needing a database solution to organize and optimize their supporter community.</p><p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p><p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</p><p>A copy of this license is available at: <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">http://www.gnu.org/licenses/</a>.</p><p><b>Documentation</b><br /><ul><a href="docs/MbrDB_Release_Info.html" target="_blank">Version Information</a><br /><br /><a href="docs/MbrDB%20Documentation.pdf" target="_blank">User Documentation</a><br /><a href="docs/MbrDB%20Admin%20Documentation.pdf" target="_blank">Administrator Guide</a><br /><a href="docs/DataDictionary.pdf" target="_blank">Data Dictionary</a></ul></p>');
+  $("#myModal").modal("show");   
+  }
+</script>
 <script>
 function setupmcid(theForm)  {
   if (chgFlag > 0) {
@@ -209,22 +232,12 @@ function setupmcid(theForm)  {
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<h4 class="modal-title" id="myModalLabel">About MbrDB</h4>
+<h4 class="modal-title" id="myModalLabel"></h4>
 </div>  <!-- modal header -->
-<div class="modal-body">
-<p>Copyright (C) 2013 by Pragmatic Computing, Morro Bay, CA</P
-<p>MbrDB is a membership management system designed for use by non-profit organizations needing a database solution to organize and optimize their supporter community.</p>
-<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
-<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</p>
-<p>A copy of this license is available at: <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">http://www.gnu.org/licenses/</a>.</p>
-<p><b>Documentation</b><br /><ul>
-<a href="docs/MbrDB_Release_Info.html" target="_blank">Version Information</a><br /><br />
-<a href="docs/MbrDB%20Documentation.pdf" target="_blank">User Documentation</a><br />
-<a href="docs/MbrDB%20Admin%20Documentation.pdf" target="_blank">Administrator Guide</a><br />
-<a href="docs/DataDictionary.pdf" target="_blank">Data Dictionary</a>
-</ul></p>
+<div class="modal-body" id="modal-body">
 </div>  <!-- modal body -->
 <div class="modal-footer">
+<button type="button" class="btn btn-default" onclick="js:window.print()">Print</button>
 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 </div>  <!-- modal-footer -->
 </div><!-- /.modal-content -->
