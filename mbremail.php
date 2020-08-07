@@ -37,7 +37,7 @@ if ($rc == 0) {
 
 $row = $res->fetch_assoc();
 //echo "<pre>MCID record"; print_r($row); echo "</pre>";
-$emaddr = $row['EmailAddress']; $emailok = $row[E_Mail];
+$emaddr = $row['EmailAddress']; $emailok = $row['E_Mail'];
 if (($emaddr == "") OR ($emailok == 'FALSE')) {
 	echo "<h3>Member $mcid does not have any email addresses on file OR does not wish to get e-mail messages</h3>.<br />";
 	//echo "<a class=\"btn btn-primary\" href=\"mbrinfotabbed.php\" name=\"filter\" value=\"$mcid\">CANCEL AND RETURN</a>";
@@ -48,7 +48,7 @@ if (($emaddr == "") OR ($emailok == 'FALSE')) {
 
 // we are good, read and prep edit form
 // echo "emaddr: $emaddr<br />";
-$em = $row[FName] . " " . $row[LName] . " &lt;" . $emaddr . "&gt;";
+$em = $row['FName'] . " " . $row[LName] . " &lt;" . $emaddr . "&gt;";
 
 $emh = $mcid . ':' . $em;
 $fromaddr = $EmailFROM;		// defined in datautils.inc.php

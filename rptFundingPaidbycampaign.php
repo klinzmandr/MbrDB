@@ -227,7 +227,7 @@ while ($row = $res->fetch_assoc()) {
    }
 
 // add into results arrays
-  $key = $row['MCID'] . $row[Campaign];
+  $key = $row['MCID'] . $row['Campaign'];
   $results[$key] = $row;
   $grandtotal += $row['TotalAmount'];
   $mcidtot[$key] += $row['TotalAmount'];
@@ -288,10 +288,10 @@ echo "<table class=\"table-condensed\">
 <th>EMail?<th>Email</th><th>Mail?</th><th>Address</th><th>City/St/Zip</th><th>Notes</th></tr>";
 $translate = array("\\" => ' ', "\n" => ' ', "\t"=>' ', "\r"=>' ', "\"" =>'');
 foreach ($results as $k => $r) {
-	$note = strtr($r[Notes], $translate);
-	if ($r[E_Mail] == 'TRUE') $r[E_Mail] = 'Yes'; else $r[E_Mail] = 'No';
-	if ($r[Mail] == 'TRUE') $r[Mail] = 'Yes'; else $r[Mail] = 'No'; 
-	$mcid = $r[MCID]; $key = $r[MCID].$r[Campaign]; $cmpcnt = $mcidtotcnt[$key];
+	$note = strtr($r['Notes'], $translate);
+	if ($r['E_Mail'] == 'TRUE') $r['E_Mail'] = 'Yes'; else $r['E_Mail'] = 'No';
+	if ($r['Mail'] == 'TRUE') $r['Mail'] = 'Yes'; else $r['Mail'] = 'No'; 
+	$mcid = $r['MCID']; $key = $r['MCID'].$r['Campaign']; $cmpcnt = $mcidtotcnt[$key];
 	$csv[] = "\"$mcid\";$r[MCtype];\"$r[Campaign]\";$mcidtot[$key];\"$cmpcnt\";\"$r[FName]\";\"$r[LName]\";\"$r[NameLabel1stline]\";\"$r[CorrSal]\";$r[PrimaryPhone];$r[E_Mail];$r[EmailAddress];$r[Mail];\"$r[AddressLine]\";$r[City];$r[State];$r[ZipCode];\"$note\"\n";
 	echo "<tr><td>$mcid</td><td>$r[MCtype]</td><td>$r[Campaign]</td><td>$$mcidtot[$key](x$cmpcnt)</td><td>$r[NameLabel1stline]</td><td>$r[PrimaryPhone]</td><td>$r[E_Mail]</td><td>$r[EmailAddress]</td><td>$r[Mail]</td><td>$r[AddressLine]</td><td>$r[City], $r[State], $r[ZipCode]</td><td>$note</td></tr>";
 	//echo "<pre>"; echo "key: $k "; print_r($r); echo "</pre>";	

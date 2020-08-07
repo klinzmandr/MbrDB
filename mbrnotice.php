@@ -81,7 +81,7 @@ $sql = "SELECT * FROM `members` WHERE MCID = '".$mcid."'";
 $res = doSQLsubmitted($sql);
 $rc = $res->num_rows;
 $row = $res->fetch_assoc();
-if ($row[Inactive] == 'TRUE') {
+if ($row['Inactive'] == 'TRUE') {
 	echo "<h3>Member <a href=\"mbrinfotabbed.php\">$mcid</a> marked as inactive</h3>
 	<p>Please update the record before proceeding.</p>
 	</div></body></html>";
@@ -127,7 +127,7 @@ Select an Letter template from the selection list:<br>
 <option value=""></option>
 tempForm1;
 	while ($t = $res->fetch_assoc()) {
-		$name = $t[Name]; $tid = $t[TID];
+		$name = $t['Name']; $tid = $t[TID];
 		echo "<option value=\"$tid\">$name</option>";
 		}
 print <<<tempForm2
@@ -151,8 +151,8 @@ echo "<div class=\"container\"><h3>Edit and Print the Message to ".$_SESSION['Ac
 $sql = "SELECT * FROM `templates` WHERE `TID` = '$tname';";
 $tres = doSQLsubmitted($sql);
 $t = $tres->fetch_assoc();
-$templatename = stripslashes($t[Name]);
-$template = stripslashes($t[Body]);
+$templatename = stripslashes($t['Name']);
+$template = stripslashes($t['Body']);
 
 // perform shortcode translations
 $regex = "/\[(.*?)\]/";
@@ -164,16 +164,16 @@ for ($i = 0; $i < count($matches[1]); $i++) {
 	if (strpos($match, 'EmailAddress') !== false) $newValue = $row[EmailAddress];
 	if ($match == 'total') $newValue = $total;
 	if ($match == 'itemcount') $newValue = $itemcount; 
-	if ($match == 'date') $newValue = date("F d, Y",strtotime(now));
-	if ($match == 'CorrSal') $newValue = $row[CorrSal];
-	if ($match == 'NameLabel1stline') $newValue = $row[NameLabel1stline];
-	if ($match == 'FName') $newValue = $row[FName];
-	if ($match == 'LName') $newValue = $row[LName];
-	if ($match == 'AddressLine') $newValue = $row[AddressLine];
-	if ($match == 'City') $newValue = $row[City]; 
-	if ($match == 'State') $newValue = $row[State]; 
-	if ($match == 'ZipCode') $newValue = $row[ZipCode];
-	if ($match == 'Organization') $newValue = $row[Organization]; 
+	if ($match == 'date') $newValue = date("F d, Y",strtotime('now'));
+	if ($match == 'CorrSal') $newValue = $row['CorrSal'];
+	if ($match == 'NameLabel1stline') $newValue = $row['NameLabel1stline'];
+	if ($match == 'FName') $newValue = $row['FName'];
+	if ($match == 'LName') $newValue = $row['LName'];
+	if ($match == 'AddressLine') $newValue = $row['AddressLine'];
+	if ($match == 'City') $newValue = $row['City']; 
+	if ($match == 'State') $newValue = $row['State']; 
+	if ($match == 'ZipCode') $newValue = $row['ZipCode'];
+	if ($match == 'Organization') $newValue = $row['Organization']; 
 	$template = str_replace($matches[0][$i], $newValue, $template);
 	//echo "template: $template<br>";
 	$newValue = '';

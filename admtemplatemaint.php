@@ -23,9 +23,9 @@ if (isset($_REQUEST['upd'])) {  // update with info from admtemplateedit
 	$path = $_REQUEST['path'];
 	$name = $_REQUEST['name'];
 	$body = $_REQUEST['body'];
-	$flds[Name] = $name;
+	$flds['Name'] = $name;
 	$trans = array("\\" => ' ', "\n" => ' ', "\t"=>' ', "\r"=>' ', "'"=>'\'', "\""=>'\"');
-  $flds[body] = strtr($body, $trans);
+  $flds['body'] = strtr($body, $trans);
 
 //	$flds[Body] = htmlentities($body, ENT_QUOTES,'ISO-8859-1', true);
 //	echo '<pre> flds '; print_r($flds); echo '</pre>';

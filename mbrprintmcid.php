@@ -58,9 +58,9 @@ $r = $mrec->fetch_assoc();
 //echo "<pre>donor records :"; print_r($r); echo "</pre>";
 echo "<h2>MCID Information</h2>";
 echo "<table>";
-echo "<tr><td><b>MCID: ".$r[MCID]."</b></td></tr>";
-echo "<tr><td>Organization ".$r[Organization]."</td></tr>";
-echo "<tr><td>First Name: ".$r[FName]."</td>";
+echo "<tr><td><b>MCID: ".$r['MCID']."</b></td></tr>";
+echo "<tr><td>Organization ".$r['Organization']."</td></tr>";
+echo "<tr><td>First Name: ".$r['FName']."</td>";
 echo "<td>Last Name: ".$r['LName']."</td></tr>";
 echo "<td>Label Line 1: ".$r['NameLabel1stline']."</td>";
 echo "<td>Salutation: ".$r['CorrSal']."</td></tr>";
@@ -115,7 +115,7 @@ $eres = doSQLsubmitted($esql);
 
 // report volunteer committees/email distro lists
 echo '<h4>Volunteer Committees/Email List(s)</h4>';
-$lists = $r[Lists];
+$lists = $r['Lists'];
 if (strlen($lists) == 0) {
 	echo '<div class="container"><h4>NONE</h4></div>'; }
 else {
@@ -146,18 +146,18 @@ if ($nbr_rows == 0) {
 else {
 	while ($r = $voltime->fetch_assoc()) {
 //		echo "<pre>volunteer records :"; print_r($r); echo "</pre>";
-		if (strtotime($vsd) > strtotime($r[VolDate])) $vsd = $r[VolDate]; 
-		if (strtotime($vld) < strtotime($r[VolDate])) $vld = $r[VolDate]; 
-		$volsvc[$r[VolCategory]][time] += $r[VolTime];
-		$volsvc[$r[VolCategory]][miles] += $r[VolMileage];
-		$volsvc[$r[VolCategory]][count] += 1;
+		if (strtotime($vsd) > strtotime($r['VolDate'])) $vsd = $r['VolDate']; 
+		if (strtotime($vld) < strtotime($r['VolDate'])) $vld = $r['VolDate']; 
+		$volsvc[$r['VolCategory']]['time'] += $r['VolTime'];
+		$volsvc[$r['VolCategory']]['miles'] += $r['VolMileage'];
+		$volsvc[$r['VolCategory']]['count'] += 1;
 	}
 echo "<div class=\"container\">";
 echo "<b>Earliest date: $vsd, Latest date: $vld</b><br>";
 echo '
 <table border=0><tr><th>Category</th><th>TotHours</th><th>SvcCnt</th><th>TotMileage</th></tr>';
 foreach ($volsvc as $k => $v) {
-	$tothrs += $v[time]; $totsvc += $v[count]; $totmiles += $v[miles];
+	$tothrs += $v['time']; $totsvc += $v['count']; $totmiles += $v['miles'];
 	echo "
 <tr><td>$k</td><td align=right>$v[time]</td><td align=right>$v[count]</td><td align=right>$v[miles]</td></tr>"; 
 	}
@@ -178,11 +178,11 @@ if ($rowcnt > 0) {
 // table: voltime: VTID,VTDT,MCID,VolDate,VolTime,VolMilage,VolCategory,VolNotes
 	$totalvolhrs = $totaltranshrs = $totmiles = 0;
 	while ($r = $res->fetch_assoc()) {
-		if (strtotime($vsd) > strtotime($r[SvcDate])) $vsd = $r[SvcDate]; 
-		if (strtotime($vld) < strtotime($r[SvcDate])) $vld = $r[SvcDate];
-		$totalvolhrs += $r[VolHrs];
-		$totaltranshrs += $r[TransHrs];
-		$totmiles += $r[Mileage];
+		if (strtotime($vsd) > strtotime($r['SvcDate'])) $vsd = $r['SvcDate']; 
+		if (strtotime($vld) < strtotime($r['SvcDate'])) $vld = $r['SvcDate'];
+		$totalvolhrs += $r['VolHrs'];
+		$totaltranshrs += $r['TransHrs'];
+		$totmiles += $r['Mileage'];
 		}
 echo '<h4>Volunteer Service Prior to Jan 1, 2014</h4>';
 echo '<div class=container><table>';
@@ -231,22 +231,22 @@ echo "<tr><th>Purpose</th><th>Amount</th></tr>";
 $sql = "SELECT `MCID`, `Purpose`, SUM( `TotalAmount` ) FROM `donations` AS `donations` GROUP BY `MCID`, `Purpose` HAVING ( ( `MCID` = '$mcid' ) )";
 $res = doSQLsubmitted($sql);
 while ($r = $res->fetch_assoc()) {
-	echo "<tr><td>".$r[Purpose]."</td><td>$".$r['SUM( `TotalAmount` )']."</td></tr>";
+	echo "<tr><td>".$r['Purpose']."</td><td>$".$r['SUM( `TotalAmount` )']."</td></tr>";
 	//echo "<pre>summary records :"; print_r($r); echo "</pre>";
 	}
 echo "</table>";
 echo "<br><b><u>Funding Detail:</u></b><br />";
 echo "<table><tr><th>Don.ID</th><th>Purpose</th><th>Program</th><th>Don. Date</th><th>Check Nbr</th><th>Amount</th><th>Member For</th><th>Note</th></tr>";
 while ($r = $dflds->fetch_assoc()) {
-	echo "<tr><td>".$r[DonationID]."</td>";
+	echo "<tr><td>".$r['DonationID']."</td>";
 	//echo "<td>".$r[MCID]."</td>";
-	echo "<td>".$r[Purpose]."</td>";
-	echo "<td>".$r[Program]."</td>";
-	echo "<td>".$r[DonationDate]."</td>";
-	echo "<td>".$r[CheckNumber]."</td>";
-	echo "<td>".$r[TotalAmount]."</td>";
-	echo "<td>".$r[MembershipDonatedFor]."</td>";
-	echo "<td>".$r[Note]."</td></tr>";
+	echo "<td>".$r['Purpose']."</td>";
+	echo "<td>".$r['Program']."</td>";
+	echo "<td>".$r['DonationDate']."</td>";
+	echo "<td>".$r['CheckNumber']."</td>";
+	echo "<td>".$r['TotalAmount']."</td>";
+	echo "<td>".$r['MembershipDonatedFor']."</td>";
+	echo "<td>".$r['Note']."</td></tr>";
 	$dontotal += $r['TotalAmount'];
 	//echo "<pre>donor records :"; print_r($r); echo "</pre>";
 	}
@@ -265,12 +265,12 @@ if ($rowcount > 0) {
 	echo "<table>";
 	echo "<tr><th>Corr.ID</th><th>CorrespondenceType</th><th>DateSent</th><th>Source</th><th>Notes</th><th>Reminders</th></tr>";
 	while ($r = $cflds->fetch_assoc()) {
-		echo "<td>".$r[CORID]."</td>";
-		echo "<td>".$r[CorrespondenceType]."</td>";
-		echo "<td>".$r[DateSent]."</td>";
-		echo "<td>".$r[SoureofInquiry]."</td>";
-		echo "<td>".$r[Notes]."</td>";
-		echo "<td>".$r[Reminders]."</td></tr>";
+		echo "<td>".$r['CORID']."</td>";
+		echo "<td>".$r['CorrespondenceType']."</td>";
+		echo "<td>".$r['DateSent']."</td>";
+		echo "<td>".$r['SoureofInquiry']."</td>";
+		echo "<td>".$r['Notes']."</td>";
+		echo "<td>".$r['Reminders']."</td></tr>";
 		}
 	echo "</table>----- END OF REPORT -----</div>";
 }

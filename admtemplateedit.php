@@ -25,8 +25,8 @@ $sql = "SELECT * FROM `templates` WHERE `TID` = '$path';";
 $res = doSQLsubmitted($sql);
 $t = $res->fetch_assoc();
 //echo "<b>Title:</b><br />";
-$name = stripslashes($t[Name]);
-$body = stripslashes($t[Body]);
+$name = stripslashes($t['Name']);
+$body = stripslashes($t['Body']);
 print <<<form
 <script type="text/javascript" src="js/nicEdit.js"></script>
 <script type="text/javascript">
